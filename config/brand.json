@@ -1,0 +1,45 @@
+{
+  "name": "IF Techworks",
+  "tagline": "Digitalización con propósito",
+  "website": "iftechworks.com",
+  "instagram": "@if_techworks",
+  "whatsapp": "+502 3808 9808",
+  "email": "contacto@iftechworks.com",
+  "colors": {
+    "bg": "#0a1410",
+    "bg_alt": "#0f1d17",
+    "surface": "#162920",
+    "surface_alt": "#1d362b",
+    "accent": "#f0c419",
+    "text": "#fefcf3",
+    "text_soft": "#faf6e6",
+    "muted": "#9ca3af"
+  },
+  "fonts": {
+    "heading": {"family": "Space Grotesk", "file": "SpaceGrotesk.ttf"},
+    "body": {"family": "Inter", "file": "Inter.ttf"},
+    "mono": {"family": "JetBrains Mono", "file": "JetBrainsMono.ttf"}
+  },
+  "logo": "assets/logo/logo-white.png",
+  "style": {
+    "radius_px": 28,
+    "badge": "◆ Software empresarial · IoT · B2B",
+    "glow": true,
+    "grid": true
+  },
+  "voice": {
+    "language": "es-GT",
+    "voseo": true,
+    "tone": "Profesional pero cercano y claro. Directo, sin paja técnica. Cada solución resuelve un problema concreto de operación: no tecnología por moda.",
+    "phrases_ok": ["Contanos tu situación", "Agendá una conversación", "Sin compromiso", "Respondemos en menos de 24 horas hábiles"],
+    "avoid": ["Inventar clientes, cifras o testimonios", "Promesas absolutas (100 %, garantizado)", "Anglicismos innecesarios", "Tuteo o ustedeo mezclado con voseo"]
+  },
+  "services": [
+    {"name": "Gestión de Inventario Inteligente", "summary": "Estantes con sensores IoT que reportan flujo en tiempo real, alertas automáticas de stock, asignación de activos por colaborador e histórico de proveedores."},
+    {"name": "Catálogo Inteligente", "summary": "Subís una plantilla y se genera el catálogo automáticamente: versión web y PDF lista para los vendedores."},
+    {"name": "Digitalización de Vendedores de Calle", "summary": "App web con catálogo digital y captura de órdenes y precompras; la fuerza de venta deja la libreta."},
+    {"name": "Pipeline comercial", "summary": "Pipeline ordenado, cotizaciones rastreables y métricas claras del equipo comercial."},
+    {"name": "Desarrollo a medida", "summary": "Contanos tu problema, te proponemos la solución. Diagnóstico, desarrollo, capacitación y acompañamiento."}
+  ],
+  "community": "Charlas educativas gratuitas para escuelas y empresas, y un programa anual de digitalización pro-bono para ONGs, refugios y fundaciones."
+}

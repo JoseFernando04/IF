@@ -1,0 +1,58 @@
+{
+  "title": "¿La digitalización es solo para grandes?",
+  "hook": "¿La *digitalización* es solo para grandes?",
+  "scenes": [
+    {
+      "layout": "hook",
+      "on_screen": "¿La *digitalización* es solo para grandes?",
+      "sub": "",
+      "bullets": [],
+      "narration": "¿La digitalización es solo para grandes? No, es para quienes quieren vender más, perder menos y tener control.",
+      "icon": "lightbulb"
+    },
+    {
+      "layout": "statement",
+      "on_screen": "Hay *mitos* que frenan",
+      "sub": "",
+      "bullets": [],
+      "narration": "Muchos dueños creen que digitalizar es caro, complicado o solo para empresas grandes.",
+      "icon": "lightbulb"
+    },
+    {
+      "layout": "big",
+      "on_screen": "La *realidad* es distinta",
+      "sub": "",
+      "bullets": [],
+      "narration": "Digitalizar no es un lujo: es una herramienta que te ayuda a gestionar mejor tu inventario, vendedores y ventas.",
+      "icon": "lightbulb"
+    },
+    {
+      "layout": "list",
+      "on_screen": "Lo que *podes ganar*",
+      "sub": "",
+      "bullets": [
+        "Sabés exactamente cuánto tenés en inventario",
+        "Conocés quién vendió qué producto",
+        "Controlás el stock antes de que se termine"
+      ],
+      "narration": "Conocés cuánto tenés, sabés quién vendió qué, y controlás el stock antes de que se termine.",
+      "icon": "lightbulb"
+    },
+    {
+      "layout": "cta",
+      "on_screen": "Agendá tu *diagnóstico*",
+      "sub": "",
+      "bullets": [],
+      "narration": "Contanos tu situación y te mostramos cómo se vería en tu negocio. Escribinos por WhatsApp.",
+      "icon": "lightbulb"
+    }
+  ],
+  "caption": "La digitalización no es solo para grandes. Es para quienes quieren vender más, perder menos y tener control. Agendá tu diagnóstico sin compromiso: escribinos por WhatsApp o visitá iftechworks.com.",
+  "hashtags": [
+    "#MitosDeDigitalizacion",
+    "#PymesGuatemala",
+    "#Digitalizacion",
+    "#InventarioInteligente",
+    "#Bodega"
+  ]
+}

@@ -1,0 +1,53 @@
+# Motores de cada módulo. Cambiá un valor para reemplazar un módulo sin tocar el resto.
+engines:
+  copy: ollama          # ollama | file (copy escrito a mano o por Claude vía MCP)
+  graphics: playwright
+  video: html_frames
+  tts: chatterbox       # chatterbox (natural) | kokoro (liviana) | none (solo música)
+  music: library
+  publisher: dry_run    # dry_run | instagram | tiktok_inbox | manual_email (Fases 3+)
+
+copy:
+  ollama_model: qwen3:8b
+  temperature: 0.7
+
+reel:
+  width: 1080
+  height: 1920
+  fps: 30
+  min_seconds: 15
+  max_seconds: 60
+  scene_padding_s: 0.45     # silencio entre escenas
+  min_scene_s: 2.2
+  progress_bar: false       # barra superior que muestra el avance del reel
+  captions: false           # subtítulos de la voz en off
+
+carousel:
+  width: 1080
+  height: 1350
+  min_slides: 3
+  max_slides: 10
+
+tts:
+  chatterbox:
+    python: .venv-tts/Scripts/python.exe
+    reference: assets/voice/referencia.wav   # 10-20 s de una voz real (con permiso). Si no existe, usa la voz por defecto.
+    exaggeration: 0.5       # expresividad: 0.3 sobria … 0.8 muy expresiva
+    cfg_weight: 0.5         # menor = ritmo más pausado
+  kokoro:
+    voice: em_alex          # em_alex (masculina) | ef_dora (femenina)
+    speed: 1.05
+    model_dir: models/kokoro
+
+music:
+  library: assets/music/library.yaml
+  volume_db: -20            # volumen base de la música bajo la voz
+  volume_no_voice_db: -12
+
+limits:
+  caption_max_chars: 2200
+  hashtags_max: 5
+
+paths:
+  output: data/output
+  database: data/ifcontent.db

@@ -1,0 +1,11 @@
+# Frecuencia y horarios (hora de Guatemala). Se ajustan con métricas en la Fase 4.
+timezone: America/Guatemala
+pieces_per_week: 4
+slots:
+  - {day: martes, time: "12:30", format: reel}
+  - {day: miercoles, time: "18:30", format: carousel}
+  - {day: jueves, time: "12:30", format: reel}
+  - {day: sabado, time: "10:00", format: alternate}   # alterna reel / carrusel
+platforms: [instagram, tiktok]
+# Cuántas horas antes de la publicación debe estar aprobada una pieza.
+approval_deadline_hours: 24

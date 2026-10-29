@@ -1,0 +1,33 @@
+# Ejemplo de referencia que se le muestra al LLM (few-shot). Editalo para cambiar el estilo.
+title: Estantes que avisan cuando falta producto
+hook: ¿Todavía te enterás del faltante cuando el cliente ya lo pidió?
+scenes:
+  - layout: hook
+    on_screen: ¿Te enterás del *faltante* tarde?
+    narration: ¿Todavía te enterás del faltante cuando el cliente ya lo pidió?
+    icon: triangle-alert
+  - layout: statement
+    on_screen: Contar a mano *no escala*
+    sub: Horas de conteo, números que no cuadran y ventas perdidas.
+    narration: Contar cajas a mano cada semana cuesta horas, y aun así los números casi nunca cuadran.
+    icon: clipboard-list
+  - layout: big
+    on_screen: Estantes que *avisan*
+    sub: Sensores IoT que reportan qué entra y qué sale.
+    narration: Imaginá estantes con sensores que reportan en tiempo real qué entra, qué sale y qué está por terminarse.
+    icon: radar
+  - layout: list
+    on_screen: Lo que *ganás*
+    bullets: [Alertas de stock bajo, Cada activo con responsable, Histórico de proveedores]
+    narration: Recibís una alerta antes de quedarte sin producto, sabés quién tiene cada activo, y comprás con datos, no a ciegas.
+    icon: circle-check
+  - layout: cta
+    on_screen: Agendá tu *diagnóstico*
+    sub: Sin compromiso. Respondemos en menos de 24 horas hábiles.
+    narration: Contanos tu situación y te mostramos cómo se vería en tu bodega. Escribinos por WhatsApp.
+    icon: calendar-check
+caption: >-
+  El faltante no avisa… a menos que tu estante sí lo haga. Con sensores IoT, tu inventario se actualiza solo y te
+  avisa antes de que el cliente se quede sin producto. Agendá un diagnóstico sin compromiso: escribinos por
+  WhatsApp o visitá iftechworks.com.
+hashtags: [InventarioInteligente, IoT, PymesGuatemala, Digitalizacion, Bodega]

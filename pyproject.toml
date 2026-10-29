@@ -1,0 +1,29 @@
+[project]
+name = "ifcontent"
+version = "0.1.0"
+description = "Herramienta interna de IF Techworks para crear, aprobar y publicar contenido en Instagram y TikTok"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "jinja2>=3.1",
+    "pyyaml>=6.0",
+    "pydantic>=2.7",
+    "typer>=0.12",
+    "httpx>=0.27",
+    "python-dotenv>=1.0",
+    "playwright>=1.47",
+    "pillow>=10.4",
+    "kokoro-onnx>=0.4",
+    "soundfile>=0.12",
+    "numpy>=1.26",
+]
+
+[project.scripts]
+ifcontent = "ifcontent.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ifcontent"]

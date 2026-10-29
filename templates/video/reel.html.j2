@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+{{ base_css }}
+
+/* Zonas seguras: Instagram/TikTok tapan ~250px arriba, ~420px abajo y ~140px a la derecha. */
+.header { position: absolute; top: 150px; left: 90px; right: 90px; display: flex; justify-content: space-between; align-items: center; }
+.header .wordmark .if { font-size: 52px; }
+.header .wordmark .tw { font-size: 13px; }
+.header .badge { font-size: 24px; padding: 10px 20px; }
+.progress { position: absolute; top: 250px; left: 90px; right: 90px; height: 5px; border-radius: 3px; background: rgba(254,252,243,.12); overflow: hidden; }
+.progress i { display: block; height: 100%; background: var(--accent); transform-origin: left; animation: progress {{ total }}s linear both; }
+
+.glow { top: 300px; left: -300px; animation: drift {{ total }}s ease-in-out both; }
+
+.scene { position: absolute; left: 90px; right: 110px; top: 330px; height: 1000px;
+  display: flex; flex-direction: column; justify-content: center;
+  animation: sceneIn .3s ease-out both, sceneOut .35s ease-in forwards;
+  animation-delay: var(--start), calc(var(--end) - .35s); }
+.scene.final { animation: sceneIn .3s ease-out both; animation-delay: var(--start); }
+
+.a { animation: rise .7s cubic-bezier(.2,.8,.2,1) both; animation-delay: var(--d); }
+.w { display: inline-block; animation: pop .45s cubic-bezier(.2,1.3,.4,1) both; animation-delay: var(--d); margin-right: .22em; }
+.bar { height: 10px; width: 180px; background: var(--accent); border-radius: 5px; transform-origin: left;
+  animation: grow .6s cubic-bezier(.2,.8,.2,1) both; animation-delay: var(--d); }
+
+h1 { font-family: var(--f-head); font-weight: 700; letter-spacing: -.03em; line-height: 1.02; }
+.sub { font-size: 48px; line-height: 1.35; color: var(--text-soft); opacity: .85; margin-top: 36px; }
+
+.hook h1 { font-size: 128px; margin-bottom: 48px; }
+.statement .icon-chip { width: 200px; height: 200px; padding: 46px; margin-bottom: 60px; }
+.statement h1 { font-size: 104px; margin-bottom: 40px; }
+.list h1 { font-size: 92px; margin-bottom: 56px; }
+.list ul { list-style: none; display: flex; flex-direction: column; gap: 30px; }
+.list li { display: flex; align-items: center; gap: 30px; font-family: var(--f-head); font-weight: 600; font-size: 60px;
+  background: rgba(254,252,243,.05); border: 1.5px solid rgba(254,252,243,.12); border-radius: var(--radius); padding: 30px 36px; }
+.list li .icon { width: 64px; height: 64px; color: var(--accent); flex: none; }
+.big { align-items: center; text-align: center; }
+.big h1 { font-size: 176px; }
+.big .bar { margin: 50px auto 0; }
+.cta { align-items: center; text-align: center; }
+.cta .wordmark .if { font-size: 190px; }
+.cta .wordmark .tw { font-size: 44px; }
+.cta h1 { font-size: 92px; margin-top: 70px; }
+.cta .pills { display: flex; flex-direction: column; gap: 24px; margin-top: 60px; align-items: center; }
+.pill { font-family: var(--f-head); font-weight: 600; font-size: 46px; padding: 26px 52px; border-radius: 999px; }
+.pill.primary { background: var(--accent); color: var(--bg); }
+.pill.ghost { border: 2px solid rgba(254,252,243,.35); }
+
+.captions { position: absolute; left: 150px; right: 190px; top: 1380px; height: 120px; }
+.cap { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; text-align: center;
+  animation: capIn .12s ease-out both, capOut .1s linear forwards; animation-delay: var(--start), var(--end); }
+.cap span { font-family: var(--f-head); font-weight: 600; font-size: 46px; line-height: 1.2; color: var(--text);
+  background: rgba(10,20,16,.78); border: 1.5px solid rgba(240,196,25,.35); border-radius: 18px; padding: 14px 26px; }
+
+@keyframes sceneIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sceneOut { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-30px) scale(.97); } }
+@keyframes rise { from { opacity: 0; transform: translateY(60px); filter: blur(10px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes pop { from { opacity: 0; transform: translateY(40px) scale(.85); } to { opacity: 1; transform: none; } }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes drift { 0% { transform: translate(0, 0); } 50% { transform: translate(520px, 380px); } 100% { transform: translate(120px, 820px); } }
+@keyframes capIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes capOut { from { opacity: 1; } to { opacity: 0; } }
+</style>
+</head>
+<body>
+<div class="bg"><div class="glow"></div></div>
+
+<div class="header">
+  <div class="wordmark"><span class="if">IF</span><span class="tw">TECHWORKS</span></div>
+  <span class="badge">{{ pillar_name }}</span>
+</div>
+{% if show_progress %}<div class="progress"><i></i></div>{% endif %}
+
+{% for ts in scenes %}
+{% set s = ts.scene %}{% set t0 = ts.start %}
+<section class="scene {{ s.layout }}{{ ' final' if loop.last }}" style="--start: {{ '%.3f' % t0 }}s; --end: {{ '%.3f' % ts.end }}s">
+  {% if s.layout == "hook" %}
+    <h1>{% for w in s.on_screen.split() %}<span class="w" style="--d: {{ '%.3f' % (t0 + 0.1 + loop.index0 * 0.12) }}s">{{ w | accent }}</span>{% endfor %}</h1>
+    <div class="bar" style="--d: {{ '%.3f' % (t0 + 0.2 + s.on_screen.split() | length * 0.12) }}s"></div>
+    {% if s.sub %}<p class="sub a" style="--d: {{ '%.3f' % (t0 + 0.5 + s.on_screen.split() | length * 0.12) }}s">{{ s.sub }}</p>{% endif %}
+  {% elif s.layout == "list" %}
+    <h1 class="a" style="--d: {{ '%.3f' % (t0 + 0.05) }}s">{{ s.on_screen | accent }}</h1>
+    <ul>{% for b in s.bullets[:3] %}<li class="a" style="--d: {{ '%.3f' % (t0 + 0.5 + loop.index0 * 0.45) }}s"><span class="icon">{{ 'circle-check' | icon }}</span>{{ b | plain }}</li>{% endfor %}</ul>
+  {% elif s.layout == "big" %}
+    <h1 class="a" style="--d: {{ '%.3f' % (t0 + 0.05) }}s">{{ s.on_screen | accent }}</h1>
+    <div class="bar" style="--d: {{ '%.3f' % (t0 + 0.4) }}s"></div>
+    {% if s.sub %}<p class="sub a" style="--d: {{ '%.3f' % (t0 + 0.55) }}s">{{ s.sub }}</p>{% endif %}
+  {% elif s.layout == "cta" %}
+    <div class="wordmark a" style="--d: {{ '%.3f' % (t0 + 0.05) }}s"><span class="if">IF</span><span class="tw">TECHWORKS</span></div>
+    <h1 class="a" style="--d: {{ '%.3f' % (t0 + 0.35) }}s">{{ s.on_screen | accent }}</h1>
+    {% if s.sub %}<p class="sub a" style="--d: {{ '%.3f' % (t0 + 0.55) }}s">{{ s.sub }}</p>{% endif %}
+    <div class="pills">
+      <span class="pill primary a" style="--d: {{ '%.3f' % (t0 + 0.8) }}s">WhatsApp {{ brand.whatsapp }}</span>
+      <span class="pill ghost a" style="--d: {{ '%.3f' % (t0 + 1.0) }}s">{{ brand.website }}</span>
+    </div>
+  {% else %}
+    <div class="icon-chip icon a" style="--d: {{ '%.3f' % (t0 + 0.05) }}s">{{ s.icon | icon }}</div>
+    <h1 class="a" style="--d: {{ '%.3f' % (t0 + 0.25) }}s">{{ s.on_screen | accent }}</h1>
+    {% if s.sub %}<p class="sub a" style="--d: {{ '%.3f' % (t0 + 0.5) }}s">{{ s.sub }}</p>{% endif %}
+  {% endif %}
+</section>
+{% endfor %}
+
+{% if show_captions %}
+<div class="captions">
+{% for c in captions %}<div class="cap" style="--start: {{ '%.3f' % c.start }}s; --end: {{ '%.3f' % c.end }}s"><span>{{ c.text }}</span></div>{% endfor %}
+</div>
+{% endif %}
+
+<script>
+  // Control determinista del tiempo: cada cuadro se dibuja en el instante exacto t (segundos).
+  window.__seek = (t) => {
+    for (const a of document.getAnimations()) { a.pause(); a.currentTime = t * 1000; }
+  };
+</script>
+</body>
+</html>

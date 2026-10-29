@@ -1,0 +1,56 @@
+{
+  "title": "¿Inventario en Excel o inteligente?",
+  "hook": "Inventario en Excel vs. inventario inteligente",
+  "slides": [
+    {
+      "kind": "cover",
+      "heading": "Inventario en Excel vs. inventario *inteligente*",
+      "body": "¿Qué elegís? La diferencia es más que un archivo.",
+      "icon": "file-spreadsheet"
+    },
+    {
+      "kind": "content",
+      "heading": "Inventario en Excel *manual*",
+      "body": "Cada cierre de mes, alguien se pasa horas contando cajas y anotando. Y aún así, los números nunca cuadran a la primera.",
+      "icon": "clipboard-list"
+    },
+    {
+      "kind": "content",
+      "heading": "Inventario inteligente *automático*",
+      "body": "Sensores y datos en tiempo real: sabés exactamente cuánto tenés, cuánto se mueve y cuánto falta.",
+      "icon": "radar"
+    },
+    {
+      "kind": "content",
+      "heading": "Inventario en Excel *desordenado*",
+      "body": "Cada área tiene su copia, y ninguna coincide con lo que hay en bodega. Es como jugar a adivinar.",
+      "icon": "database"
+    },
+    {
+      "kind": "content",
+      "heading": "Inventario inteligente *controlado*",
+      "body": "Tenés visibilidad de todo: desde qué producto se vende más hasta cuándo se agota. Y alertas automáticas para no perder ventas.",
+      "icon": "shield-check"
+    },
+    {
+      "kind": "content",
+      "heading": "Inventario en Excel *lento*",
+      "body": "No sabés cuándo se agota algo ni cuánto tenés. Las ventas se van y no las podés recuperar.",
+      "icon": "clock"
+    },
+    {
+      "kind": "cta",
+      "heading": "Hagamos tu inventario *inteligente*",
+      "body": "Agendá un diagnóstico sin compromiso. Respondemos en menos de 24 horas hábiles.",
+      "icon": "calendar-check"
+    }
+  ],
+  "caption": "Inventario en Excel es esfuerzo, tiempo y errores. Inventario inteligente es control, eficiencia y más ventas. En IF Techworks digitalizamos tu inventario con soluciones a la medida de tu operación. Contanos tu situación por WhatsApp o en iftechworks.com.",
+  "hashtags": [
+    "#PymesGuatemala",
+    "#InventarioInteligente",
+    "#Digitalizacion",
+    "#TransformacionDigital",
+    "#NegociosGT"
+  ]
+}

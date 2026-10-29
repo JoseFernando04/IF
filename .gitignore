@@ -1,0 +1,14 @@
+# Entorno y credenciales
+.env
+.venv/
+.venv-tts/
+__pycache__/
+*.pyc
+
+# Datos generados (piezas, base de datos, modelos descargados)
+data/
+models/
+
+# Sistema
+.DS_Store
+Thumbs.db

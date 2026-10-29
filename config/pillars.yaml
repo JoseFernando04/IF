@@ -1,0 +1,55 @@
+# Pilares de contenido. "weight" es el porcentaje aproximado del calendario mensual.
+pillars:
+  educativo:
+    name: Educativo
+    weight: 35
+    music_moods: [tecnologia, relajado]
+    goal: Enseñar conceptos de digitalización, IoT e inventario inteligente en lenguaje de dueño de negocio.
+    topics:
+      - Qué es el IoT explicado con un estante de bodega
+      - Mitos de la digitalización en pymes
+      - Inventario en Excel vs. inventario inteligente
+      - Por qué el conteo manual siempre falla
+      - No tecnología por moda, tecnología que resuelve problemas
+
+  soluciones:
+    name: Soluciones
+    weight: 25
+    music_moods: [tecnologia, energia]
+    goal: Mostrar nuestros servicios con la estructura problema → solución → beneficio. Si es un escenario de ejemplo, se dice que es un ejemplo.
+    topics:
+      - Estantes con sensores que avisan cuando falta producto
+      - Catálogo digital generado desde una plantilla
+      - Vendedores de calle sin libreta
+      - Cada activo asignado a un colaborador
+      - Cotizaciones rastreables para el equipo comercial
+
+  tips:
+    name: Tips rápidos
+    weight: 20
+    music_moods: [energia, tips]
+    goal: Consejos accionables que un dueño de pyme puede aplicar hoy, aunque todavía no nos contrate.
+    topics:
+      - 3 señales de que tu inventario necesita digitalizarse
+      - Cómo ordenar tu catálogo antes de digitalizarlo
+      - Qué preguntar antes de contratar software a medida
+      - Indicadores básicos que todo negocio debería medir
+
+  proposito:
+    name: Propósito y proceso
+    weight: 10
+    music_moods: [proposito, inspirador]
+    goal: Contar cómo trabajamos (diagnóstico, desarrollo, acompañamiento) y nuestro programa de comunidad.
+    topics:
+      - Cómo es un diagnóstico con IF Techworks
+      - Charlas gratuitas para escuelas y empresas
+      - Programa anual de digitalización pro-bono para ONGs
+
+  cta:
+    name: Llamado a la acción
+    weight: 10
+    music_moods: [energia, inspirador]
+    goal: Invitar a agendar un diagnóstico sin compromiso o escribir por WhatsApp.
+    topics:
+      - Diagnóstico sin compromiso
+      - Contanos tu situación, respondemos en menos de 24 horas hábiles

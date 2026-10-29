@@ -1,0 +1,66 @@
+# Biblioteca de música curada. SOLO pistas con licencia comercial clara.
+# Cada pista debe tener: archivo, licencia, URL de la licencia, fuente, fecha de descarga
+# y, si la licencia lo exige, el texto de atribución (se agrega solo al caption).
+# Una pista sin licencia registrada NO se puede usar: el validador bloquea la pieza.
+
+tracks:
+  - id: voxel-revolution
+    file: voxel-revolution.mp3
+    title: Voxel Revolution
+    artist: Kevin MacLeod
+    source: https://incompetech.com/music/royalty-free/
+    license: CC-BY-4.0
+    license_url: https://creativecommons.org/licenses/by/4.0/
+    commercial_use: true
+    attribution: '"Voxel Revolution" Kevin MacLeod (incompetech.com) · CC BY 4.0'
+    downloaded: 2026-10-29
+    moods: [tecnologia, energia]
+    bpm: 140
+
+  - id: digital-lemonade
+    file: digital-lemonade.mp3
+    title: Digital Lemonade
+    artist: Kevin MacLeod
+    source: https://incompetech.com/music/royalty-free/
+    license: CC-BY-4.0
+    license_url: https://creativecommons.org/licenses/by/4.0/
+    commercial_use: true
+    attribution: '"Digital Lemonade" Kevin MacLeod (incompetech.com) · CC BY 4.0'
+    downloaded: 2026-10-29
+    moods: [tecnologia, relajado]
+
+  - id: inspired
+    file: inspired.mp3
+    title: Inspired
+    artist: Kevin MacLeod
+    source: https://incompetech.com/music/royalty-free/
+    license: CC-BY-4.0
+    license_url: https://creativecommons.org/licenses/by/4.0/
+    commercial_use: true
+    attribution: '"Inspired" Kevin MacLeod (incompetech.com) · CC BY 4.0'
+    downloaded: 2026-10-29
+    moods: [inspirador, proposito]
+
+  - id: wholesome
+    file: wholesome.mp3
+    title: Wholesome
+    artist: Kevin MacLeod
+    source: https://incompetech.com/music/royalty-free/
+    license: CC-BY-4.0
+    license_url: https://creativecommons.org/licenses/by/4.0/
+    commercial_use: true
+    attribution: '"Wholesome" Kevin MacLeod (incompetech.com) · CC BY 4.0'
+    downloaded: 2026-10-29
+    moods: [cercano, proposito]
+
+  - id: pamgaea
+    file: pamgaea.mp3
+    title: Pamgaea
+    artist: Kevin MacLeod
+    source: https://incompetech.com/music/royalty-free/
+    license: CC-BY-4.0
+    license_url: https://creativecommons.org/licenses/by/4.0/
+    commercial_use: true
+    attribution: '"Pamgaea" Kevin MacLeod (incompetech.com) · CC BY 4.0'
+    downloaded: 2026-10-29
+    moods: [energia, tips]

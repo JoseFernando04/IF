@@ -1,0 +1,56 @@
+{
+  "title": "Señales de que tu inventario necesita digitalizarse",
+  "hook": "5 señales de que tu inventario ya no da más",
+  "slides": [
+    {
+      "kind": "cover",
+      "heading": "5 señales de que tu *inventario* ya no da más",
+      "body": "Si te identificás con dos o más, es momento de digitalizar.",
+      "icon": "warehouse"
+    },
+    {
+      "kind": "content",
+      "heading": "Contás todo *a mano*",
+      "body": "Cada cierre de mes alguien pasa horas contando cajas y anotando en una libreta. Y aun así, los números nunca cuadran a la primera.",
+      "icon": "clipboard-list"
+    },
+    {
+      "kind": "content",
+      "heading": "Te enterás *tarde* del faltante",
+      "body": "El cliente pide el producto y recién ahí descubrís que no hay. Esa venta se fue a la competencia.",
+      "icon": "triangle-alert"
+    },
+    {
+      "kind": "content",
+      "heading": "Nadie sabe *quién* tiene qué",
+      "body": "Herramientas, equipos y producto se mueven entre personas sin registro. Cuando algo falta, no hay forma de saber dónde quedó.",
+      "icon": "users"
+    },
+    {
+      "kind": "content",
+      "heading": "Tu Excel tiene *mil versiones*",
+      "body": "Inventario_final_v3_ahora_sí.xlsx. Cada área tiene su copia y ninguna coincide con lo que hay en bodega.",
+      "icon": "file-spreadsheet"
+    },
+    {
+      "kind": "content",
+      "heading": "Comprás *a ciegas*",
+      "body": "Sin histórico de rotación ni de proveedores, pedís de más lo que no se mueve y de menos lo que sí se vende.",
+      "icon": "shopping-cart"
+    },
+    {
+      "kind": "cta",
+      "heading": "Ordenemos tu *inventario*",
+      "body": "Agendá un diagnóstico sin compromiso. Respondemos en menos de 24 horas hábiles.",
+      "icon": "calendar-check"
+    }
+  ],
+  "caption": "¿Cuántas de estas señales viste esta semana en tu negocio? Un inventario desordenado no solo cuesta tiempo: cuesta ventas. En IF Techworks digitalizamos tu inventario con soluciones a la medida de tu operación. Contanos tu situación por WhatsApp o en iftechworks.com.",
+  "hashtags": [
+    "#PymesGuatemala",
+    "#InventarioInteligente",
+    "#Digitalizacion",
+    "#TransformacionDigital",
+    "#NegociosGT"
+  ]
+}
