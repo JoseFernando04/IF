@@ -47,9 +47,25 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
   - Necesitaba ver los carruseles completos → se genera `preview.jpg` (vista con todas las slides) por carrusel.
 - Calidad de Qwen3: aceptable con ejemplo few-shot + revisor; a veces copia demasiado el ejemplo. Claude vía MCP (Fase 5) dará mejor copy.
 
+### Pruebas de voz (2026-10-29) — ninguna aprobada todavía
+El usuario quiere una voz **humana, no robótica**, preferiblemente con acento latino (tipo México); no importa que no sea guatemalteca.
+Muestras generadas en `data/voz/` (fuera de git), todas con la misma frase:
+- Kokoro `em_alex` (voz original): rechazada, suena robótica.
+- Chatterbox Multilingual con voz por defecto (`voz-nueva-chatterbox.mp3`): enviada; no le convenció.
+- A/B: Chatterbox clonando como referencia una voz sintética mexicana de Piper (`es_MX-claude-high` Apache 2.0,
+  `es_MX-ald-medium` Unlicense). C/D: esas voces de Piper directas. **No le gustó ninguna.**
+- Chatterbox ya funciona en la GPU (`.venv-tts`, ~30 it/s); `piper-tts` también instalado ahí; modelos Piper en `models/piper/`.
+- El pipeline aún tiene `engines.tts: chatterbox` sin referencia y los reels de ejemplo NO se regeneraron.
+
+Próximas opciones a proponer (todas deben ser gratis y con licencia comercial):
+1. **Grabar una voz real** del equipo (10-20 s, con permiso) en `assets/voice/referencia.wav` y clonarla con Chatterbox
+   → suele ser lo más humano. Recomendado.
+2. Buscar otros modelos abiertos con voces latinas naturales y licencia comercial (verificar licencia de pesos, no solo código;
+   descartar los NC). Probar ajustes de Chatterbox (`exaggeration`, `cfg_weight`) con una buena referencia.
+3. Reels solo con música (`engines.tts: none`) mientras se decide.
+
 ### Pendiente
-- [ ] Probar Chatterbox, enviar muestras de voz y regenerar los reels de ejemplo.
-- [ ] Opcional: grabar 10-20 s de una voz real del equipo (con permiso) en `assets/voice/referencia.wav` para que Chatterbox la use.
+- [ ] Definir la voz (ver opciones arriba) y regenerar los reels de ejemplo sin barra ni subtítulos.
 - [ ] Agregar pistas de Pixabay Music (las descarga el usuario; ver `docs/licencias.md`).
 - [ ] **Fase 2:** calendario mensual automático, panel web local de aprobación (FastAPI + HTMX), avisos SMTP
       (falta saber el proveedor de correo de contacto@iftechworks.com), Programador de tareas de Windows.
