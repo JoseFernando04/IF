@@ -1,0 +1,80 @@
+{
+  "nombre": "IF Techworks",
+  "lema": "Digitalización con propósito",
+  "descripcion": "Software a medida, soluciones IoT y procesos estructurados que potencian la operación de tu empresa.",
+  "origen": "Extraído de https://www.iftechworks.com (octubre 2026). Falta contrastar con el feed de Instagram.",
+
+  "enlaces": {
+    "web": "https://www.iftechworks.com",
+    "instagram": "https://www.instagram.com/if_techworks",
+    "linkedin": "https://www.linkedin.com/company/if-techworks/",
+    "whatsapp": "https://wa.me/50238089808",
+    "email": "contacto@iftechworks.com"
+  },
+
+  "colores": {
+    "primario": "#F0C419",
+    "primario_claro": "#F5D547",
+    "fondo": "#0A1410",
+    "fondo_2": "#0F1D17",
+    "superficie": "#162920",
+    "borde": "#1D362B",
+    "texto": "#FAF6E6",
+    "texto_claro": "#FEFCF3",
+    "texto_secundario": "#9CA3AF"
+  },
+
+  "tipografia": {
+    "titulos": "Space Grotesk",
+    "texto": "Inter",
+    "datos": "JetBrains Mono"
+  },
+
+  "estilo_visual": {
+    "descripcion": "Fondo verde bosque muy oscuro, acentos en amarillo con brillo suave, degradados del amarillo al verde, desenfoques amplios, tipografía geométrica. Sobrio, técnico y cálido.",
+    "degradado_principal": ["#F0C419", "#1D362B", "#0A1410"],
+    "formato_video": "9:16",
+    "logo": "assets/logo.png",
+    "evitar": ["fotos de stock genéricas", "fondos blancos planos", "más de 2 colores de acento"]
+  },
+
+  "voz": {
+    "tono": "Profesional pero cercano, claro y directo. Hablamos de problemas reales de operación, no de tecnología por moda.",
+    "tratamiento": "voseo",
+    "nota_tratamiento": "El sitio usa voseo (Agendá, Contanos, Sabés). Cambiar a 'tuteo' o 'usted' si se decide otra cosa para redes.",
+    "frases_marca": [
+      "No vendemos software. Resolvemos problemas reales.",
+      "No tecnología por moda.",
+      "Sin paja técnica. Solo soluciones.",
+      "Acompañamiento real.",
+      "Hecho con propósito en Guatemala"
+    ],
+    "hacer": [
+      "Empezar por el problema del negocio, no por la tecnología",
+      "Usar ejemplos de pymes de Guatemala y Centroamérica",
+      "Dar un beneficio concreto (tiempo, dinero, control)",
+      "Cerrar con una acción clara"
+    ],
+    "palabras_prohibidas": ["disruptivo", "sinergia", "paradigma", "revolucionario", "game changer", "blockchain"]
+  },
+
+  "publico": "Dueños y gerentes de pymes y empresas medianas en Guatemala y Centroamérica que necesitan digitalizarse.",
+
+  "soluciones": [
+    "Gestión de Inventario Inteligente (sensores IoT en estantería)",
+    "Compras estructuradas y centralizadas",
+    "Ventas estructuradas",
+    "Catálogo inteligente",
+    "Digitalización de vendedores de calle",
+    "Inventario para servicios técnicos",
+    "Trazabilidad de activos"
+  ],
+
+  "cta": {
+    "principal": "Agendá un diagnóstico sin compromiso",
+    "secundario": "Escribinos por WhatsApp: +502 3808 9808",
+    "corto": "Link en la bio"
+  },
+
+  "hashtags_base": ["#IFTechworks", "#DigitalizaciónConPropósito", "#PymesGuatemala"]
+}

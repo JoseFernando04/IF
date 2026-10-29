@@ -1,0 +1,84 @@
+{
+  "id": "20261028-232446-casos-a6a3",
+  "pilar": "casos",
+  "tema": "De la libreta al catálogo digital",
+  "hook": "De la libreta al catálogo digital. Así lo resolvimos.",
+  "hooks_alternativos": [
+    "Este negocio tenía un problema. De la libreta al catálogo digital.",
+    "Antes y después: de la libreta al catálogo digital."
+  ],
+  "guion": {
+    "escenas": [
+      {
+        "texto_pantalla": "De la libreta al catálogo digital. Así lo resolvimos.",
+        "locucion": "De la libreta al catálogo digital. Así lo resolvimos.",
+        "duracion_s": 3
+      },
+      {
+        "texto_pantalla": "Problema: vendedores de calle anotaban pedidos en papel",
+        "locucion": "Problema: vendedores de calle anotaban pedidos en papel.",
+        "duracion_s": 7
+      },
+      {
+        "texto_pantalla": "Solución: app con catálogo y órdenes desde el celular",
+        "locucion": "Solución: app con catálogo y órdenes desde el celular.",
+        "duracion_s": 7
+      },
+      {
+        "texto_pantalla": "Resultado: pedidos sincronizados con inventario al instante",
+        "locucion": "Resultado: pedidos sincronizados con inventario al instante.",
+        "duracion_s": 7
+      },
+      {
+        "texto_pantalla": "Agendá un diagnóstico sin compromiso",
+        "locucion": "Agendá un diagnóstico sin compromiso. Link en la bio.",
+        "duracion_s": 4
+      }
+    ],
+    "caption": "De la libreta al catálogo digital. Así lo resolvimos.\n\n✅ Problema: vendedores de calle anotaban pedidos en papel\n✅ Solución: app con catálogo y órdenes desde el celular\n✅ Resultado: pedidos sincronizados con inventario al instante\n\n👉 Agendá un diagnóstico sin compromiso. Link en la bio.",
+    "hashtags": [
+      "#IFTechworks",
+      "#DigitalizaciónConPropósito",
+      "#PymesGuatemala",
+      "#IoT",
+      "#Emprendedores"
+    ]
+  },
+  "graficos": [
+    "graficos/escena_01.svg",
+    "graficos/escena_02.svg",
+    "graficos/escena_03.svg",
+    "graficos/escena_04.svg",
+    "graficos/escena_05.svg"
+  ],
+  "video": "video.json",
+  "musica": "musica.json",
+  "duracion_s": 28,
+  "por_red": {
+    "instagram": {
+      "formato": "reel",
+      "relacion": "9:16",
+      "caption": "De la libreta al catálogo digital. Así lo resolvimos.\n\n✅ Problema: vendedores de calle anotaban pedidos en papel\n✅ Solución: app con catálogo y órdenes desde el celular\n✅ Resultado: pedidos sincronizados con inventario al instante\n\n👉 Agendá un diagnóstico sin compromiso. Link en la bio.\n\n#IFTechworks #DigitalizaciónConPropósito #PymesGuatemala #IoT #Emprendedores",
+      "hashtags": [
+        "#IFTechworks",
+        "#DigitalizaciónConPropósito",
+        "#PymesGuatemala",
+        "#IoT",
+        "#Emprendedores"
+      ]
+    },
+    "tiktok": {
+      "formato": "video",
+      "relacion": "9:16",
+      "caption": "De la libreta al catálogo digital. Así lo resolvimos.\n\n✅ Problema: vendedores de calle anotaban pedidos en papel\n✅ Solución: app con catálogo y órdenes desde el celular\n✅ Resultado: pedidos sincronizados con inventario al instante\n\n👉 Agendá un diagnóstico sin compromiso. Link en la bio.\n\n#IFTechworks #DigitalizaciónConPropósito #PymesGuatemala #IoT #Emprendedores",
+      "hashtags": [
+        "#IFTechworks",
+        "#DigitalizaciónConPropósito",
+        "#PymesGuatemala",
+        "#IoT",
+        "#Emprendedores"
+      ]
+    }
+  },
+  "simulado": true
+}

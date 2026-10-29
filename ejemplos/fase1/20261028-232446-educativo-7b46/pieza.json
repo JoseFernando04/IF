@@ -1,0 +1,84 @@
+{
+  "id": "20261028-232446-educativo-7b46",
+  "pilar": "educativo",
+  "tema": "Qué es un inventario inteligente",
+  "hook": "Qué es un inventario inteligente, explicado en 30 segundos.",
+  "hooks_alternativos": [
+    "Qué es un inventario inteligente: sin paja técnica.",
+    "Nadie te explicó esto: qué es un inventario inteligente."
+  ],
+  "guion": {
+    "escenas": [
+      {
+        "texto_pantalla": "Qué es un inventario inteligente, explicado en 30 segundos.",
+        "locucion": "Qué es un inventario inteligente, explicado en 30 segundos.",
+        "duracion_s": 3
+      },
+      {
+        "texto_pantalla": "Sensores en los estantes registran lo que entra y sale",
+        "locucion": "Sensores en los estantes registran lo que entra y sale.",
+        "duracion_s": 7
+      },
+      {
+        "texto_pantalla": "Ves el stock en tiempo real desde el celular",
+        "locucion": "Ves el stock en tiempo real desde el celular.",
+        "duracion_s": 7
+      },
+      {
+        "texto_pantalla": "Recibís alertas antes de quedarte sin producto",
+        "locucion": "Recibís alertas antes de quedarte sin producto.",
+        "duracion_s": 7
+      },
+      {
+        "texto_pantalla": "Agendá un diagnóstico sin compromiso",
+        "locucion": "Agendá un diagnóstico sin compromiso. Link en la bio.",
+        "duracion_s": 4
+      }
+    ],
+    "caption": "Qué es un inventario inteligente, explicado en 30 segundos.\n\n✅ Sensores en los estantes registran lo que entra y sale\n✅ Ves el stock en tiempo real desde el celular\n✅ Recibís alertas antes de quedarte sin producto\n\n👉 Agendá un diagnóstico sin compromiso. Link en la bio.",
+    "hashtags": [
+      "#IFTechworks",
+      "#DigitalizaciónConPropósito",
+      "#PymesGuatemala",
+      "#Centroamérica",
+      "#Inventario"
+    ]
+  },
+  "graficos": [
+    "graficos/escena_01.svg",
+    "graficos/escena_02.svg",
+    "graficos/escena_03.svg",
+    "graficos/escena_04.svg",
+    "graficos/escena_05.svg"
+  ],
+  "video": "video.json",
+  "musica": "musica.json",
+  "duracion_s": 28,
+  "por_red": {
+    "instagram": {
+      "formato": "reel",
+      "relacion": "9:16",
+      "caption": "Qué es un inventario inteligente, explicado en 30 segundos.\n\n✅ Sensores en los estantes registran lo que entra y sale\n✅ Ves el stock en tiempo real desde el celular\n✅ Recibís alertas antes de quedarte sin producto\n\n👉 Agendá un diagnóstico sin compromiso. Link en la bio.\n\n#IFTechworks #DigitalizaciónConPropósito #PymesGuatemala #Centroamérica #Inventario",
+      "hashtags": [
+        "#IFTechworks",
+        "#DigitalizaciónConPropósito",
+        "#PymesGuatemala",
+        "#Centroamérica",
+        "#Inventario"
+      ]
+    },
+    "tiktok": {
+      "formato": "video",
+      "relacion": "9:16",
+      "caption": "Qué es un inventario inteligente, explicado en 30 segundos.\n\n✅ Sensores en los estantes registran lo que entra y sale\n✅ Ves el stock en tiempo real desde el celular\n✅ Recibís alertas antes de quedarte sin producto\n\n👉 Agendá un diagnóstico sin compromiso. Link en la bio.\n\n#IFTechworks #DigitalizaciónConPropósito #PymesGuatemala #Centroamérica #Inventario",
+      "hashtags": [
+        "#IFTechworks",
+        "#DigitalizaciónConPropósito",
+        "#PymesGuatemala",
+        "#Centroamérica",
+        "#Inventario"
+      ]
+    }
+  },
+  "simulado": true
+}

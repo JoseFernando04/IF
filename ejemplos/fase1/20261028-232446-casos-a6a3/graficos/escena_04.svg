@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1D362B"/><stop offset="1" stop-color="#0A1410"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".85" cy=".1" r=".6">
+      <stop offset="0" stop-color="#F0C419" stop-opacity=".25"/><stop offset="1" stop-color="#F0C419" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#g)"/>
+  <rect width="1080" height="1920" fill="url(#glow)"/>
+  <text x="90" y="170" font-family="Space Grotesk, sans-serif" font-size="44" font-weight="700" fill="#FAF6E6">IF <tspan fill="#F0C419">Techworks</tspan></text>
+  <rect x="90" y="773" width="120" height="10" rx="5" fill="#F0C419"/>
+  <text font-family="Space Grotesk, sans-serif" font-size="72" font-weight="700" fill="#FAF6E6"><tspan x="90" y="874">Resultado: pedidos</tspan><tspan x="90" y="960">sincronizados con</tspan><tspan x="90" y="1046">inventario al instante</tspan></text>
+  <text x="90" y="1780" font-family="JetBrains Mono, monospace" font-size="32" fill="#9CA3AF">04/05 · Digitalización con propósito</text>
+</svg>

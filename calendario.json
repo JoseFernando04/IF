@@ -1,0 +1,154 @@
+{
+  "zona_horaria": "America/Guatemala",
+
+  "frecuencia": {
+    "piezas_por_semana": 3,
+    "justificacion": "Tres piezas por semana (12 al mes) mantienen presencia constante, son revisables por un equipo pequeño sin volverse un cuello de botella y dan suficientes datos al mes para comparar pilares y horarios. Subir a 4-5 cuando la cola de aprobación fluya sin atrasos."
+  },
+
+  "horarios": [
+    { "dia": "martes", "hora": "12:30" },
+    { "dia": "miercoles", "hora": "18:30" },
+    { "dia": "jueves", "hora": "12:30" }
+  ],
+
+  "redes": {
+    "instagram": {
+      "activa": true,
+      "cuenta": "if_techworks",
+      "formato": "reel",
+      "relacion": "9:16",
+      "caption_max": 2200,
+      "hashtags_max": 5
+    },
+    "tiktok": {
+      "activa": true,
+      "cuenta": "",
+      "formato": "video",
+      "relacion": "9:16",
+      "caption_max": 4000,
+      "hashtags_max": 5
+    }
+  },
+
+  "generacion": {
+    "duracion_objetivo_s": 30,
+    "variantes_hook": 3,
+    "reintentos": 1,
+    "estilo_musica": "electrónica suave, corporativa, 100-110 bpm, sin voz"
+  },
+
+  "aprobacion": {
+    "aprobadores": ["Pendiente de definir"],
+    "canal": "cli",
+    "limite_horas_antes": 24,
+    "si_no_se_aprueba": "reprogramar"
+  },
+
+  "pilares": [
+    {
+      "id": "educativo",
+      "nombre": "Educativo",
+      "descripcion": "Qué es IoT, cómo funciona un inventario inteligente, mitos de la digitalización.",
+      "peso": 30,
+      "temas": [
+        {
+          "titulo": "Qué es un inventario inteligente",
+          "puntos": [
+            "Sensores en los estantes registran lo que entra y sale",
+            "Ves el stock en tiempo real desde el celular",
+            "Recibís alertas antes de quedarte sin producto"
+          ]
+        },
+        {
+          "titulo": "3 mitos de digitalizar tu negocio",
+          "puntos": [
+            "Mito: es solo para empresas grandes",
+            "Mito: tu equipo no lo va a usar",
+            "Mito: hay que cambiar todo de una vez"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "casos",
+      "nombre": "Casos y resultados",
+      "descripcion": "Problema, solución y beneficio para el cliente.",
+      "peso": 20,
+      "temas": [
+        {
+          "titulo": "De la libreta al catálogo digital",
+          "puntos": [
+            "Problema: vendedores de calle anotaban pedidos en papel",
+            "Solución: app con catálogo y órdenes desde el celular",
+            "Resultado: pedidos sincronizados con inventario al instante"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detras",
+      "nombre": "Detrás de cámaras",
+      "descripcion": "Equipo, proceso de desarrollo, cultura.",
+      "peso": 10,
+      "temas": [
+        {
+          "titulo": "Así empieza un proyecto con nosotros",
+          "puntos": [
+            "Primero escuchamos cómo opera tu negocio",
+            "Diseñamos solo lo que resuelve un problema concreto",
+            "Implementamos, capacitamos y te acompañamos"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tips",
+      "nombre": "Tips rápidos",
+      "descripcion": "Herramientas y buenas prácticas para negocios.",
+      "peso": 20,
+      "temas": [
+        {
+          "titulo": "3 señales de que tu inventario te está costando dinero",
+          "puntos": [
+            "Contás a mano cada fin de mes",
+            "Te enterás del faltante cuando el cliente ya lo pidió",
+            "Nadie sabe quién tiene cada herramienta"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "impacto",
+      "nombre": "Impacto con propósito",
+      "descripcion": "Charlas gratuitas en escuelas y empresas, y el programa anual pro-bono para ONG, refugios y fundaciones.",
+      "peso": 10,
+      "temas": [
+        {
+          "titulo": "Un proyecto pro-bono cada año",
+          "puntos": [
+            "Digitalizar no debería ser un privilegio",
+            "Cada año regalamos un proceso completo a una ONG",
+            "Análisis, implementación y soporte todo el año"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "nombre": "Llamado a la acción",
+      "descripcion": "Demos, diagnósticos, contacto.",
+      "peso": 10,
+      "temas": [
+        {
+          "titulo": "Diagnóstico de digitalización sin compromiso",
+          "puntos": [
+            "Revisamos cómo manejás inventario, compras y ventas",
+            "Te decimos qué digitalizar primero y qué no",
+            "Respondemos en menos de 24 horas hábiles"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "20261028-232446-tips-4550",
+  "pilar": "tips",
+  "tema": "3 señales de que tu inventario te está costando dinero",
+  "hook": "3 señales de que tu inventario te está costando dinero.",
+  "hooks_alternativos": [
+    "Si te pasa esto, ojo: 3 señales de que tu inventario te está costando dinero.",
+    "Guardá este video: 3 señales de que tu inventario te está costando dinero."
+  ],
+  "guion": {
+    "escenas": [
+      {
+        "texto_pantalla": "3 señales de que tu inventario te está costando dinero.",
+        "locucion": "3 señales de que tu inventario te está costando dinero.",
+        "duracion_s": 3
+      },
+      {
+        "texto_pantalla": "Contás a mano cada fin de mes",
+        "locucion": "Contás a mano cada fin de mes.",
+        "duracion_s": 7
+      },
+      {
+        "texto_pantalla": "Te enterás del faltante cuando el cliente ya lo pidió",
+        "locucion": "Te enterás del faltante cuando el cliente ya lo pidió.",
+        "duracion_s": 7
+      },
+      {
+        "texto_pantalla": "Nadie sabe quién tiene cada herramienta",
+        "locucion": "Nadie sabe quién tiene cada herramienta.",
+        "duracion_s": 7
+      },
+      {
+        "texto_pantalla": "Agendá un diagnóstico sin compromiso",
+        "locucion": "Agendá un diagnóstico sin compromiso. Link en la bio.",
+        "duracion_s": 4
+      }
+    ],
+    "caption": "3 señales de que tu inventario te está costando dinero.\n\n✅ Contás a mano cada fin de mes\n✅ Te enterás del faltante cuando el cliente ya lo pidió\n✅ Nadie sabe quién tiene cada herramienta\n\n👉 Agendá un diagnóstico sin compromiso. Link en la bio.",
+    "hashtags": [
+      "#IFTechworks",
+      "#DigitalizaciónConPropósito",
+      "#PymesGuatemala",
+      "#Inventario",
+      "#Digitalización"
+    ]
+  },
+  "graficos": [
+    "graficos/escena_01.svg",
+    "graficos/escena_02.svg",
+    "graficos/escena_03.svg",
+    "graficos/escena_04.svg",
+    "graficos/escena_05.svg"
+  ],
+  "video": "video.json",
+  "musica": "musica.json",
+  "duracion_s": 28,
+  "por_red": {
+    "instagram": {
+      "formato": "reel",
+      "relacion": "9:16",
+      "caption": "3 señales de que tu inventario te está costando dinero.\n\n✅ Contás a mano cada fin de mes\n✅ Te enterás del faltante cuando el cliente ya lo pidió\n✅ Nadie sabe quién tiene cada herramienta\n\n👉 Agendá un diagnóstico sin compromiso. Link en la bio.\n\n#IFTechworks #DigitalizaciónConPropósito #PymesGuatemala #Inventario #Digitalización",
+      "hashtags": [
+        "#IFTechworks",
+        "#DigitalizaciónConPropósito",
+        "#PymesGuatemala",
+        "#Inventario",
+        "#Digitalización"
+      ]
+    },
+    "tiktok": {
+      "formato": "video",
+      "relacion": "9:16",
+      "caption": "3 señales de que tu inventario te está costando dinero.\n\n✅ Contás a mano cada fin de mes\n✅ Te enterás del faltante cuando el cliente ya lo pidió\n✅ Nadie sabe quién tiene cada herramienta\n\n👉 Agendá un diagnóstico sin compromiso. Link en la bio.\n\n#IFTechworks #DigitalizaciónConPropósito #PymesGuatemala #Inventario #Digitalización",
+      "hashtags": [
+        "#IFTechworks",
+        "#DigitalizaciónConPropósito",
+        "#PymesGuatemala",
+        "#Inventario",
+        "#Digitalización"
+      ]
+    }
+  },
+  "simulado": true
+}

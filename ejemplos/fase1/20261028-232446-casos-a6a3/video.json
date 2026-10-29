@@ -1,0 +1,33 @@
+{
+  "simulado": true,
+  "nota": "En modo real aquí estaría el .mp4 renderizado por ootto.",
+  "relacion": "9:16",
+  "duracion_s": 28,
+  "secuencia": [
+    {
+      "grafico": "escena_01.svg",
+      "duracion_s": 3,
+      "transicion": "deslizar"
+    },
+    {
+      "grafico": "escena_02.svg",
+      "duracion_s": 7,
+      "transicion": "deslizar"
+    },
+    {
+      "grafico": "escena_03.svg",
+      "duracion_s": 7,
+      "transicion": "deslizar"
+    },
+    {
+      "grafico": "escena_04.svg",
+      "duracion_s": 7,
+      "transicion": "deslizar"
+    },
+    {
+      "grafico": "escena_05.svg",
+      "duracion_s": 4,
+      "transicion": "deslizar"
+    }
+  ]
+}
