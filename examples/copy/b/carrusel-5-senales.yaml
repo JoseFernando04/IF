@@ -1,0 +1,63 @@
+# Carrusel en estilo B (Documental). Cada slide elige su layout; ver templates/graphics/b/README.md
+title: 5 señales de que tu inventario ya no da más
+pillar: tips
+slides:
+  - layout: portada-foto
+    foto: pasillo-tienda.jpg
+    numero: "5"
+    linea: señales de que tu inventario
+    cinta: ya no da más
+    archivo: Inventario_final_v3_ahora_sí.xlsx
+
+  - layout: libreta
+    tag: "01"
+    heading: Contás a mano y no cuadra
+    body: Cierre de mes = alguien pasa la tarde contando cajas. Contás tres veces y te salen tres números distintos.
+    titulo_libreta: Conteo bodega · martes
+    lineas:
+      - {texto: "Tornillo 3/8 → 140", tachado: true}
+      - {texto: "Tornillo 3/8 → 152", tachado: true}
+      - {texto: "Tornillo 3/8 → ", duda: "¿147??"}
+
+  - layout: chat
+    tag: "02"
+    heading: Te enterás del faltante cuando el cliente ya lo pidió
+    body: El cliente no espera. Si tenés que ir a revisar a bodega, esa venta probablemente ya se fue.
+    mensajes:
+      - {de: cliente, texto: "Buenas, ¿tienen tornillo 3/8? Necesito 200", hora: "9:14"}
+      - {de: negocio, texto: "Déjeme revisar en bodega 🙏", hora: "9:20"}
+      - {de: negocio, texto: "Fíjese que solo quedan 40…", hora: "9:52"}
+      - {de: cliente, texto: "Ah ok, ya conseguí en otro lado. Gracias", hora: "9:53"}
+
+  - layout: numero
+    tag: "03"
+    heading: Nadie sabe quién tiene qué
+    body: Herramientas, equipo y producto pasan de mano en mano sin registro. Cuando algo falta, no hay a quién preguntarle.
+
+  - layout: archivos
+    tag: "04"
+    heading: Tu Excel tiene mil versiones
+    body: Cada área tiene su copia y ninguna coincide con lo que hay en bodega.
+    archivos:
+      - Inventario.xlsx
+      - Inventario_final.xlsx
+      - Inventario_final_v2.xlsx
+      - Inventario_final_v3_ahora_sí.xlsx
+      - Inventario_REAL_no_tocar.xlsx
+    nota: ¿cuál es el bueno?
+
+  - layout: cita
+    tag: "05 · Comprás a ciegas"
+    cita: Pedís de más lo que no se mueve, y de menos lo que sí se vende.
+    pie: Sin histórico de rotación ni de proveedores, cada compra es una apuesta.
+
+  - layout: cta
+    heading: "¿Te viste en *dos o más*?"
+    body: Contanos cómo llevás tu inventario hoy y te decimos por dónde empezar.
+    sello: Diagnóstico sin compromiso
+
+caption: >-
+  ¿Cuántas de estas te pasaron esta semana? Un inventario desordenado no solo cuesta tiempo: cuesta ventas.
+  Contanos cómo llevás tu inventario hoy y te decimos por dónde empezar, sin compromiso. Escribinos por WhatsApp
+  o entrá a iftechworks.com.
+hashtags: [PymesGuatemala, InventarioInteligente, NegociosGT, Digitalizacion, EmprendedoresGT]

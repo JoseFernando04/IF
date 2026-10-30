@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../shared.css">
+<style>
+html, body { width: 1080px; height: 1350px; }
+body { background: var(--papel); color: var(--tinta); position: relative; }
+
+/* Papel: leve viñeta y fibras, sin degradados de "landing page". */
+.papel { position: absolute; inset: 0;
+  background:
+    radial-gradient(140% 100% at 30% 20%, rgba(255,255,255,.55), rgba(0,0,0,0) 60%),
+    repeating-linear-gradient(97deg, rgba(120,100,70,.035) 0 2px, transparent 2px 7px); }
+
+.cinco { position: absolute; left: -70px; top: -150px; font-family: var(--f-serif); font-style: italic;
+  font-size: 1180px; line-height: 1; color: var(--verde-3); letter-spacing: -.06em; }
+
+.titular { position: absolute; left: 440px; right: 40px; top: 190px; font-family: var(--f-display);
+  font-weight: 800; font-stretch: 80%; font-size: 176px; line-height: .86; letter-spacing: -.03em; word-spacing: .12em; }
+.titular .chico { display: block; font-family: var(--f-serif); font-style: normal; font-weight: 400; font-stretch: 100%;
+  font-size: 66px; line-height: 1; letter-spacing: -.01em; word-spacing: 0; margin-bottom: 34px; color: var(--lapiz); }
+
+/* Marcador amarillo irregular, dibujado como trazo, no como caja. */
+.resalta { position: relative; white-space: nowrap; display: inline-block; z-index: 0; }
+.resalta svg { position: absolute; left: -18px; right: -18px; top: 18%; height: 74%; width: calc(100% + 36px); z-index: -1; overflow: visible; }
+
+/* Recorte de libreta, rotado, con conteos tachados a mano. */
+.libreta { position: absolute; left: 92px; bottom: 150px; width: 560px; padding: 34px 40px 40px 70px;
+  background: #fbf8f1; transform: rotate(-4deg);
+  box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 18px 40px -18px rgba(40,30,10,.45);
+  background-image: repeating-linear-gradient(to bottom, transparent 0 57px, rgba(70,110,160,.28) 57px 59px);
+  background-position: 0 30px; font-family: var(--f-mano); color: #2b3a4a; }
+.libreta::before { content: ""; position: absolute; left: 48px; top: 0; bottom: 0; width: 2px; background: rgba(200,70,60,.45); }
+.libreta::after { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 22px;
+  background: radial-gradient(circle at 12px 11px, var(--papel) 7px, transparent 8px) 0 0 / 34px 22px repeat-x; }
+.libreta h3 { font-weight: 700; font-size: 50px; line-height: 58px; }
+.libreta p { font-size: 48px; line-height: 58px; position: relative; }
+.libreta .tachado::after { content: ""; position: absolute; left: -6px; width: 62%; top: 52%; height: 5px; background: #b4382c;
+  transform: rotate(-3deg); border-radius: 3px; }
+.libreta .duda { color: #b4382c; font-weight: 700; }
+.cinta { position: absolute; top: -26px; right: 60px; width: 150px; height: 46px; background: rgba(240,196,25,.75);
+  transform: rotate(7deg); }
+
+.pie { position: absolute; left: 92px; right: 80px; bottom: 56px; display: flex; justify-content: space-between; align-items: flex-end; }
+.pie .marca { font-size: 64px; color: var(--verde); }
+.desliza { font-family: var(--f-mano); font-size: 54px; font-weight: 700; color: var(--verde-3); display: flex; align-items: center; gap: 12px; transform: rotate(-3deg); }
+</style></head>
+<body>
+<div class="papel"></div>
+<div class="cinco">5</div>
+
+<h1 class="titular">
+  <span class="chico">señales de que tu inventario</span>
+  <span class="resalta">ya no da
+    <svg viewBox="0 0 600 120" preserveAspectRatio="none"><path d="M6 64 C 90 30, 180 26, 300 34 S 520 30, 596 52 L 590 98 C 470 86, 330 96, 200 100 S 40 104, 10 96 Z" fill="#f0c419" opacity=".92"/></svg>
+  </span><br>más.
+</h1>
+
+<div class="libreta">
+  <div class="cinta"></div>
+  <h3>Conteo bodega · martes</h3>
+  <p class="tachado">Tornillo 3/8 → 140</p>
+  <p class="tachado">Tornillo 3/8 → 152</p>
+  <p>Tornillo 3/8 → <span class="duda">¿147??</span></p>
+</div>
+
+<div class="pie">
+  <div class="marca">IF<small>TECHWORKS</small></div>
+  <div class="desliza">deslizá
+    <svg width="90" height="40" viewBox="0 0 90 40"><path d="M4 24 C 30 14, 52 30, 80 18 M66 6 L 84 18 L 68 32" fill="none" stroke="#1d362b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+<div class="grano"></div>
+</body></html>

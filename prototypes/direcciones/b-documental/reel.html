@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../shared.css">
+<script src="../../../assets/vendor/gsap-3.15.0/gsap.min.js"></script>
+<script src="../../../assets/vendor/gsap-3.15.0/SplitText.min.js"></script>
+<script src="../../../assets/vendor/gsap-3.15.0/CustomEase.min.js"></script>
+<style>
+html, body { width: 1080px; height: 1920px; background: var(--verde); }
+#stage { position: absolute; inset: 0; overflow: hidden; }
+
+.foto { position: absolute; inset: -60px; overflow: hidden; }
+.foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; filter: grayscale(1) contrast(1.3) brightness(1.1); }
+.foto .t1 { position: absolute; inset: 0; background: #3d6b55; mix-blend-mode: multiply; }
+.foto .piso { position: absolute; left: 0; right: 0; bottom: 0; height: 70%; background: linear-gradient(to top, rgba(10,20,16,.95) 25%, rgba(10,20,16,0)); }
+
+.cinta { position: absolute; left: 80px; top: 470px; background: var(--amarillo); color: var(--verde); padding: 14px 26px 10px;
+  font-family: var(--f-text); font-weight: 800; font-size: 36px; letter-spacing: .14em; transform-origin: 0 50%; transform: rotate(-2deg); }
+.titulo { position: absolute; left: 80px; right: 60px; top: 580px; font-family: var(--f-display); font-weight: 800; font-stretch: 75%;
+  text-transform: uppercase; letter-spacing: -.02em; line-height: .9; color: var(--papel); font-size: 140px; }
+.grandes { position: absolute; left: 70px; top: 870px; font-family: var(--f-display); font-weight: 800; font-stretch: 75%;
+  text-transform: uppercase; font-size: 290px; line-height: .9; letter-spacing: -.03em; color: var(--amarillo); }
+
+/* Match cut: la cinta amarilla crece hasta llenar la pantalla. */
+.ola { position: absolute; left: 80px; top: 470px; width: 330px; height: 66px; background: var(--amarillo); visibility: hidden; }
+.spoiler { position: absolute; left: 90px; top: 430px; font-family: var(--f-serif); font-style: italic; font-size: 130px; color: var(--verde); }
+.no { position: absolute; left: 50px; top: 600px; font-family: var(--f-display); font-weight: 800; font-stretch: 75%; font-size: 560px;
+  line-height: .85; letter-spacing: -.04em; color: var(--verde); transform-origin: 20% 80%; }
+.remate { position: absolute; left: 90px; right: 90px; top: 1010px; font-family: var(--f-text); font-weight: 700; font-size: 66px;
+  line-height: 1.08; color: var(--verde); letter-spacing: -.01em; }
+
+/* Escena 3: de vuelta a la foto (otro encuadre) con el archivo de Excel que se tacha. */
+.panel { position: absolute; inset: 0; overflow: hidden; visibility: hidden; }
+.panel .foto { inset: -60px; }
+.panel .foto img { object-position: 25% 75%; }
+.intro3 { position: absolute; left: 90px; top: 500px; font-family: var(--f-serif); font-style: italic; font-size: 104px; color: var(--papel); }
+.archivo { position: absolute; left: 70px; top: 720px; transform: rotate(-5deg); background: #fbf8f1; color: var(--tinta);
+  padding: 30px 40px 30px 32px; font-family: var(--f-text); font-weight: 600; font-size: 50px; display: flex; gap: 22px; align-items: center;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); white-space: nowrap; }
+.archivo .xls { width: 64px; height: 78px; background: #1e6b41; color: #fff; font-weight: 800; font-size: 26px; display: grid; place-items: center;
+  clip-path: polygon(0 0, 72% 0, 100% 22%, 100% 100%, 0 100%); }
+.archivo .raya { position: absolute; left: 16px; right: 16px; top: 50%; height: 9px; background: #c2412f; transform: rotate(-2deg); transform-origin: 0 50%; }
+.ordenar { position: absolute; left: 90px; right: 80px; top: 1000px; font-family: var(--f-display); font-weight: 800; font-stretch: 75%;
+  text-transform: uppercase; font-size: 150px; line-height: .9; letter-spacing: -.02em; color: var(--amarillo); }
+
+/* Escena 4: cierre plano, verde de marca. */
+.cierre { position: absolute; inset: 0; background: var(--verde-2); visibility: hidden; }
+.cierre .marca { position: absolute; left: 90px; top: 400px; font-size: 150px; color: var(--papel); }
+.cierre .cta { position: absolute; left: 90px; right: 60px; top: 700px; font-family: var(--f-display); font-weight: 800; font-stretch: 80%;
+  font-size: 220px; line-height: .88; letter-spacing: -.03em; color: var(--papel); }
+.cierre .cta em { font-family: var(--f-serif); font-weight: 400; font-stretch: 100%; color: var(--amarillo); font-size: 1.12em; }
+.cierre .sello { position: absolute; left: 90px; top: 1180px; background: var(--amarillo); color: var(--verde); padding: 18px 30px 14px;
+  font-family: var(--f-text); font-weight: 800; font-size: 44px; letter-spacing: .1em; transform: rotate(-3deg); }
+.cierre .wa { position: absolute; left: 90px; top: 1340px; font-family: var(--f-text); font-weight: 600; font-size: 58px; color: var(--papel); }
+.cierre .wa small { display: block; font-size: 38px; font-weight: 500; opacity: .7; margin-top: 8px; }
+
+/* Subtítulos editoriales: grandes, palabra por palabra, la palabra hablada en amarillo. */
+.captions { position: absolute; left: 80px; right: 160px; top: 1390px; font-family: var(--f-display); font-weight: 800;
+  font-stretch: 85%; font-size: 76px; line-height: 1.02; letter-spacing: -.01em; color: rgba(242,237,228,.45); }
+.captions .w { display: inline-block; }
+.captions .w.dicha { color: var(--papel); }
+.captions .w.ahora { color: var(--amarillo); transform: scale(1.06); }
+.captions.sobre-amarillo { color: rgba(10,20,16,.35); }
+.captions.sobre-amarillo .w.dicha { color: var(--verde); }
+.captions.sobre-amarillo .w.ahora { color: var(--verde); text-decoration: underline 8px; text-underline-offset: 10px; }
+</style></head>
+<body>
+<div id="stage">
+  <div class="foto" id="foto"><img src="../../../assets/photos/pasillo-tienda.jpg" alt=""><div class="t1"></div><div class="piso"></div></div>
+  <div class="cinta" id="cinta">PREGUNTA SERIA</div>
+  <div class="titulo" id="titulo">¿La digitalización<br>es solo para</div>
+  <div class="grandes" id="grandes">grandes?</div>
+
+  <div class="ola" id="ola"></div>
+  <div class="spoiler" id="spoiler">Spoiler:</div>
+  <div class="no" id="no">NO.</div>
+  <div class="remate" id="remate">Si tu negocio vende, compra y cuenta producto, ya calificás.</div>
+
+  <div class="panel" id="panel">
+    <div class="foto" id="foto2"><img src="../../../assets/photos/pasillo-tienda.jpg" alt=""><div class="t1"></div><div class="piso"></div></div>
+    <div class="intro3" id="intro3">Y si hoy todo vive acá:</div>
+    <div class="archivo" id="archivo"><span class="xls">XLS</span>Inventario_final_v3_ahora_sí.xlsx<span class="raya" id="raya"></span></div>
+    <div class="ordenar" id="ordenar">hay algo<br>que ordenar.</div>
+  </div>
+
+  <div class="cierre" id="cierre">
+    <div class="marca" id="marca">IF<small>TECHWORKS</small></div>
+    <div class="cta" id="cta">Contanos<br>tu <em>caso.</em></div>
+    <div class="sello" id="sello">DIAGNÓSTICO SIN COMPROMISO</div>
+    <div class="wa" id="wa">WhatsApp +502 3808 9808<small>iftechworks.com</small></div>
+  </div>
+
+  <div class="captions" id="captions"></div>
+</div>
+<div class="grano claro" id="grano"></div>
+
+<script>
+window.__ready = false;
+gsap.registerPlugin(SplitText, CustomEase);
+CustomEase.create("golpe", "M0,0 C0.1,0.75 0.18,1.16 0.38,1.08 0.58,0.99 0.78,1 1,1");
+
+// Guion de voz con tiempos por palabra (cuando haya voz real, salen de la alineación del audio).
+const VO = [
+  ["¿La", 0.15], ["digitalización", 0.32], ["es", 0.84], ["solo", 0.96], ["para", 1.14], ["grandes?", 1.3],
+  ["Spoiler:", 2.55], ["no.", 2.98],
+  ["Si", 3.62], ["tu", 3.74], ["negocio", 3.84], ["vende,", 4.14], ["compra", 4.4], ["y", 4.62], ["cuenta", 4.7],
+  ["producto,", 4.96], ["ya", 5.3], ["calificás.", 5.42],
+  ["Y", 6.25], ["si", 6.33], ["hoy", 6.45], ["todo", 6.65], ["vive", 6.9], ["acá…", 7.1],
+  ["hay", 8.0], ["algo", 8.15], ["que", 8.38], ["ordenar.", 8.5],
+];
+const FRASES = [[0, 6], [6, 8], [8, 13], [13, 18], [18, 24], [24, 28]];  // qué palabras se muestran juntas
+const FIN_SUBS = 9.0;  // en el cierre no hay subtítulos: el texto en pantalla ya es el mensaje
+
+const tl = gsap.timeline({ paused: true });
+
+document.fonts.ready.then(() => {
+  const titulo = SplitText.create("#titulo", { type: "lines", mask: "lines" });
+  const grandes = SplitText.create("#grandes", { type: "chars", mask: "chars" });
+  const remate = SplitText.create("#remate", { type: "lines", mask: "lines" });
+  const ordenar = SplitText.create("#ordenar", { type: "lines", mask: "lines" });
+  const cta = SplitText.create("#cta", { type: "lines", mask: "lines" });
+  gsap.set(["#spoiler", "#no", "#remate"], { autoAlpha: 0 });
+  gsap.set("#raya", { scaleX: 0 });
+
+  tl
+    // la foto respira todo el tiempo (Ken Burns + paralaje leve)
+    .fromTo("#foto", { scale: 1.14, x: -20 }, { scale: 1.0, x: 20, duration: 5, ease: "none" }, 0)
+    // 0.0 s — la cinta se pega (6 cuadros)
+    .from("#cinta", { scaleX: 0, duration: 0.2, ease: "expo.out" }, 0.02)
+    // 0.3 s — la pregunta sube por líneas
+    .from(titulo.lines, { yPercent: 110, duration: 0.42, ease: "power4.out", stagger: 0.12 }, 0.28)
+    // 0.95 s — GRANDES letra por letra, con rebote
+    .from(grandes.chars, { yPercent: 120, rotation: 8, duration: 0.36, ease: "back.out(2)", stagger: 0.035 }, 0.95)
+    // respiro — 2.05 s: match cut, la cinta crece y llena la pantalla
+    .set("#ola", { visibility: "visible" }, 2.05)
+    .to("#ola", { left: -40, top: -40, width: 1160, height: 2000, rotation: 0, duration: 0.42, ease: "power4.inOut" }, 2.05)
+    .to("#captions", { className: "captions sobre-amarillo", duration: 0 }, 2.3)
+    // 2.5 s — "Spoiler:" en serif, 2.95 s — "NO." cae con peso y sacude
+    .to("#spoiler", { autoAlpha: 1, duration: 0.01 }, 2.5)
+    .from("#spoiler", { y: 50, duration: 0.3, ease: "power3.out" }, 2.5)
+    .to("#no", { autoAlpha: 1, duration: 0.01 }, 2.95)
+    .from("#no", { scale: 2.2, rotation: -10, duration: 0.3, ease: "golpe" }, 2.95)
+    .to("#stage", { keyframes: { x: [0, 16, -12, 7, -3, 0], y: [0, -9, 7, -4, 2, 0] }, duration: 0.28, ease: "none" }, 3.0)
+    // 3.55 s — "NO." se achica y deja lugar al remate
+    .to("#no", { scale: 0.55, y: -160, duration: 0.5, ease: "expo.inOut" }, 3.5)
+    .to("#spoiler", { y: -60, autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 3.5)
+    .to("#remate", { autoAlpha: 1, duration: 0.01 }, 3.6)
+    .from(remate.lines, { yPercent: 105, duration: 0.5, ease: "expo.out", stagger: 0.1 }, 3.6)
+
+    // 5.95 s — corte de vuelta a la foto: el panel sube desde abajo
+    .set("#panel", { visibility: "visible" }, 5.95)
+    .from("#panel", { yPercent: 100, duration: 0.45, ease: "expo.inOut" }, 5.95)
+    .fromTo("#foto2", { scale: 1.2 }, { scale: 1.05, duration: 3.2, ease: "none" }, 5.95)
+    .to("#captions", { className: "captions", duration: 0 }, 6.15)
+    .from("#intro3", { yPercent: 60, autoAlpha: 0, duration: 0.4, ease: "power3.out" }, 6.25)
+    // 6.9 s — el archivo de Excel cae como papel pegado
+    .from("#archivo", { y: -260, rotation: -18, autoAlpha: 0, duration: 0.5, ease: "back.out(1.6)" }, 6.9)
+    // 7.7 s — se tacha
+    .to("#raya", { scaleX: 1, duration: 0.32, ease: "power2.inOut" }, 7.7)
+    .to("#archivo", { rotation: -8, y: 12, duration: 0.3, ease: "power2.out" }, 7.75)
+    // 8.0 s — la conclusión en amarillo
+    .from(ordenar.lines, { yPercent: 105, duration: 0.45, ease: "expo.out", stagger: 0.12 }, 8.0)
+
+    // 8.95 s — cierre: panel verde entra de lado (wipe tipo etiqueta)
+    .set("#cierre", { visibility: "visible" }, 8.95)
+    .from("#cierre", { xPercent: -100, duration: 0.45, ease: "power4.inOut" }, 8.95)
+    .to("#captions", { autoAlpha: 0, duration: 0.15 }, 8.95)
+    .from("#marca", { scale: 0.4, autoAlpha: 0, duration: 0.4, ease: "back.out(2.2)" }, 9.3)
+    .from(cta.lines, { yPercent: 105, duration: 0.5, ease: "expo.out", stagger: 0.14 }, 9.45)
+    // 10.6 s — el sello cae con golpe
+    .from("#sello", { scale: 2.4, rotation: 12, autoAlpha: 0, duration: 0.3, ease: "golpe" }, 10.6)
+    .to("#stage", { keyframes: { x: [0, 10, -8, 4, 0], y: [0, -6, 5, -2, 0] }, duration: 0.22, ease: "none" }, 10.66)
+    .from("#wa", { y: 40, autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 11.2)
+    .to("#cta", { scale: 1.03, transformOrigin: "0% 50%", duration: 2.5, ease: "sine.inOut" }, 10.0);
+
+  window.__ready = true;
+});
+
+const cap = document.getElementById("captions");
+function subtitulos(t) {
+  const activa = FRASES.findLast(([a]) => t >= VO[a][1] - 0.05);
+  if (!activa || t >= FIN_SUBS) { cap.innerHTML = ""; return; }
+  const [a, b] = activa;
+  cap.innerHTML = VO.slice(a, b).map(([w, s], i) => {
+    const sig = VO[a + i + 1] ? VO[a + i + 1][1] : s + 0.4;
+    const cls = t >= s && t < sig ? "w ahora" : t >= s ? "w dicha" : "w";
+    return `<span class="${cls}">${w}</span>`;
+  }).join(" ");
+}
+
+window.__seek = (t) => {
+  tl.seek(t, false);
+  subtitulos(t);
+  const f = Math.floor(t * 15);
+  document.getElementById("grano").style.transform = `translate(${(f * 37) % 40 - 20}px, ${(f * 53) % 40 - 20}px)`;
+};
+</script>
+</body></html>

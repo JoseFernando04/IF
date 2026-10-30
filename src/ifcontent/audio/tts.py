@@ -87,4 +87,82 @@ def get_tts() -> TTSEngine | None:
         return KokoroTTS()
     if name == "chatterbox":
         return ChatterboxTTS()
+    if name == "azure":
+        return AzureTTS()
+    if name == "google":
+        return GoogleTTS()
     raise ValueError(f"Motor de TTS desconocido: {name}")
+
+
+def _wav_bytes_to_array(data: bytes) -> np.ndarray:
+    import io
+
+    audio, sr = sf.read(io.BytesIO(data), dtype="float32")
+    return _resample(audio, sr)
+
+
+class AzureTTS:
+    """Azure AI Speech (capa gratis F0: 500 000 caracteres/mes, uso comercial permitido). Clave en .env."""
+
+    def __init__(self, voice: str | None = None) -> None:
+        import os
+
+        self.key, self.region = os.getenv("AZURE_SPEECH_KEY"), os.getenv("AZURE_SPEECH_REGION")
+        if not (self.key and self.region):
+            raise RuntimeError("Faltan AZURE_SPEECH_KEY y AZURE_SPEECH_REGION en .env")
+        s = load_config().settings["tts"].get("azure", {})
+        self.voice = voice or s.get("voice", "es-GT-MartaNeural")
+        self.rate = s.get("rate", "0%")
+
+    def synth_many(self, texts: list[str]) -> list[np.ndarray]:
+        import httpx
+        from xml.sax.saxutils import escape as xml_escape
+
+        lang = "-".join(self.voice.split("-")[:2])
+        out = []
+        for t in texts:
+            ssml = (f'<speak version="1.0" xml:lang="{lang}"><voice name="{self.voice}">'
+                    f'<prosody rate="{self.rate}">{xml_escape(_clean(t))}</prosody></voice></speak>')
+            r = httpx.post(
+                f"https://{self.region}.tts.speech.microsoft.com/cognitiveservices/v1",
+                headers={"Ocp-Apim-Subscription-Key": self.key, "Content-Type": "application/ssml+xml",
+                         "X-Microsoft-OutputFormat": "riff-24khz-16bit-mono-pcm", "User-Agent": "ifcontent"},
+                content=ssml.encode("utf-8"), timeout=60,
+            )
+            r.raise_for_status()
+            out.append(_wav_bytes_to_array(r.content))
+        return out
+
+
+class GoogleTTS:
+    """Google Cloud Text-to-Speech (capa gratis: 1 M caracteres/mes en Chirp 3 HD, uso comercial permitido)."""
+
+    def __init__(self, voice: str | None = None) -> None:
+        import os
+
+        self.key = os.getenv("GOOGLE_TTS_API_KEY")
+        if not self.key:
+            raise RuntimeError("Falta GOOGLE_TTS_API_KEY en .env")
+        s = load_config().settings["tts"].get("google", {})
+        self.voice = voice or s.get("voice", "es-US-Chirp3-HD-Aoede")
+        self.rate = s.get("speaking_rate", 1.0)
+
+    def synth_many(self, texts: list[str]) -> list[np.ndarray]:
+        import base64
+
+        import httpx
+
+        lang = "-".join(self.voice.split("-")[:2])
+        out = []
+        for t in texts:
+            r = httpx.post(
+                "https://texttospeech.googleapis.com/v1/text:synthesize",
+                headers={"X-Goog-Api-Key": self.key},
+                json={"input": {"text": _clean(t)},
+                      "voice": {"languageCode": lang, "name": self.voice},
+                      "audioConfig": {"audioEncoding": "LINEAR16", "sampleRateHertz": SAMPLE_RATE, "speakingRate": self.rate}},
+                timeout=60,
+            )
+            r.raise_for_status()
+            out.append(_wav_bytes_to_array(base64.b64decode(r.json()["audioContent"])))
+        return out

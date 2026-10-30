@@ -12,3 +12,7 @@ models/
 # Sistema
 .DS_Store
 Thumbs.db
+
+# Intermedios de render
+**/work/
+examples/piezas/**/html/

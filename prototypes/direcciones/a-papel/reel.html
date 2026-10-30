@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../shared.css">
+<script src="../../../assets/vendor/gsap-3.15.0/gsap.min.js"></script>
+<script src="../../../assets/vendor/gsap-3.15.0/SplitText.min.js"></script>
+<script src="../../../assets/vendor/gsap-3.15.0/CustomEase.min.js"></script>
+<script src="../../../assets/vendor/gsap-3.15.0/DrawSVGPlugin.min.js"></script>
+<style>
+html, body { width: 1080px; height: 1920px; background: var(--papel); }
+#stage { position: absolute; inset: 0; overflow: hidden; }
+.papel { position: absolute; inset: 0;
+  background: radial-gradient(140% 90% at 30% 20%, rgba(255,255,255,.5), rgba(0,0,0,0) 60%),
+              repeating-linear-gradient(97deg, rgba(120,100,70,.035) 0 2px, transparent 2px 7px); }
+
+.l1 { position: absolute; left: 90px; right: 90px; top: 600px; font-family: var(--f-serif); font-size: 92px; line-height: 1;
+  color: var(--lapiz); letter-spacing: -.01em; }
+.grandes { position: absolute; left: 60px; top: 720px; font-family: var(--f-display); font-weight: 800; font-stretch: 75%;
+  font-size: 300px; line-height: .9; letter-spacing: -.04em; color: var(--tinta); transform-origin: 40% 60%; }
+.tachon { position: absolute; left: 40px; top: 840px; width: 1000px; height: 140px; overflow: visible; }
+.mano { position: absolute; left: 110px; top: 1120px; font-family: var(--f-mano); font-weight: 700; font-size: 128px;
+  color: #b4382c; transform: rotate(-5deg); white-space: nowrap; line-height: 1.05; }
+.mano span { display: inline-block; }
+.flecha { position: absolute; left: 90px; top: 1000px; overflow: visible; }
+
+/* Etiqueta: la transición tiene forma de etiqueta de precio (con su agujero). */
+.etiqueta { position: absolute; left: -40px; right: -40px; top: 0; height: 2100px; background: var(--verde-2);
+  border-radius: 60px 60px 0 0; }
+.etiqueta::before { content: ""; position: absolute; left: 50%; top: 70px; width: 56px; height: 56px; margin-left: -28px;
+  border-radius: 50%; background: var(--papel); }
+.final { position: absolute; left: 90px; right: 90px; top: 700px; color: var(--papel); font-family: var(--f-display);
+  font-weight: 700; font-stretch: 85%; font-size: 150px; line-height: .92; letter-spacing: -.03em; }
+.final .vos { display: inline-block; font-family: var(--f-serif); font-style: italic; font-weight: 400; font-stretch: 100%;
+  font-size: 260px; color: var(--amarillo); letter-spacing: -.02em; transform-origin: 30% 70%; }
+.firma { position: absolute; left: 90px; top: 1420px; color: var(--papel); }
+.firma .marca { font-size: 70px; }
+</style></head>
+<body>
+<div id="stage">
+  <div class="papel"></div>
+  <div class="l1" id="l1">¿La digitalización es solo para</div>
+  <div class="grandes" id="grandes">GRANDES?</div>
+  <svg class="tachon" viewBox="0 0 1000 140"><path id="tachonPath" d="M12 92 C 210 60, 420 84, 600 58 S 900 40, 988 66" fill="none" stroke="#f0c419" stroke-width="46" stroke-linecap="round" opacity=".95"/></svg>
+  <div class="mano" id="mano"><span id="m1">¿y la tienda</span><br><span id="m2">&nbsp;&nbsp;de la esquina?</span></div>
+
+  <div class="etiqueta" id="etiqueta">
+    <div class="final" id="final">Digitalizar<br>también es<br>para <span class="vos" id="vos">vos.</span></div>
+    <div class="firma" id="firma"><div class="marca">IF<small>TECHWORKS</small></div></div>
+    <div class="grano claro"></div>
+  </div>
+</div>
+<div class="grano" id="grano"></div>
+
+<script>
+window.__ready = false;
+gsap.registerPlugin(SplitText, CustomEase, DrawSVGPlugin);
+// Easings propios: cada tipo de movimiento tiene el suyo.
+CustomEase.create("golpe", "M0,0 C0.1,0.75 0.18,1.16 0.38,1.08 0.58,0.99 0.78,1 1,1");   // llega pasado y rebota
+CustomEase.create("trazo", "M0,0 C0.3,0.05 0.45,0.55 0.62,0.82 0.78,1 0.9,1 1,1");        // arranque lento, mano decidida
+
+const tl = gsap.timeline({ paused: true });
+
+document.fonts.ready.then(() => {
+  const l1 = SplitText.create("#l1", { type: "words", mask: "words" });
+  const final = SplitText.create("#final", { type: "lines", mask: "lines" });
+
+  gsap.set("#etiqueta", { yPercent: 100 });
+  gsap.set("#tachonPath", { drawSVG: "0%" });
+  gsap.set(["#m1", "#m2"], { clipPath: "inset(0 100% 0 0)" });
+
+  tl
+    // 0.05 s — la pregunta entra palabra por palabra desde una máscara (golpes de ~6 cuadros)
+    .from(l1.words, { yPercent: 110, duration: 0.28, ease: "power4.out", stagger: 0.07 }, 0.05)
+    // 0.75 s — GRANDES cae con peso: escala, leve giro y rebote
+    .from("#grandes", { scale: 1.7, rotation: -6, opacity: 0, duration: 0.33, ease: "golpe" }, 0.75)
+    .to("#stage", { keyframes: { x: [0, -14, 10, -6, 3, 0], y: [0, 8, -6, 4, -2, 0] }, duration: 0.26, ease: "none" }, 0.8)
+    // 1.35 s — el marcador amarillo tacha "GRANDES"
+    .to("#tachonPath", { drawSVG: "100%", duration: 0.4, ease: "trazo" }, 1.35)
+    .to("#grandes", { opacity: 0.55, duration: 0.4, ease: "power1.out" }, 1.45)
+    // 1.85 s — la respuesta escrita a mano, a velocidad de escritura (lineal)
+    .to("#m1", { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "none" }, 1.85)
+    .to("#m2", { clipPath: "inset(0 0% 0 0)", duration: 0.55, ease: "none" }, 2.38)
+    // respiro de ~0.25 s, luego 2.95 s — la etiqueta verde sube y lo tapa todo
+    .to("#etiqueta", { yPercent: 0, duration: 0.5, ease: "expo.inOut" }, 2.95)
+    .to(["#l1", "#grandes", ".tachon", "#mano"], { yPercent: -18, duration: 0.5, ease: "expo.inOut" }, 2.95)
+    // 3.4 s — el remate entra por líneas; "vos." con golpe propio
+    .from(final.lines, { yPercent: 105, duration: 0.55, ease: "expo.out", stagger: 0.11 }, 3.35)
+    .from("#vos", { scale: 0.2, rotation: 8, duration: 0.42, ease: "back.out(2.6)" }, 3.72)
+    .from("#firma", { opacity: 0, y: 30, duration: 0.5, ease: "power2.out" }, 4.1)
+    .to("#final", { scale: 1.03, duration: 1.4, ease: "sine.inOut", transformOrigin: "0% 50%" }, 3.6);
+
+  window.__ready = true;
+});
+
+// Tiempo determinista + grano animado (salta cada 2 cuadros, como película).
+window.__seek = (t) => {
+  tl.seek(t, false);
+  const f = Math.floor(t * 15);
+  document.getElementById("grano").style.transform = `translate(${(f * 37) % 40 - 20}px, ${(f * 53) % 40 - 20}px)`;
+};
+</script>
+</body></html>

@@ -14,6 +14,15 @@ Todo el stack es gratuito para uso comercial. Revisar esta tabla antes de agrega
 | Kokoro-82M (pesos y voces) | Voz en off | Apache 2.0 | 0 | |
 | Space Grotesk, Inter, JetBrains Mono | Tipografías de marca | SIL OFL 1.1 | 0 | Licencias en `assets/fonts/` |
 | Lucide (íconos) | Íconos de las plantillas | ISC | 0 | Licencia en `assets/icons/LICENSE.txt` |
+| GSAP 3.15.0 (gsap, SplitText, CustomEase, DrawSVG) | Motion de reels | GSAP Standard No-Charge License | 0 | Uso comercial OK; prohibido solo en constructores visuales que compitan con Webflow. Vendorizado en `assets/vendor/` con hash verificado |
+| Bricolage Grotesque, Instrument Serif, Inter Tight, Caveat | Tipografías de la nueva dirección | SIL OFL 1.1 | 0 | Licencias en `assets/fonts/` |
+| Fotos de Unsplash | Fotografía real | Unsplash License | 0 | Registro en `assets/photos/CREDITOS.yaml` |
+| SFX (`assets/sfx/`) | Efectos de sonido | Propios (sintetizados con `tools/make_sfx.py`) | 0 | Sin terceros |
+| Azure AI Speech (F0) | Voz en la nube (en evaluación) | Términos de Azure: el audio generado se puede usar comercialmente | 0 hasta 500 000 car./mes | Requiere cuenta y clave (`docs/guia-voces.md`) |
+| Google Cloud Text-to-Speech | Voz en la nube (en evaluación) | Términos de Google Cloud: uso comercial permitido | 0 hasta 1 M car./mes (Chirp 3 HD) | Requiere cuenta y clave |
+| ElevenLabs (capa gratis) | — | Sin licencia comercial | **Descartado** | El plan Starter (~USD 5-6/mes) sí la incluye |
+| Chatterbox Multilingual | Voz (en evaluación) | MIT | 0 | En `.venv-tts` |
+| Piper + voces es_MX claude / ald | Voz (en evaluación) | GPL-3.0 (motor, uso interno) · Apache 2.0 / Unlicense (voces) | 0 | |
 | cloudflared (Quick Tunnel) | URL pública temporal para Instagram (Fase 3) | Apache 2.0 | 0 | Sin cuenta |
 | Remotion | — | Licencia de empresa paga (más de 3 empleados) | **Descartado** | Reemplazado por el motor `html_frames` |
 | Coqui XTTS-v2 | — | CPML (no comercial) | **Descartado** | |

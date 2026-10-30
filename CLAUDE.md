@@ -64,6 +64,27 @@ Próximas opciones a proponer (todas deben ser gratis y con licencia comercial):
    descartar los NC). Probar ajustes de Chatterbox (`exaggeration`, `cfg_weight`) con una buena referencia.
 3. Reels solo con música (`engines.tts: none`) mientras se decide.
 
+### Rediseño "que no se vea IA" (2026-10-29)
+Brief del usuario: rediseñar carruseles y reels (ver `prototypes/direcciones/README.md`). Se mostraron 2 direcciones;
+**el usuario eligió la B · Documental** (`prototypes/direcciones/b-documental/`):
+foto real en duotono verde + grano, Bricolage Grotesque condensada en mayúsculas, Instrument Serif itálica para acentos,
+Inter Tight para texto, cintas amarillas como etiquetas, match cuts, subtítulos editoriales palabra por palabra.
+- Reels: **mínimo 7-10 s** (el usuario siente cortos los de 5 s). El prototipo B dura 12,5 s: pregunta → "NO." → Excel tachado → cierre CTA.
+- Motion con GSAP 3.15.0 vendorizado (`assets/vendor/`), renderizado por `render_html_video()`; SFX propios (`tools/make_sfx.py`).
+- Sin Node/HyperFrames/Remotion (no hace falta; menos superficie de ataque). Fuentes solo OFL. Fotos: `assets/photos/CREDITOS.yaml`.
+- Abiertos: ¿cifras de ejemplo (prohibidas por la regla de no inventar) o datos reales de clientes? ¿subtítulos sí o no
+  (antes dijo que no; la dirección B los usa)? Fotos propias/locales serían mejores que las de Unsplash.
+- Siguiente: producir el carrusel completo de 7 slides con layouts distintos y el reel completo en estilo B, y llevar ese
+  estilo a las plantillas del pipeline (`templates/`) con 5 layouts base de carrusel.
+
+### Voz femenina LATAM y carruseles B (2026-10-29)
+- El usuario quiere **voz de mujer latinoamericana** y el video final **sin subtítulos, con voz**.
+- ElevenLabs gratis descartado (sin licencia comercial). Candidatas: **Azure** (es-GT-MartaNeural, es-MX-DaliaNeural…)
+  y **Google** Chirp 3 HD (es-US-Chirp3-HD-Aoede…). Motores `azure`/`google` ya integrados en `audio/tts.py`.
+- **Bloqueado:** faltan las claves en `.env` (el usuario las crea con `docs/guia-voces.md`). Luego correr
+  `tools/probar_voces.py`, enviar las muestras y esperar que elija ANTES de producir videos.
+- Carruseles B listos: `examples/copy/b/*.yaml` → `graphics/carousel_b.py` (12 layouts) → `examples/piezas/b-carrusel-*`.
+
 ### Pendiente
 - [ ] Definir la voz (ver opciones arriba) y regenerar los reels de ejemplo sin barra ni subtítulos.
 - [ ] Agregar pistas de Pixabay Music (las descarga el usuario; ver `docs/licencias.md`).

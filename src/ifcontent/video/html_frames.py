@@ -49,39 +49,53 @@ class HtmlFramesEngine:
 
         video = out_dir / "reel.mp4"
         cover = out_dir / "cover.jpg"
-        n_frames = int(round(tl.duration * fps))
-        enc = subprocess.Popen(
-            [ffmpeg_bin(), "-y", "-hide_banner", "-loglevel", "error",
-             "-f", "image2pipe", "-framerate", str(fps), "-c:v", "mjpeg", "-i", "-",
-             "-i", str(audio),
-             "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p", "-r", str(fps), "-g", str(fps * 2),
-             "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
-             "-movflags", "+faststart", "-shortest", str(video)],
-            stdin=subprocess.PIPE,
-        )
-        try:
-            with sync_playwright() as p:
-                browser = p.chromium.launch()
-                page = browser.new_page(viewport={"width": w, "height": h})
-                page.goto(html_path.as_uri())
-                page.evaluate("document.fonts.ready")
-                for f in range(n_frames):
-                    page.evaluate("t => window.__seek(t)", f / fps)
-                    enc.stdin.write(page.screenshot(type="jpeg", quality=92))
-                    if f and f % (fps * 5) == 0:
-                        log.info("  cuadro %d/%d", f, n_frames)
-                # Portada: el gancho ya completo, sin subtítulos.
-                page.evaluate("document.querySelector('.captions')?.remove()")
-                page.evaluate("t => window.__seek(t)", min(tl.scenes[0].end - 0.4, 2.2))
-                page.screenshot(path=str(cover), type="jpeg", quality=95)
-                browser.close()
-        finally:
-            enc.stdin.close()
-            if enc.wait() != 0:
-                raise RuntimeError("FFmpeg falló al codificar el reel")
+        render_html_video(html_path, tl.duration, audio, video, w, h, fps,
+                          cover=cover, cover_t=min(tl.scenes[0].end - 0.4, 2.2))
 
         return {
             "video": str(video), "cover": str(cover), "duration": tl.duration,
             "scenes": [{"layout": s.scene.layout, "start": round(s.start, 2), "end": round(s.end, 2)} for s in tl.scenes],
             "voice": voice_wav is not None,
         }
+
+
+def render_html_video(html_path: Path, duration: float, audio: Path, video: Path, w: int, h: int, fps: int,
+                      cover: Path | None = None, cover_t: float = 0.0) -> Path:
+    """Captura cualquier página HTML animada cuadro a cuadro y la codifica a MP4 (H.264 + AAC).
+
+    La página debe exponer `window.__seek(t)` (segundos). Si usa GSAP u otra preparación asíncrona,
+    pone `window.__ready = false` al inicio y `true` cuando terminó (por ejemplo, tras cargar fuentes y SplitText).
+    """
+    n_frames = int(round(duration * fps))
+    enc = subprocess.Popen(
+        [ffmpeg_bin(), "-y", "-hide_banner", "-loglevel", "error",
+         "-f", "image2pipe", "-framerate", str(fps), "-c:v", "mjpeg", "-i", "-",
+         "-i", str(audio),
+         "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p", "-r", str(fps), "-g", str(fps * 2),
+         "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+         "-movflags", "+faststart", "-shortest", str(video)],
+        stdin=subprocess.PIPE,
+    )
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_page(viewport={"width": w, "height": h})
+            page.goto(Path(html_path).resolve().as_uri())
+            page.evaluate("document.fonts.ready")
+            page.wait_for_function("window.__ready === undefined || window.__ready === true", timeout=30000)
+            for f in range(n_frames):
+                page.evaluate("t => window.__seek(t)", f / fps)
+                enc.stdin.write(page.screenshot(type="jpeg", quality=92))
+                if f and f % (fps * 5) == 0:
+                    log.info("  cuadro %d/%d", f, n_frames)
+            if cover:
+                # Portada: sin subtítulos.
+                page.evaluate("document.querySelector('.captions')?.remove()")
+                page.evaluate("t => window.__seek(t)", cover_t)
+                page.screenshot(path=str(cover), type="jpeg", quality=95)
+            browser.close()
+    finally:
+        enc.stdin.close()
+        if enc.wait() != 0:
+            raise RuntimeError("FFmpeg falló al codificar el video")
+    return video

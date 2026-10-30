@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../shared.css">
+<style>
+html, body { width: 1080px; height: 1350px; }
+body { background: var(--verde); color: var(--papel); position: relative; }
+
+/* Foto real a sangre, en duotono de marca (sombras verdes, luces papel). */
+.foto { position: absolute; inset: 0; overflow: hidden; }
+.foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; filter: grayscale(1) contrast(1.3) brightness(1.15); transform: scale(1.06); }
+.foto .t1 { position: absolute; inset: 0; background: #3d6b55; mix-blend-mode: multiply; }
+.foto .t2 { position: absolute; inset: 0; background: var(--papel); mix-blend-mode: screen; opacity: .06; }
+.foto .piso { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; background: linear-gradient(to top, rgba(10,20,16,.96) 30%, rgba(10,20,16,0)); }
+
+.cinco { position: absolute; right: 40px; top: -60px; font-family: var(--f-serif); font-style: italic; font-size: 640px;
+  line-height: 1; color: var(--amarillo); letter-spacing: -.05em; }
+
+/* Etiqueta de archivo pegada encima de la foto, tachada. */
+.archivo { position: absolute; left: 70px; top: 300px; transform: rotate(-4deg); background: #fbf8f1; color: var(--tinta);
+  padding: 22px 30px 22px 26px; font-family: var(--f-text); font-weight: 600; font-size: 34px; display: flex; gap: 16px; align-items: center;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,.6); }
+.archivo .xls { width: 46px; height: 56px; background: #1e6b41; color: #fff; font-weight: 800; font-size: 20px; display: grid; place-items: center;
+  clip-path: polygon(0 0, 72% 0, 100% 22%, 100% 100%, 0 100%); }
+.archivo .raya { position: absolute; left: 14px; right: 14px; top: 50%; height: 6px; background: #c2412f; transform: rotate(-2deg); }
+
+.titulo { position: absolute; left: 70px; right: 60px; bottom: 170px; font-family: var(--f-display); font-weight: 800;
+  font-stretch: 75%; text-transform: uppercase; letter-spacing: -.02em; line-height: .88; }
+.titulo .a { font-size: 92px; display: block; color: var(--papel); opacity: .92; }
+.titulo .b { font-size: 176px; display: inline-block; margin-top: 16px; color: var(--verde); position: relative; z-index: 0; padding: 4px 22px 0 18px; }
+.titulo .b::before { content: ""; position: absolute; inset: 0; background: var(--amarillo); z-index: -1;
+  clip-path: polygon(0 6%, 3% 0, 97% 3%, 100% 10%, 99% 92%, 96% 100%, 4% 97%, 0 90%); transform: rotate(-1.5deg); }
+
+.pie { position: absolute; left: 70px; right: 70px; bottom: 62px; display: flex; justify-content: space-between; align-items: flex-end;
+  font-family: var(--f-text); font-weight: 600; font-size: 28px; letter-spacing: .02em; color: rgba(242,237,228,.75); }
+.pie .marca { font-size: 58px; color: var(--papel); }
+</style></head>
+<body>
+<div class="foto">
+  <img src="../../../assets/photos/pasillo-tienda.jpg" alt="">
+  <div class="t1"></div><div class="t2"></div><div class="piso"></div>
+</div>
+<div class="cinco">5</div>
+
+<div class="archivo"><span class="xls">XLS</span>Inventario_final_v3_ahora_sí.xlsx<span class="raya"></span></div>
+
+<h1 class="titulo">
+  <span class="a">señales de que tu inventario</span>
+  <span class="b">ya no da más</span>
+</h1>
+
+<div class="pie">
+  <div class="marca">IF<small>TECHWORKS</small></div>
+  <span>Deslizá para ver las 5 →</span>
+</div>
+<div class="grano claro"></div>
+</body></html>

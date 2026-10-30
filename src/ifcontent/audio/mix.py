@@ -32,3 +32,30 @@ def mix_audio(voice_wav: Path | None, music: Path, duration: float, out: Path) -
     cmd += ["-filter_complex", graph, "-map", "[a]", "-t", f"{duration:.3f}", "-ar", "48000", "-ac", "2", str(out)]
     subprocess.run(cmd, check=True)
     return out
+
+
+def build_sfx_track(events: list[dict], duration: float, out: Path, voice: Path | None = None) -> Path:
+    """Arma una pista con los efectos de sonido (assets/sfx) en sus tiempos exactos, y opcionalmente la voz.
+
+    events: [{"t": 0.8, "sfx": "thud", "gain_db": -3}, ...]
+    """
+    import numpy as np
+    import soundfile as sf
+
+    from ..core.config import ASSETS_DIR
+
+    sr = 48000
+    track = np.zeros(int((duration + 1) * sr), dtype=np.float32)
+    if voice:
+        v, vsr = sf.read(voice, dtype="float32")
+        if vsr != sr:
+            v = np.interp(np.linspace(0, len(v) - 1, int(len(v) * sr / vsr)), np.arange(len(v)), v).astype(np.float32)
+        track[: min(len(v), len(track))] += v[: len(track)]
+    for e in events:
+        clip, csr = sf.read(ASSETS_DIR / "sfx" / f"{e['sfx']}.wav", dtype="float32")
+        assert csr == sr, "los SFX deben estar a 48 kHz (tools/make_sfx.py)"
+        i0 = int(e["t"] * sr)
+        seg = clip[: max(0, len(track) - i0)] * 10 ** (e.get("gain_db", 0) / 20)
+        track[i0 : i0 + len(seg)] += seg
+    sf.write(out, track[: int(duration * sr)], sr)
+    return out

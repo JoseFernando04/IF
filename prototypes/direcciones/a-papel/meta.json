@@ -1,0 +1,17 @@
+{
+  "name": "A · Papel editorial",
+  "duration": 5.0,
+  "music": "digital-lemonade",
+  "sfx": [
+    {"t": 0.0, "sfx": "paper", "gain_db": -6},
+    {"t": 0.06, "sfx": "tick", "gain_db": -10},
+    {"t": 0.20, "sfx": "tick", "gain_db": -12},
+    {"t": 0.34, "sfx": "tick", "gain_db": -12},
+    {"t": 0.76, "sfx": "thud", "gain_db": 0},
+    {"t": 1.35, "sfx": "marker", "gain_db": -2},
+    {"t": 1.85, "sfx": "marker", "gain_db": -8},
+    {"t": 2.35, "sfx": "marker", "gain_db": -10},
+    {"t": 2.92, "sfx": "whoosh", "gain_db": -2},
+    {"t": 3.74, "sfx": "pop", "gain_db": -3}
+  ]
+}

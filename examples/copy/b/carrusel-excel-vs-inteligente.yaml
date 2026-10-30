@@ -1,0 +1,55 @@
+# Carrusel en estilo B (Documental). Cada slide elige su layout; ver templates/graphics/b/README.md
+title: Inventario en Excel vs. inventario inteligente
+pillar: educativo
+slides:
+  - layout: versus
+    arriba: Excel
+    abajo: Inventario inteligente
+    bajada: La diferencia no es la herramienta. Es quién hace el trabajo.
+
+  - layout: hoja
+    tag: "En Excel"
+    heading: Lo que anotaste… cuando te acordaste
+    body: El Excel solo sabe lo que alguien escribió. Si nadie actualizó, el número está mal y nadie lo sabe.
+    nota: ¿quién movió esto?
+
+  - layout: comparacion
+    tag: "Lado a lado"
+    heading: Mismo negocio, otra forma de llevarlo
+    izquierda: En Excel
+    derecha: Inteligente
+    filas:
+      - [Conteo a mano cada mes, Se actualiza solo]
+      - [Te enterás tarde del faltante, Alerta antes de que se acabe]
+      - [Nadie sabe quién tiene qué, Cada activo con responsable]
+      - [Comprás por intuición, Comprás con historial]
+
+  - layout: split-foto
+    foto: pasillo-tienda.jpg
+    tag: "Cómo funciona"
+    heading: Estantes que avisan
+    body: Sensores en el estante reportan qué entra, qué sale y qué está por terminarse. Sin contar a mano.
+
+  - layout: notificacion
+    tag: "Antes del faltante"
+    heading: La alerta te llega a vos, no al cliente
+    app: IF Inventario
+    titulo_alerta: Stock bajo · Tornillo 3/8
+    texto_alerta: Quedan 40 unidades. Al ritmo de esta semana, alcanzan para 3 días.
+    aclaracion: Ejemplo ilustrativo
+
+  - layout: cita
+    tag: "La idea"
+    cita: No se trata de tirar el Excel. Se trata de que el inventario se actualice solo.
+    pie: Tu equipo deja de contar y empieza a decidir.
+
+  - layout: cta
+    heading: "¿Seguimos con *Excel* o lo ordenamos?"
+    body: Contanos cómo trabaja tu bodega y te mostramos cómo se vería en tu operación.
+    sello: Diagnóstico sin compromiso
+
+caption: >-
+  Excel sirve, hasta que el negocio crece y nadie sabe cuál es el archivo bueno. Un inventario inteligente se
+  actualiza solo y te avisa antes del faltante. Contanos cómo trabaja tu bodega y te mostramos cómo se vería en
+  tu operación. Escribinos por WhatsApp o entrá a iftechworks.com.
+hashtags: [InventarioInteligente, PymesGuatemala, IoT, NegociosGT, TransformacionDigital]

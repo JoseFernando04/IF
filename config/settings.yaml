@@ -3,7 +3,7 @@ engines:
   copy: ollama          # ollama | file (copy escrito a mano o por Claude vía MCP)
   graphics: playwright
   video: html_frames
-  tts: chatterbox       # chatterbox (natural) | kokoro (liviana) | none (solo música)
+  tts: chatterbox       # azure | google (nube, capa gratis) | chatterbox | kokoro (locales) | none (solo música)
   music: library
   publisher: dry_run    # dry_run | instagram | tiktok_inbox | manual_email (Fases 3+)
 
@@ -29,6 +29,12 @@ carousel:
   max_slides: 10
 
 tts:
+  azure:
+    voice: es-GT-MartaNeural     # mujer, Guatemala. Otras: es-MX-DaliaNeural, es-CO-SalomeNeural
+    rate: "0%"
+  google:
+    voice: es-US-Chirp3-HD-Aoede # mujer, español latino. Otras: -Kore, -Leda, -Zephyr
+    speaking_rate: 1.0
   chatterbox:
     python: .venv-tts/Scripts/python.exe
     reference: assets/voice/referencia.wav   # 10-20 s de una voz real (con permiso). Si no existe, usa la voz por defecto.

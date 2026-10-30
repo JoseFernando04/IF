@@ -1,0 +1,8 @@
+# Fotos con licencia libre para uso comercial. Registrar fuente, autor y licencia de cada una.
+photos:
+  - file: pasillo-tienda.jpg
+    source: https://unsplash.com/photos/4uopGh82kuw
+    author: Sean Foster
+    license: Unsplash License (uso comercial, sin atribución obligatoria)
+    license_url: https://unsplash.com/license
+    downloaded: 2026-10-29

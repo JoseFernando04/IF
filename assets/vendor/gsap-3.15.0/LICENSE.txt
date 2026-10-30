@@ -1,0 +1,5 @@
+GSAP 3.15.0 — paquete oficial "gsap" de npm (mantenedor: greensock).
+Integridad verificada: sha512-dMW4CWBTUK1AEEDeZc1g4xpPGIrSf9fJF960qbTZmN/QwZIWY5wgliS6JWl9/25fpTGJrMRtSjGtOmPnfjZB+A==
+Licencia: GSAP Standard "No Charge" License — https://gsap.com/standard-license
+Uso comercial permitido (incluye SplitText, CustomEase, DrawSVG). No se permite usar GSAP en herramientas
+visuales que compitan con el constructor de animaciones de Webflow (no es nuestro caso).

@@ -1,0 +1,24 @@
+{
+  "name": "B · Documental",
+  "duration": 12.5,
+  "music": "voxel-revolution",
+  "sfx": [
+    {"t": 0.02, "sfx": "tick", "gain_db": -6},
+    {"t": 0.28, "sfx": "whoosh", "gain_db": -12},
+    {"t": 0.95, "sfx": "pop", "gain_db": -8},
+    {"t": 1.05, "sfx": "pop", "gain_db": -10},
+    {"t": 1.15, "sfx": "pop", "gain_db": -12},
+    {"t": 2.03, "sfx": "whoosh", "gain_db": -1},
+    {"t": 2.5, "sfx": "tick", "gain_db": -6},
+    {"t": 2.96, "sfx": "thud", "gain_db": 0},
+    {"t": 3.5, "sfx": "whoosh", "gain_db": -10},
+    {"t": 5.93, "sfx": "whoosh", "gain_db": -2},
+    {"t": 6.9, "sfx": "paper", "gain_db": -2},
+    {"t": 7.7, "sfx": "marker", "gain_db": -2},
+    {"t": 8.0, "sfx": "tick", "gain_db": -8},
+    {"t": 8.93, "sfx": "whoosh", "gain_db": -2},
+    {"t": 9.3, "sfx": "pop", "gain_db": -5},
+    {"t": 10.62, "sfx": "thud", "gain_db": -1},
+    {"t": 11.2, "sfx": "tick", "gain_db": -10}
+  ]
+}
