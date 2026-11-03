@@ -110,6 +110,26 @@ Inter Tight para texto, cintas amarillas como etiquetas, match cuts, subtítulos
 - `tools/render_reel_voz.py --grabada <persona>` (voz real tal cual) o `--clon <persona>` (Chatterbox imita la referencia).
   Flujo probado de punta a punta con grabaciones simuladas en m4a.
 
+### Voces reales de José e Irvin y reel de conversación (2026-11-02)
+- Grabaciones en `assets/voice/jose` y `assets/voice/irvin` con permisos (capturas de WhatsApp). Nombres libres:
+  `tools/preparar_voz.py` transcribe con **Whisper local** (faster-whisper en `.venv-tts`, MIT) y detecta si cada audio es
+  la referencia, el guion del reel B o las líneas de un diálogo, y lo corta por frase/línea con tiempos por palabra.
+- Reel B con voz real: `data/voz/reel-grabada-irvin.mp4` y `reel-grabada-jose.mp4`.
+- **Reel de conversación** (idea del usuario: suena más real): `prototypes/direcciones/b-conversacion/` (guion.yaml + reel.html),
+  `tools/render_conversacion.py --fuente clon|grabada`. José = IF Techworks, Irvin = el dueño. Clon con QA automático
+  (Whisper verifica cada línea y regenera; Chatterbox a veces balbucea o cambia palabras). 34 s.
+- Siguiente: que graben sus líneas del diálogo (guía §5) para la versión 100 % humana.
+
+### Eco y ruido en el clon (2026-11-02)
+- Al usuario NO le gustó el clon: mucho eco/ruido. Causa medida: Irvin grabó en **nota de voz de WhatsApp** (Opus, sin agudos
+  >8 kHz) en cuarto con eco (~420 ms de cola); José con AAC bueno pero ruido de fondo (-59 dBFS). Chatterbox copia el cuarto.
+- Mejoras: limpieza con IA en `.venv-tts` — **WPE** (nara_wpe, MIT) contra eco + **DeepFilterNet3** (MIT) contra ruido —
+  en referencias y grabaciones (`audio/enhance.py`, `denoise_worker.py`) y en la salida del clon (`tts.chatterbox.limpiar_salida`).
+  Chatterbox usa solo ~10 s de la referencia → `preparar_voz.py` deja el mejor tramo de 11 s.
+- Guía de grabación reescrita (`docs/guia-grabar-voces.md` §2-3): sin WhatsApp, carro estacionado/clóset, 15-20 cm,
+  3 s de silencio inicial; nuevo texto de referencia expresivo (45-60 s). Recomendado: grabar el diálogo real (sin clon).
+- Comparación enviada: `data/voz/audio-reel-ANTES.mp3` vs `reel-conversacion-clon-DESPUES.mp4`.
+
 ### Pendiente
 - [ ] Definir la voz (ver opciones arriba) y regenerar los reels de ejemplo sin barra ni subtítulos.
 - [ ] Agregar pistas de Pixabay Music (las descarga el usuario; ver `docs/licencias.md`).

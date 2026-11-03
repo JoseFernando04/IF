@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../shared.css">
+<script src="../../../assets/vendor/gsap-3.15.0/gsap.min.js"></script>
+<script src="../../../assets/vendor/gsap-3.15.0/SplitText.min.js"></script>
+<script src="../../../assets/vendor/gsap-3.15.0/CustomEase.min.js"></script>
+<script src="conversacion.js"></script>
+<style>
+html, body { width: 1080px; height: 1920px; background: var(--verde); }
+#stage { position: absolute; inset: 0; overflow: hidden; }
+
+.foto { position: absolute; inset: -60px; overflow: hidden; }
+.foto img { width: 100%; height: 100%; object-fit: cover; object-position: 45% 50%; filter: grayscale(1) contrast(1.3) brightness(1.05); }
+.foto .t1 { position: absolute; inset: 0; background: #3d6b55; mix-blend-mode: multiply; }
+.foto .piso { position: absolute; left: 0; right: 0; bottom: 0; height: 75%; background: linear-gradient(to top, rgba(10,20,16,.97) 35%, rgba(10,20,16,0)); }
+
+.escena { position: absolute; left: 80px; top: 250px; background: var(--amarillo); color: var(--verde); padding: 12px 22px 8px;
+  font-family: var(--f-text); font-weight: 800; font-size: 30px; letter-spacing: .14em; transform: rotate(-2deg); transform-origin: 0 50%; }
+
+/* Diálogo: anclado abajo; cada turno nuevo entra en la base y empuja al anterior hacia arriba. */
+.dialogo { position: absolute; left: 80px; right: 80px; bottom: 470px; height: 0; }
+.turno { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; gap: 16px; }
+.turno.dueno { align-items: flex-end; text-align: right; }
+.turno .quien { font-family: var(--f-text); font-weight: 800; font-size: 28px; letter-spacing: .14em; text-transform: uppercase; padding: 10px 18px 6px; }
+.turno.if .quien { background: var(--amarillo); color: var(--verde); transform: rotate(-1.5deg); }
+.turno.dueno .quien { background: var(--papel); color: var(--tinta); transform: rotate(1.5deg); }
+.turno .dice { font-family: var(--f-display); font-weight: 800; font-stretch: 78%; text-transform: uppercase; letter-spacing: -.015em;
+  line-height: .95; color: var(--papel); max-width: 900px; }
+.turno.dueno .dice { color: #e9e2d2; }
+.turno.golpe { align-items: center; text-align: center; bottom: 80px; }
+.turno.golpe .dice { font-size: 330px !important; color: var(--amarillo); }
+#stage.amarillo .turno .dice { color: var(--verde); }
+
+/* Objetos que aparecen en la conversación */
+.obj { position: absolute; visibility: hidden; }
+.excel { left: 90px; top: 430px; transform: rotate(-5deg); background: #fbf8f1; color: var(--tinta); padding: 30px 40px 30px 32px;
+  font-family: var(--f-text); font-weight: 600; font-size: 48px; display: flex; gap: 22px; align-items: center; white-space: nowrap;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); }
+.excel .xls { width: 64px; height: 78px; background: #1e6b41; color: #fff; font-weight: 800; font-size: 26px; display: grid; place-items: center;
+  clip-path: polygon(0 0, 72% 0, 100% 22%, 100% 100%, 0 100%); }
+.excel .num { color: #1e6b41; font-weight: 800; }
+.excel .raya { position: absolute; left: 16px; right: 16px; top: 50%; height: 9px; background: #c2412f; transform: rotate(-2deg); transform-origin: 0 50%; }
+.libreta { left: 230px; top: 330px; width: 700px; padding: 30px 40px 34px 72px; background: #fbf8f1; transform: rotate(4deg);
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); font-family: var(--f-mano); color: #2b3a4a;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 66px, rgba(70,110,160,.28) 66px 68px); background-position: 0 32px; }
+.libreta::before { content: ""; position: absolute; left: 50px; top: 0; bottom: 0; width: 2px; background: rgba(200,70,60,.45); }
+.libreta h3 { font-weight: 700; font-size: 58px; line-height: 68px; }
+.libreta p { font-size: 60px; line-height: 68px; position: relative; }
+.libreta .t::after { content: ""; position: absolute; left: -6px; width: 66%; top: 52%; height: 6px; background: #b4382c; transform: rotate(-3deg) scaleX(var(--tachado, 0)); transform-origin: 0 50%; border-radius: 3px; }
+.libreta .duda { color: #b4382c; font-weight: 700; }
+.alerta { left: 70px; right: 70px; top: 360px; background: rgba(242,237,228,.97); color: var(--tinta); border-radius: 44px; padding: 36px 40px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); font-family: var(--f-text); }
+.alerta .app { display: flex; align-items: center; gap: 14px; font-size: 32px; font-weight: 700; color: #555; margin-bottom: 14px; }
+.alerta .app i { width: 50px; height: 50px; border-radius: 14px; background: var(--verde-2); color: var(--amarillo); display: grid; place-items: center;
+  font-style: normal; font-family: var(--f-display); font-weight: 800; font-size: 24px; }
+.alerta .app b { margin-left: auto; font-weight: 500; }
+.alerta h4 { font-size: 56px; font-weight: 800; margin-bottom: 8px; }
+.alerta p { font-size: 44px; line-height: 1.3; }
+.alerta small { position: absolute; left: 40px; bottom: -64px; font-family: var(--f-mano); font-size: 44px; color: var(--amarillo); }
+
+/* Spoiler (pantalla amarilla) */
+.ola { position: absolute; left: 80px; top: 250px; width: 360px; height: 54px; background: var(--amarillo); visibility: hidden; }
+.spoiler { position: absolute; left: 90px; top: 330px; font-family: var(--f-serif); font-style: italic; font-size: 130px; color: var(--verde); visibility: hidden; }
+.no { position: absolute; left: 50px; top: 420px; font-family: var(--f-display); font-weight: 800; font-stretch: 75%; font-size: 520px; line-height: .85;
+  letter-spacing: -.04em; color: var(--verde); transform-origin: 20% 80%; visibility: hidden; }
+.remate { position: absolute; left: 90px; right: 90px; top: 900px; font-family: var(--f-text); font-weight: 700; font-size: 64px; line-height: 1.1; color: var(--verde); visibility: hidden; }
+
+/* Cierre */
+.cierre { position: absolute; inset: 0; background: var(--verde-2); visibility: hidden; }
+.cierre .marca { position: absolute; left: 90px; top: 380px; font-size: 150px; color: var(--papel); }
+.cierre .cta { position: absolute; left: 90px; right: 60px; top: 680px; font-family: var(--f-display); font-weight: 800; font-stretch: 80%;
+  font-size: 220px; line-height: .88; letter-spacing: -.03em; color: var(--papel); }
+.cierre .cta em { font-family: var(--f-serif); font-weight: 400; font-stretch: 100%; color: var(--amarillo); font-size: 1.12em; }
+.cierre .sello { position: absolute; left: 90px; top: 1160px; background: var(--amarillo); color: var(--verde); padding: 18px 30px 14px;
+  font-family: var(--f-text); font-weight: 800; font-size: 44px; letter-spacing: .1em; transform: rotate(-3deg); }
+.cierre .wa { position: absolute; left: 90px; top: 1320px; font-family: var(--f-text); font-weight: 600; font-size: 58px; color: var(--papel); }
+.cierre .wa small { display: block; font-size: 38px; font-weight: 500; opacity: .7; margin-top: 8px; }
+</style></head>
+<body>
+<div id="stage">
+  <div class="foto" id="foto"><img src="../../../assets/photos/pasillo-tienda.jpg" alt=""><div class="t1"></div><div class="piso"></div></div>
+  <div class="escena" id="escena">EN LA BODEGA</div>
+
+  <div class="obj excel" id="excel"><span class="xls">XLS</span>Tornillo 3/8 · <span class="num">150</span><span class="raya" id="raya"></span></div>
+  <div class="obj libreta" id="libreta"><h3>Conteo · martes</h3>
+    <p class="t" id="c1">Tornillo 3/8 → 140</p><p class="t" id="c2">Tornillo 3/8 → 152</p><p class="t" id="c3">Tornillo 3/8 → 147</p>
+    <p>Tornillo 3/8 → <span class="duda">¿¿??</span></p></div>
+  <div class="obj alerta" id="alerta"><div class="app"><i>IF</i>IF Inventario<b>ahora</b></div>
+    <h4>Stock bajo · Tornillo 3/8</h4><p>Quedan 40 unidades. Al ritmo de esta semana, alcanzan para 3 días.</p><small>↑ ejemplo ilustrativo</small></div>
+
+  <div class="ola" id="ola"></div>
+  <div class="spoiler" id="spoiler">Spoiler:</div>
+  <div class="no" id="no">NO.</div>
+  <div class="remate" id="remate"></div>
+
+  <div class="dialogo" id="dialogo"></div>
+
+  <div class="cierre" id="cierre">
+    <div class="marca" id="marca">IF<small>TECHWORKS</small></div>
+    <div class="cta" id="cta">Contanos<br>tu <em>caso.</em></div>
+    <div class="sello" id="sello">DIAGNÓSTICO SIN COMPROMISO</div>
+    <div class="wa" id="wa">WhatsApp +502 3808 9808<small>iftechworks.com</small></div>
+  </div>
+</div>
+<div class="grano claro" id="grano"></div>
+
+<script>
+window.__ready = false;
+gsap.registerPlugin(SplitText, CustomEase);
+CustomEase.create("golpe", "M0,0 C0.1,0.75 0.18,1.16 0.38,1.08 0.58,0.99 0.78,1 1,1");
+const { lineas: L, fin: FIN } = window.CONV;
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector(s);
+
+function tamano(texto) {  // líneas cortas, más grandes
+  return texto.length <= 12 ? 150 : texto.length <= 26 ? 112 : texto.length <= 46 ? 88 : 72;
+}
+
+document.fonts.ready.then(() => {
+  const dialogo = $("#dialogo");
+  const turnos = L.map((l) => {
+    if (l.estilo === "spoiler" || l.estilo === "cierre") return null;  // se muestran con su escena propia
+    const el = document.createElement("div");
+    el.className = `turno ${l.quien}${l.estilo === "golpe" ? " golpe" : ""}`;
+    el.innerHTML = l.estilo === "golpe" ? `<p class="dice">${l.texto}</p>`
+      : `<span class="quien">${l.etiqueta}</span><p class="dice" style="font-size:${tamano(l.texto)}px">${l.texto}</p>`;
+    gsap.set(el, { autoAlpha: 0 });
+    dialogo.appendChild(el);
+    return el;
+  });
+  const iSpoiler = L.findIndex((l) => l.estilo === "spoiler");
+  const iCierre = L.findIndex((l) => l.estilo === "cierre");
+  const finFoto = iSpoiler >= 0 ? L[iSpoiler].inicio : FIN;
+
+  tl.fromTo("#foto", { scale: 1.16, x: -24 }, { scale: 1.0, x: 24, duration: finFoto, ease: "none" }, 0)
+    .from("#escena", { scaleX: 0, duration: 0.22, ease: "expo.out" }, 0.05);
+
+  // Turnos de diálogo: entra el nuevo en la base; el anterior sube y se apaga; el de antes se va.
+  const visibles = [];
+  L.forEach((l, i) => {
+    const el = turnos[i];
+    if (!el) {  // escena propia (spoiler/cierre): se va todo el diálogo anterior
+      visibles.forEach((v) => tl.to(v, { autoAlpha: 0, duration: 0.2 }, l.inicio - 0.45));
+      visibles.length = 0;
+      return;
+    }
+    const s = l.inicio;
+    const golpe = l.estilo === "golpe";
+    visibles.forEach((v, k) => {
+      const prof = visibles.length - k;  // 1 = el inmediatamente anterior
+      if (golpe || prof >= 2 || v.classList.contains("golpe")) {
+        tl.to(v, { autoAlpha: 0, y: "-=120", duration: 0.3, ease: "power2.in" }, s - 0.05);
+      } else {
+        tl.to(v, { y: -(el.offsetHeight + 60), scale: 0.78, autoAlpha: 0.38, duration: 0.42, ease: "expo.inOut",
+                   transformOrigin: v.classList.contains("dueno") ? "100% 100%" : "0% 100%" }, s - 0.05);
+      }
+    });
+    if (golpe) {
+      tl.set(el, { autoAlpha: 1 }, s)
+        .from(el, { scale: 2.4, rotation: -8, duration: 0.3, ease: "golpe" }, s)
+        .to("#stage", { keyframes: { x: [0, 16, -12, 7, -3, 0], y: [0, -9, 7, -4, 2, 0] }, duration: 0.28, ease: "none" }, s + 0.05);
+    } else {
+      const split = SplitText.create(el.querySelector(".dice"), { type: "lines", mask: "lines" });
+      tl.set(el, { autoAlpha: 1 }, s)
+        .from(el.querySelector(".quien"), { scaleX: 0, transformOrigin: l.quien === "dueno" ? "100% 50%" : "0% 50%", duration: 0.2, ease: "expo.out" }, s)
+        .from(split.lines, { yPercent: 105, duration: 0.45, ease: "expo.out", stagger: 0.09 }, s + 0.05);
+    }
+    visibles.push(el);
+    while (visibles.length > 2) visibles.shift();
+    if (golpe) visibles.splice(0, visibles.length - 1);
+  });
+
+  // Objetos de la conversación
+  const salidaObjeto = (idx) => (L[idx + 1] ? L[idx + 1].inicio : FIN);
+  L.forEach((l, i) => {
+    const s = l.inicio, d = l.duracion;
+    if (l.objeto === "excel") {
+      gsap.set("#raya", { scaleX: 0 });
+      const iFin = L.findIndex((x, j) => j > i && x.objeto);
+      tl.set("#excel", { visibility: "visible" }, s + d * 0.25)
+        .from("#excel", { y: -280, rotation: -20, autoAlpha: 0, duration: 0.5, ease: "back.out(1.6)" }, s + d * 0.25)
+        .to("#raya", { scaleX: 1, duration: 0.3, ease: "power2.inOut" }, L[i + 2] ? L[i + 2].inicio + 0.3 : s + d)  // "Mejor no te digo."
+        .to("#excel", { x: -900, rotation: -30, duration: 0.45, ease: "power3.in" }, (iFin >= 0 ? L[iFin].inicio : FIN) - 0.1);
+    }
+    if (l.objeto === "libreta") {
+      const iFin = L.findIndex((x, j) => j > i && x.objeto);
+      tl.set("#libreta", { visibility: "visible" }, s)
+        .from("#libreta", { x: 900, rotation: 18, duration: 0.5, ease: "power3.out" }, s)
+        .to("#c1", { "--tachado": 1, duration: 0.18 }, s + d * 0.35)
+        .to("#c2", { "--tachado": 1, duration: 0.18 }, s + d * 0.55)
+        .to("#c3", { "--tachado": 1, duration: 0.18 }, s + d * 0.75)
+        .to("#libreta", { x: 1000, rotation: 25, duration: 0.45, ease: "power3.in" }, (iFin >= 0 ? L[iFin].inicio : FIN) - 0.1);
+    }
+    if (l.objeto === "alerta") {
+      tl.set("#alerta", { visibility: "visible" }, s + d * 0.45)
+        .from("#alerta", { y: -500, duration: 0.55, ease: "back.out(1.4)" }, s + d * 0.45);
+    }
+  });
+
+  // Spoiler: la cinta llena la pantalla de amarillo
+  if (iSpoiler >= 0) {
+    const l = L[iSpoiler], s = l.inicio, d = l.duracion;
+    const [, resto] = l.texto.split(/no\.\s*/i);
+    $("#remate").textContent = resto || "";
+    const remate = SplitText.create("#remate", { type: "lines", mask: "lines" });
+    tl.set("#ola", { visibility: "visible" }, s - 0.45)
+      .to("#ola", { left: -40, top: -40, width: 1160, height: 2000, rotation: 0, duration: 0.42, ease: "power4.inOut" }, s - 0.45)
+      .set("#stage", { className: "amarillo" }, s - 0.1)
+      .to(["#alerta", "#escena"], { autoAlpha: 0, duration: 0.01 }, s - 0.05)
+      .set("#spoiler", { visibility: "visible" }, s)
+      .from("#spoiler", { y: 50, autoAlpha: 0, duration: 0.3, ease: "power3.out" }, s)
+      .set("#no", { visibility: "visible" }, s + d * 0.13)
+      .from("#no", { scale: 2.2, rotation: -10, duration: 0.3, ease: "golpe" }, s + d * 0.13)
+      .to("#stage", { keyframes: { x: [0, 16, -12, 7, -3, 0], y: [0, -9, 7, -4, 2, 0] }, duration: 0.28, ease: "none" }, s + d * 0.13 + 0.05)
+      .to("#no", { scale: 0.55, y: -150, duration: 0.5, ease: "expo.inOut" }, s + d * 0.3)
+      .to("#spoiler", { y: -60, autoAlpha: 0, duration: 0.3, ease: "power2.in" }, s + d * 0.3)
+      .set("#remate", { visibility: "visible" }, s + d * 0.3)
+      .from(remate.lines, { yPercent: 105, duration: 0.5, ease: "expo.out", stagger: 0.12 }, s + d * 0.32);
+  }
+
+  // Cierre
+  if (iCierre >= 0) {
+    const s = L[iCierre].inicio, d = L[iCierre].duracion;
+    const cta = SplitText.create("#cta", { type: "lines", mask: "lines" });
+    tl.set("#cierre", { visibility: "visible" }, s - 0.45)
+      .from("#cierre", { xPercent: -100, duration: 0.45, ease: "power4.inOut" }, s - 0.45)
+      .from("#marca", { scale: 0.4, autoAlpha: 0, duration: 0.4, ease: "back.out(2.2)" }, s - 0.1)
+      .from(cta.lines, { yPercent: 105, duration: 0.5, ease: "expo.out", stagger: 0.14 }, s)
+      .from("#sello", { scale: 2.4, rotation: 12, autoAlpha: 0, duration: 0.3, ease: "golpe" }, s + d * 0.45)
+      .to("#stage", { keyframes: { x: [0, 10, -8, 4, 0], y: [0, -6, 5, -2, 0] }, duration: 0.22, ease: "none" }, s + d * 0.45 + 0.06)
+      .from("#wa", { y: 40, autoAlpha: 0, duration: 0.5, ease: "power2.out" }, s + d * 0.8);
+  }
+  window.__ready = true;
+});
+
+window.__seek = (t) => {
+  tl.seek(t, false);
+  const f = Math.floor(t * 15);
+  $("#grano").style.transform = `translate(${(f * 37) % 40 - 20}px, ${(f * 53) % 40 - 20}px)`;
+};
+</script>
+</body></html>

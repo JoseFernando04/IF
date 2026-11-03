@@ -1,0 +1,27 @@
+# Reel de conversación (estilo B). Cada línea: quién habla, qué dice y qué pasa en pantalla.
+# personajes → carpeta de voz en assets/voice/ y etiqueta que se ve en pantalla.
+titulo: ¿Cuántas cajas te quedan?
+personajes:
+  if:    {voz: jose,  etiqueta: "IF Techworks"}
+  dueno: {voz: irvin, etiqueta: "El dueño"}
+
+# estilo: normal | golpe (palabra gigante con sacudida) | spoiler (pantalla amarilla) | cierre (pantalla final)
+# objeto: aparece en pantalla al empezar la línea (excel | libreta | alerta)
+# pausa: silencio antes de la línea (s)
+lineas:
+  - {quien: if,    texto: "¿Cuántas cajas de tornillo te quedan?", pausa: 0.35}
+  - {quien: dueno, texto: "Según el Excel… ciento cincuenta.", objeto: excel}
+  - {quien: if,    texto: "¿Y según la bodega?"}
+  - {quien: dueno, texto: "Mejor no te digo."}
+  - {quien: if,    texto: "Contaste tres veces y no cuadra, ¿verdad?", objeto: libreta}
+  - {quien: dueno, texto: "Cuatro.", estilo: golpe, pausa: 0.7}
+  - {quien: if,    texto: "¿Y si el estante te avisara solito cuándo se está acabando algo?", objeto: alerta, pausa: 0.6}
+  - {quien: dueno, texto: "Eso es para empresas grandes."}
+  - {quien: if,    texto: "Spoiler: no. Si vendés, comprás y contás producto, ya calificás.", estilo: spoiler, pausa: 0.55}
+  - {quien: dueno, texto: "Va pues. ¿Y por dónde empiezo?"}
+  - {quien: if,    texto: "Contanos tu caso. El diagnóstico es sin compromiso.", estilo: cierre, pausa: 0.5}
+
+caption: >-
+  ¿Cuántas cajas te quedan… según el Excel o según la bodega? 😅 Si contás tres veces y nunca cuadra, tu inventario
+  puede avisarte solo. Contanos tu caso: el diagnóstico es sin compromiso. Escribinos por WhatsApp o entrá a iftechworks.com.
+hashtags: [PymesGuatemala, InventarioInteligente, NegociosGT, Ferreterias, EmprendedoresGT]

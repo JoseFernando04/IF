@@ -40,6 +40,7 @@ tts:
     reference: assets/voice/referencia.wav   # 10-20 s de una voz real (con permiso). Si no existe, usa la voz por defecto.
     exaggeration: 0.5       # expresividad: 0.3 sobria … 0.8 muy expresiva
     cfg_weight: 0.5         # menor = ritmo más pausado
+    limpiar_salida: true    # pasa cada frase generada por DeepFilterNet (menos ruido de fondo)
   kokoro:
     voice: em_alex          # em_alex (masculina) | ef_dora (femenina)
     speed: 1.05

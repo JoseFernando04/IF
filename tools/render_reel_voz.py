@@ -33,8 +33,8 @@ def arg(nombre: str) -> str | None:
 
 def carpeta_persona(persona: str) -> Path:
     d = ROOT / "assets" / "voice" / persona
-    if not any(d.glob("permiso.*")):
-        sys.exit(f"✗ {persona}: falta permiso.* en {d} (ver docs/guia-grabar-voces.md)")
+    if not any("permiso" in f.name.lower() for f in d.glob("*")):
+        sys.exit(f"✗ {persona}: falta el permiso en {d} (ver docs/guia-grabar-voces.md)")
     return d
 
 

@@ -20,3 +20,7 @@ examples/piezas/**/html/
 # Voces reales (datos personales: nunca a GitHub)
 assets/voice/*
 !assets/voice/README.md
+
+# Renders con voces reales o clonadas de personas (datos personales)
+prototypes/direcciones/b-conversacion/*.mp4
+prototypes/direcciones/b-voz/reel.mp4

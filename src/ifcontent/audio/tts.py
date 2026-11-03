@@ -35,6 +35,22 @@ def _resample(audio: np.ndarray, sr: int) -> np.ndarray:
     return np.interp(np.linspace(0, len(audio) - 1, n), np.arange(len(audio)), audio).astype(np.float32)
 
 
+def recortar_silencio(audio: np.ndarray, umbral_db: float = -38.0, margen_s: float = 0.06) -> np.ndarray:
+    """Quita el silencio (o la respiración larga) al inicio y al final de una frase generada."""
+    if not len(audio):
+        return audio
+    ventana = int(0.02 * SAMPLE_RATE)
+    n = len(audio) // ventana
+    if n == 0:
+        return audio
+    rms = np.sqrt((audio[: n * ventana].reshape(n, ventana) ** 2).mean(axis=1) + 1e-12)
+    activo = np.where(20 * np.log10(rms / (np.abs(audio).max() + 1e-9)) > umbral_db)[0]
+    if not len(activo):
+        return audio
+    margen = int(margen_s * SAMPLE_RATE)
+    return audio[max(0, activo[0] * ventana - margen): min(len(audio), (activo[-1] + 1) * ventana + margen)]
+
+
 class TTSEngine(Protocol):
     def synth_many(self, texts: list[str]) -> list[np.ndarray]: ...
 
@@ -75,10 +91,14 @@ class ChatterboxTTS:
             worker = Path(__file__).with_name("chatterbox_worker.py")
             subprocess.run([str(self.python), str(worker)], input=json.dumps(job), text=True, check=True,
                            encoding="utf-8")
+            wavs = [Path(tmp) / f"{i:03d}.wav" for i in range(len(texts))]
+            if self.s.get("limpiar_salida", True):  # DeepFilterNet: quita el ruido que copia de la referencia
+                from .enhance import mejorar
+                mejorar([(w, w) for w in wavs], dereverb=False)
             out = []
-            for i in range(len(texts)):
-                audio, sr = sf.read(Path(tmp) / f"{i:03d}.wav", dtype="float32")
-                out.append(_resample(audio, sr))
+            for w in wavs:
+                audio, sr = sf.read(w, dtype="float32")
+                out.append(recortar_silencio(_resample(audio, sr)))
             return out
 
 
