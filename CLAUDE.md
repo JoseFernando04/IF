@@ -85,6 +85,31 @@ Inter Tight para texto, cintas amarillas como etiquetas, match cuts, subtítulos
   `tools/probar_voces.py`, enviar las muestras y esperar que elija ANTES de producir videos.
 - Carruseles B listos: `examples/copy/b/*.yaml` → `graphics/carousel_b.py` (12 layouts) → `examples/piezas/b-carrusel-*`.
 
+### Voces femeninas locales y test con voz (2026-11-02)
+- 6 voces femeninas locales en `tools/probar_voces.py` (Kokoro dora, Piper es_MX-claude / es_AR-daniela, Chatterbox
+  imitando a esas). El usuario pidió test con la **#5 (Chatterbox imitando a daniela, argentina)**.
+- `tools/render_reel_voz.py --voz N`: genera la voz por frase, escribe `tiempos.js` y la animación de
+  `prototypes/direcciones/b-voz/reel.html` se sincroniza a cada frase (sin subtítulos). Resultado: 23,4 s.
+- Azure: el usuario ya creó la cuenta (tiene USD 200 de crédito de prueba) y le preocupa que le cobren. Se le explicó:
+  usar SOLO un recurso Speech **Free F0** (no consume créditos y se bloquea al pasar el límite, no cobra).
+
+### Azure configurado (2026-11-02)
+- Clave Azure (F0, eastus) en `.env` y funcionando. Cuenta actual es **@uvg.edu.gt (directorio UVG)**: se recomendó
+  pasar a una cuenta de la empresa antes de publicar (términos de suscripción estudiantil y control de la cuenta).
+- 8 voces Azure generadas (A1-A8 en `tools/probar_voces.py --nube`), incluidas HD: Dalia DragonHD (A6), Valeria y Harper
+  MAI-Voice (A7, A8). La capa F0 limita ~20 solicitudes/min: `AzureTTS` reintenta ante 429.
+- Reel B con A6 renderizado (19,9 s) en `prototypes/direcciones/b-voz/reel.mp4` (copia en `data/voz/`).
+- Esperando que el usuario elija voz (A1-A8 o la #5 local).
+
+### Voces reales del usuario y amigos (2026-11-02)
+- Las voces de Azure le siguen sonando algo robóticas; quiere usar **voces grabadas por él y sus amigos**.
+- Guía: `docs/guia-grabar-voces.md` (permiso escrito obligatorio por persona, cómo grabar, textos a leer).
+- `assets/voice/<persona>/` (fuera de git: datos personales) con `permiso.*`, `referencia.*` (20-30 s) y `frase1..5.*`.
+- `tools/preparar_voz.py` limpia (graves, ruido, silencios, volumen) → `*.limpio.wav`; exige permiso; avisa si la referencia < 12 s
+  (con referencias cortas Chatterbox corta frases).
+- `tools/render_reel_voz.py --grabada <persona>` (voz real tal cual) o `--clon <persona>` (Chatterbox imita la referencia).
+  Flujo probado de punta a punta con grabaciones simuladas en m4a.
+
 ### Pendiente
 - [ ] Definir la voz (ver opciones arriba) y regenerar los reels de ejemplo sin barra ni subtítulos.
 - [ ] Agregar pistas de Pixabay Music (las descarga el usuario; ver `docs/licencias.md`).

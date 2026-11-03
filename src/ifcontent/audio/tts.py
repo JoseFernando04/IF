@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import json
+import time
 import re
 import subprocess
 import tempfile
@@ -39,13 +40,13 @@ class TTSEngine(Protocol):
 
 
 class KokoroTTS:
-    def __init__(self) -> None:
+    def __init__(self, voice: str | None = None) -> None:
         from kokoro_onnx import Kokoro
 
         s = load_config().settings["tts"]
         model_dir = ROOT / s["kokoro"]["model_dir"]
         self.kokoro = Kokoro(str(model_dir / "kokoro-v1.0.onnx"), str(model_dir / "voices-v1.0.bin"))
-        self.voice, self.speed = s["kokoro"]["voice"], s["kokoro"]["speed"]
+        self.voice, self.speed = voice or s["kokoro"]["voice"], s["kokoro"]["speed"]
 
     def synth_many(self, texts: list[str]) -> list[np.ndarray]:
         out = []
@@ -56,18 +57,21 @@ class KokoroTTS:
 
 
 class ChatterboxTTS:
-    def __init__(self) -> None:
+    def __init__(self, reference: str | None = None, exaggeration: float | None = None, cfg_weight: float | None = None) -> None:
         self.s = load_config().settings["tts"]["chatterbox"]
         self.python = ROOT / self.s["python"]
         if not self.python.exists():
             raise FileNotFoundError(f"No existe {self.python}. Ver README: instalación de la voz.")
+        self.reference = reference or self.s.get("reference")
+        self.exaggeration = self.s["exaggeration"] if exaggeration is None else exaggeration
+        self.cfg_weight = self.s["cfg_weight"] if cfg_weight is None else cfg_weight
 
     def synth_many(self, texts: list[str]) -> list[np.ndarray]:
-        ref = self.s.get("reference")
+        ref = self.reference
         ref_path = str(ROOT / ref) if ref and (ROOT / ref).exists() else None
         with tempfile.TemporaryDirectory() as tmp:
             job = {"texts": [_clean(t) for t in texts], "out_dir": tmp, "language": "es", "reference": ref_path,
-                   "exaggeration": self.s["exaggeration"], "cfg_weight": self.s["cfg_weight"]}
+                   "exaggeration": self.exaggeration, "cfg_weight": self.cfg_weight}
             worker = Path(__file__).with_name("chatterbox_worker.py")
             subprocess.run([str(self.python), str(worker)], input=json.dumps(job), text=True, check=True,
                            encoding="utf-8")
@@ -76,6 +80,29 @@ class ChatterboxTTS:
                 audio, sr = sf.read(Path(tmp) / f"{i:03d}.wav", dtype="float32")
                 out.append(_resample(audio, sr))
             return out
+
+
+class PiperTTS:
+    """Piper (local). Voces en models/piper/<voz>.onnx; corre en .venv-tts."""
+
+    def __init__(self, voice: str | None = None) -> None:
+        s = load_config().settings["tts"]
+        self.voice = voice or s.get("piper", {}).get("voice", "es_MX-claude-high")
+        self.model = ROOT / "models" / "piper" / f"{self.voice}.onnx"
+        self.python = ROOT / s["chatterbox"]["python"]
+        if not self.model.exists():
+            raise FileNotFoundError(f"No existe {self.model}")
+
+    def synth_many(self, texts: list[str]) -> list[np.ndarray]:
+        out = []
+        with tempfile.TemporaryDirectory() as tmp:
+            for i, t in enumerate(texts):
+                wav = Path(tmp) / f"{i:03d}.wav"
+                subprocess.run([str(self.python), "-m", "piper", "-m", str(self.model), "-f", str(wav)],
+                               input=_clean(t), text=True, encoding="utf-8", check=True, capture_output=True)
+                audio, sr = sf.read(wav, dtype="float32")
+                out.append(_resample(audio, sr))
+        return out
 
 
 @lru_cache(maxsize=1)
@@ -87,6 +114,8 @@ def get_tts() -> TTSEngine | None:
         return KokoroTTS()
     if name == "chatterbox":
         return ChatterboxTTS()
+    if name == "piper":
+        return PiperTTS()
     if name == "azure":
         return AzureTTS()
     if name == "google":
@@ -123,12 +152,16 @@ class AzureTTS:
         for t in texts:
             ssml = (f'<speak version="1.0" xml:lang="{lang}"><voice name="{self.voice}">'
                     f'<prosody rate="{self.rate}">{xml_escape(_clean(t))}</prosody></voice></speak>')
-            r = httpx.post(
-                f"https://{self.region}.tts.speech.microsoft.com/cognitiveservices/v1",
-                headers={"Ocp-Apim-Subscription-Key": self.key, "Content-Type": "application/ssml+xml",
-                         "X-Microsoft-OutputFormat": "riff-24khz-16bit-mono-pcm", "User-Agent": "ifcontent"},
-                content=ssml.encode("utf-8"), timeout=60,
-            )
+            for intento in range(6):  # la capa gratis limita ~20 solicitudes/min: esperar y reintentar
+                r = httpx.post(
+                    f"https://{self.region}.tts.speech.microsoft.com/cognitiveservices/v1",
+                    headers={"Ocp-Apim-Subscription-Key": self.key, "Content-Type": "application/ssml+xml",
+                             "X-Microsoft-OutputFormat": "riff-24khz-16bit-mono-pcm", "User-Agent": "ifcontent"},
+                    content=ssml.encode("utf-8"), timeout=60,
+                )
+                if r.status_code != 429:
+                    break
+                time.sleep(float(r.headers.get("Retry-After", 5 * (intento + 1))))
             r.raise_for_status()
             out.append(_wav_bytes_to_array(r.content))
         return out

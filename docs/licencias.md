@@ -22,7 +22,8 @@ Todo el stack es gratuito para uso comercial. Revisar esta tabla antes de agrega
 | Google Cloud Text-to-Speech | Voz en la nube (en evaluación) | Términos de Google Cloud: uso comercial permitido | 0 hasta 1 M car./mes (Chirp 3 HD) | Requiere cuenta y clave |
 | ElevenLabs (capa gratis) | — | Sin licencia comercial | **Descartado** | El plan Starter (~USD 5-6/mes) sí la incluye |
 | Chatterbox Multilingual | Voz (en evaluación) | MIT | 0 | En `.venv-tts` |
-| Piper + voces es_MX claude / ald | Voz (en evaluación) | GPL-3.0 (motor, uso interno) · Apache 2.0 / Unlicense (voces) | 0 | |
+| Piper + voces es_MX claude / ald | Voz (en evaluación) | GPL-3.0 (motor, uso interno) · Apache 2.0 / Unlicense (voces) | 0 | claude = femenina, ald = masculina |
+| Piper voz es_AR daniela (femenina) | Voz (en evaluación) | Dataset OpenSLR 61, CC BY-SA 4.0 | 0 | Uso comercial permitido con crédito: "Voz basada en el dataset OpenSLR 61 (Google), CC BY-SA 4.0" |
 | cloudflared (Quick Tunnel) | URL pública temporal para Instagram (Fase 3) | Apache 2.0 | 0 | Sin cuenta |
 | Remotion | — | Licencia de empresa paga (más de 3 empleados) | **Descartado** | Reemplazado por el motor `html_frames` |
 | Coqui XTTS-v2 | — | CPML (no comercial) | **Descartado** | |

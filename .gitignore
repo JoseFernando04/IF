@@ -16,3 +16,7 @@ Thumbs.db
 # Intermedios de render
 **/work/
 examples/piezas/**/html/
+
+# Voces reales (datos personales: nunca a GitHub)
+assets/voice/*
+!assets/voice/README.md
