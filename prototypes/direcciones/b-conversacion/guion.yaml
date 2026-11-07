@@ -5,6 +5,9 @@ personajes:
   if:    {voz: jose,  etiqueta: "IF Techworks"}
   dueno: {voz: irvin, etiqueta: "El dueño"}
 
+# Clon más expresivo: exaggeration alta = más entonación; cfg_weight bajo = ritmo menos mecánico.
+clon: {exaggeration: 0.8, cfg_weight: 0.3}
+
 # estilo: normal | golpe (palabra gigante con sacudida) | spoiler (pantalla amarilla) | cierre (pantalla final)
 # objeto: aparece en pantalla al empezar la línea (excel | libreta | alerta)
 # pausa: silencio antes de la línea (s)

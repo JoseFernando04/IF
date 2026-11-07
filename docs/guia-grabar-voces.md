@@ -97,6 +97,37 @@ Eso limpia el audio (quita ruido grave, recorta silencios y nivela el volumen). 
 
 ## 5 · Reel de conversación «¿Cuántas cajas te quedan?» (2 voces)
 
+### Lo mejor: grabarla juntos, con un solo celular y en un solo audio
+
+Es lo que hace que suene a una plática de verdad: se responden, se interrumpen un poco y se ríen.
+
+1. Siéntense en un carro estacionado, con el celular apoyado en medio de los dos, a 20-30 cm de cada uno.
+2. Lean el guion completo **dos o tres veces para ensayar**. Después digan las líneas como si se les ocurrieran,
+   no como si leyeran. Si sale una risa, déjenla.
+3. Graben **toda la conversación de corrido**, en orden, con una pausa muy corta entre línea y línea.
+4. Si alguien se equivoca, vuelvan a empezar y usen la mejor toma completa.
+5. Guarden el archivo en la carpeta de cualquiera de los dos (por ejemplo `assets/voice/jose/charla.m4a`).
+
+La herramienta reconoce que es la conversación y corta cada línea para su persona.
+
+El guion completo, en orden:
+
+| # | Quién | Línea |
+|---|---|---|
+| 1 | José | ¿Cuántas cajas de tornillo te quedan? |
+| 2 | Irvin | Según el Excel… ciento cincuenta. |
+| 3 | José | ¿Y según la bodega? |
+| 4 | Irvin | Mejor no te digo. |
+| 5 | José | Contaste tres veces y no cuadra, ¿verdad? |
+| 6 | Irvin | Cuatro. |
+| 7 | José | ¿Y si el estante te avisara solito cuándo se está acabando algo? |
+| 8 | Irvin | Eso es para empresas grandes. |
+| 9 | José | Spoiler: no. Si vendés, comprás y contás producto, ya calificás. |
+| 10 | Irvin | Va pues. ¿Y por dónde empiezo? |
+| 11 | José | Contanos tu caso. El diagnóstico es sin compromiso. |
+
+### Alternativa: cada uno por separado
+
 Cada persona graba **solo sus líneas, en un solo audio** (en el mismo lugar y sesión que la referencia), dejando ~1 segundo entre línea y línea. **Esta es la opción más nítida y humana: con el diálogo grabado no hace falta clonar.**
 Lean como si estuvieran platicando de verdad (pueden imaginar al otro respondiendo).
 

@@ -130,6 +130,48 @@ Inter Tight para texto, cintas amarillas como etiquetas, match cuts, subtítulos
   3 s de silencio inicial; nuevo texto de referencia expresivo (45-60 s). Recomendado: grabar el diálogo real (sin clon).
 - Comparación enviada: `data/voz/audio-reel-ANTES.mp3` vs `reel-conversacion-clon-DESPUES.mp4`.
 
+### Regrabación (2026-11-06)
+- **Solo José regrabó** (`Prueba_3` guion del reel B, `Prueba_4` referencia; texto viejo, no el nuevo de la guía). Mejora medida:
+  ruido -59 → -75 dBFS, cola ~290 → 140-240 ms. **Irvin sigue con las notas de WhatsApp del 02-nov** (cola 420 ms, sin agudos).
+- `preparar_voz.py` mide cada grabación y aplica WPE/DeepFilterNet solo si hace falta (`necesita_limpieza`).
+- Pruebas en `data/voz/prueba-2026-11-06/`: reel B con voz real de José, conversación con clones (37 s) y pista de solo voces.
+- Falta: Irvin regraba con la guía; ambos graban sus líneas del diálogo (guía §5) para la versión 100 % real.
+
+### Música y conversación más natural (2026-11-06)
+- Reel de José "se escucha mal": la música casi no se oía (-30 dB en el cierre). Ahora `music.volume_db: -12`, ducking suave
+  (`duck_threshold`, `duck_ratio`), `pulir_voz()` (EQ + compresión) y `--musica ID` en `render_reel_voz.py`.
+  Opciones en `data/voz/prueba-2026-11-06/reel-jose-musica-{digital-lemonade,inspired}.mp4`.
+- Para medir picos NO usar `-ac 1` en ffmpeg: suma ~3 dB y da falsos positivos de saturación.
+- Conversación clonada "robotizada": se probó más expresividad (`clon` en guion.yaml: exaggeration 0.8, cfg 0.3) y respuestas más
+  rápidas (pausa 0.18 s). Limitación real: el clon no actúa ni reacciona; la solución es grabarla de verdad.
+- `preparar_voz.py` acepta la **conversación grabada junta en un solo audio** y corta cada línea a la carpeta de su persona.
+  `render_conversacion.py --fuente grabada` probado de punta a punta (con audio de prueba, ya borrado). Guía §5.
+
+### Pruebas ElevenLabs y voces grabadas (2026-11-06)
+- Kate (ElevenLabs, guion completo): `render_reel_voz.py --audio RUTA --nombre kate` → `data/voz/prueba-elevenlabs/reel-kate.mp4`.
+- `jose_elevenlabs.mp3` e `irvin_elevenlabs.mp3` NO dicen el guion (textos de muestra); solo sirvieron de referencia al clon local (`render_conversacion.py --ref-archivo _elevenlabs.mp3`).
+- Voces grabadas: `--grabada PERSONA` y `--dos-voces irvin,jose,jose,irvin,jose` (frases reales intercaladas) en `data/voz/prueba-voces-grabadas/`.
+- Diálogo real aún no grabado. Si ElevenLabs genera las líneas de cada uno, `preparar_voz.py` las reconoce y corta igual.
+
+### Plan pago de ElevenLabs y reels 8-bit (2026-11-07)
+- El usuario **pagó un plan de ElevenLabs**: excepción a "solo gratis". Falta confirmar en su cuenta que incluye licencia comercial.
+- `assets/voice/jose/Jose_Eleven.mp3` (voz de José, guion del reel B). Reel: `render_reel_voz.py --audio RUTA --tal-cual --musica digital-lemonade --musica-db -17`
+  → `data/voz/reel-jose-elevenlabs-tal-cual.mp4` (18,2 s). Audio intacto, solo música; sin pulido, pausas ni SFX. Pendiente de aprobación.
+- Whisper oyó "para **el** grandes" en ese audio: el usuario debe confirmarlo escuchando (~2 s).
+- Pidió más reels en **Motion Graphics 8-bit**, **a una sola voz, no conversacionales**. Por ahora solo guiones: `docs/guiones-8bit.md` (3 reels). Espera sus audios.
+- Al producirlos: no agregar esos guiones a `prototypes/**/guion.yaml` sin antes separar los `lineaNN.limpio.wav` por reel; hoy `preparar_voz.py` los escribiría en la misma carpeta y se pisarían.
+
+### Reels 8-bit generados (2026-11-07)
+- Al equipo le gustaron los guiones 1 y 3 y descartó el 2. Audios en `assets/voice/elevenlabs/reel_1.mp3` y `reel_3.mp3`.
+- `tools/render_8bit.py examples/copy/8bit/reel-N.yaml` → `data/reels-8bit/reel-N/reel.mp4` + `caption.txt`. Motor en `templates/video/8bit/reel.html`
+  (canvas 180×320 x6, sprites propios, Press Start 2P leída por cuadrícula para que no se deforme; tildes dibujadas aparte porque sus mayúsculas acentuadas son minúsculas).
+- Música y SFX propios: `tools/make_chiptune.py` (`chiptune-bodega`, `assets/sfx/8bit/`), sin crédito. Música -13 dB por defecto.
+- Reel 1 (23,6 s) y reel 3 (25,2 s) enviados, **pendientes de aprobación**. Revisar: "Cámbialo" del reel 3, que se oía con posible acento de tuteo.
+- Guiones nuevos 4-7 en `docs/guiones-8bit.md`, pendientes de que elijan y carguen audios. Cada guion nuevo necesita sus escenas en el motor.
+
+### Videos publicados (2026-11-07)
+- `VideosInstagram/`: videos que el equipo seleccionó y subió a Instagram (`Reel1.mp4`, `Reel1-whatsapp.mp4`, `Reel2.mp4`). Se versionan a pedido del usuario.
+
 ### Pendiente
 - [ ] Definir la voz (ver opciones arriba) y regenerar los reels de ejemplo sin barra ni subtítulos.
 - [ ] Agregar pistas de Pixabay Music (las descarga el usuario; ver `docs/licencias.md`).

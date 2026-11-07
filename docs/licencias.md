@@ -18,6 +18,9 @@ Todo el stack es gratuito para uso comercial. Revisar esta tabla antes de agrega
 | Bricolage Grotesque, Instrument Serif, Inter Tight, Caveat | Tipografías de la nueva dirección | SIL OFL 1.1 | 0 | Licencias en `assets/fonts/` |
 | Fotos de Unsplash | Fotografía real | Unsplash License | 0 | Registro en `assets/photos/CREDITOS.yaml` |
 | SFX (`assets/sfx/`) | Efectos de sonido | Propios (sintetizados con `tools/make_sfx.py`) | 0 | Sin terceros |
+| Chiptune y SFX 8-bit (`assets/music/chiptune-bodega.wav`, `assets/sfx/8bit/`) | Reels 8-bit | Propios (sintetizados con `tools/make_chiptune.py`) | 0 | No requieren crédito |
+| Press Start 2P | Fuente de los reels 8-bit | SIL OFL 1.1 | 0 | Licencia en `assets/fonts/` |
+| ElevenLabs (plan pago del usuario) | Voz de los reels | Según su plan | Pago | Confirmar licencia comercial en la cuenta |
 | Azure AI Speech (F0) | Voz en la nube (en evaluación) | Términos de Azure: el audio generado se puede usar comercialmente | 0 hasta 500 000 car./mes | Requiere cuenta y clave (`docs/guia-voces.md`) |
 | Google Cloud Text-to-Speech | Voz en la nube (en evaluación) | Términos de Google Cloud: uso comercial permitido | 0 hasta 1 M car./mes (Chirp 3 HD) | Requiere cuenta y clave |
 | ElevenLabs (capa gratis) | — | Sin licencia comercial | **Descartado** | El plan Starter (~USD 5-6/mes) sí la incluye |

@@ -64,3 +64,15 @@ tracks:
     attribution: '"Pamgaea" Kevin MacLeod (incompetech.com) · CC BY 4.0'
     downloaded: 2026-10-29
     moods: [energia, tips]
+
+  - id: chiptune-bodega
+    file: chiptune-bodega.wav
+    title: Chiptune Bodega (original de IF Techworks)
+    artist: Generada por código (tools/make_chiptune.py)
+    source: tools/make_chiptune.py
+    license: Propia
+    license_url: docs/licencias.md
+    commercial_use: true
+    attribution: ''
+    downloaded: 2026-11-07
+    moods: [8bit]

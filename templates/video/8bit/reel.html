@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "PS2P"; src: url("__FONTS__/PressStart2P.ttf"); }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; image-rendering: pixelated; }
+/* Líneas de pantalla CRT, una por cada pixel del juego. */
+#crt { position: absolute; inset: 0; background: repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 4px, rgba(0,0,0,.13) 4px 6px); }
+</style></head>
+<body>
+<canvas id="c" width="180" height="320"></canvas><div id="crt"></div>
+<script>
+// Motor 8-bit de IF Techworks: todo se dibuja a 180×320 y se escala x6. Sin antialiasing ni azar: cada cuadro es reproducible.
+const REEL = __DATOS__;
+window.__ready = false;
+const W = 180, H = 320;
+const cv = document.getElementById("c"), g = cv.getContext("2d");
+g.imageSmoothingEnabled = false;
+const P = { bg: "#0a1410", d1: "#162920", d2: "#1d362b", d3: "#2f5d46", g: "#57b96f", y: "#f0c419", o: "#d9822b",
+  w: "#fefcf3", r: "#d6432f", k: "#000000", b: "#4a90d9", s: "#8b949e", m: "#5c6670", h: "#5b3a1e", p: "#e8b98a", n: "#26456e", c: "#8c5a2b" };
+
+const rect = (x, y, w, h, c) => { g.fillStyle = c; g.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h)); };
+const onda = (t, hz) => Math.floor(t * hz * 2) % 2 === 0;   // parpadeo duro
+const hash = (n) => { const x = Math.sin(n * 127.1) * 43758.5453; return x - Math.floor(x); };
+
+// Texto en pixeles: se rasteriza una vez y se umbraliza para que no quede ningún borde suave.
+const cache = {};
+const TILDES = { "Á": "A", "É": "E", "Í": "I", "Ó": "O", "Ú": "U" };
+function mascara(s) {
+  if (cache[s]) return cache[s];
+  // La fuente tiene una cuadrícula de 8 pixeles: se dibuja a x10 y se lee el centro de cada celda.
+  const K = 10, n = Math.max(1, [...s].length);
+  const big = document.createElement("canvas"); big.width = n * 8 * K; big.height = 10 * K;
+  const b = big.getContext("2d", { willReadFrequently: true });
+  b.font = `${8 * K}px "PS2P"`; b.textBaseline = "alphabetic"; b.fillStyle = "#fff"; b.fillText(s.replace(/[ÁÉÍÓÚ]/g, (ch) => TILDES[ch]), 0, 9 * K);
+  const src = b.getImageData(0, 0, big.width, big.height).data;
+  const c = document.createElement("canvas"); c.width = n * 8; c.height = 10;
+  const x = c.getContext("2d"), d = x.createImageData(c.width, c.height);
+  for (let j = 0; j < c.height; j++) for (let i = 0; i < c.width; i++) {
+    const a = src[(((j * K + K / 2) | 0) * big.width + ((i * K + K / 2) | 0)) * 4 + 3], o = (j * c.width + i) * 4;
+    d.data[o] = d.data[o + 1] = d.data[o + 2] = 255; d.data[o + 3] = a > 127 ? 255 : 0;
+  }
+  // Las mayúsculas con tilde de esta fuente son minúsculas: se usa la mayúscula y se dibuja la tilde arriba.
+  [...s].forEach((ch, i) => {
+    if (!TILDES[ch]) return;
+    [[4, 0], [5, 0]].forEach(([px, py]) => { const o = (py * c.width + i * 8 + px) * 4; d.data[o] = d.data[o + 1] = d.data[o + 2] = d.data[o + 3] = 255; });
+  });
+  x.putImageData(d, 0, 0);
+  return cache[s] = c;
+}
+const tinte = document.createElement("canvas");
+function txt(s, x, y, c = P.w, e = 1, al = "l") {
+  const m = mascara(s), w = m.width * e, h = m.height * e;
+  tinte.width = m.width; tinte.height = m.height;
+  const t = tinte.getContext("2d");
+  t.globalCompositeOperation = "source-over"; t.drawImage(m, 0, 0);
+  t.globalCompositeOperation = "source-in"; t.fillStyle = c; t.fillRect(0, 0, m.width, m.height);
+  const px = al === "c" ? x - s.length * 8 * e / 2 : al === "r" ? x - s.length * 8 * e : x;
+  g.drawImage(tinte, Math.round(px), Math.round(y), w, h);
+}
+const sombra = (s, x, y, c, e = 1, al = "c") => { txt(s, x + e, y + e, P.k, e, al); txt(s, x, y, c, e, al); };
+function ajustar(s, ancho, e = 1) {
+  const max = Math.floor(ancho / (8 * e)), out = []; let l = "";
+  s.split(" ").forEach((p) => { if ((l + " " + p).trim().length > max) { out.push(l); l = p; } else l = (l + " " + p).trim(); });
+  if (l) out.push(l); return out;
+}
+function parrafo(s, x, y, c, e = 1, ancho = 160, al = "c", gap = 11) {
+  ajustar(s, ancho, e).forEach((l, i) => sombra(l, x, y + i * gap * e, c, e, al));
+}
+
+// Sprites (dibujados a mano para este proyecto).
+const S = {
+  a: ["..hhhh..",".hhhhhh.",".pppppp.",".pkppkp.",".pppppp.","..yyyy..",".yyyyyy.","p.yyyy.p","..yyyy..","..nnnn..","..n..n..",".kk..kk."],
+  b: ["..hhhh..",".hhhhhh.",".pppppp.",".pkppkp.",".pppppp.","..yyyy..",".yyyyyy.","p.yyyy.p","..yyyy..","..nnnn..",".nn..n..","kk....kk"],
+  corazon: [".rr.rr.","rrrrrrr","rrrrrrr",".rrrrr.","..rrr..","...r..."],
+  vacio: [".mm.mm.","m..m..m","m.....m",".m...m.","..m.m..","...m..."],
+  moneda: ["..yyy..",".ywyyy.","ywyyyoy","ywyyyoy","yyyyyoy",".yyyoo.","..ooo.."],
+  estrella: ["...y...","...y...","yyyyyyy",".yyyyy.","..yyy..",".yy.yy.",".y...y."],
+};
+function spr(n, x, y, e = 1, map = {}) {
+  S[n].forEach((f, j) => [...f].forEach((ch, i) => {
+    if (ch === ".") return; rect(x + i * e, y + j * e, e, e, P[map[ch] || ch]);
+  }));
+}
+const cliente = { y: "b", h: "k" };
+
+// Escenarios
+function ladrillos(c1, c2, y1, y2) {
+  rect(0, y1, W, y2 - y1, c1);
+  for (let y = y1, f = 0; y < y2; y += 8, f++) for (let x = (f % 2) * 8 - 8; x < W; x += 16) { rect(x, y, 15, 1, c2); rect(x, y, 1, 8, c2); }
+}
+function bodega() {
+  ladrillos(P.d1, P.bg, 0, 232);
+  rect(0, 232, W, 88, P.d3); rect(0, 232, W, 2, P.g);
+  for (let x = 0; x < W; x += 12) rect(x, 240 + (x % 24 ? 0 : 8), 6, 1, P.d2);
+}
+function caja(x, y, c = P.c) { rect(x, y, 14, 12, c); rect(x, y, 14, 1, P.o); rect(x + 6, y, 2, 12, P.y); }
+function estante(x, y, llenas, sensores = false, t = 0) {
+  const pisos = 3, a = 68;
+  rect(x, y, 3, 26 * pisos + 4, P.s); rect(x + a, y, 3, 26 * pisos + 4, P.s);
+  for (let p = 0; p < pisos; p++) {
+    const yy = y + 22 + p * 26;
+    rect(x, yy, a + 3, 3, P.m);
+    for (let i = 0; i < 4; i++) if (llenas > p * 4 + i) caja(x + 3 + i * 16 + 1, yy - 12);
+    if (sensores) { rect(x + 5, yy + 3, 3, 2, onda(t + p * .2, 2) ? P.g : P.d3); rect(x + a - 6, yy + 3, 3, 2, onda(t + p * .3 + .2, 2) ? P.g : P.d3); }
+  }
+}
+function hud(nivel = "NIVEL 1", vidas = 3, total = 3) {
+  rect(0, 24, W, 16, P.k); rect(0, 40, W, 1, P.y);
+  txt(nivel, 6, 27, P.y);
+  for (let i = 0; i < total; i++) spr(i < vidas ? "corazon" : "vacio", W - 12 - i * 9, 29, 1);
+}
+function caja_txt(x, y, w, h, fondo = P.k, borde = P.w) { rect(x - 2, y - 2, w + 4, h + 4, borde); rect(x, y, w, h, fondo); }
+function burbuja(s, x, y) {
+  const lin = ajustar(s, 100), w = Math.max(...lin.map((l) => l.length)) * 8 + 8, h = lin.length * 10 + 6;
+  caja_txt(x - w / 2, y, w, h, P.w, P.k);
+  lin.forEach((l, i) => txt(l, x, y + 3 + i * 10, P.k, 1, "c"));
+  rect(x - 2, y + h + 2, 4, 3, P.w); rect(x - 1, y + h + 5, 2, 2, P.w);
+}
+function marcador(etq, valor, x, y, c = P.y) {
+  caja_txt(x, y, 112, 26);
+  txt(etq, x + 4, y + 3, P.s);
+  txt(String(valor).padStart(3, " "), x + 108, y + 12, c, 1, "r");
+}
+const sacudir = (u, u0, f = 3, dur = .28) => {
+  if (u < u0 || u > u0 + dur) return [0, 0];
+  const n = Math.floor((u - u0) * 15);
+  return [Math.round((hash(n + u0) - .5) * 2 * f), Math.round((hash(n + 9 + u0) - .5) * 2 * f)];
+};
+function enfrentar(u, u0, d) { return Math.min(1, Math.max(0, (u - u0) / d)); }
+
+// Cierre con la marca
+function logo(x, y, e) {
+  // "IF" de bloques, como el logo del sitio.
+  const bloque = (bx, by, bw, bh, c) => rect(x + bx * e, y + by * e, bw * e, bh * e, c);
+  [[1, P.k], [0, P.w]].forEach(([o, c]) => {
+    bloque(o, o, 2, 7, c);
+    bloque(3 + o, o, 2, 7, c); bloque(3 + o, o, 5, 2, c); bloque(3 + o, 3 + o, 4, 1, c);
+  });
+  txt("TECHWORKS", x, y + 8 * e + 3, P.y, 1);
+}
+function cta(u, l) {
+  rect(0, 0, W, H, P.d2);
+  for (let y = 0; y < H; y += 4) rect(0, y, W, 1, P.d1);
+  logo(14, 56, 4);
+  const a = l.frase2 || "CONTANOS TU CASO";
+  ajustar(a, 156, 2).forEach((s, i) => sombra(s, 12, 112 + i * 20, P.y, 2, "l"));
+  const yb = 170;
+  if (u > .55) { caja_txt(12, yb, 156, 28, P.y, P.k); ajustar("DIAGNÓSTICO SIN COMPROMISO", 150).forEach((s, i) => txt(s, 90, yb + 5 + i * 10, P.k, 1, "c")); }
+  if (u > .95) {
+    txt("WHATSAPP", 14, 212, P.s);
+    txt("+502 3808 9808", 14, 224, P.w);
+    txt("IFTECHWORKS.COM", 14, 236, P.g);
+  }
+}
+
+// Escenas: cada una recibe u (segundos desde que empezó su línea), d (duración de la línea) y l (datos).
+const ESC = {
+  mision(u, d, l) {
+    bodega(); hud();
+    estante(8, 136, 12);
+    const xc = Math.max(124, 190 - u * 130);
+    const paso = onda(u, 4) && xc > 124 ? "b" : "a";
+    spr(paso, xc, 196, 3, cliente);
+    spr("a", 84, 196, 3);
+    if (onda(u, 2.5) || u > 1) { caja_txt(22, 54, 136, 18, P.k, P.y); txt("MISIÓN NUEVA", 90, 59, P.y, 1, "c"); }
+    if (u > .8) burbuja(l.pide, 108, 90);
+  },
+  excel(u, d, l) {
+    rect(0, 0, W, H, P.bg); hud();
+    caja_txt(12, 66, 156, 114, P.w, P.k);
+    rect(12, 66, 156, 12, "#1e6b41"); txt("INVENTARIO.XLS", 16, 68, P.w);
+    for (let i = 0; i < 6; i++) { rect(12, 90 + i * 15, 156, 1, P.s); }
+    rect(88, 78, 1, 102, P.s);
+    txt("ITEM", 15, 81, P.k);
+    txt("STOCK", 92, 81, P.k);
+    const n = Math.floor(enfrentar(u, .15, .9) * l.valor);
+    txt("TORNILLO", 15, 96, P.k); txt(String(n), 92, 95, "#1e6b41", 2);
+    rect(12, 92, 156, 1, P.s);
+    txt("TUERCA", 15, 126, P.m); txt("?", 92, 126, P.m);
+    txt("BROCA", 15, 141, P.m); txt("?", 92, 141, P.m);
+    txt("CINTA", 15, 156, P.m); txt("?", 92, 156, P.m);
+    if (u > d * l.frac) {
+      const p = enfrentar(u, d * l.frac, .15);
+      const e = p < 1 ? 3 : 2;
+      caja_txt(14, 196, 152, 26 , P.y, P.k);
+      sombra(l.sello, 90, 200, P.k, e === 3 ? 2 : 2, "c");
+      for (let i = 0; i < 6; i++) spr("moneda", 12 + i * 28, 232 + ((Math.floor(u * 8) + i) % 2) * 4, 2);
+    }
+  },
+  estante(u, d, l) {
+    const [sx, sy] = sacudir(u, d * l.frac, 3, .4);
+    g.save(); g.translate(sx, sy);
+    bodega(); hud();
+    const hay = u > d * l.frac;
+    estante(92, 136, hay ? 2 : 2);
+    const xh = Math.min(56, 6 + u * 44);
+    spr(xh < 56 && onda(u, 4) ? "b" : "a", xh, 196, 3);
+    const v = hay ? Math.max(l.hasta, Math.round(l.desde - enfrentar(u, d * l.frac, .5) * (l.desde - l.hasta))) : l.desde;
+    marcador("STOCK REAL", v, 34, 58, hay ? P.r : P.y);
+    if (hay && u > d * l.frac + .55) sombra("!", 68, 172, P.r, 2, "c");
+    g.restore();
+  },
+  gameover(u) {
+    rect(0, 0, W, H, P.k);
+    const txt1 = "GAME", txt2 = "OVER";
+    const n = Math.floor(u * 16);
+    sombra(txt1.slice(0, n), 90, 104, P.r, 4, "c");
+    sombra(txt2.slice(0, Math.max(0, n - 4)), 90, 150, P.r, 4, "c");
+    if (u > .45) for (let i = 0; i < 3; i++) spr("vacio", 66 + i * 18, 208, 2);
+  },
+  continuar(u) {
+    rect(0, 0, W, H, P.k);
+    sombra("¿QUERÉS", 90, 62, P.y, 2, "c");
+    sombra("CONTINUAR?", 90, 84, P.y, 2, "c");
+    const n = Math.max(0, 9 - Math.floor(u * 3));
+    txt(String(n), 90, 114, P.w, 6, "c");
+    txt("SI", 76, 190, P.w); txt("NO", 76, 204, P.s);
+    if (onda(u, 3)) txt(">", 62, 190, P.y);
+  },
+  sensores(u, d, l) {
+    bodega(); hud();
+    estante(8, 136, 10, true, u);
+    spr("a", 88, 196, 3);
+    const f = u / d;
+    // Ondas de los sensores hacia el celular
+    const ph = { x: 124, y: 112 };
+    rect(ph.x, ph.y, 34, 60, P.k); rect(ph.x + 2, ph.y + 3, 30, 52, f > .68 ? P.w : P.d3); rect(ph.x + 15, ph.y + 56, 4, 2, P.s);
+    for (let i = 0; i < 3; i++) { const k = (Math.floor(u * 6) + i * 3) % 9; rect(84 + k * 4, 170 - k * 5, 3, 3, P.g); }
+    if (f < .36) { caja_txt(18, 58, 144, 16, P.k, P.g); txt("SENSORES ON", 90, 62, P.g, 1, "c"); }
+    else if (f < .68) { caja_txt(18, 52, 144, 28, P.k, P.g); txt("SE ACTUALIZA", 90, 56, P.g, 1, "c"); txt("SOLO", 90, 66, P.y, 1, "c"); }
+    else {
+      caja_txt(14, 52, 152, 30, P.k, P.y); txt("TE AVISA ANTES", 90, 56, P.y, 1, "c"); txt("DE QUE SE ACABE", 90, 68, P.w, 1, "c");
+      if (onda(u, 3)) rect(ph.x + 4, ph.y + 14, 26, 20, P.r);
+      txt("!", ph.x + 13, ph.y + 20, P.w);
+    }
+  },
+  nivel(u, d, l) {
+    const fin = d * l.frac;
+    if (u >= fin) return cta(u - fin, l);
+    rect(0, 0, W, H, P.bg); hud("NIVEL 1 OK");
+    const abre = enfrentar(u, .15, .35);
+    const x = 72, y = 104 - Math.round(abre * 10);
+    rect(x + 6, y, 3, 22, P.s); rect(x + 27, y + (abre > .5 ? 6 : 0), 3, 22 - (abre > .5 ? 6 : 0), P.s); rect(x + 6, y, 24, 4, P.s);
+    rect(72, 124, 36, 30, P.y); rect(86, 132, 8, 12, P.k);
+    sombra(l.titulo, 90, 174, P.y, 2, "c");
+    if (u > .5) for (let i = 0; i < 5; i++) spr("estrella", 22 + i * 30, 216 - ((Math.floor(u * 8) + i) % 2) * 6, 2);
+    txt("DESBLOQUEADO", 90, 200, P.g, 1, "c");
+  },
+  menu(u, d, l) {
+    rect(0, 0, W, H, P.bg);
+    for (let i = 0; i < 28; i++) rect(hash(i) * W, (hash(i + 40) * H + u * 16 * (1 + i % 3)) % H, 1, 1, i % 4 ? P.d3 : P.s);
+    sombra("TU NEGOCIO", 90, 66, P.y, 2, "c");
+    txt("ELEGÍ EL MODO", 90, 92, P.s, 1, "c");
+    caja_txt(26, 116, 128, 92);
+    const op = l.opciones, cur = Math.min(op.length - 1, Math.floor(u / (d * .22)));
+    op.forEach((s, i) => { const on = i === cur; txt(s, 56, 128 + i * 26, on ? P.y : P.s, 1); if (on && onda(u, 3)) txt(">", 40, 128 + i * 26, P.y); });
+    if (cur === op.length - 1 && onda(u, 2)) sombra("¿ESTE ES EL TUYO?", 90, 226, P.r, 1, "c");
+  },
+  senal(u, d, l) {
+    const golpe = d * .55;
+    const [sx, sy] = sacudir(u, golpe, 4);
+    g.save(); g.translate(sx, sy);
+    rect(0, 0, W, H, P.bg); ladrillos(P.bg, P.d1, 42, 186);
+    rect(0, 186, W, 134, P.d3); rect(0, 186, W, 2, P.g);
+    hud("SEÑAL " + l.n, 3 - l.n + (u < golpe ? 1 : 0), 3);
+    const by = 88 + Math.round(Math.sin(Math.floor(u * 6)) * 2);
+    enemigo(l.enemigo, 90, by, u);
+    spr("a", 20, 188, 3);
+    caja_txt(10, 226, 160, 34);
+    ajustar(l.texto_pantalla, 150).forEach((s, i) => txt(s, 90, 232 + i * 11, P.w, 1, "c"));
+    if (u > golpe && u < golpe + .25) rect(0, 42, W, 144, "rgba(214,67,47,.45)");
+    g.restore();
+  },
+  vida(u, d, l) {
+    const f = u / d;
+    rect(0, 0, W, H, P.k); hud("VIDA BAJA", 1, 3);
+    spr("a", 74, 118, 4);
+    if (onda(u, 2)) rect(0, 42, W, 2, P.r);
+    caja_txt(10, 196, 160, 42, P.k, f > l.frac ? P.y : P.r);
+    const s = f > l.frac ? l.frase2 : l.frase1, c = f > l.frac ? P.y : P.w;
+    ajustar(s, 150).forEach((t, i) => txt(t, 90, 203 + i * 12, c, 1, "c"));
+  },
+  cambio(u, d, l) {
+    const fin = d * l.frac;
+    if (u >= fin) return cta(u - fin, l);
+    rect(0, 0, W, H, P.bg);
+    sombra("CAMBIALO", 90, 74, P.y, 2, "c");
+    caja_txt(26, 116, 128, 66);
+    const sel = u > fin * .35;
+    txt("DIFÍCIL", 56, 128, sel ? P.s : P.y); txt("MODO IF", 56, 154, sel ? P.g : P.s);
+    if (onda(u, 4)) txt(">", 40, sel ? 154 : 128, P.y);
+    if (sel) for (let i = 0; i < 5; i++) spr("estrella", 22 + i * 30, 208 - ((Math.floor(u * 8) + i) % 2) * 6, 2);
+  },
+};
+
+function enemigo(tipo, x, y, u) {
+  const ojos = (ex, ey, sep) => {
+    rect(ex - sep, ey, 8, 8, P.w); rect(ex + sep - 8, ey, 8, 8, P.w);
+    rect(ex - sep + 3 + (onda(u, 1) ? 2 : 0), ey + 3, 4, 4, P.k); rect(ex + sep - 8 + 3 + (onda(u, 1) ? 2 : 0), ey + 3, 4, 4, P.k);
+    rect(ex - sep, ey - 4, 10, 3, P.k); rect(ex + sep - 10, ey - 4, 10, 3, P.k);
+  };
+  if (tipo === "libreta") {
+    rect(x - 34, y, 68, 84, P.w); rect(x - 34, y, 6, 84, P.r);
+    for (let i = 0; i < 6; i++) rect(x - 26, y + 12 + i * 12, 54, 1, P.b);
+    txt("140", x - 22, y + 44, P.r); rect(x - 24, y + 47, 28, 1, P.r); txt("152", x - 2, y + 60, P.r); rect(x - 4, y + 63, 28, 1, P.r);
+    ojos(x + 4, y + 20, 22);
+    rect(x - 8, y + 34, 24, 3, P.k);
+  } else if (tipo === "excel") {
+    const n = 1 + Math.min(3, Math.floor(u * 2.2));
+    for (let i = n - 1; i >= 0; i--) {
+      const dx = (i - 1) * 16, dy = (i - 1) * 6;
+      rect(x - 30 + dx, y + 6 + dy, 60, 72, P.w); rect(x - 30 + dx, y + 6 + dy, 60, 10, "#1e6b41");
+      for (let j = 1; j < 5; j++) rect(x - 30 + dx, y + 18 + dy + j * 11, 60, 1, P.s);
+      txt("XLS", x - 12 + dx, y + 7 + dy, P.w);
+    }
+    ojos(x, y + 34, 18);
+    rect(x - 8, y + 50, 16, 3, P.k);
+  } else {
+    estante(x - 35, y + 2, 0);
+    ojos(x, y + 8, 18);
+    txt("0", x, y + 46, P.r, 2, "c");
+  }
+}
+
+function dibujar(t) {
+  const q = Math.floor(t * 30) / 30;
+  const L = REEL.lineas;
+  let i = 0;
+  for (let k = 0; k < L.length; k++) if (q >= L[k].inicio) i = k;
+  const l = L[i], u = Math.max(0, q - l.inicio);
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  ESC[l.escena](Math.floor(u * 15) / 15, l.duracion, l);
+  // Transición por bloques al empezar la escena.
+  const dur = .23;
+  if (i > 0 && u < dur && !l.sin_corte) {
+    const av = u / dur;
+    for (let y = 0, r = 0; y < H; y += 16, r++) {
+      const w = W * (1 - av);
+      rect(r % 2 ? 0 : W - w, y, w, 16, P.k);
+    }
+  }
+}
+
+document.fonts.load('8px "PS2P"').then(() => document.fonts.ready).then(() => {
+  dibujar(0);
+  window.__seek = dibujar;
+  window.__ready = true;
+});
+window.__seek = () => {};
+</script>
+</body></html>

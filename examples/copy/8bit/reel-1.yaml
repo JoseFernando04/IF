@@ -1,0 +1,39 @@
+# Reel 8-bit. La línea debe coincidir con lo que dice el audio; el resto define qué pasa en pantalla.
+# sfx: [fracción de la línea (0-1), efecto de assets/sfx/8bit]. "s" al final = segundos desde que empieza la línea.
+titulo: Game over en la bodega
+audio: assets/voice/elevenlabs/reel_1.mp3
+caption: >-
+  ¿Tu Excel y tu estante dicen lo mismo? Si la respuesta es "depende", tu inventario está jugando en tu contra.
+  Escribinos y vemos por dónde empezar. (Escena de ejemplo.)
+hashtags: [InventarioInteligente, PymesGuatemala, NegociosGT, Digitalizacion, IoT]
+lineas:
+  - texto: Entró un cliente y quiere doscientos tornillos.
+    escena: mision
+    pide: 200 TORNILLOS
+    sfx: [[0.02, seleccion], [0.3, alerta]]
+  - texto: Revisás tu Excel, trescientos. Misión fácil.
+    escena: excel
+    valor: 300
+    sello: "¡FÁCIL!"
+    frac: 0.68
+    sfx: [[0.08, seleccion], [0.68, punto]]
+  - texto: Vas al estante y hay cuarenta.
+    escena: estante
+    desde: 300
+    hasta: 40
+    frac: 0.62
+    sfx: [[0.62, caida], [0.62, golpe]]
+  - texto: Game over.
+    escena: gameover
+    sfx: [[0.0, derrota]]
+  - texto: ¿Querés continuar?
+    escena: continuar
+    sfx: [[0.05, cuenta], [0.5, cuenta]]
+  - texto: Con sensores en el estante, tu inventario se actualiza solo y te avisa antes de que se acabe.
+    escena: sensores
+    sfx: [[0.02, poder], [0.36, seleccion], [0.68, alerta]]
+  - texto: Siguiente nivel desbloqueado. Contanos tu caso. El diagnóstico es sin compromiso.
+    escena: nivel
+    titulo: NIVEL 2
+    frac: 0.36
+    sfx: [[0.03, nivel], [0.36, seleccion], [0.6, punto]]

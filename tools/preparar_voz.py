@@ -48,6 +48,35 @@ def exportar(origen: Path, destino: Path, desde: float | None = None, hasta: flo
     return sf.info(destino).duration
 
 
+def medir_calidad(audio: Path) -> dict[str, float]:
+    """Ruido de fondo, cola de eco tras las palabras y energía de agudos de la grabación original."""
+    import numpy as np
+
+    crudo = subprocess.run([ffmpeg_bin(), "-loglevel", "error", "-i", str(audio), "-ac", "1", "-ar", "48000",
+                            "-f", "f32le", "-"], capture_output=True, check=True).stdout
+    x = np.frombuffer(crudo, dtype=np.float32)
+    w = int(0.02 * 48000)
+    n = len(x) // w
+    db = 20 * np.log10(np.sqrt((x[: n * w].reshape(n, w) ** 2).mean(1) + 1e-12))
+    voz = np.percentile(db, 90)
+    colas = []
+    for i in range(1, n - 40):
+        if db[i - 1] > voz - 6 and db[i] < db[i - 1] - 3:
+            j = i
+            while j < min(n, i + 40) and db[j] > db[i - 1] - 25:
+                j += 1
+            colas.append((j - i) * 20)
+    espectro = np.abs(np.fft.rfft(x))
+    f = np.fft.rfftfreq(len(x), 1 / 48000)
+    agudos = 20 * np.log10(espectro[f > 8000].mean() / espectro[(f > 300) & (f < 3000)].mean())
+    return {"piso": float(np.percentile(db, 10)), "cola": float(np.median(colas)) if colas else 0.0, "agudos": float(agudos)}
+
+
+def necesita_limpieza(m: dict[str, float]) -> bool:
+    """Grabación con ruido, eco alto o comprimida (nota de voz de WhatsApp)."""
+    return m["piso"] > -65 or m["cola"] > 280 or m["agudos"] < -40
+
+
 def mejor_tramo(wav: Path, dur_s: float = 11.0) -> float:
     """Chatterbox usa ~10 s de la referencia: deja en el archivo el tramo con más voz y menos huecos."""
     import numpy as np
@@ -85,6 +114,21 @@ def dialogos_de(persona: str) -> list[tuple[str, list[int], list[str]]]:
     return salida
 
 
+def conversaciones() -> list[tuple[str, list[str], list[str]]]:
+    """Cada guion de conversación completo: (título, voz de cada línea, texto de cada línea)."""
+    import yaml
+
+    from ifcontent.core.config import ROOT
+
+    salida = []
+    for g_path in sorted((ROOT / "prototypes").glob("**/guion.yaml")):
+        g = yaml.safe_load(g_path.read_text(encoding="utf-8"))
+        lineas = g.get("lineas", [])
+        if lineas:
+            salida.append((g["titulo"], [g["personajes"][l["quien"]]["voz"] for l in lineas], [l["texto"] for l in lineas]))
+    return salida
+
+
 def preparar() -> None:
     load_config()
     personas = [p for p in sorted(VOCES.iterdir()) if p.is_dir()] if VOCES.exists() else []
@@ -95,13 +139,15 @@ def preparar() -> None:
         if not any("permiso" in f.name.lower() for f in persona.iterdir()):
             print(f"✗ {persona.name}: falta el permiso (un archivo con 'permiso' en el nombre). No se procesa.")
             continue
-        audios = [f for f in sorted(persona.iterdir()) if f.suffix.lower() in EXT and ".limpio" not in f.name]
+        audios = [f for f in sorted(persona.iterdir()) if f.suffix.lower() in EXT and ".limpio" not in f.name and ".ref." not in f.name]
         if not audios:
             print(f"✗ {persona.name}: no hay grabaciones")
             continue
         textos = transcribir(audios)
         (persona / "transcripciones.json").write_text(json.dumps(textos, ensure_ascii=False, indent=1), encoding="utf-8")
+        sucios: list[Path] = []
         for f in audios:
+            inicio_f = len(GENERADOS)
             t = textos[str(f)]
             nombre = f.stem.lower()
             es_frase = re.fullmatch(r"frase\d+", nombre)
@@ -109,7 +155,20 @@ def preparar() -> None:
             p_guion = parecido(t["text"], " ".join(GUION))
             dialogo = max(((parecido(t["text"], " ".join(txt)), titulo, idx, txt)
                            for titulo, idx, txt in dialogos_de(persona.name)), default=(0, "", [], []))
-            if dialogo[0] > max(p_guion, p_ref, 0.5):
+            charla = max(((parecido(t["text"], " ".join(txt)), titulo, voces, txt)
+                          for titulo, voces, txt in conversaciones()), default=(0, "", [], []))
+            if charla[0] > max(p_guion, p_ref, dialogo[0], 0.6):
+                p_c, titulo, voces, txt = charla
+                sin_permiso = [v for v in set(voces) if not any("permiso" in x.name.lower() for x in (VOCES / v).glob("*"))]
+                if sin_permiso:
+                    print(f"✗ {f.name}: es «{titulo}», pero falta el permiso de {', '.join(sin_permiso)}. No se procesa.")
+                    continue
+                print(f"• {f.name} es la conversación «{titulo}» completa (parecido {p_c:.0%}); cortando por persona…")
+                for i, (a, b) in enumerate(cortes_por_frase(t, txt)):
+                    destino = VOCES / voces[i] / f"linea{i + 1:02d}.limpio.wav"
+                    dur = exportar(f, destino, a, b, recortar_silencio=False)
+                    print(f"  ✔ {voces[i]}/{destino.name} ({dur:.1f} s): {txt[i]}")
+            elif dialogo[0] > max(p_guion, p_ref, 0.5):
                 p_d, titulo, idx, txt = dialogo
                 print(f"• {persona.name}: {f.name} son sus líneas de «{titulo}» (parecido {p_d:.0%}); cortando…")
                 for i, (a, b) in zip(idx, cortes_por_frase(t, txt)):
@@ -130,9 +189,15 @@ def preparar() -> None:
                     print(f"  ✔ frase{i}.limpio.wav ({dur:.1f} s): {GUION[i - 1]}")
             else:
                 print(f"? {persona.name}: no reconozco {f.name}: «{t['text'][:80]}…»")
+            m = medir_calidad(f)
+            detalle = f"ruido {m['piso']:.0f} dBFS · cola {m['cola']:.0f} ms · agudos {m['agudos']:.0f} dB"
+            if GENERADOS[inicio_f:] and necesita_limpieza(m):
+                sucios += GENERADOS[inicio_f:]
+                print(f"  ⚠ {f.name}: {detalle} → necesita limpieza con IA")
+            elif GENERADOS[inicio_f:]:
+                print(f"  ✔ {f.name}: {detalle} → limpia, sin procesado fuerte")
         if GENERADOS:
-            print(f"  … limpieza con IA (eco + ruido) de {len(GENERADOS)} archivos de {persona.name}")
-            mejorar([(g, g) for g in GENERADOS])
+            mejorar([(g, g) for g in sucios])
             for g in GENERADOS:
                 if g.name == "referencia.limpio.wav":
                     mejor_tramo(g)

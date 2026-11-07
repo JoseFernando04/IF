@@ -48,7 +48,9 @@ tts:
 
 music:
   library: assets/music/library.yaml
-  volume_db: -20            # volumen base de la música bajo la voz
+  volume_db: -12            # volumen base de la música bajo la voz
+  duck_threshold: 0.06      # a partir de qué nivel de voz baja la música
+  duck_ratio: 2.5           # cuánto baja (más alto = la música se apaga más al hablar)
   volume_no_voice_db: -12
 
 limits:

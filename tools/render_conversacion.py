@@ -4,8 +4,10 @@ Uso: .venv/Scripts/python tools/render_conversacion.py [carpeta] [--fuente clon|
   carpeta  por defecto prototypes/direcciones/b-conversacion (con guion.yaml y reel.html)
   clon     cada personaje habla con su voz clonada (assets/voice/<voz>/referencia.limpio.wav)
   grabada  usa las líneas grabadas de cada persona (assets/voice/<voz>/linea<N>.limpio.wav)
+  --ref-archivo SUFIJO  clon: usa assets/voice/<voz>/<voz>SUFIJO como referencia (ej. _elevenlabs.mp3)
 """
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -13,14 +15,16 @@ import numpy as np
 import soundfile as sf
 import yaml
 
-from ifcontent.audio.mix import build_sfx_track, mix_audio
+from ifcontent.audio.enhance import mejorar
+from ifcontent.audio.mix import build_sfx_track, mix_audio, pulir_voz
 from ifcontent.audio.music import get_track
 from ifcontent.audio.transcribe import parecido, transcribir
 from ifcontent.audio.tts import SAMPLE_RATE, ChatterboxTTS, _resample
 from ifcontent.core.config import ROOT, load_config
+from ifcontent.video.ffmpeg import ffmpeg_bin
 from ifcontent.video.html_frames import render_html_video
 
-PAUSA_DEFECTO = 0.3   # conversación: respuestas rápidas
+PAUSA_DEFECTO = 0.18  # conversación: se responden casi encima, como en una plática real
 UMBRAL_QA = 0.95      # parecido mínimo entre lo que se oye y el guion
 CIERRE_S = 2.4
 
@@ -30,6 +34,14 @@ def voz_dir(voz: str) -> Path:
     if not any("permiso" in f.name.lower() for f in d.glob("*")):
         sys.exit(f"✗ {voz}: falta el permiso en {d}")
     return d
+
+
+def referencia_externa(origen: Path) -> Path:
+    """Convierte y limpia una muestra externa para usarla de referencia, sin tocar la referencia normal."""
+    destino = origen.with_name(f"{origen.stem}.ref.wav")
+    subprocess.run([ffmpeg_bin(), "-y", "-loglevel", "error", "-i", str(origen), "-ac", "1", "-ar", "48000", str(destino)], check=True)
+    mejorar([(destino, destino)])
+    return destino
 
 
 def generar_audios(g: dict, fuente: str) -> list[np.ndarray]:
@@ -47,10 +59,13 @@ def generar_audios(g: dict, fuente: str) -> list[np.ndarray]:
                 audios[i] = _resample(a, sr)
         else:
             ref = d / "referencia.limpio.wav"
+            if "--ref-archivo" in sys.argv:
+                ref = referencia_externa(d / f"{p['voz']}{sys.argv[sys.argv.index('--ref-archivo') + 1]}")
             if not ref.exists():
                 sys.exit(f"✗ Falta {ref}. Corré tools/preparar_voz.py")
             print(f"  {p['voz']}: {len(idx)} líneas con voz clonada…")
-            tts = ChatterboxTTS(str(ref.relative_to(ROOT)), 0.55, 0.45)
+            clon = g.get("clon", {})
+            tts = ChatterboxTTS(str(ref.relative_to(ROOT)), clon.get("exaggeration", 0.55), clon.get("cfg_weight", 0.45))
             for i, c in zip(idx, tts.synth_many([lineas[i]["texto"] for i in idx])):
                 audios[i] = c
             verificar(tts, idx, lineas, audios)
@@ -90,7 +105,7 @@ def verificar(tts: ChatterboxTTS, idx: list[int], lineas: list[dict], audios: li
 
 def main() -> None:
     load_config()
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    args = [a for a in sys.argv[1:] if not a.startswith("--") and not a.endswith(".mp3")]
     fuente = sys.argv[sys.argv.index("--fuente") + 1] if "--fuente" in sys.argv else "clon"
     if fuente in args:
         args.remove(fuente)
@@ -133,9 +148,10 @@ def main() -> None:
         if i > 0 and lineas[i - 1].get("objeto") == "excel":  # "Mejor no te digo": se tacha el Excel
             sfx.append({"t": s + 0.3, "sfx": "marker", "gain_db": -6})
 
-    primer_plano = build_sfx_track(sfx, fin, work / "voz_sfx.wav", voice=work / "voz.wav")
+    voz_pulida = pulir_voz(work / "voz.wav", work / "voz_pulida.wav")
+    primer_plano = build_sfx_track(sfx, fin, work / "voz_sfx.wav", voice=voz_pulida)
     audio = mix_audio(primer_plano, get_track("digital-lemonade").path, fin, work / "audio.wav")
-    salida = carpeta / f"reel-{fuente}.mp4"
+    salida = carpeta / f"reel-{fuente}{'-externa' if '--ref-archivo' in sys.argv else ''}.mp4"
     render_html_video(carpeta / "reel.html", fin, audio, salida, 1080, 1920, 30, cover=carpeta / "cover.jpg", cover_t=1.6)
     print("✔", salida)
 

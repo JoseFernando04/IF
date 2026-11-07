@@ -1,0 +1,40 @@
+# Reel 8-bit. La línea debe coincidir con lo que dice el audio; el resto define qué pasa en pantalla.
+titulo: Modo difícil
+audio: assets/voice/elevenlabs/reel_3.mp3
+caption: >-
+  Hay negocios que trabajan el doble sin saber que eligieron la dificultad más alta. ¿Te reconociste en alguna señal?
+  Contanos cuál y vemos cómo bajarle la dificultad.
+hashtags: [PymesGuatemala, Digitalizacion, NegociosGT, InventarioInteligente, EmprendedoresGT]
+lineas:
+  - texto: ¿Estás jugando tu negocio en modo difícil?
+    escena: menu
+    opciones: [FÁCIL, NORMAL, DIFÍCIL]
+    sfx: [[0.22, seleccion], [0.44, seleccion], [0.75, alerta]]
+  - texto: Señal uno. Contás a mano y nunca cuadra.
+    escena: senal
+    n: 1
+    enemigo: libreta
+    texto_pantalla: CONTÁS A MANO Y NUNCA CUADRA
+    sfx: [[0.02, seleccion], [0.55, golpe]]
+  - texto: Señal dos. Cada quien tiene su propio Excel.
+    escena: senal
+    n: 2
+    enemigo: excel
+    texto_pantalla: CADA QUIEN CON SU PROPIO EXCEL
+    sfx: [[0.02, seleccion], [0.55, golpe]]
+  - texto: Señal tres. Te enterás del faltante cuando el cliente ya lo pidió.
+    escena: senal
+    n: 3
+    enemigo: estante
+    texto_pantalla: EL FALTANTE TE LO AVISA EL CLIENTE
+    sfx: [[0.02, seleccion], [0.55, golpe]]
+  - texto: Si te pasan dos o más, no es mala suerte. Es el modo de juego.
+    escena: vida
+    frase1: NO ES MALA SUERTE
+    frase2: ES EL MODO DE JUEGO
+    frac: 0.68
+    sfx: [[0.02, alerta], [0.68, caida]]
+  - texto: Cambialo. Contanos tu caso. El diagnóstico es sin compromiso.
+    escena: cambio
+    frac: 0.2
+    sfx: [[0.02, poder], [0.2, seleccion], [0.6, punto]]

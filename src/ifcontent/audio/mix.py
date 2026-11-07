@@ -8,12 +8,12 @@ from ..core.config import load_config
 from ..video.ffmpeg import ffmpeg_bin
 
 
-def mix_audio(voice_wav: Path | None, music: Path, duration: float, out: Path) -> Path:
+def mix_audio(voice_wav: Path | None, music: Path, duration: float, out: Path, volume_db: float | None = None) -> Path:
     s = load_config().settings["music"]
     fade_out = min(2.0, duration / 4)
     music_chain = (
         f"[{1 if voice_wav else 0}:a]aresample=48000,atrim=0:{duration:.3f},asetpts=PTS-STARTPTS,"
-        f"volume={s['volume_db'] if voice_wav else s['volume_no_voice_db']}dB,"
+        f"volume={volume_db if volume_db is not None else (s['volume_db'] if voice_wav else s['volume_no_voice_db'])}dB,"
         f"afade=t=in:d=0.6,afade=t=out:st={duration - fade_out:.3f}:d={fade_out:.3f}"
     )
     cmd = [ffmpeg_bin(), "-y", "-hide_banner", "-loglevel", "error"]
@@ -24,14 +24,23 @@ def mix_audio(voice_wav: Path | None, music: Path, duration: float, out: Path) -
         graph = (
             f"{music_chain}[m];"
             "[0:a]aresample=48000,asplit=2[v][sc];"
-            "[m][sc]sidechaincompress=threshold=0.02:ratio=6:attack=15:release=350[md];"
-            "[v][md]amix=inputs=2:normalize=0:duration=first,loudnorm=I=-14:TP=-1.5:LRA=11[a]"
+            f"[m][sc]sidechaincompress=threshold={s['duck_threshold']}:ratio={s['duck_ratio']}:attack=15:release=350[md];"
+            "[v][md]amix=inputs=2:normalize=0:duration=first,loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000,alimiter=limit=0.8:level=disabled[a]"
         )
     else:
-        graph = f"{music_chain},loudnorm=I=-14:TP=-1.5:LRA=11[a]"
+        graph = f"{music_chain},loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000,alimiter=limit=0.8:level=disabled[a]"
     cmd += ["-filter_complex", graph, "-map", "[a]", "-t", f"{duration:.3f}", "-ar", "48000", "-ac", "2", str(out)]
     subprocess.run(cmd, check=True)
     return out
+
+
+def pulir_voz(entrada: Path, salida: Path) -> Path:
+    """Cadena de locución: quita graves y "encajonado", da presencia y aire, suaviza las eses y empareja el volumen."""
+    cadena = ("highpass=f=85,equalizer=f=300:t=q:w=1.2:g=-2.5,equalizer=f=3200:t=q:w=1.4:g=2.5,"
+              "equalizer=f=10000:t=q:w=1.0:g=2,deesser=i=0.35,"
+              "acompressor=threshold=-20dB:ratio=3:attack=6:release=90:makeup=3dB,alimiter=limit=0.9")
+    subprocess.run([ffmpeg_bin(), "-y", "-hide_banner", "-loglevel", "error", "-i", str(entrada), "-af", cadena, str(salida)], check=True)
+    return salida
 
 
 def build_sfx_track(events: list[dict], duration: float, out: Path, voice: Path | None = None) -> Path:
