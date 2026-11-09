@@ -1,0 +1,34 @@
+# Post 2 · Diccionario del dueño de pyme (carrusel de 5). Pilar: tips (con humor).
+formato: diccionario
+salida: data/dias/2026-11-09/post-2
+titulo_tiktok: "Diccionario del dueño de pyme, edición Guatemala 📖"
+whatsapp: "+502 3808 9808"
+etiqueta: "DICCIONARIO DEL DUEÑO DE PYME"
+titulo: "Palabras que <em>todo dueño</em> conoce."
+bajada: "Edición Guatemala. Deslizá →"
+entradas:
+  - palabra: "Inventario fantasma"
+    fon: "/in·ven·ta·rio fan·tas·ma/"
+    tipo: "SUST."
+    def: "Producto que existe en el Excel, pero no en el estante."
+    ej: "«Según el sistema hay cuarenta. Según la bodega, nunca hubo.»"
+    cura: "Inventario que se actualiza solo."
+  - palabra: "Precio de memoria"
+    fon: "/pre·cio de me·mo·ria/"
+    tipo: "SUST."
+    def: "Precio que solo sabe el dueño y que cambia según quién pregunta."
+    ej: "«—¿A cuánto está? —Dejame ver… ¿a cuánto se lo di la otra vez?»"
+    cura: "Catálogo con precios al día."
+  - palabra: "Ahorita lo apunto"
+    fon: "/a·ho·ri·ta lo a·pun·to/"
+    tipo: "LOC. VERBAL"
+    def: "Promesa de anotar un pedido que nunca llega a anotarse."
+    ej: "«El pedido de la tienda de la esquina quedó en un “ahorita lo apunto”.»"
+    cura: "Pedidos desde el celular."
+cierre: "¿Qué palabra le <em>agregarías?</em>"
+cierre_bajada: "Dejala en los comentarios. Y si alguna de estas te dolió, escribinos: tiene cura."
+caption: >-
+  Si te sabés estas definiciones de memoria, bienvenido al club. 📖😂
+  Deslizá, reíte un rato y contanos en los comentarios qué palabra le falta a este diccionario.
+  Y si querés curarte de alguna, escribinos al WhatsApp +502 3808 9808.
+hashtags: [HumorEmprendedor, PymesGuatemala, DueñosDeNegocio, Digitalizacion, Chapines]

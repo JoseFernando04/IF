@@ -1,0 +1,59 @@
+# Reel A · POV del dueño. Pilar: soluciones (Catálogo Inteligente). Escena de ejemplo.
+formato: pov
+titulo: POV - la lista de precios actualizada
+audio: assets/voice/elevenlabs/2026-11-09-reel-A-sin-pov.wav
+salida: data/dias/2026-11-09/reel-A
+musica: digital-lemonade
+musica_db: -22
+whatsapp: "+502 3808 9808"
+pov: "POV: tu vendedor te pide la lista de precios actualizada"
+ruta: "Documentos › Ventas › Catálogos"
+actualizado: "Precios al día · hoy"
+productos:
+  - {n: "Tornillo 1/4\" (caja)", p: "Q ••.••"}
+  - {n: "Bisagra de acero", p: "Q ••.••"}
+  - {n: "Silicón transparente", p: "Q ••.••"}
+  - {n: "Cinta métrica 5 m", p: "Q ••.••"}
+caption: >-
+  Si tu carpeta de catálogos tiene más "final" que una telenovela, este video es para vos. 📂😅
+  Hay una forma de que tus vendedores siempre tengan la versión correcta sin que vos mandés nada.
+  Escribinos al WhatsApp +502 3808 9808 y te enseñamos cómo funciona el Catálogo Inteligente. (Escena de ejemplo.)
+hashtags: [CatalogoDigital, PymesGuatemala, VentasGT, Digitalizacion, Distribuidoras]
+lineas:
+  - texto: "Tu vendedor te pide la lista de precios actualizada."
+    toast: {de: "Carlos · Ventas", inicial: "C", texto: "¿Me pasás la lista de precios nueva? Un cliente la está pidiendo."}
+    archivos:
+      - {nombre: "precios_2025.xlsx", tipo: xls, frac: 0.05}
+    sfx: [[0.2, pop]]
+  - texto: Abrís la carpeta y hay cinco catálogos que dicen final.
+    archivos:
+      - {nombre: "catalogo_final.pdf", frac: 0.35}
+      - {nombre: "catalogo_final2.pdf", frac: 0.45}
+      - {nombre: "catalogo_FINAL.pdf", frac: 0.55}
+      - {nombre: "final_ahora_si.pdf", frac: 0.65}
+      - {nombre: "final_este_si.pdf", frac: 0.75}
+    clave: "5 × FINAL"
+    clave_frac: 0.8
+    sfx: [[0.35, tick], [0.45, tick], [0.55, tick], [0.65, tick], [0.75, tick]]
+  - texto: Final, final dos, final ahora sí.
+    resalta: [["catalogo_final.pdf", 0.0], ["catalogo_final2.pdf", 0.3], ["final_ahora_si.pdf", 0.62]]
+    sfx: [[0.02, tick], [0.3, tick], [0.62, tick]]
+  - texto: Mandás uno, y era el del año pasado.
+    manda: "catalogo_FINAL.pdf"
+    sello: "DEL AÑO PASADO"
+    sello_frac: 0.6
+    sfx: [[0.15, whoosh], [0.6, thud]]
+  - texto: Con un catálogo inteligente, subís tu plantilla una vez y se genera solo,
+    escena: solucion
+    clave: "SE GENERA SOLO"
+    clave_frac: 0.7
+    sfx: [[0.05, whoosh], [0.55, pop]]
+  - texto: en web y en PDF, con los precios al día para todos tus vendedores.
+    escena: solucion
+    clave: "WEB + PDF"
+    clave_frac: 0.3
+    sfx: [[0.1, pop]]
+  - texto: Contanos cómo armás el tuyo hoy.
+    escena: cierre
+    titulo: "¿Cómo armás<br><em>tu catálogo hoy?</em>"
+    sfx: [[0.3, pop]]

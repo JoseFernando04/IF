@@ -76,3 +76,15 @@ tracks:
     attribution: ''
     downloaded: 2026-11-07
     moods: [8bit]
+
+  - id: if-firma
+    file: if-firma.wav
+    title: Firma IF (sonido característico de IF Techworks)
+    artist: Generada por código (tools/make_firma.py)
+    source: tools/make_firma.py
+    license: Propia
+    license_url: docs/licencias.md
+    commercial_use: true
+    attribution: ''
+    downloaded: 2026-11-09
+    moods: [marca, cercano, posts]

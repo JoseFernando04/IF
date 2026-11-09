@@ -1,0 +1,23 @@
+# Post 3 · Recibo (imagen única). Pilar: llamado a la acción. Sin cifras inventadas: cantidades de una semana "de ejemplo".
+formato: recibo
+salida: data/dias/2026-11-09/post-3
+titulo_tiktok: "El ticket que pagás cada semana sin darte cuenta 🧾"
+whatsapp: "+502 3808 9808"
+encabezado: "COMPROBANTE"
+sub: "El costo de no tener<br>tu inventario al día"
+items:
+  - {q: 1, t: "Venta que no se cerró"}
+  - {q: 2, t: "Horas contando cajas"}
+  - {q: 3, t: "Llamadas a bodega"}
+  - {q: 1, t: "Cliente que se fue con otro"}
+  - {q: 1, t: "Pedido urgente (y más caro)"}
+  - {q: 1, t: "Domingo cuadrando el Excel"}
+total: "MÁS DE LO QUE CREÉS"
+nota: "Semana de ejemplo. No incluye el estrés."
+pie: "GRACIAS POR SU PACIENCIA · VUELVA PRONTO"
+sello: "TIENE<br>ARREGLO"
+caption: >-
+  Este comprobante no te lo da ninguna caja registradora, pero lo pagás igual cada semana. 🧾
+  ¿Cuántas líneas de este ticket te tocaron a vos? Contanos en los comentarios.
+  Y si querés dejar de pagarlo, escribinos al WhatsApp +502 3808 9808 y vemos tu caso, sin compromiso.
+hashtags: [InventarioInteligente, PymesGuatemala, EmprendedoresGT, Digitalizacion, Negocios]

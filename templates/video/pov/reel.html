@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Inter"; src: url("__FONTS__/Inter.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Bricolage"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+:root { --verde: #0a1410; --verde2: #162920; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --rojo: #d6432f; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--verde); font-family: "Inter"; }
+#fondo { position: absolute; inset: 0; opacity: .8; }
+/* Etiqueta POV estilo red social: cajas blancas por renglón */
+#pov { position: absolute; top: 170px; left: 70px; right: 70px; text-align: center; z-index: 20; }
+#pov span { background: #fff; color: #111; font: 800 54px/1.5 "Inter"; padding: 6px 22px; border-radius: 14px;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+/* Ventana tipo explorador de archivos */
+#ventana { position: absolute; left: 70px; right: 70px; top: 520px; height: 980px; border-radius: 30px; background: var(--marfil);
+  box-shadow: 0 40px 120px rgba(0,0,0,.5); overflow: hidden; }
+.barra { height: 86px; background: #e9e4d4; display: flex; align-items: center; gap: 16px; padding: 0 30px; }
+.barra i { width: 24px; height: 24px; border-radius: 50%; display: inline-block; }
+.ruta { margin-left: 24px; font: 600 30px "Mono"; color: #3d443f; }
+#archivos { position: absolute; top: 120px; left: 40px; right: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 20px; }
+.arch { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 18px 6px; border-radius: 22px; transform-origin: 50% 60%; }
+.arch.sel { background: rgba(240,196,25,.35); outline: 4px solid var(--oro); }
+.doc { width: 150px; height: 190px; background: #fff; border: 4px solid #1d362b; border-radius: 10px; position: relative;
+  clip-path: polygon(0 0, 72% 0, 100% 22%, 100% 100%, 0 100%); }
+.doc::after { content: ""; position: absolute; right: -4px; top: -4px; width: 48px; height: 48px; background: #1d362b; clip-path: polygon(0 0, 100% 100%, 0 100%); }
+.doc b { position: absolute; left: 14px; bottom: 18px; background: var(--rojo); color: #fff; font: 800 26px "Inter"; padding: 4px 10px; border-radius: 6px; }
+.doc.xls b { background: #2f7d4f; }
+.doc u { position: absolute; left: 16px; right: 30px; height: 10px; background: #d9d4c3; text-decoration: none; }
+.nom { font: 600 27px/1.2 "Inter"; color: #1b211e; text-align: center; word-break: break-all; max-width: 290px; }
+#toast { position: absolute; left: 100px; right: 100px; top: 470px; z-index: 25; background: rgba(22,41,32,.96); color: var(--marfil);
+  border-radius: 34px; padding: 30px 36px; display: flex; gap: 26px; align-items: center; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+#toast .av { flex: none; width: 92px; height: 92px; border-radius: 50%; background: var(--oro); color: var(--verde); display: grid; place-items: center; font: 800 40px "Bricolage"; }
+#toast .q { font: 700 34px "Inter"; } #toast .q small { color: #9fb3a8; font-weight: 500; margin-left: 10px; }
+#toast .t { font: 400 36px/1.3 "Inter"; margin-top: 6px; }
+#sello { position: absolute; left: 50%; top: 1000px; transform-origin: 50% 50%; z-index: 30; border: 10px solid var(--rojo); color: var(--rojo);
+  font: 800 92px/1 "Bricolage"; padding: 18px 36px; border-radius: 20px; background: rgba(254,252,243,.92); white-space: nowrap; }
+/* Solución */
+#sol { position: absolute; inset: 86px 0 0 0; background: var(--marfil); }
+.plantilla { position: absolute; left: 60px; top: 330px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.flecha { position: absolute; left: 270px; top: 400px; height: 10px; background: var(--verde3); transform-origin: 0 50%; }
+.flecha::after { content: ""; position: absolute; right: -6px; top: -17px; border-left: 34px solid var(--verde3); border-top: 22px solid transparent; border-bottom: 22px solid transparent; }
+#cel { position: absolute; right: 60px; top: 60px; width: 430px; height: 800px; border-radius: 54px; background: #050a08; padding: 16px; box-sizing: border-box; }
+#cel .pant { width: 100%; height: 100%; border-radius: 40px; background: #fff; overflow: hidden; }
+#cel .cab { background: var(--verde); color: var(--marfil); font: 800 32px "Bricolage"; padding: 50px 26px 22px; }
+#cel .cab small { display: block; font: 500 20px "Mono"; color: var(--oro); margin-top: 6px; }
+.prod { display: flex; gap: 16px; align-items: center; padding: 18px 22px; border-bottom: 2px solid #eee; }
+.prod i { flex: none; width: 84px; height: 84px; border-radius: 16px; background: #e9e4d4; }
+.prod div { font: 600 24px/1.25 "Inter"; color: #1b211e; } .prod div b { display: block; color: #2f7d4f; font: 800 28px "Inter"; margin-top: 4px; }
+.pdf { position: absolute; left: 70px; top: 620px; width: 330px; padding: 24px; border-radius: 24px; background: var(--verde); color: var(--marfil);
+  font: 700 30px "Inter"; display: flex; gap: 20px; align-items: center; }
+.pdf .doc { width: 76px; height: 96px; border-width: 3px; } .pdf .doc::after { width: 26px; height: 26px; }
+#clave { position: absolute; left: 70px; top: 1560px; padding: 20px 36px; background: var(--oro); color: var(--verde); font: 800 70px/1 "Bricolage";
+  border-radius: 16px; transform-origin: 0 50%; z-index: 20; white-space: nowrap; }
+/* Cierre */
+#cierre { position: absolute; inset: 0; background: var(--verde); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 40; }
+#cierre img { width: 300px; margin-bottom: 70px; }
+#cierre .h1 { font: 800 92px/1.02 "Bricolage"; color: var(--marfil); padding: 0 80px; letter-spacing: -2px; }
+#cierre .h1 em { font-style: normal; color: var(--oro); }
+#cierre .wa { margin-top: 60px; padding: 30px 50px; border-radius: 60px; background: var(--oro); color: var(--verde); font: 800 52px "Inter"; }
+#cierre .web { margin-top: 30px; font: 500 32px "Mono"; color: #9fb3a8; }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="pov"></div>
+<div id="ventana">
+  <div class="barra"><i style="background:#d6432f"></i><i style="background:#f0c419"></i><i style="background:#57b96f"></i><span class="ruta" id="ruta"></span></div>
+  <div id="archivos"></div>
+  <div id="sol">
+    <div class="plantilla" id="plant"><div class="doc xls"><u style="top:40px"></u><u style="top:66px"></u><b>XLS</b></div><div class="nom">tu_plantilla.xlsx</div></div>
+    <div class="flecha" id="flecha"></div>
+    <div id="cel"><div class="pant"><div class="cab">Catálogo<small id="fecha"></small></div><div id="prods"></div></div></div>
+    <div class="pdf" id="pdf"><div class="doc"><b>PDF</b></div><div>Versión PDF<br><span style="color:var(--oro);font-size:24px">lista para vender</span></div></div>
+  </div>
+</div>
+<div id="toast"><div class="av" id="tav"></div><div><div class="q" id="tq"></div><div class="t" id="tt"></div></div></div>
+<div id="sello"></div>
+<div id="clave"></div>
+<div id="cierre"><img src="__LOGO__"><div class="h1" id="ch1"></div><div class="wa" id="wa"></div><div class="web">iftechworks.com</div></div>
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const R = __DATOS__;
+window.__ready = false;
+const L = R.lineas;
+const $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const back = (x) => { x = cl(x); const s = 1.7; return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2); };
+const fondoP = fondo($("fondo"), "trama", { back: "#0a1410", front: "#1d362b", shape: "warp", type: "4x4", px: 5 });
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+// Momento en que aparece cada archivo: línea donde se declara + frac.
+const archivos = [];
+L.forEach((l) => (l.archivos || []).forEach((a, j) => archivos.push({ ...a, t: l.inicio + l.duracion * (a.frac ?? 0.15 + j * 0.12) })));
+$("pov").innerHTML = `<span>${R.pov}</span>`;
+$("ruta").textContent = R.ruta;
+$("prods").innerHTML = R.productos.map((p) => `<div class="prod"><i></i><div>${p.n}<b>${p.p}</b></div></div>`).join("");
+$("fecha").textContent = R.actualizado;
+const ev = (k) => { for (const l of L) if (l[k] !== undefined) return l; };
+
+function dibujar(t) {
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio, p = cl(dt / l.duracion);
+  fondoP.then((f) => f.frame(t * 1000 * 0.25));
+  const esc = l.escena || "carpeta";
+  $("pov").style.opacity = esc === "cierre" ? 0 : eo(t / 0.4);
+  $("pov").style.transform = `translateY(${(1 - eo(t / 0.4)) * -40}px)`;
+  // Notificación del vendedor
+  const lt = ev("toast"), tt = t - (lt.inicio + lt.duracion * 0.2), sale = lt.inicio + lt.duracion + 0.3;
+  $("toast").style.transform = `translateY(${(1 - back(tt / 0.45)) * -260 - eo((t - sale) / 0.35) * 600}px)`;
+  $("toast").style.opacity = tt > 0 && t < sale + 0.35 ? 1 : 0;
+  $("tav").textContent = lt.toast.inicial; $("tq").innerHTML = `${lt.toast.de}<small>ahora</small>`; $("tt").textContent = lt.toast.texto;
+  // Archivos
+  const caja = $("archivos"); caja.innerHTML = "";
+  archivos.forEach((a) => { if (t < a.t) return;
+    const d = document.createElement("div"); d.className = "arch" + (l.resalta && l.resalta.some(([n, f]) => n === a.nombre && p >= f) ? " sel" : "");
+    const s = back((t - a.t) / 0.35); d.style.transform = `scale(${0.4 + 0.6 * s})`;
+    if (l.manda === a.nombre) { const k = eo((p - 0.15) / 0.3); d.style.transform += ` translate(${k * 900}px, ${-k * 500}px) rotate(${k * 30}deg)`; d.style.opacity = 1 - k; }
+    d.innerHTML = `<div class="doc ${a.tipo || ""}"><u style="top:40px"></u><u style="top:66px"></u><u style="top:92px"></u><b>${(a.tipo || "pdf").toUpperCase()}</b></div><div class="nom">${a.nombre}</div>`;
+    caja.appendChild(d); });
+  // Sello
+  const ks = l.sello ? back((p - (l.sello_frac ?? 0.55)) / 0.25) : 0;
+  $("sello").textContent = l.sello || ""; $("sello").style.opacity = ks > 0 ? 1 : 0;
+  $("sello").style.transform = `translateX(-50%) rotate(-8deg) scale(${2.2 - 1.2 * cl(ks, 0, 1.1)})`;
+  // Solución
+  const enSol = esc === "solucion";
+  const ls = L.find((x) => x.escena === "solucion"), ds = t - (ls ? ls.inicio : 1e9);
+  $("sol").style.clipPath = `inset(0 0 ${(1 - eo(ds / 0.6)) * 100}% 0)`;
+  $("ruta").textContent = enSol ? "Catálogo Inteligente" : R.ruta;
+  $("plant").style.opacity = eo((ds - 0.3) / 0.4);
+  $("flecha").style.width = (eo((ds - 1.0) / 0.6) * 150) + "px";
+  $("cel").style.transform = `translateY(${(1 - eo((ds - 1.4) / 0.6)) * 900}px)`;
+  [...$("prods").children].forEach((c, j) => { c.style.opacity = eo((ds - 2.0 - j * 0.25) / 0.3); });
+  $("pdf").style.transform = `scale(${cl(back((ds - (ls ? ls.duracion : 0) - 0.3) / 0.4), 0, 1.2)})`;
+  // Palabra clave
+  const kc = l.clave ? back((p - (l.clave_frac ?? 0.3)) / 0.3) : 0;
+  $("clave").textContent = l.clave || ""; $("clave").style.opacity = kc > 0 ? 1 : 0; $("clave").style.transform = `rotate(-2deg) scaleX(${cl(kc, 0, 1.2)})`;
+  // Cierre
+  $("cierre").style.opacity = esc === "cierre" ? eo(dt / 0.35) : 0;
+  $("ch1").innerHTML = (L.find((x) => x.escena === "cierre") || {}).titulo || ""; $("wa").textContent = R.whatsapp;
+  $("wa").style.transform = `scale(${esc === "cierre" ? 0.85 + 0.15 * back((dt - 0.3) / 0.35) : 1})`;
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>

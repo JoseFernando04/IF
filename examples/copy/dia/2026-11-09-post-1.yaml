@@ -1,0 +1,16 @@
+# Post 1 · Infografía simple (imagen única). Pilar: educativo (estante con sensores).
+formato: infografia
+salida: data/dias/2026-11-09/post-1
+titulo_tiktok: "El estante que te avisa antes de quedarte sin producto 📦"
+etiqueta: "CÓMO FUNCIONA"
+titulo: "Un estante que <em>avisa</em> antes de que se acabe."
+pasos:
+  - {t: "El estante detecta", d: "Un sensor nota cuando sale producto, sin que nadie anote nada."}
+  - {t: "El inventario se actualiza", d: "El número baja solo, en tiempo real, para todo el equipo."}
+  - {t: "Te llega la alerta", d: "Cuando queda poco, te avisa al celular para pedir a tiempo."}
+nota: "Escenario de ejemplo"
+caption: >-
+  Contar cajas a mano es de las tareas que nadie extraña cuando deja de hacerla. 📦✨
+  Así se ve, paso a paso, un inventario que se cuenta solo. Guardalo para explicárselo a tu socio 😉
+  ¿Querés ver si aplica a tu bodega? Escribinos al WhatsApp +502 3808 9808.
+hashtags: [InventarioInteligente, IoT, PymesGuatemala, Bodega, Digitalizacion]

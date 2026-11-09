@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Inter"; src: url("__FONTS__/Inter.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Bricolage"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Caveat"; src: url("__FONTS__/Caveat.ttf"); font-weight: 400 700; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+:root { --verde: #0a1410; --verde2: #162920; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --tinta: #23324f; --rojo: #c4372a; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--verde); font-family: "Inter"; }
+.capa { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
+#despues { z-index: 2; }
+#papel { position: absolute; inset: 0; }
+.eti { position: absolute; top: 150px; padding: 16px 30px; border-radius: 50px; font: 800 40px "Inter"; letter-spacing: 3px; z-index: 5; }
+/* ANTES: cuaderno */
+#cuaderno { position: absolute; left: 90px; right: 90px; top: 300px; bottom: 380px;
+  background: repeating-linear-gradient(to bottom, transparent 0 86px, rgba(70,110,170,.35) 86px 89px); }
+#cuaderno::before { content: ""; position: absolute; left: 70px; top: -60px; bottom: -60px; width: 3px; background: rgba(196,55,42,.5); }
+.ren { position: absolute; left: 100px; right: 0; font: 600 72px/1 "Caveat"; color: var(--tinta); white-space: nowrap; }
+.tachon { position: absolute; height: 8px; background: var(--tinta); border-radius: 4px; }
+.circ { position: absolute; border: 6px solid var(--rojo); border-radius: 50%; }
+.mancha { position: absolute; width: 260px; height: 260px; border-radius: 50%; border: 18px solid rgba(120,80,40,.22); right: 40px; top: 760px; filter: blur(1px); }
+/* DESPUÉS: sistema */
+#despues { background: var(--verde); }
+.app { position: absolute; left: 70px; right: 70px; top: 290px; bottom: 360px; background: var(--marfil); border-radius: 36px; overflow: hidden; box-shadow: 0 40px 120px rgba(0,0,0,.5); }
+.app .top { padding: 44px 50px 0; font: 700 28px "Mono"; color: #2f5d46; letter-spacing: 2px; }
+.buscar { margin: 26px 50px 0; height: 100px; border-radius: 50px; background: #fff; border: 3px solid #d9d4c3; display: flex; align-items: center; padding: 0 40px;
+  font: 500 42px "Inter"; color: #1b211e; }
+.buscar .ph { color: #9aa29d; }
+.cur { display: inline-block; width: 4px; height: 50px; background: var(--verde3); margin-left: 4px; }
+.fila { margin: 22px 50px 0; padding: 28px 34px; border-radius: 26px; background: #fff; box-shadow: 0 6px 24px rgba(10,20,16,.07); display: grid;
+  grid-template-columns: 1fr auto; row-gap: 10px; }
+.fila .a { font: 800 46px "Bricolage"; color: var(--verde); }
+.fila .q { font: 600 32px "Inter"; color: #2f5d46; text-align: right; }
+.fila .d { grid-column: 1 / 3; font: 400 28px "Mono"; color: #6b7570; }
+.fila.hit { background: var(--verde); } .fila.hit .a { color: var(--oro); } .fila.hit .q { color: var(--marfil); } .fila.hit .d { color: #b9c4bd; }
+/* Deslizador */
+#linea { position: absolute; top: 0; bottom: 0; width: 8px; margin-left: -4px; background: #fff; z-index: 10; box-shadow: 0 0 30px rgba(0,0,0,.4); }
+#perilla { position: absolute; top: 880px; width: 140px; height: 140px; margin-left: -70px; border-radius: 50%; background: #fff; z-index: 11;
+  display: flex; align-items: center; justify-content: center; gap: 22px; font: 800 52px "Inter"; color: var(--verde); box-shadow: 0 16px 40px rgba(0,0,0,.4); }
+#clave { position: absolute; left: 70px; top: 1610px; padding: 20px 36px; background: var(--oro); color: var(--verde); font: 800 68px/1 "Bricolage";
+  border-radius: 16px; transform-origin: 0 50%; z-index: 20; white-space: nowrap; }
+#cierre { position: absolute; inset: 0; background: var(--verde); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 40; }
+#cierre img { width: 300px; margin-bottom: 70px; }
+#cierre .h1 { font: 800 96px/1.02 "Bricolage"; color: var(--marfil); padding: 0 80px; letter-spacing: -2px; }
+#cierre .h1 s { color: #6d7d75; text-decoration-thickness: 8px; }
+#cierre .h1 em { font-style: normal; color: var(--oro); }
+#cierre .wa { margin-top: 60px; padding: 30px 50px; border-radius: 60px; background: var(--oro); color: var(--verde); font: 800 52px "Inter"; }
+#cierre .web { margin-top: 30px; font: 500 32px "Mono"; color: #9fb3a8; }
+</style></head>
+<body>
+<div class="capa" id="antes"><div id="papel"></div>
+  <div class="eti" style="left:70px;background:var(--tinta);color:#fff">ANTES</div>
+  <div id="cuaderno"><div class="mancha"></div></div></div>
+<div class="capa" id="despues">
+  <div class="eti" style="right:70px;background:var(--oro);color:var(--verde)">DESPUÉS</div>
+  <div class="app"><div class="top">ACTIVOS · EQUIPO</div><div class="buscar" id="buscar"></div><div id="filas"></div></div></div>
+<div id="linea"></div><div id="perilla">‹ ›</div>
+<div id="clave"></div>
+<div id="cierre"><img src="__LOGO__"><div class="h1" id="ch1"></div><div class="wa" id="wa"></div><div class="web">iftechworks.com</div></div>
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const R = __DATOS__;
+window.__ready = false;
+const L = R.lineas;
+const $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const eio = (x) => { x = cl(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const back = (x) => { x = cl(x); const s = 1.7; return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2); };
+const fondoP = fondo($("papel"), "papel", { back: "#e3dccb", paper: "#f6f0e2", shadow: "#6f6250", crumples: 0.5, folds: 0.7, wrinkles: 0.5, drops: 0.2 });
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+
+// Cuaderno: renglones escritos a mano, con tachones y círculos
+const cu = $("cuaderno");
+R.cuaderno.forEach((r, j) => {
+  const d = document.createElement("div"); d.className = "ren"; d.style.top = (j * 178 + 40) + "px"; d.style.transform = `rotate(${r.giro ?? 0}deg)`;
+  d.innerHTML = r.texto; cu.appendChild(d); r.el = d;
+  (r.tachones || []).forEach(([x, w]) => { const s = document.createElement("div"); s.className = "tachon";
+    Object.assign(s.style, { left: x + "px", width: w + "px", top: "40px", transform: `rotate(${-3 + (j % 2) * 5}deg)` }); d.appendChild(s); });
+});
+// Sistema
+$("filas").innerHTML = R.activos.map((a) => `<div class="fila"><div class="a">${a.a}</div><div class="q">${a.q}</div><div class="d">${a.d}</div></div>`).join("");
+const pos = { antes: 1000, despues: 80, medio: 540 };
+
+function dibujar(t) {
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio, p = cl(dt / l.duracion);
+  fondoP.then((f) => f.frame(0));
+  // Posición del deslizador: viaja desde la posición anterior
+  const prev = i ? pos[L[i - 1].lado] : pos.medio, cur = pos[l.lado] ?? prev;
+  let x = prev + (cur - prev) * eio(dt / 0.9);
+  if (i === 0) x = pos.medio + (pos.antes - pos.medio) * eio((dt - 0.4) / 0.8) + Math.sin(t * 9) * 20 * (1 - cl(dt / 0.4));
+  $("despues").style.clipPath = `inset(0 0 0 ${x}px)`;
+  $("linea").style.left = x + "px"; $("perilla").style.left = x + "px";
+  // Cuaderno: el renglón marcado se encierra en un círculo rojo
+  R.cuaderno.forEach((r, j) => { r.el.style.opacity = 1;
+    const c = r.el.querySelector(".circ"); const activo = L.slice(0, i + 1).some((x) => x.marca === j);
+    if (activo && !c) { const e = document.createElement("div"); e.className = "circ"; Object.assign(e.style, { left: "-30px", top: "-24px", width: (r.ancho ?? 700) + "px", height: "120px" }); r.el.appendChild(e); }
+    const cc = r.el.querySelector(".circ"); if (cc) { const lm = L.find((x) => x.marca === j); cc.style.clipPath = `inset(0 ${(1 - eo((t - lm.inicio - 0.2) / 0.5)) * 100}% 0 0)`; } });
+  // Sistema: escribe la búsqueda y resalta el resultado
+  const lb = L.find((x) => x.busca), db = lb ? t - lb.inicio : -1;
+  const n = Math.floor(cl((db - 0.2) / 0.9) * (lb ? lb.busca.length : 0));
+  $("buscar").innerHTML = n > 0 ? lb.busca.slice(0, n) + `<span class="cur" style="opacity:${Math.floor(t * 2.4) % 2}"></span>` : `<span class="ph">Buscar activo o persona…</span>`;
+  [...$("filas").children].forEach((f, j) => { const hit = lb && db > 1.2 && R.activos[j].hit; f.classList.toggle("hit", !!hit);
+    f.style.opacity = (lb && db > 1.2 && !R.activos[j].hit) ? 0.35 : 1; });
+  // Palabra clave
+  const kc = l.clave ? back((p - (l.clave_frac ?? 0.4)) / 0.3) : 0;
+  $("clave").textContent = l.clave || ""; $("clave").style.opacity = kc > 0 ? 1 : 0; $("clave").style.transform = `rotate(-2deg) scaleX(${cl(kc, 0, 1.2)})`;
+  $("clave").style.left = l.lado === "despues" ? "auto" : "70px"; $("clave").style.right = l.lado === "despues" ? "70px" : "auto";
+  // Cierre
+  const ci = l.escena === "cierre";
+  $("cierre").style.opacity = ci ? eo(dt / 0.35) : 0;
+  $("ch1").innerHTML = l.titulo || ""; $("wa").textContent = R.whatsapp;
+  $("wa").style.transform = `scale(${ci ? 0.85 + 0.15 * back((dt - 0.3) / 0.35) : 1})`;
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>

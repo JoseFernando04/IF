@@ -19,7 +19,7 @@ def main() -> None:
     g = yaml.safe_load(Path(sys.argv[1]).read_text(encoding="utf-8"))
     salida = ROOT / g["salida"]
     (salida / "work").mkdir(parents=True, exist_ok=True)
-    datos = {k: v for k, v in g.items() if k not in ("caption", "hashtags")}
+    datos = {k: v for k, v in g.items() if k not in ("caption", "hashtags", "titulo_tiktok")}
     html = (TEMPLATES_DIR / "graphics" / "posts" / "post.html").read_text(encoding="utf-8")
     html = (html.replace("__FONTS__", (ASSETS_DIR / "fonts").as_uri())
                 .replace("__SHARED__", (TEMPLATES_DIR / "shared").as_uri())
@@ -41,6 +41,8 @@ def main() -> None:
             s.screenshot(path=str(salida / f"slide-{i:02d}.png"))
         b.close()
     caption = g["caption"].strip() + "\n\n" + " ".join(f"#{h}" for h in g["hashtags"])
+    if g.get("titulo_tiktok"):  # TikTok permite un título aparte en publicaciones de fotos (máx. 90 caracteres)
+        caption = f"TÍTULO (TikTok): {g['titulo_tiktok']}\n\nDESCRIPCIÓN:\n{caption}"
     (salida / "caption.txt").write_text(caption, encoding="utf-8")
     print(f"✔ {len(slides)} imagen(es) en {salida}")
 

@@ -53,6 +53,45 @@ html, body { margin: 0; background: #333; }
 .fd2 h1 em { font-style: normal; color: var(--oro); }
 .fd2 p { font: 400 40px/1.35 "Tight"; color: #c9d3cd; margin-top: 50px; max-width: 840px; }
 .cta { margin-top: auto; margin-bottom: 110px; align-self: flex-start; padding: 30px 46px; border-radius: 60px; background: var(--oro); color: var(--verde); font: 800 50px "Tight"; }
+
+/* ── Infografía ── */
+.inf { color: var(--verde); }
+.inf .eti { font: 700 28px "Mono"; letter-spacing: 4px; color: #2f6b4c; }
+.inf h1 { font: 800 80px/0.98 "Bricolage"; letter-spacing: -3px; margin: 26px 0 0; }
+.inf h1 em { font-style: normal; background: var(--oro); padding: 0 12px; }
+.paso { position: absolute; left: 90px; right: 90px; height: 230px; display: flex; gap: 40px; align-items: center; }
+.paso .n { flex: none; width: 92px; height: 92px; border-radius: 50%; background: var(--verde); color: var(--oro); display: grid; place-items: center; font: 800 50px "Bricolage"; z-index: 2; }
+.paso .ilu { flex: none; width: 250px; height: 210px; border-radius: 28px; background: #fff; box-shadow: 0 10px 30px rgba(10,20,16,.1); position: relative; overflow: hidden; }
+.paso h3 { font: 800 50px/1.02 "Bricolage"; margin: 0; letter-spacing: -1px; }
+.paso p { font: 400 32px/1.3 "Tight"; margin: 12px 0 0; color: #3d443f; }
+.riel { position: absolute; left: 135px; width: 0; border-left: 6px dashed #2f6b4c; z-index: 1; }
+.nota-pie { position: absolute; left: 90px; bottom: 82px; font: 500 24px "Mono"; color: #5b5f57; }
+/* ── Diccionario ── */
+.dic { color: #1b1a17; }
+.dic .eti { font: 700 26px "Mono"; letter-spacing: 4px; color: #6b5a12; }
+.dic .palabra { font: 400 150px/0.92 "Serif"; letter-spacing: -3px; margin-top: 70px; }
+.dic .fon { font: 400 40px "SerifI"; color: #6b6555; margin-top: 26px; }
+.dic .tipo { display: inline-block; font: 700 26px "Mono"; letter-spacing: 3px; background: var(--verde); color: var(--oro); padding: 8px 16px; border-radius: 8px; margin-top: 40px; }
+.dic .def { font: 400 64px/1.12 "Serif"; margin-top: 34px; }
+.dic .ej { font: 400 48px/1.22 "SerifI"; color: #4a463c; margin-top: 40px; padding-left: 30px; border-left: 6px solid var(--oro); }
+.dic .cura { margin-top: auto; margin-bottom: 120px; font: 600 32px "Tight"; }
+.dic .cura b { font: 700 26px "Mono"; letter-spacing: 3px; color: #2f6b4c; margin-right: 14px; }
+.dic .portada { font: 400 170px/0.88 "Serif"; letter-spacing: -4px; margin-top: 120px; }
+.dic .portada em { font-family: "SerifI"; color: #2f6b4c; }
+/* ── Recibo ── */
+.rec { background: var(--verde); }
+.ticket { position: absolute; left: 160px; right: 160px; top: 70px; bottom: 130px; background: #fbfaf5; padding: 60px 56px 0; box-sizing: border-box;
+  font: 500 32px/1.45 "Mono"; color: #1b1a17; transform: rotate(-1.5deg); box-shadow: 0 40px 100px rgba(0,0,0,.45);
+  -webkit-mask: linear-gradient(#000 0 0) top/100% calc(100% - 22px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom/44px 22px repeat-x; }
+.ticket .c { text-align: center; } .ticket .g { font: 800 40px "Mono"; letter-spacing: 1px; }
+.ticket hr { border: 0; border-top: 4px dashed #8a8676; margin: 24px 0; }
+.ticket .it { display: grid; grid-template-columns: 70px 1fr; }
+.ticket .tot { display: flex; justify-content: space-between; font: 800 40px "Mono"; margin-top: 6px; }
+.ticket .tot span:last-child { background: var(--oro); padding: 0 10px; }
+.barras { height: 90px; margin: 28px auto 0; width: 80%; background: repeating-linear-gradient(90deg, #1b1a17 0 4px, transparent 4px 7px, #1b1a17 7px 13px, transparent 13px 16px, #1b1a17 16px 18px, transparent 18px 24px); }
+.rec .sello { position: absolute; right: 120px; bottom: 210px; transform: rotate(-12deg); border: 8px solid #d6432f; color: #d6432f; font: 800 54px/1 "Bricolage";
+  padding: 16px 26px; border-radius: 14px; background: rgba(251,250,245,.85); text-align: center; z-index: 3; }
+.rec .sello small { display: block; font: 700 24px "Mono"; letter-spacing: 2px; margin-top: 6px; }
 </style></head>
 <body>
 <div id="raiz"></div>
@@ -63,6 +102,16 @@ window.__ready = false;
 const raiz = document.getElementById("raiz");
 const LOGO = "__LOGO__", LOGO_OSCURO = "__LOGO_OSCURO__";
 const fondos = [];
+// Ilustraciones de la infografía (CSS puro)
+const ILU = [
+  `<div style="position:absolute;left:30px;right:30px;top:60px;height:8px;background:#1d362b"></div><div style="position:absolute;left:30px;right:30px;top:150px;height:8px;background:#1d362b"></div>
+   ${[0, 1, 2].map((k) => `<div style="position:absolute;left:${44 + k * 58}px;top:96px;width:48px;height:54px;background:#b98a52;border:3px solid #7a5530;box-sizing:border-box"></div>`).join("")}
+   <div style="position:absolute;right:40px;top:110px;width:24px;height:24px;border-radius:50%;background:#f0c419;box-shadow:0 0 0 10px rgba(240,196,25,.3),0 0 0 22px rgba(240,196,25,.15)"></div>`,
+  `<div style="position:absolute;inset:34px 26px;border-radius:16px;background:#0a1410;padding:20px;box-sizing:border-box;font:700 22px Mono;color:#9fb3a8">STOCK<div style="font:800 76px Bricolage;color:#fefcf3;margin-top:6px">23 <span style="font:400 40px Mono;color:#f0c419">↓1</span></div></div>`,
+  `<div style="position:absolute;left:70px;top:16px;width:110px;height:200px;border-radius:22px;background:#0a1410;padding:8px;box-sizing:border-box"><div style="height:100%;border-radius:16px;background:#fefcf3;position:relative">
+   <div style="position:absolute;left:6px;right:6px;top:40px;padding:8px;border-radius:10px;background:#f0c419;font:800 14px Inter;color:#0a1410">⚠ Stock bajo<br><span style="font-weight:500">Pedí hoy</span></div></div></div>`,
+];
+
 const nueva = (clase, html, fondoDe) => {
   const s = document.createElement("div"); s.className = "slide " + clase; s.innerHTML = html; raiz.appendChild(s);
   if (fondoDe) fondos.push(fondo(s.querySelector(".fondo"), ...fondoDe));
@@ -106,6 +155,35 @@ if (D.formato === "frase") {
     ["grano", { back: "#f4eee2", colors: ["#f0c419", "#c9d9a8"], shape: "corners", softness: 0.8, intensity: 0.35, noise: 0.45 }]);
   nueva("fd2", `<div class="capa"><div class="eti" style="font:700 28px Mono;letter-spacing:4px;color:var(--oro)">${D.etiqueta}</div>
     <h1>${D.titulo}</h1><p>${D.texto}</p><div class="cta">WhatsApp ${D.whatsapp}</div></div>${pie(2)}`);
+}
+
+if (D.formato === "infografia") {
+  const tops = [420, 690, 960];
+  nueva("inf", `<div class="fondo"></div><div class="capa"><div class="eti">${D.etiqueta}</div><h1>${D.titulo}</h1></div>
+    <div class="riel" style="top:${tops[0] + 125}px;height:${tops[2] - tops[0]}px"></div>
+    ${D.pasos.map((x, j) => `<div class="paso" style="top:${tops[j]}px"><div class="n">${j + 1}</div><div class="ilu">${ILU[j]}</div>
+      <div><h3>${x.t}</h3><p>${x.d}</p></div></div>`).join("")}
+    <div class="nota-pie">${D.nota}</div><div class="pag" style="color:var(--verde)">iftechworks.com</div>`,
+    ["puntos", { back: "#fefcf3", fill: "#d9d3bf", size: 3, gap: 45 }]);
+}
+if (D.formato === "diccionario") {
+  const n = D.entradas.length + 2, pg = (k) => `<img class="marca" src="${LOGO_OSCURO}"><div class="pag" style="color:#1b1a17">${k} / ${n}</div>`;
+  const papel = (seed) => ["papel", { back: "#efe8d6", paper: "#faf6ea", shadow: "#8a7d63", crumples: 0.15, folds: 0.25, wrinkles: 0.25, drops: 0.05, seed }];
+  nueva("dic", `<div class="fondo"></div><div class="capa"><div class="eti">${D.etiqueta}</div><div class="portada">${D.titulo}</div>
+    <div class="fon" style="margin-top:50px">${D.bajada}</div></div>${pg(1)}`, papel(2));
+  D.entradas.forEach((e, k) => nueva("dic", `<div class="fondo"></div><div class="capa"><div class="eti">${D.etiqueta}</div>
+    <div class="palabra">${e.palabra}</div><div class="fon">${e.fon}</div><div><span class="tipo">${e.tipo}</span></div>
+    <div class="def">${e.def}</div><div class="ej">${e.ej}</div><div class="cura"><b>CURA</b>${e.cura}</div></div>${pg(k + 2)}`, papel(3 + k)));
+  nueva("fd2", `<div class="capa"><div class="eti" style="font:700 28px Mono;letter-spacing:4px;color:var(--oro)">${D.etiqueta}</div>
+    <h1>${D.cierre}</h1><p>${D.cierre_bajada}</p><div class="cta">WhatsApp ${D.whatsapp}</div></div><img class="marca" src="${LOGO}"><div class="pag" style="color:var(--marfil)">${n} / ${n}</div>`);
+}
+if (D.formato === "recibo") {
+  nueva("rec", `<div class="fondo"></div><div class="ticket"><div class="c g">${D.encabezado}</div><div class="c">${D.sub}</div><hr>
+    ${D.items.map((x) => `<div class="it"><span>${x.q}×</span><span>${x.t}</span></div>`).join("")}<hr>
+    <div class="tot"><span>TOTAL</span><span>${D.total}</span></div><div style="margin-top:10px;color:#5b5f57">${D.nota}</div>
+    <div class="barras"></div><div class="c" style="margin-top:10px;font-size:24px">${D.pie}</div></div>
+    <div class="sello">${D.sello}<small>${D.whatsapp}</small></div>`,
+    ["grano", { back: "#0a1410", colors: ["#1d362b", "#2f5d46"], shape: "blob", softness: 0.8, intensity: 0.3, noise: 0.3 }]);
 }
 await Promise.all(fondos);
 await document.fonts.ready;

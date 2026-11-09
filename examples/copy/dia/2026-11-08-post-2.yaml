@@ -1,6 +1,7 @@
 # Post 2 · Este o este (imagen única, invita a comentar). Pilar: llamado a la acción / pipeline comercial.
 formato: este-o-este
 salida: data/dias/2026-11-08/post-2
+titulo_tiktok: "¿A o B? Así sale tu cotización hoy 👀"
 pregunta: "¿CÓMO SALE TU COTIZACIÓN HOY?"
 opciones:
   - {texto: "Abro la anterior en Word y le cambio el nombre.", nota: "…y rezo para no dejar el precio viejo."}

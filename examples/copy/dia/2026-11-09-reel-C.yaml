@@ -1,0 +1,43 @@
+# Reel C · Tipografía cinética. Pilar: propósito y proceso (cómo trabajamos con cada cliente).
+# Sin charlas ni programas pro-bono: ese enfoque queda pausado hasta que el equipo lo pida.
+# palabras: solo palabras clave (no subtítulos). "/" = nuevo renglón. *palabra* = acento en serif cursiva. tema: verde | marfil | oro
+formato: cinetica
+titulo: Así trabajamos
+etiqueta: ASÍ TRABAJAMOS
+audio: assets/voice/elevenlabs/2026-11-09-reel-C.mp3
+salida: data/dias/2026-11-09/reel-C
+musica: inspired
+musica_db: -21
+whatsapp: "+502 3808 9808"
+caption: >-
+  Nadie quiere un sistema que se ve bonito en la presentación y después se queda guardado en un cajón. 🗂️
+  Por eso nuestro proceso arranca en tu negocio, no en la computadora.
+  ¿Qué tarea te gustaría no volver a hacer a mano? Contanos en los comentarios o escribinos al WhatsApp +502 3808 9808.
+hashtags: [PymesGuatemala, Digitalizacion, SoftwareAMedida, EmprendedoresGT, IFTechworks]
+lineas:
+  - texto: Antes de escribir una sola línea de código, nos sentamos a ver cómo trabaja tu negocio.
+    tema: verde
+    palabras: "Primero, / *escuchamos.*"
+    sfx: [[0.05, whoosh]]
+  - texto: Empezamos por lo que más te duele, no por lo más caro.
+    tema: marfil
+    palabras: "Lo que *duele* / va primero."
+    sfx: [[0.05, whoosh], [0.55, pop]]
+  - texto: Vos ves cada avance, y nada se entrega sin tu visto bueno.
+    tema: oro
+    palabras: "Vos / *decidís.*"
+    sub: "CADA AVANCE · TU VISTO BUENO"
+    sfx: [[0.05, whoosh], [0.6, pop]]
+  - texto: Y no te dejamos solo. Le enseñamos a tu equipo a usarlo.
+    tema: verde
+    palabras: "Tu equipo / *lo domina.*"
+    sfx: [[0.05, tick], [0.5, tick]]
+  - texto: Tecnología a la medida de tu negocio, no al revés.
+    tema: marfil
+    palabras: "A tu / *medida.*"
+    sfx: [[0.05, whoosh]]
+  - texto: Contanos qué es lo que más tiempo te quita.
+    tema: verde
+    escena: cierre
+    palabras: "¿Qué te quita / *más tiempo?*"
+    sfx: [[0.05, whoosh], [0.6, pop]]

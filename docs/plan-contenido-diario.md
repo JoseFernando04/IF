@@ -48,9 +48,9 @@ VideosInstagram/                → lo que ya se publicó
 | Videojuego 8-bit | ✅ listo | Misiones, game over, niveles (`docs/guiones-8bit.md`) |
 | Historia en el celular | ✅ listo (`chat`) | Chat y notificaciones que cuentan una situación de bodega |
 | Mito vs. realidad | ✅ listo (`mito`, look risográfico) | Pantalla dividida que se voltea |
-| Antes / después | por construir | Deslizador entre el caos y el orden |
-| Tipografía cinética | por construir | Palabras grandes al ritmo de la voz |
-| POV del dueño | por construir | "POV: es cierre de mes y…" con texto en pantalla |
+| Antes / después | ✅ listo (`antesdespues`) | Deslizador entre el caos y el orden |
+| Tipografía cinética | ✅ listo (`cinetica`) | Palabras grandes al ritmo de la voz |
+| POV del dueño | ✅ listo (`pov`) | "POV: es cierre de mes y…" con texto en pantalla |
 | Cuenta regresiva / top 3 | ✅ listo (`top3`, estilo suizo) | Lista rápida con números grandes |
 | Pantalla de sistema | por construir | Tablero tipo software: alertas, gráficas, inventario en vivo |
 | Papel y libreta (estilo A) | prototipo | Papel, marcador y escritura a mano |
@@ -63,8 +63,10 @@ VideosInstagram/                → lo que ya se publicó
 | Mito o verdad | por construir | Afirmación + respuesta al deslizar |
 | Checklist para guardar | ✅ listo (`checklist`) | Lista útil que invita a guardar |
 | Este o este | ✅ listo (`este-o-este`) | Dos opciones para comentar |
-| Frase de dueño | ✅ listo (`frase`) | Una situación que todos reconocen |
-| Infografía simple | por construir | Un dato del proceso explicado en una imagen |
+| Frase de dueño | ✅ listo (`frase`) |
+| Diccionario | ✅ listo (`diccionario`) | Palabras que todo dueño conoce, con definición y "cura" |
+| Recibo | ✅ listo (`recibo`) | Ticket con lo que cuesta un problema (sin cifras inventadas) | Una situación que todos reconocen |
+| Infografía simple | ✅ listo (`infografia`) | Un dato del proceso explicado en una imagen |
 | Carrusel 8-bit | por construir | Mismo universo de los reels de videojuego |
 
 ## Historial (para no repetir)
@@ -72,10 +74,13 @@ VideosInstagram/                → lo que ya se publicó
 | Día | Reels propuestos | Posts propuestos |
 |---|---|---|
 | 2026-11-08 | A chat (inventario) ✅ producido · B mito vs. realidad (digitalizar) ✅ producido · C top 3 (vendedores de calle) ✅ producido | 1 checklist (comprar sistema) · 2 este o este (cotizaciones) · 3 frase de dueño (memoria) |
+| 2026-11-09 | A POV del dueño (catálogo) ✅ producido · B antes/después (activos) ✅ producido · C tipografía cinética (así trabajamos; reemplaza la versión de charlas) ✅ producido | 1 infografía (estante con sensores) · 2 diccionario del dueño · 3 recibo (costo de no ordenar) |
 
 ## Reglas de contenido (siempre)
 
 - Voseo guatemalteco. Sin clientes, cifras ni testimonios inventados (las escenas son "de ejemplo").
 - Llamado a la acción con WhatsApp **+502 3808 9808**. Descripciones llamativas que **no repitan el guion**.
 - 5 hashtags. Si la música es CC BY, el crédito va en la descripción.
+- Posts: además, un título para TikTok (`titulo_tiktok` en el YAML, máx. 90 caracteres, llamativo y distinto a la descripción).
+- Sonido: los posts se publican con el sonido característico de IF (`if-firma`); ver `data/dias/2026-11-09/para-subir/sonido-IF/`.
 - Rotar pilares: educativo, soluciones, tips, propósito y proceso, llamado a la acción.

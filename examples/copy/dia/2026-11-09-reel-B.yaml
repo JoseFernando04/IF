@@ -1,0 +1,57 @@
+# Reel B · Antes / después con deslizador. Pilar: soluciones (asignación de activos por colaborador). Escena de ejemplo.
+# lado: antes | despues | medio (dónde queda el deslizador). marca: renglón del cuaderno que se encierra.
+formato: antesdespues
+titulo: ¿Quién tiene la laptop 4?
+audio: assets/voice/elevenlabs/2026-11-09-reel-B.mp3
+salida: data/dias/2026-11-09/reel-B
+musica: pamgaea
+musica_db: -22
+whatsapp: "+502 3808 9808"
+cuaderno:
+  - {texto: "Laptop 4 → ¿Juan? ¿Pedro?", tachones: [[230, 120]], ancho: 780, giro: -1}
+  - {texto: "Taladro: prestado (marzo)", ancho: 760, giro: 1}
+  - {texto: "Proyector → sala 2 / bodega", tachones: [[300, 160]], giro: -1}
+  - {texto: "Celular ruta 3: ???", giro: 0.5}
+  - {texto: "Llaves camión → ver Lucía", tachones: [[0, 180]], giro: -0.5}
+activos:
+  - {a: "Laptop 04", q: "Ana · Ventas", d: "Oficina central · desde 03-nov", hit: true}
+  - {a: "Taladro percutor", q: "Bodega", d: "Devuelto 28-oct · con historial de préstamos"}
+  - {a: "Proyector", q: "Sala 2", d: "Reservado jueves 10:00"}
+  - {a: "Celular ruta 3", q: "Marco · Ruta 3", d: "Asignado con cargador y funda"}
+caption: >-
+  Hay equipos que tienen más historias que dueño. 🕵️ Laptops que "alguien tenía", herramientas que se prestaron "un ratito"…
+  Ordenarlo no tiene que ser complicado. Escribinos al WhatsApp +502 3808 9808 y te mostramos cómo se ve tu equipo
+  con responsable, historial y ubicación. (Escena de ejemplo.)
+hashtags: [ControlDeActivos, PymesGuatemala, Empresas, Digitalizacion, NegociosGT]
+lineas:
+  - texto: "Antes: ¿quién tiene la laptop cuatro?"
+    lado: antes
+    marca: 0
+    sfx: [[0.1, whoosh], [0.6, marker]]
+  - texto: Nadie sabe.
+    lado: antes
+    clave: "NADIE SABE"
+    clave_frac: 0.1
+    sfx: [[0.1, thud]]
+  - texto: El taladro lo prestaste en marzo y nunca volvió.
+    lado: antes
+    marca: 1
+    sfx: [[0.3, marker]]
+  - texto: Y tu inventario de equipo es un cuaderno lleno de tachones.
+    lado: antes
+    clave: "UN CUADERNO"
+    clave_frac: 0.45
+    sfx: [[0.5, paper]]
+  - texto: "Después: cada activo tiene su responsable, su historial y su ubicación."
+    lado: despues
+    clave: "CON RESPONSABLE"
+    clave_frac: 0.5
+    sfx: [[0.05, whoosh], [0.5, pop]]
+  - texto: Buscás la laptop cuatro y al instante sabés quién la tiene.
+    lado: despues
+    busca: "laptop 4"
+    sfx: [[0.2, tick], [0.35, tick], [0.55, pop]]
+  - texto: Pasá del antes al después. Escribinos.
+    escena: cierre
+    titulo: "<s>Antes</s><br><em>Después.</em>"
+    sfx: [[0.3, pop]]
