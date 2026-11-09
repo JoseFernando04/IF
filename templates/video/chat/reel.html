@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Inter"; src: url("__FONTS__/Inter.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Bricolage"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+:root { --verde: #0a1410; --verde2: #162920; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --gris: #8b949e;
+  --burbuja-yo: #2f5d46; --fondo-chat: #0f1d17; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--verde); font-family: "Inter"; }
+#fondo { position: absolute; inset: 0; }
+#tel { position: absolute; left: 130px; top: 250px; width: 820px; height: 1560px; border-radius: 96px; background: #050a08;
+  box-shadow: 0 60px 140px rgba(0,0,0,.55), inset 0 0 0 3px #2a3a33; transform-origin: 50% 40%; }
+#pantalla { position: absolute; inset: 22px; border-radius: 76px; overflow: hidden; background: var(--fondo-chat); }
+.estado { position: absolute; top: 0; left: 0; right: 0; height: 90px; display: flex; justify-content: space-between;
+  align-items: center; padding: 0 64px; color: var(--marfil); font: 600 34px "Inter"; z-index: 5; }
+.isla { position: absolute; top: 22px; left: 50%; width: 220px; height: 58px; margin-left: -110px; background: #000; border-radius: 40px; z-index: 6; }
+.vista { position: absolute; inset: 0; opacity: 0; }
+.vista.on { opacity: 1; }
+/* Chat */
+.cab { position: absolute; top: 90px; left: 0; right: 0; height: 150px; background: var(--verde2); display: flex; align-items: center;
+  gap: 26px; padding: 0 40px; border-bottom: 2px solid #22382e; }
+.avatar { width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center; font: 700 38px "Bricolage"; color: var(--verde); }
+.nombre { color: var(--marfil); font: 700 40px "Inter"; }
+.sub { color: var(--gris); font: 400 28px "Inter"; margin-top: 4px; }
+.msgs { position: absolute; top: 260px; left: 0; right: 0; bottom: 150px; padding: 0 34px; display: flex; flex-direction: column;
+  justify-content: flex-end; gap: 22px; }
+.m { max-width: 74%; padding: 26px 32px 18px; border-radius: 38px; font: 400 46px/1.28 "Inter"; color: var(--marfil);
+  background: var(--verde3); align-self: flex-start; border-bottom-left-radius: 10px; transform-origin: 0 100%; }
+.m.yo { align-self: flex-end; background: var(--burbuja-yo); border-bottom-left-radius: 38px; border-bottom-right-radius: 10px; transform-origin: 100% 100%; }
+.m .h { display: block; text-align: right; font: 400 24px "Inter"; color: #b9c4bd; margin-top: 8px; }
+.m .h b { color: #7cc4ff; font-weight: 600; margin-left: 6px; }
+.m.foto { padding: 14px; }
+.m.foto .img { width: 520px; height: 400px; border-radius: 28px; overflow: hidden; position: relative; background: #3a3127; }
+.escribe { align-self: flex-start; background: var(--verde3); border-radius: 38px; padding: 28px 34px; display: flex; gap: 12px; }
+.escribe.yo { align-self: flex-end; background: var(--burbuja-yo); }
+.escribe i { width: 18px; height: 18px; border-radius: 50%; background: var(--marfil); opacity: .4; }
+.barra { position: absolute; left: 0; right: 0; bottom: 0; height: 150px; background: var(--verde2); display: flex; align-items: center; padding: 0 34px; gap: 20px; }
+.campo { flex: 1; height: 86px; border-radius: 44px; background: #0a1410; color: var(--marfil); font: 400 36px "Inter";
+  display: flex; align-items: center; padding: 0 36px; white-space: nowrap; overflow: hidden; }
+.campo .ph { color: #5d6b64; }
+.cursor { display: inline-block; width: 4px; height: 44px; background: var(--oro); margin-left: 4px; vertical-align: middle; }
+.enviar { width: 86px; height: 86px; border-radius: 50%; background: var(--oro); }
+/* Llamada */
+.llamada { background: radial-gradient(circle at 50% 30%, #1d362b, #050a08 70%); display: flex; flex-direction: column; align-items: center; }
+.llamada .avatar { width: 260px; height: 260px; font-size: 100px; margin-top: 330px; }
+.llamada .nombre { font-size: 64px; margin-top: 50px; }
+.llamada .sub { font-size: 36px; margin-top: 14px; }
+.colgar { position: absolute; bottom: 160px; width: 150px; height: 150px; border-radius: 50%; background: #d6432f; }
+.onda { position: absolute; top: 330px; left: 50%; width: 260px; height: 260px; margin-left: -130px; border-radius: 50%; border: 4px solid var(--oro); }
+/* App de inventario */
+.app { background: var(--marfil); }
+.app .tit { position: absolute; top: 140px; left: 56px; font: 700 30px "Mono"; color: #2f5d46; letter-spacing: 2px; }
+.app .h1 { position: absolute; top: 200px; left: 56px; font: 800 64px/1.05 "Bricolage"; color: var(--verde); }
+.fila { position: absolute; left: 40px; right: 40px; height: 170px; border-radius: 34px; background: #fff; box-shadow: 0 8px 30px rgba(10,20,16,.08);
+  display: flex; align-items: center; padding: 0 40px; justify-content: space-between; }
+.fila .p { font: 600 38px "Inter"; color: var(--verde); }
+.fila .p small { display: block; font: 400 26px "Inter"; color: #6b7570; margin-top: 6px; }
+.fila .n { font: 800 84px "Bricolage"; color: var(--verde); }
+.fila.alerta { background: var(--verde); }
+.fila.alerta .p { color: var(--marfil); } .fila.alerta .p small { color: var(--oro); } .fila.alerta .n { color: var(--oro); }
+.vivo { position: absolute; top: 146px; right: 56px; font: 700 26px "Mono"; color: #2f5d46; display: flex; gap: 12px; align-items: center; }
+.vivo i { width: 18px; height: 18px; border-radius: 50%; background: #57b96f; }
+/* Cierre */
+.cierre { background: var(--verde); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.cierre img { width: 300px; margin-bottom: 70px; }
+.cierre .h1 { font: 800 76px/1.05 "Bricolage"; color: var(--marfil); padding: 0 60px; }
+.cierre .h1 em { font-style: normal; color: var(--oro); }
+.cierre .wa { margin-top: 60px; padding: 30px 50px; border-radius: 60px; background: var(--oro); color: var(--verde); font: 800 50px "Inter"; }
+.cierre .web { margin-top: 30px; font: 500 32px "Mono"; color: #9fb3a8; }
+/* Palabra clave (no son subtítulos) */
+#clave { position: absolute; left: 70px; top: 140px; padding: 22px 40px; background: var(--oro); color: var(--verde); font: 800 78px/1 "Bricolage";
+  letter-spacing: -1px; border-radius: 18px; transform-origin: 0 50%; box-shadow: 0 20px 50px rgba(0,0,0,.35); z-index: 20; white-space: nowrap; }
+#hora { position: absolute; right: 70px; top: 158px; font: 700 40px "Mono"; color: var(--marfil); opacity: .85; z-index: 20; }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="hora"></div>
+<div id="tel"><div id="pantalla">
+  <div class="isla"></div>
+  <div class="estado"><span id="reloj">18:00</span><span>▮▮▮ 5G</span></div>
+  <div class="vista chat" id="v-chat">
+    <div class="cab"><div class="avatar" id="av"></div><div><div class="nombre" id="nom"></div><div class="sub" id="sub"></div></div></div>
+    <div class="msgs" id="msgs"></div>
+    <div class="barra"><div class="campo" id="campo"></div><div class="enviar"></div></div>
+  </div>
+  <div class="vista llamada" id="v-llamada"><div class="onda" id="onda"></div><div class="avatar" id="av2"></div>
+    <div class="nombre" id="nom2"></div><div class="sub" id="sub2"></div><div class="colgar"></div></div>
+  <div class="vista app" id="v-app"><div class="tit">INVENTARIO</div><div class="vivo"><i id="punto"></i>EN VIVO</div>
+    <div class="h1" id="apph1"></div><div id="filas"></div></div>
+  <div class="vista cierre" id="v-cierre"><img src="__LOGO__"><div class="h1" id="cierreh1"></div><div class="wa" id="wa"></div><div class="web">iftechworks.com</div></div>
+</div></div>
+<div id="clave"></div>
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, C = REEL.contactos;
+const $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const back = (x) => { x = cl(x); const s = 1.7; return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2); };
+
+// Línea de tiempo: cada mensaje aparece en inicio + frac·duración. Los de otros tienen "escribiendo…" antes.
+const eventos = [];
+L.forEach((l, i) => (l.mensajes || []).forEach((m) => eventos.push({ ...m, chat: l.chat, t: l.inicio + l.duracion * (m.frac ?? 0.1), i })));
+const fondoP = fondo($("fondo"), "malla", { colors: ["#0a1410", "#1d362b", "#2f5d46", "#0f1d17", "#6b5a12"], distortion: 0.9, swirl: 0.25 });
+
+function lineaEn(t) { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; }
+
+function burbuja(m) {
+  const d = document.createElement("div");
+  d.className = "m" + (m.de === "yo" ? " yo" : "") + (m.foto ? " foto" : "");
+  const hora = `<span class="h">${m.hora || ""}${m.de === "yo" ? "<b>✓✓</b>" : ""}</span>`;
+  d.innerHTML = m.foto ? `<div class="img">${estante(m.foto)}</div>${m.texto ? `<div style="padding:14px 18px 0">${m.texto}</div>` : ""}${hora}` : `${m.texto}${hora}`;
+  return d;
+}
+// Foto de bodega dibujada: estante con pocas cajas y el número grande.
+function estante(n) {
+  let cajas = "";
+  for (let k = 0; k < n; k++) { const x = 30 + (k % 6) * 70, y = 250 - Math.floor(k / 6) * 62;
+    cajas += `<div style="position:absolute;left:${x}px;top:${y}px;width:62px;height:56px;background:#b98a52;border:3px solid #7a5530;border-radius:4px"></div>`; }
+  return `<div style="position:absolute;inset:0;background:linear-gradient(#4a3f33,#2b241d)"></div>
+    ${[0, 1, 2].map((r) => `<div style="position:absolute;left:0;right:0;top:${120 + r * 125}px;height:14px;background:#6f6457"></div>`).join("")}
+    ${cajas}<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,transparent 40%,rgba(0,0,0,.45))"></div>`;
+}
+
+function dibujar(t) {
+  const i = lineaEn(t), l = L[i], p = cl((t - l.inicio) / l.duracion);
+  fondoP.then((f) => f.frame(t * 1000 * 0.35));
+  // Vista del celular
+  const vista = l.pantalla || "chat";
+  ["chat", "llamada", "app", "cierre"].forEach((v) => $("v-" + v).classList.toggle("on", v === vista));
+  // Leve empuje de cámara al cambiar de línea
+  const k = eo((t - l.inicio) / 0.5);
+  $("tel").style.transform = `scale(${1.0 + 0.025 * (1 - k)}) translateY(${(1 - k) * 18}px)`;
+  $("reloj").textContent = l.reloj || "18:00";
+  $("hora").textContent = "";
+  if (vista === "chat") {
+    const c = C[l.chat];
+    $("av").textContent = c.inicial; $("av").style.background = c.color; $("nom").textContent = c.nombre;
+    const caja = $("msgs"); caja.innerHTML = "";
+    let escribiendo = null;
+    (c.historial || []).forEach((h) => { const b = burbuja(h); b.style.opacity = 0.55; caja.appendChild(b); });
+    eventos.filter((e) => e.chat === l.chat).forEach((e) => {
+      if (t >= e.t) { const b = burbuja(e); const s = back((t - e.t) / 0.35); b.style.transform = `scale(${0.6 + 0.4 * s})`; b.style.opacity = cl((t - e.t) / 0.15); caja.appendChild(b); }
+      else if (e.de !== "yo" && t >= e.t - 0.9) escribiendo = e;
+    });
+    $("sub").textContent = escribiendo ? "escribiendo…" : c.sub;
+    if (escribiendo) { const d = document.createElement("div"); d.className = "escribe";
+      d.innerHTML = [0, 1, 2].map((j) => `<i style="opacity:${0.3 + 0.7 * Math.max(0, Math.sin((t * 6 - j) ))}"></i>`).join(""); caja.appendChild(d); }
+    // Campo de texto: lo que el usuario está escribiendo y no se atreve a mandar
+    const borrador = l.borrador;
+    if (borrador) { const n = Math.floor(cl((p - 0.15) / 0.55) * borrador.length);
+      $("campo").innerHTML = borrador.slice(0, n) + `<span class="cursor" style="opacity:${Math.floor(t * 2.4) % 2 ? 1 : 0}"></span>`; }
+    else $("campo").innerHTML = `<span class="ph">Mensaje</span>`;
+  }
+  if (vista === "llamada") { const c = C[l.contacto];
+    $("av2").textContent = c.inicial; $("av2").style.background = c.color; $("nom2").textContent = c.nombre;
+    $("sub2").textContent = p < 0.45 ? "Llamando…" : "Sin respuesta";
+    const o = (t * 0.9) % 1; $("onda").style.transform = `scale(${1 + o * 0.8})`; $("onda").style.opacity = p < 0.45 ? 1 - o : 0; }
+  if (vista === "app") {
+    $("apph1").innerHTML = l.titulo_app || "";
+    $("punto").style.opacity = Math.floor(t * 2) % 2 ? 1 : 0.25;
+    $("filas").innerHTML = (l.filas || []).map((f, j) => { const a = eo((p - 0.08 * j) / 0.25);
+      return `<div class="fila ${f.alerta ? "alerta" : ""}" style="top:${380 + j * 190}px;opacity:${a};transform:translateY(${(1 - a) * 40}px)">
+        <div class="p">${f.nombre}<small>${f.nota}</small></div><div class="n">${f.n}</div></div>`; }).join("");
+  }
+  if (vista === "cierre") { $("cierreh1").innerHTML = l.titulo || ""; $("wa").textContent = REEL.whatsapp;
+    $("wa").style.transform = `scale(${0.8 + 0.2 * back((p - 0.3) / 0.3)})`; }
+  // Palabra clave en pantalla
+  const ck = $("clave");
+  if (l.clave) { const a = back((t - l.inicio - (l.clave_frac ?? 0.25) * l.duracion) / 0.3);
+    ck.textContent = l.clave; ck.style.opacity = a > 0 ? 1 : 0; ck.style.transform = `rotate(-3deg) scaleX(${cl(a, 0, 1.2)})`; }
+  else ck.style.opacity = 0;
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>

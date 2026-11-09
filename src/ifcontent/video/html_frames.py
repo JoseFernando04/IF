@@ -78,7 +78,8 @@ def render_html_video(html_path: Path, duration: float, audio: Path, video: Path
     )
     try:
         with sync_playwright() as p:
-            browser = p.chromium.launch()
+            # Permite importar módulos locales (file://), p. ej. Paper Shaders en templates/shared/fondos.js.
+            browser = p.chromium.launch(args=["--allow-file-access-from-files"])
             page = browser.new_page(viewport={"width": w, "height": h})
             page.goto(Path(html_path).resolve().as_uri())
             page.evaluate("document.fonts.ready")

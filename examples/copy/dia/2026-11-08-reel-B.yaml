@@ -1,0 +1,50 @@
+# Reel B · Mito vs. realidad (carta que se voltea, look risográfico). Pilar: educativo.
+formato: mito
+titulo: Tres mitos de digitalizar tu negocio
+audio: assets/voice/elevenlabs/2026-11-08-reel-B.mp3
+salida: data/dias/2026-11-08/reel-B
+musica: pamgaea
+musica_db: -22
+whatsapp: "+502 3808 9808"
+caption: >-
+  Lo que más frena a un negocio no es la tecnología: son las ideas que tenemos de ella. 🧠
+  ¿Cuál de estos tres te sonó a vos? Contanos en los comentarios o escribinos al WhatsApp +502 3808 9808
+  y platicamos de tu caso, sin compromiso.
+hashtags: [TransformacionDigital, PymesGuatemala, EmprendedoresGT, Digitalizacion, Negocios]
+lineas:
+  - texto: Tres mitos sobre digitalizar tu negocio.
+    escena: titulo
+    grande: "3 mitos"
+    serif: "de digitalizar tu negocio"
+    sfx: [[0.05, whoosh]]
+  - texto: "Mito uno: es solo para empresas grandes."
+    escena: mito
+    n: 1
+    pantalla: Solo para empresas grandes
+    sfx: [[0.02, whoosh], [0.32, thud], [0.72, marker]]
+  - texto: "Realidad: podés empezar con un solo proceso, el que más te duele."
+    escena: realidad
+    pantalla: Un proceso a la vez. El que más duele.
+    sfx: [[0.05, paper], [0.3, pop]]
+  - texto: "Mito dos: vas a tener que botar todo lo que ya tenés."
+    escena: mito
+    n: 2
+    pantalla: Hay que botar todo
+    sfx: [[0.02, whoosh], [0.32, thud], [0.72, marker]]
+  - texto: "Realidad: lo nuevo se conecta con tu Excel y tu forma de trabajar."
+    escena: realidad
+    pantalla: Se conecta con lo que ya usás.
+    sfx: [[0.05, paper], [0.3, pop]]
+  - texto: "Mito tres: tu equipo no lo va a usar."
+    escena: mito
+    n: 3
+    pantalla: Mi equipo no lo va a usar
+    sfx: [[0.02, whoosh], [0.32, thud], [0.72, marker]]
+  - texto: "Realidad: si es fácil y le ahorra tiempo, lo usa."
+    escena: realidad
+    pantalla: Fácil + ahorra tiempo = se usa.
+    sfx: [[0.05, paper], [0.3, pop]]
+  - texto: Contanos cuál te frena y lo platicamos.
+    escena: cierre
+    grande: "¿Cuál te frena?"
+    sfx: [[0.3, pop]]

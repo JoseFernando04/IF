@@ -46,12 +46,12 @@ VideosInstagram/                → lo que ya se publicó
 |---|---|---|
 | Documental (estilo B) | ✅ listo | Foto real duotono, tipografía grande, voz de José |
 | Videojuego 8-bit | ✅ listo | Misiones, game over, niveles (`docs/guiones-8bit.md`) |
-| Historia en el celular | por construir | Chat y notificaciones que cuentan una situación de bodega |
-| Mito vs. realidad | por construir | Pantalla dividida que se voltea |
+| Historia en el celular | ✅ listo (`chat`) | Chat y notificaciones que cuentan una situación de bodega |
+| Mito vs. realidad | ✅ listo (`mito`, look risográfico) | Pantalla dividida que se voltea |
 | Antes / después | por construir | Deslizador entre el caos y el orden |
 | Tipografía cinética | por construir | Palabras grandes al ritmo de la voz |
 | POV del dueño | por construir | "POV: es cierre de mes y…" con texto en pantalla |
-| Cuenta regresiva / top 3 | por construir | Lista rápida con números grandes |
+| Cuenta regresiva / top 3 | ✅ listo (`top3`, estilo suizo) | Lista rápida con números grandes |
 | Pantalla de sistema | por construir | Tablero tipo software: alertas, gráficas, inventario en vivo |
 | Papel y libreta (estilo A) | prototipo | Papel, marcador y escritura a mano |
 
@@ -61,11 +61,17 @@ VideosInstagram/                → lo que ya se publicó
 |---|---|---|
 | Carrusel documental | ✅ listo (12 layouts) | Señales, comparaciones, pasos |
 | Mito o verdad | por construir | Afirmación + respuesta al deslizar |
-| Checklist para guardar | por construir | Lista útil que invita a guardar |
-| Este o este | por construir | Dos opciones para comentar |
-| Frase de dueño | por construir | Una situación que todos reconocen |
+| Checklist para guardar | ✅ listo (`checklist`) | Lista útil que invita a guardar |
+| Este o este | ✅ listo (`este-o-este`) | Dos opciones para comentar |
+| Frase de dueño | ✅ listo (`frase`) | Una situación que todos reconocen |
 | Infografía simple | por construir | Un dato del proceso explicado en una imagen |
 | Carrusel 8-bit | por construir | Mismo universo de los reels de videojuego |
+
+## Historial (para no repetir)
+
+| Día | Reels propuestos | Posts propuestos |
+|---|---|---|
+| 2026-11-08 | A chat (inventario) ✅ producido · B mito vs. realidad (digitalizar) · C top 3 (vendedores de calle) ✅ producido | 1 checklist (comprar sistema) · 2 este o este (cotizaciones) · 3 frase de dueño (memoria) |
 
 ## Reglas de contenido (siempre)
 

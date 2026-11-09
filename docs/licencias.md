@@ -15,6 +15,8 @@ Todo el stack es gratuito para uso comercial. Revisar esta tabla antes de agrega
 | Space Grotesk, Inter, JetBrains Mono | Tipografías de marca | SIL OFL 1.1 | 0 | Licencias en `assets/fonts/` |
 | Lucide (íconos) | Íconos de las plantillas | ISC | 0 | Licencia en `assets/icons/LICENSE.txt` |
 | GSAP 3.15.0 (gsap, SplitText, CustomEase, DrawSVG) | Motion de reels | GSAP Standard No-Charge License | 0 | Uso comercial OK; prohibido solo en constructores visuales que compitan con Webflow. Vendorizado en `assets/vendor/` con hash verificado |
+| Paper Shaders 0.0.82 (@paper-design/shaders) | Fondos animados (malla, grano, retícula) en `templates/shared/fondos.js` | Apache-2.0 | 0 | Revisado 2026-11-08: sin dependencias ni scripts de instalación, hash sha512 de npm verificado, sin llamadas de red. Vendorizado en `assets/vendor/paper-shaders-0.0.82/` con LICENSE y NOTICE |
+| Lemo-Opuscar (lemomo-ai/lemo-opuscar) | — | MIT | **No instalado** | Revisado 2026-11-08: plugin de Claude Code con scripts que descargan paquetes grandes, dependencias npm sin versión fija, cuenta personal de 6 semanas con decenas de cambios diarios y requiere Node. Solo se leyeron sus guías de estilo (swiss-motion, risograph) como referencia de diseño; no se copió código |
 | Bricolage Grotesque, Instrument Serif, Inter Tight, Caveat | Tipografías de la nueva dirección | SIL OFL 1.1 | 0 | Licencias en `assets/fonts/` |
 | Fotos de Unsplash | Fotografía real | Unsplash License | 0 | Registro en `assets/photos/CREDITOS.yaml` |
 | SFX (`assets/sfx/`) | Efectos de sonido | Propios (sintetizados con `tools/make_sfx.py`) | 0 | Sin terceros |

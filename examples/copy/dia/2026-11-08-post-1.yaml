@@ -1,0 +1,23 @@
+# Post 1 · Checklist para guardar (carrusel de 6). Pilar: educativo.
+formato: checklist
+salida: data/dias/2026-11-08/post-1
+whatsapp: "+502 3808 9808"
+etiqueta: "ANTES DE COMPRAR UN SISTEMA"
+titulo: "6 preguntas que te <em>ahorran</em> un mal sistema."
+bajada: "Hacelas en la próxima reunión con cualquier proveedor. Incluso con nosotros."
+guardar: "Guardalo para tu próxima cotización"
+items:
+  - {p: "¿Qué problema concreto resuelve?", r: "Si no lo podés decir en una frase, todavía no está claro.", corto: "Problema claro, en una frase"}
+  - {p: "¿Quién lo va a usar todos los días?", r: "Probalo con esa persona, no solo con quien firma.", corto: "Probado por quien lo usa"}
+  - {p: "¿Funciona en el celular?", r: "La bodega y la ruta no trabajan sentadas frente a una compu.", corto: "Funciona en el celular"}
+  - {p: "¿Se conecta con lo que ya tenés?", r: "Tu Excel, tu facturación, tu contador. Preguntá cómo, no solo si se puede.", corto: "Se conecta con lo que ya usás"}
+  - {p: "¿Quién te capacita y te acompaña?", r: "Instalarlo es el día uno, no el último.", corto: "Capacitación y acompañamiento"}
+  - {p: "¿Los datos son tuyos?", r: "Que los podás exportar cuando querás, sin pedir permiso.", corto: "Tus datos, exportables"}
+resumen: "Si marcás las seis, vas bien."
+cierre: "¿Querés una <em>segunda opinión</em>?"
+cierre_bajada: "Mandanos lo que te cotizaron y te decimos qué preguntaríamos nosotros. Sin compromiso."
+caption: >-
+  Comprar un sistema sin estas preguntas es como comprar carro sin probarlo. 🚗
+  Guardá este carrusel y sacalo en tu próxima reunión con un proveedor (sí, también con nosotros).
+  ¿Ya te cotizaron algo y tenés dudas? Escribinos al WhatsApp +502 3808 9808 y lo revisamos juntos.
+hashtags: [PymesGuatemala, Digitalizacion, TipsDeNegocio, SoftwareEmpresarial, NegociosGT]

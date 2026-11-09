@@ -1,0 +1,59 @@
+# Reel C · Top 3 / cuenta regresiva en estilo suizo. Pilar: tips (vendedores de calle).
+# bloque: [columna, fila, ancho, alto] en módulos de 90 px (grilla de 12 × 21).
+formato: top3
+titulo: Tres señales para dejar la libreta
+audio: assets/voice/elevenlabs/Reel_C.mp3
+salida: data/dias/2026-11-08/reel-C
+musica: voxel-revolution
+musica_db: -23
+whatsapp: "+502 3808 9808"
+caption: >-
+  La libreta aguantó años, pero tu ruta ya creció. 📒➡️📱
+  ¿Cuántas de estas tres te pasan esta semana? Si fueron dos o más, platiquemos:
+  WhatsApp +502 3808 9808. Te mostramos cómo se ve el catálogo y los pedidos desde el celular de tus vendedores.
+hashtags: [VentasEnRuta, PymesGuatemala, Distribuidoras, Digitalizacion, NegociosGT]
+lineas:
+  - texto: Tres señales de que tus vendedores ya deben dejar la libreta.
+    num: "3"
+    cont: "00 / 03"
+    lead: "Vendedores de calle"
+    frase: "Adiós, libreta."
+    bloque: [7, 3, 4, 4]
+    sfx: [[0.05, whoosh]]
+  - texto: "Tres: los pedidos llegan por foto, audio y papelito, y alguien los pasa a mano en la noche."
+    num: "3"
+    cont: "01 / 03"
+    lead: "Señal 03"
+    frase: "Foto, audio y papelito."
+    sub: "→ y alguien los digita de noche."
+    bloque: [8, 9, 3, 3]
+    sfx: [[0.02, tick], [0.4, tick]]
+  - texto: "Dos: el vendedor ofrece algo que ya no hay en bodega."
+    num: "2"
+    cont: "02 / 03"
+    lead: "Señal 02"
+    frase: "Vende lo que ya no hay."
+    bloque: [1, 2, 3, 3]
+    sfx: [[0.02, tick]]
+  - texto: "Uno: no sabés qué se vendió hoy hasta mañana."
+    num: "1"
+    cont: "03 / 03"
+    lead: "Señal 01"
+    frase: "Lo de hoy, lo sabés mañana."
+    bloque: [6, 6, 5, 5]
+    sfx: [[0.02, tick]]
+  - texto: Si te pasaron las tres, una app con catálogo y pedidos en el celular te ordena la ruta.
+    num: "✓"
+    cont: "SOLUCIÓN"
+    lead: "Si te pasaron las tres"
+    frase: "Catálogo y pedidos en el celular."
+    bloque: [0, 2, 12, 11]
+    sfx: [[0.05, whoosh], [0.5, pop]]
+  - texto: Agendá una plática sin compromiso.
+    escena: cierre
+    num: ""
+    cont: "IF TECHWORKS"
+    lead: "Sin compromiso"
+    frase: "Agendá una plática."
+    bloque: [0, 2, 12, 11]
+    sfx: [[0.3, pop]]

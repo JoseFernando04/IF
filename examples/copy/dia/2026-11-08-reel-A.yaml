@@ -1,0 +1,75 @@
+# Reel A · Historia en el celular (chat). Pilar: soluciones (inventario inteligente). Escena de ejemplo.
+formato: chat
+titulo: El mensaje que nadie quiere mandar
+audio: assets/voice/elevenlabs/Reel_A.mp3
+salida: data/dias/2026-11-08/reel-A
+musica: digital-lemonade
+musica_db: -21
+whatsapp: "+502 3808 9808"
+contactos:
+  cliente:
+    {nombre: "Don Luis · Ferretería", inicial: "L", color: "#f0c419", sub: "en línea",
+     historial: [{de: cliente, texto: "Gracias por lo del martes, todo llegó bien", hora: "lun"}, {de: yo, texto: "¡Con gusto, don Luis!", hora: "lun"}]}
+  bodega:
+    {nombre: "Bodega", inicial: "B", color: "#57b96f", sub: "en línea",
+     historial: [{de: yo, texto: "¿Cuántas cajas 18×24 hay? Urge", hora: "18:02"}]}
+caption: >-
+  Hay mensajes que dan gusto mandar… y hay otros que se escriben, se borran y se vuelven a escribir. 😬
+  Si tu inventario vive en un Excel que nadie actualiza, ese mensaje te va a tocar tarde o temprano.
+  Escribinos al WhatsApp +502 3808 9808 y vemos juntos cómo saber cuánto tenés antes de prometer. (Escena de ejemplo.)
+hashtags: [InventarioInteligente, PymesGuatemala, NegociosGT, Digitalizacion, Bodega]
+lineas:
+  - texto: Son las seis de la tarde y te escribe tu mejor cliente.
+    chat: cliente
+    reloj: "18:00"
+    clave: "18:00"
+    clave_frac: 0.1
+    mensajes: [{de: cliente, texto: "Buenas tardes 👋", hora: "18:00", frac: 0.75}]
+    sfx: [[0.75, pop]]
+  - texto: ¿Tenés cincuenta cajas para mañana?
+    chat: cliente
+    reloj: "18:00"
+    mensajes: [{de: cliente, texto: "¿Tenés 50 cajas para mañana temprano?", hora: "18:00", frac: 0.35}]
+    clave: "50 CAJAS"
+    clave_frac: 0.4
+    sfx: [[0.35, pop]]
+  - texto: Le decís que sí, de una.
+    chat: cliente
+    reloj: "18:01"
+    mensajes: [{de: yo, texto: "¡Sí, de una! Mañana se las mando 💪", hora: "18:01", frac: 0.45}]
+    sfx: [[0.45, whoosh]]
+  - texto: Llamás a bodega. Silencio.
+    pantalla: llamada
+    contacto: bodega
+    reloj: "18:03"
+    clave: "…"
+    clave_frac: 0.55
+  - texto: Al rato te mandan una foto. Quedan doce.
+    chat: bodega
+    reloj: "18:24"
+    mensajes:
+      - {de: bodega, foto: 12, texto: "Solo esto hay", hora: "18:24", frac: 0.3}
+    clave: "QUEDAN 12"
+    clave_frac: 0.65
+    sfx: [[0.3, pop], [0.65, thud]]
+  - texto: Ahora te toca escribirle otra vez, y ese mensaje nadie lo quiere mandar.
+    chat: cliente
+    reloj: "18:26"
+    borrador: "Don Luis, fijate que…"
+  - texto: Con un inventario que se actualiza solo, sabés cuánto tenés antes de contestar.
+    pantalla: app
+    reloj: "18:00"
+    titulo_app: "Antes de decir<br>que sí."
+    filas:
+      - {nombre: "Caja 18×24", nota: "Bajo el mínimo · avisado", n: 12, alerta: true}
+      - {nombre: "Caja 30×40", nota: "Actualizado hace 1 min", n: 86}
+      - {nombre: "Cinta 2\"", nota: "Actualizado hace 1 min", n: 140}
+      - {nombre: "Esquinero", nota: "Actualizado hace 3 min", n: 410}
+      - {nombre: "Stretch film", nota: "Llega pedido el jueves", n: 9, alerta: true}
+    clave: "EN VIVO"
+    clave_frac: 0.5
+    sfx: [[0.1, whoosh], [0.5, tick]]
+  - texto: Escribinos al WhatsApp y te contamos cómo.
+    pantalla: cierre
+    titulo: "Contanos tu caso.<br><em>Sin compromiso.</em>"
+    sfx: [[0.3, pop]]

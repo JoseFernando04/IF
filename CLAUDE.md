@@ -56,6 +56,9 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
 |---|---|
 | Reel documental (estilo B) con audio externo | `tools/render_reel_voz.py --audio RUTA --tal-cual --musica ID --musica-db N` |
 | Reel 8-bit | `tools/render_8bit.py examples/copy/8bit/<reel>.yaml` (escenas en `templates/video/8bit/reel.html`) |
+| Reels chat / mito / top3 | `tools/render_formato.py examples/copy/dia/<día>-reel-X.yaml` (`--muestra 3,9,15` sin audio = imágenes de muestra) |
+| Posts checklist / este-o-este / frase | `tools/render_post.py examples/copy/dia/<día>-post-N.yaml` (plantilla `templates/graphics/posts/post.html`) |
+| Fondos animados | `templates/shared/fondos.js` (Paper Shaders: `malla`, `grano`, `puntos`); Chromium con `--allow-file-access-from-files` |
 | Carrusel documental | `ifcontent.graphics.carousel_b.render_from_file(yaml, carpeta)` con YAML como `examples/copy/b/*.yaml` |
 | Revisar un audio | `ifcontent.audio.transcribe.transcribir([ruta])` (Whisper local) |
 | Música | `assets/music/library.yaml` (incluye `chiptune-bodega`, propia, sin crédito) |
@@ -68,8 +71,8 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
 IF Techworks tiene **2 personas**: Remotion es gratis para empresas de hasta 3 (confirmar en remotion.dev antes de instalar; requiere Node.js).
 | Repo | Licencia | Notas |
 |---|---|---|
-| paper-design/shaders | Apache-2.0, organización, activo | Fondos animados (grano, degradados, semitono). Encaja en el motor HTML actual. **Probar primero.** |
-| lemomo-ai/lemo-opuscar | MIT, cuenta personal, creado sep-2026 | 66 estilos (keynote, pizarra, retro CRT). Revisar el código antes de usar. |
+| paper-design/shaders | Apache-2.0, organización, activo | ✅ **Instalado 2026-11-08** (v0.0.82 vendorizada, ver `docs/licencias.md`). |
+| lemomo-ai/lemo-opuscar | MIT, cuenta personal, creado sep-2026 | ❌ **No instalar** (revisado 2026-11-08: scripts de descarga, deps sin fijar, cambia a diario). Sus `styles/*/STYLE.md` sirven como referencia de diseño. |
 | remotion-dev/remotion + remotion-dev/skills | Licencia propia de Remotion; skills sin licencia declarada | Alternativa al motor propio para formatos nuevos. |
 | heygen-com/hyperframes | Apache-2.0, organización | HTML → video: hace lo mismo que nuestro `render_html_video`. Baja prioridad. |
 | JohnHeibel/ClaudeAnimationBase | MIT, cuenta personal, sin cambios desde sep-2026 | Dibujos animados a mano. Baja prioridad. |

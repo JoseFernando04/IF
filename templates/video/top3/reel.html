@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+/* Estilo suizo: grilla de 12 columnas (90 px), una familia, tinta, papel y UNA señal dorada. Nada rebota. */
+:root { --papel: #fefcf3; --tinta: #0a1410; --gris: #b9b4a3; --senal: #f0c419; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--papel); font-family: "Tight"; color: var(--tinta); }
+#fondo { position: absolute; inset: 0; }
+#bloque { position: absolute; background: var(--senal); }
+.nota { position: absolute; font: 500 26px "Mono"; letter-spacing: 1px; color: var(--tinta); }
+.regla { position: absolute; height: 2px; background: var(--tinta); transform-origin: 0 50%; }
+#numcaja { position: absolute; left: 50px; top: 230px; width: 980px; height: 1000px; overflow: hidden; }
+#num { position: absolute; left: 0; top: -150px; font: 900 1180px/1 "Tight"; letter-spacing: -60px; }
+#lead { position: absolute; left: 90px; top: 1240px; font: 500 30px "Mono"; color: #5b5f57; }
+#frase { position: absolute; left: 90px; right: 90px; top: 1295px; font: 800 104px/0.98 "Tight"; letter-spacing: -4px; }
+#frase .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 6px; margin-bottom: -6px; }
+#frase .w span { display: inline-block; }
+#sub { position: absolute; left: 90px; top: 1560px; font: 500 34px "Tight"; color: #3d443f; }
+#wa { position: absolute; left: 90px; top: 1590px; font: 700 44px "Mono"; padding: 18px 26px; border: 3px solid var(--tinta); }
+#logo { position: absolute; right: 90px; top: 1600px; width: 200px; }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="bloque"></div>
+<div class="regla" id="r1" style="left:90px;top:200px;width:900px"></div>
+<div class="nota" style="left:90px;top:150px">IF TECHWORKS — SEÑALES</div>
+<div class="nota" id="cont" style="right:90px;top:150px"></div>
+<div id="numcaja"><div id="num"></div></div>
+<div class="regla" id="r2" style="left:90px;top:1215px;width:900px"></div>
+<div id="lead"></div>
+<div id="frase"></div>
+<div id="sub"></div>
+<div id="wa"></div>
+<img id="logo" src="__LOGO_OSCURO__">
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, M = 90;
+const $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+// Curva precisa (aprox. cubic-bezier(.7,0,.2,1)): arranca lento y aterriza firme.
+const snap = (x) => { x = cl(x); return x < .5 ? 8 * x ** 4 : 1 - 8 * (1 - x) ** 4; };
+const fondoP = fondo($("fondo"), "puntos", { back: "#fefcf3", fill: "#cfc9b6", size: 3, gap: M, sizing: { offsetX: 0, offsetY: 0 } });
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+
+let armada = -1;
+function armarFrase(l) {
+  $("frase").innerHTML = (l.frase || "").split(" ").map((w) => `<span class="w"><span>${w}</span></span>`).join(" ");
+}
+function dibujar(t) {
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio, p = cl(dt / l.duracion);
+  fondoP.then((f) => f.frame(0));
+  if (armada !== i) { armarFrase(l); armada = i; }
+  // Reglas que se dibujan
+  $("r1").style.transform = `scaleX(${snap(t / 0.8)})`;
+  $("r2").style.transform = `scaleX(${snap((t - 0.3) / 0.8)})`;
+  $("cont").textContent = l.cont || "";
+  // Numeral gigante: sube un módulo a la vez (3 pasos)
+  $("num").textContent = l.num ?? "";
+  const pasos = Math.floor(cl(dt / 0.45) * 3) / 3, k = snap(cl(dt / 0.45) * 3 - Math.floor(cl(dt / 0.45) * 3));
+  const subida = cl(pasos + k / 3);
+  $("num").style.transform = `translateY(${(1 - subida) * 1000}px)`;
+  // Bloque dorado: se mueve lineal (la excepción) entre celdas de la grilla
+  const prev = (L[i - 1] || l).bloque || l.bloque, cur = l.bloque, a = cl(dt / 0.5);
+  const lerp = (u, v) => u + (v - u) * a;
+  const [c, r, w, h] = cur.map((v, j) => lerp(prev[j], v));
+  Object.assign($("bloque").style, { left: c * M + "px", top: r * M + "px", width: w * M + "px", height: h * M + "px" });
+  // Texto: lead gris + frase palabra por palabra desde la línea base
+  $("lead").textContent = l.lead || ""; $("lead").style.opacity = cl(dt / 0.2);
+  [...$("frase").querySelectorAll(".w span")].forEach((s, j) => {
+    s.style.transform = `translateY(${(1 - snap((dt - 0.12 - j * 0.07) / 0.4)) * 110}%)`; });
+  $("sub").textContent = l.sub || ""; $("sub").style.opacity = cl((dt - 0.6) / 0.3);
+  const cierre = l.escena === "cierre";
+  $("wa").style.display = cierre ? "block" : "none"; $("wa").textContent = REEL.whatsapp;
+  $("wa").style.clipPath = `inset(0 ${(1 - snap((dt - 0.5) / 0.5)) * 100}% 0 0)`;
+  $("logo").style.opacity = cierre ? 1 : 0;
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>
