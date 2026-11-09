@@ -71,7 +71,7 @@ VideosInstagram/                → lo que ya se publicó
 
 | Día | Reels propuestos | Posts propuestos |
 |---|---|---|
-| 2026-11-08 | A chat (inventario) ✅ producido · B mito vs. realidad (digitalizar) · C top 3 (vendedores de calle) ✅ producido | 1 checklist (comprar sistema) · 2 este o este (cotizaciones) · 3 frase de dueño (memoria) |
+| 2026-11-08 | A chat (inventario) ✅ producido · B mito vs. realidad (digitalizar) ✅ producido · C top 3 (vendedores de calle) ✅ producido | 1 checklist (comprar sistema) · 2 este o este (cotizaciones) · 3 frase de dueño (memoria) |
 
 ## Reglas de contenido (siempre)
 
