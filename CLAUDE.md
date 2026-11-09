@@ -63,6 +63,18 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
 - Medir picos sin `-ac 1` en ffmpeg (suma ~3 dB). Revisar cuadros reales del video antes de enviarlo.
 - Voces y renders con voces de personas: nunca a git (`assets/voice/`, `data/`).
 
+## Herramientas de animación a evaluar (revisadas 2026-11-08, sin instalar)
+
+IF Techworks tiene **2 personas**: Remotion es gratis para empresas de hasta 3 (confirmar en remotion.dev antes de instalar; requiere Node.js).
+| Repo | Licencia | Notas |
+|---|---|---|
+| paper-design/shaders | Apache-2.0, organización, activo | Fondos animados (grano, degradados, semitono). Encaja en el motor HTML actual. **Probar primero.** |
+| lemomo-ai/lemo-opuscar | MIT, cuenta personal, creado sep-2026 | 66 estilos (keynote, pizarra, retro CRT). Revisar el código antes de usar. |
+| remotion-dev/remotion + remotion-dev/skills | Licencia propia de Remotion; skills sin licencia declarada | Alternativa al motor propio para formatos nuevos. |
+| heygen-com/hyperframes | Apache-2.0, organización | HTML → video: hace lo mismo que nuestro `render_html_video`. Baja prioridad. |
+| JohnHeibel/ClaudeAnimationBase | MIT, cuenta personal, sin cambios desde sep-2026 | Dibujos animados a mano. Baja prioridad. |
+Antes de instalar: fuente oficial, revisar SKILL.md y scripts (`npm install --ignore-scripts`), versiones fijas, `npm audit`. Registrar en `docs/licencias.md`.
+
 ## Estado actual
 
 - Publicados en IG y TikTok: 2 reels (`VideosInstagram/`): documental con voz de José y 8-bit.
