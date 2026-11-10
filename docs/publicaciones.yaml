@@ -1,0 +1,149 @@
+# Registro de publicaciones (lo mantiene tools/publicaciones.py; se puede editar a mano).
+# estado: pendiente | publicado | descartado · redes: ig, tt
+piezas:
+- dia: '2026-11-07'
+  pieza: reel-8bit-inicial
+  tipo: reel
+  tema: Primer reel 8-bit (VideosInstagram/Reel2.mp4)
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: null
+  nota: antes de la rutina diaria
+- dia: '2026-11-07'
+  pieza: reel-documental-voz-jose
+  tipo: reel
+  tema: Primer reel documental (VideosInstagram/Reel1.mp4)
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: null
+  nota: antes de la rutina diaria
+- dia: '2026-11-08'
+  pieza: post-1-checklist
+  tipo: post
+  tema: 6 preguntas antes de pagar por un sistema 📋
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-08'
+  pieza: post-2-este-o-este
+  tipo: post
+  tema: ¿A o B? Así sale tu cotización hoy 👀
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-08'
+  pieza: post-3-frase-de-dueno
+  tipo: post
+  tema: «Yo me acuerdo de todo»… famosas últimas palabras 🙃
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-08'
+  pieza: reel-A-chat
+  tipo: reel
+  tema: El mensaje que nadie quiere mandar
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-08'
+  pieza: reel-B-mito
+  tipo: reel
+  tema: Tres mitos de digitalizar tu negocio
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-08'
+  pieza: reel-C-top3
+  tipo: reel
+  tema: Tres señales para dejar la libreta
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-09'
+  pieza: post-1-infografia
+  tipo: post
+  tema: El estante que te avisa antes de quedarte sin producto 📦
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-09'
+  pieza: post-2-diccionario
+  tipo: post
+  tema: Diccionario del dueño de pyme, edición Guatemala 📖
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-09'
+  pieza: post-3-recibo
+  tipo: post
+  tema: El ticket que pagás cada semana sin darte cuenta 🧾
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-09'
+  pieza: reel-A-pov
+  tipo: reel
+  tema: POV - la lista de precios actualizada
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-09'
+  pieza: reel-B-antes-despues
+  tipo: reel
+  tema: ¿Quién tiene la laptop 4?
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-09'
+  pieza: reel-C-cinetica
+  tipo: reel
+  tema: Así trabajamos
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-10'
+  pieza: post-1-checklist
+  tipo: post
+  tema: 5 cosas que tu negocio debería avisarte sin que preguntés 🔔
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-10'
+  pieza: post-2-este-o-este
+  tipo: post
+  tema: ¿A o B? Así es tu cierre de mes 📅
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-10'
+  pieza: post-3-frase-de-dueno
+  tipo: post
+  tema: Todo negocio tiene una doña Marta 👀
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-10'
+  pieza: reel-A-8bit-jefe-final
+  tipo: reel
+  tema: 'Jefe final: el cierre de mes'
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-10'
+  pieza: reel-B-mito-nube
+  tipo: reel
+  tema: Tres mitos de la nube
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-10'
+  pieza: reel-C-pantalla-sistema
+  tipo: reel
+  tema: Lunes, 7:00 a. m.
+  estado: pendiente
+  redes: []
+  fecha: null

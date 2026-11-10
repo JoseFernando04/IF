@@ -48,6 +48,9 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
   El usuario quiere variedad real, siguiendo lo que hoy llama la atención en redes, no solo documental y 8-bit.
 - Descripciones: llamativas, que **no repitan el guion**, con WhatsApp +502 3808 9808 y 5 hashtags. Los posts llevan además `titulo_tiktok` (máx. 90 caracteres).
 - Publicación: el equipo programa a mano en Meta Business Suite y TikTok (la automatización por API es la Fase 3).
+- **Control de lo publicado:** `docs/publicaciones.yaml` (vista en `docs/publicaciones.md`) con `tools/publicaciones.py`.
+  Cuando el usuario diga qué subió ("ayer subí el reel A del 10"), correr `marcar <día> <pieza> --redes ig,tt --fecha AAAA-MM-DD`
+  (o `descartar`). Al empezar el día: `sync` y `lista --pendientes` para recordar lo que falta subir.
 - Commit y push solo cuando el usuario lo pide (suele pedirlo al cerrar el día).
 
 ## Herramientas listas

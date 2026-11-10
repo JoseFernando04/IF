@@ -24,6 +24,12 @@ Cada día Claude propone **3 opciones de reel y 3 de post**; el equipo elige.
 - **TikTok:** desde la computadora (tiktok.com/upload) → **Programar** (hasta 10 días antes).
 - Horarios iniciales a probar (hora de Guatemala): **12:00-13:00** y **18:30-20:00**. Se ajustan con las métricas.
 
+## Control de lo publicado
+
+Después de subir algo, basta con decirle a Claude qué fue (por ejemplo: *"ayer subí el reel A y el post 2 del 10, solo en Instagram"*).
+Claude lo marca con `tools/publicaciones.py` y queda en [publicaciones.md](publicaciones.md): ✅ publicado · ⏳ pendiente · ✖️ descartado.
+Cada mañana Claude muestra lo que sigue pendiente de días anteriores.
+
 ## Entrega de voces
 
 - Nombre del archivo: `AAAA-MM-DD-reel-A.mp3` (o `-B`, `-C`) en `assets/voice/elevenlabs/`.
