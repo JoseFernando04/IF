@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<!-- Formato "Pantalla de sistema": tablero tipo software que se llena al ritmo de la voz.
+     escena: intro (reloj grande) | escaneo (módulos que se revisan) | tarjeta (agrega una tarjeta) | resumen | cierre.
+     tarjeta: {etiqueta, tono: oro|rojo|verde, titulo, detalle, grafica: barras|lista, datos}. -->
+<style>
+@font-face { font-family: "Inter"; src: url("__FONTS__/Inter.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Bricolage"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+:root { --verde: #0a1410; --verde2: #162920; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --rojo: #e2553f; --ok: #57b96f; --gris: #8fa49a; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--verde); font-family: "Inter"; color: var(--marfil); }
+#fondo { position: absolute; inset: 0; }
+#vela { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,20,16,.25), rgba(10,20,16,.7) 60%, rgba(10,20,16,.9)); }
+#rejilla { position: absolute; inset: 0; background-image: linear-gradient(rgba(254,252,243,.045) 2px, transparent 2px), linear-gradient(90deg, rgba(254,252,243,.045) 2px, transparent 2px);
+  background-size: 90px 90px; }
+/* Barra superior */
+#top { position: absolute; top: 120px; left: 70px; right: 70px; display: flex; justify-content: space-between; align-items: center; font: 600 30px "Mono"; color: var(--gris); }
+#top .vivo { display: flex; align-items: center; gap: 14px; padding: 12px 24px; border-radius: 40px; border: 2px solid rgba(87,185,111,.5); color: var(--ok); }
+#top .vivo i { width: 18px; height: 18px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 18px var(--ok); }
+/* Reloj */
+#reloj { position: absolute; left: 70px; top: 230px; transform-origin: 0 0; }
+#dia { font: 600 34px "Mono"; color: var(--oro); letter-spacing: 6px; }
+#hora { font: 800 250px/1 "Bricolage"; letter-spacing: -10px; margin-top: 10px; font-variant-numeric: tabular-nums; }
+#estado { font: 500 40px "Inter"; color: var(--gris); margin-top: 14px; }
+/* Escaneo */
+#escaneo { position: absolute; left: 70px; right: 70px; top: 760px; }
+.mod { display: flex; align-items: center; gap: 26px; padding: 28px 34px; margin-bottom: 22px; border-radius: 28px; background: rgba(254,252,243,.06); border: 2px solid rgba(254,252,243,.1); }
+.mod .n { flex: 1; font: 600 42px "Inter"; }
+.mod .bar { width: 260px; height: 14px; border-radius: 8px; background: rgba(254,252,243,.12); overflow: hidden; }
+.mod .bar b { display: block; height: 100%; background: var(--oro); }
+.mod .ck { width: 58px; height: 58px; border-radius: 50%; background: var(--ok); color: var(--verde); display: grid; place-items: center; font: 800 36px "Inter"; }
+/* Tarjetas */
+#tarjetas { position: absolute; left: 70px; right: 70px; top: 700px; }
+.tar { position: absolute; left: 0; right: 0; border-radius: 34px; padding: 38px 44px 46px; background: #13241c; border: 3px solid #2a4237;
+  box-shadow: 0 30px 80px rgba(0,0,0,.45); transform-origin: 50% 0; }
+.tar.on { border-color: var(--oro); }
+.tar .cab { display: flex; align-items: center; gap: 18px; }
+.tar .chip { font: 700 26px "Mono"; letter-spacing: 3px; padding: 8px 18px; border-radius: 12px; }
+.tar .hace { margin-left: auto; font: 500 26px "Mono"; color: var(--gris); }
+.tar h2 { margin: 26px 0 10px; font: 800 70px/1.05 "Bricolage"; letter-spacing: -1px; }
+.tar p { margin: 0; font: 400 38px/1.3 "Inter"; color: #c5d3cb; }
+.tar .chip { font-size: 30px; }
+.barras { display: flex; align-items: flex-end; gap: 22px; height: 150px; margin: 40px 0 44px; position: relative; }
+.barras div { flex: 1; border-radius: 10px 10px 4px 4px; position: relative; }
+.barras div span { position: absolute; bottom: -40px; left: 0; right: 0; text-align: center; font: 500 22px "Mono"; color: var(--gris); }
+.barras .min { position: absolute; left: -6px; right: -6px; height: 0; border-top: 4px dashed var(--rojo); }
+.barras .min::after { content: "MÍNIMO"; position: absolute; right: 0; top: -36px; font: 700 22px "Mono"; color: var(--rojo); }
+.lista { margin-top: 22px; }
+.lista div { display: flex; justify-content: space-between; padding: 20px 0; border-top: 2px solid rgba(254,252,243,.08); font: 500 38px "Inter"; }
+.lista div b { font: 700 34px "Mono"; }
+/* Resumen */
+#resumen { position: absolute; left: 70px; right: 70px; top: 1500px; font: 800 84px/1.02 "Bricolage"; letter-spacing: -2px; }
+#resumen em { font-style: normal; color: var(--oro); }
+#clave { position: absolute; left: 70px; top: 1610px; padding: 20px 36px; background: var(--oro); color: var(--verde); font: 800 70px/1 "Bricolage";
+  border-radius: 16px; transform-origin: 0 50%; z-index: 20; white-space: nowrap; }
+/* Cierre */
+#cierre { position: absolute; inset: 0; background: var(--verde); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 40; }
+#cierre img { width: 300px; margin-bottom: 70px; }
+#cierre .h1 { font: 800 92px/1.02 "Bricolage"; color: var(--marfil); padding: 0 80px; letter-spacing: -2px; }
+#cierre .h1 em { font-style: normal; color: var(--oro); }
+#cierre .wa { margin-top: 60px; padding: 30px 50px; border-radius: 60px; background: var(--oro); color: var(--verde); font: 800 52px "Inter"; }
+#cierre .web { margin-top: 30px; font: 500 32px "Mono"; color: #9fb3a8; }
+</style></head>
+<body>
+<div id="fondo"></div><div id="vela"></div><div id="rejilla"></div>
+<div id="top"><span id="panel"></span><span class="vivo"><i id="punto"></i>EN VIVO</span></div>
+<div id="reloj"><div id="dia"></div><div id="hora"></div><div id="estado"></div></div>
+<div id="escaneo"></div>
+<div id="tarjetas"></div>
+<div id="resumen"></div>
+<div id="clave"></div>
+<div id="cierre"><img src="__LOGO__"><div class="h1" id="ch1"></div><div class="wa" id="wa"></div><div class="web">iftechworks.com</div></div>
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const R = __DATOS__;
+window.__ready = false;
+const L = R.lineas;
+const $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const back = (x) => { x = cl(x); const s = 1.7; return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2); };
+const fondoP = fondo($("fondo"), "malla", { colors: ["#0a1410", "#1d362b", "#0f1d17", "#3d5a2a", "#6b5a12"], distortion: 0.7, swirl: 0.35 });
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+const TONO = { oro: ["#f0c419", "#0a1410"], rojo: ["#e2553f", "#fefcf3"], verde: ["#57b96f", "#0a1410"] };
+$("panel").textContent = R.panel || "PANEL · TU NEGOCIO";
+$("dia").textContent = R.dia || "";
+$("estado").textContent = R.estado || "";
+
+// Módulos del escaneo
+const le = L.find((l) => l.escena === "escaneo");
+$("escaneo").innerHTML = (R.modulos || []).map((m) => `<div class="mod"><div class="n">${m}</div><div class="bar"><b></b></div><div class="ck">✓</div></div>`).join("");
+
+// Tarjetas
+const tars = L.filter((l) => l.tarjeta);
+const ALTO = 300;
+$("tarjetas").innerHTML = tars.map((l) => {
+  const c = l.tarjeta, [bg, fg] = TONO[c.tono || "oro"];
+  let g = "";
+  if (c.grafica === "barras") {
+    const max = Math.max(...c.datos.map((d) => d[1]), c.minimo || 0);
+    g = `<div class="barras">${c.datos.map(([n, v]) => `<div data-h="${v / max * 150}" style="background:${v < (c.minimo || 0) ? "var(--rojo)" : "rgba(254,252,243,.35)"}"><span>${n}</span></div>`).join("")}
+         <i class="min" style="bottom:${(c.minimo || 0) / max * 150}px"></i></div>`;
+  } else if (c.grafica === "lista") {
+    g = `<div class="lista">${c.datos.map(([a, b]) => `<div><span>${a}</span><b style="color:${bg}">${b}</b></div>`).join("")}</div>`;
+  }
+  return `<div class="tar"><div class="cab"><span class="chip" style="background:${bg};color:${fg}">${c.etiqueta}</span><span class="hace">${c.hace || "ahora"}</span></div>
+    <h2>${c.titulo}</h2><p>${c.detalle || ""}</p>${g}</div>`;
+}).join("");
+
+function dibujar(t) {
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio, p = cl(dt / l.duracion);
+  fondoP.then((f) => f.frame(t * 1000 * 0.3));
+  const esc = l.escena || "tarjeta";
+  $("punto").style.opacity = 0.35 + 0.65 * (Math.floor(t * 2) % 2);
+  // Reloj: grande al inicio, se achica cuando entra el tablero
+  const r0 = L[0], li = L.find((x) => x.escena !== "intro") || r0;
+  const k = eo((t - li.inicio) / 0.6);
+  $("reloj").style.transform = `translateY(${(1 - eo(t / 0.5)) * 60}px) scale(${1 - 0.42 * k})`;
+  $("reloj").style.opacity = eo(t / 0.5);
+  $("estado").style.opacity = 1 - k;
+  // La hora avanza un minuto en el intro (06:59 → 07:00) y luego corre despacio
+  const horas = R.horas || ["06:59", "07:00"];
+  const hi = t < r0.inicio + r0.duracion * 0.35 ? 0 : 1;
+  $("hora").textContent = horas[hi];
+  // Escaneo
+  const ve = le ? t - le.inicio : -1;
+  const fe = le ? le.inicio + le.duracion + 0.1 : 0;
+  $("escaneo").style.opacity = le && ve > 0 ? 1 - eo((t - fe) / 0.3) : 0;
+  [...$("escaneo").children].forEach((m, j) => {
+    const a = (ve - j * 0.18) / 0.3;
+    m.style.opacity = eo(a); m.style.transform = `translateX(${(1 - eo(a)) * 120}px)`;
+    const prog = cl((ve - 0.3 - j * 0.22) / 0.55);
+    m.querySelector("b").style.width = prog * 100 + "%";
+    m.querySelector(".ck").style.transform = `scale(${cl(back((ve - 0.85 - j * 0.22) / 0.3), 0, 1.2)})`;
+  });
+  // Tarjetas: la más nueva arriba; las anteriores bajan y se atenúan
+  const nodos = [...$("tarjetas").children];
+  const vistas = tars.filter((x) => t >= x.inicio + x.duracion * (x.tarjeta.frac ?? 0.05));
+  const enRes = esc === "resumen" || esc === "cierre";
+  nodos.forEach((n, j) => {
+    const x = tars[j], t0 = x.inicio + x.duracion * (x.tarjeta.frac ?? 0.05);
+    if (t < t0) { n.style.opacity = 0; return; }
+    const orden = vistas.length - 1 - j; // 0 = la más nueva
+    const yIn = (1 - back((t - t0) / 0.5)) * 500;
+    // Se apilan: cada tarjeta nueva empuja las anteriores hacia abajo
+    let desplaz = 0;
+    for (let q = j + 1; q < vistas.length; q++) {
+      const tq = tars[q].inicio + tars[q].duracion * (tars[q].tarjeta.frac ?? 0.05);
+      desplaz += eo((t - tq) / 0.5) * 110;
+    }
+    const esc2 = 1 - 0.06 * Math.min(orden, 3);
+    n.style.transform = `translateY(${yIn + desplaz}px) scale(${esc2})`;
+    n.style.zIndex = 10 + j;
+    n.style.opacity = 1;
+    n.style.filter = enRes || orden === 0 ? "none" : "brightness(.6)";
+    n.classList.toggle("on", orden === 0 && !enRes);
+    n.querySelectorAll(".barras div").forEach((b, q) => { b.style.height = eo((t - t0 - 0.35 - q * 0.08) / 0.5) * b.dataset.h + "px"; });
+    n.querySelectorAll(".lista div").forEach((r, q) => { r.style.opacity = eo((t - t0 - 0.4 - q * 0.2) / 0.3); });
+  });
+  // En el resumen las tarjetas se encogen para dejar ver la frase
+  const lr = L.find((x) => x.escena === "resumen");
+  const kr = lr ? eo((t - lr.inicio) / 0.5) : 0;
+  $("tarjetas").style.transform = `translateY(${-kr * 60}px) scale(${1 - 0.12 * kr})`;
+  $("tarjetas").style.transformOrigin = "50% 0";
+  $("resumen").innerHTML = lr ? lr.frase || "" : "";
+  $("resumen").style.opacity = kr; $("resumen").style.transform = `translateY(${(1 - kr) * 60}px)`;
+  // Palabra clave
+  const kc = l.clave ? back((p - (l.clave_frac ?? 0.3)) / 0.3) : 0;
+  $("clave").textContent = l.clave || ""; $("clave").style.opacity = kc > 0 && esc !== "resumen" ? 1 : 0;
+  $("clave").style.transform = `rotate(-2deg) scaleX(${cl(kc, 0, 1.2)})`;
+  // Cierre
+  const lc = L.find((x) => x.escena === "cierre");
+  $("cierre").style.opacity = esc === "cierre" ? eo(dt / 0.35) : 0;
+  $("ch1").innerHTML = (lc || {}).titulo || ""; $("wa").textContent = R.whatsapp;
+  $("wa").style.transform = `scale(${esc === "cierre" ? 0.85 + 0.15 * back((dt - 0.3) / 0.35) : 1})`;
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>

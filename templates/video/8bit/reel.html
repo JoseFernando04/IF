@@ -294,6 +294,120 @@ const ESC = {
   },
 };
 
+// --- Jefe final (reel 4): un calendario "31" con barra de vida. ---
+function ojos_malos(ex, ey, sep, u) {
+  rect(ex - sep, ey, 8, 8, P.w); rect(ex + sep - 8, ey, 8, 8, P.w);
+  rect(ex - sep + 3 + (onda(u, 1) ? 2 : 0), ey + 3, 4, 4, P.k); rect(ex + sep - 8 + 3 + (onda(u, 1) ? 2 : 0), ey + 3, 4, 4, P.k);
+  rect(ex - sep - 1, ey - 5, 11, 3, P.k); rect(ex + sep - 10, ey - 5, 11, 3, P.k);
+}
+function jefe_spr(x, y, u, golpeado = false) {
+  const c = golpeado && onda(u, 8) ? P.w : null;
+  rect(x - 42, y + 4, 84, 84, P.k);                       // sombra
+  rect(x - 40, y, 80, 84, c || P.w);                      // hoja
+  rect(x - 40, y, 80, 20, c || P.r);                      // encabezado
+  rect(x - 26, y - 6, 4, 12, P.s); rect(x + 22, y - 6, 4, 12, P.s);  // argollas
+  txt("MES", x, y + 6, P.w, 1, "c");
+  ojos_malos(x, y + 30, 26, u);
+  txt("31", x, y + 46, P.k, 3, "c");
+  // dientes
+  for (let i = 0; i < 6; i++) rect(x - 24 + i * 8, y + 76, 5, 4, P.k);
+}
+function barra_jefe(nombre, vida) {
+  txt(nombre, 8, 46, P.r);
+  caja_txt(8, 58, 164, 6, P.k, P.w);
+  rect(8, 58, Math.round(164 * Math.max(0, Math.min(1, vida))), 6, P.r);
+}
+function arena(u, opt = {}) {
+  const [sx, sy] = opt.sacude || [0, 0];
+  g.save(); g.translate(sx, sy);
+  rect(0, 0, W, H, P.bg); ladrillos(P.bg, P.d1, 42, 200);
+  rect(0, 200, W, 120, P.d3); rect(0, 200, W, 2, P.g);
+  for (let x = 0; x < W; x += 12) rect(x, 208 + (x % 24 ? 0 : 8), 6, 1, P.d2);
+  hud("JEFE FINAL", opt.vidas ?? 3, 3);
+  barra_jefe(opt.nombre || "EL CIERRE", opt.vida ?? 1);
+  if (opt.jefe !== false) jefe_spr(90, opt.jy ?? 82, u, opt.golpeado);
+  spr("a", 18, 164, 3);
+  g.restore();
+}
+function cartel(s, c = P.w, borde = P.w) {
+  caja_txt(10, 232, 160, 30, P.k, borde);
+  ajustar(s, 150).forEach((t, i, a) => txt(t, 90, 243 - (a.length - 1) * 5 + i * 11, c, 1, "c"));
+}
+function hoja_xls(x, y) { rect(x, y, 14, 18, P.w); rect(x, y, 14, 4, "#1e6b41"); rect(x + 2, y + 8, 10, 1, P.s); rect(x + 2, y + 12, 10, 1, P.s); }
+function reloj_spr(x, y, u) {
+  rect(x + 2, y, 14, 18, P.k); rect(x, y + 2, 18, 14, P.k);
+  rect(x + 3, y + 1, 12, 16, P.w); rect(x + 1, y + 3, 16, 12, P.w);
+  rect(x + 8, y + 4, 2, 6, P.k); rect(x + 8, y + 9, 5, 2, P.k);
+}
+Object.assign(ESC, {
+  jefe(u, d, l) {
+    const cae = enfrentar(u, .1, .5), jy = -100 + cae * 182;
+    const vida = enfrentar(u, .7, .8);
+    arena(u, { jy, vida, nombre: l.nombre, sacude: sacudir(u, .6, 4, .35) });
+    if (u > .6 && (onda(u, 3) || u > 1.4)) { caja_txt(30, 232, 120, 30, P.k, P.r); sombra("¡JEFE FINAL!", 90, 243, P.r, 1, "c"); }
+  },
+  ataque(u, d, l) {
+    const impacto = d * .5, reloj = l.arma === "reloj";
+    const vidas = reloj ? (u > impacto ? 2 : 3) : 3;
+    arena(u, { vidas, sacude: sacudir(u, impacto, reloj ? 4 : 2, .3) });
+    // proyectiles: salen del jugador, pegan en el jefe y rebotan
+    const n = reloj ? 1 : 3;
+    for (let i = 0; i < n; i++) {
+      const t0 = .15 + i * .18, k = enfrentar(u, t0, impacto - t0);
+      let x = 40 + k * 46, y = 170 - k * 60 - Math.sin(k * Math.PI) * 30;
+      if (u > impacto) { const r = enfrentar(u, impacto, .6); if (r >= 1) continue; x = 86 + i * 6 + r * (30 + i * 25); y = 110 + r * r * 220; }
+      if (u < t0) continue;
+      reloj ? reloj_spr(x - 9, y - 9, u) : hoja_xls(x - 7, y - 9);
+    }
+    if (u > impacto && u < impacto + .2) rect(46, 82, 88, 88, "rgba(254,252,243,.35)");
+    if (u > impacto) {
+      const sube = enfrentar(u, impacto, .4) * 14;
+      sombra(l.texto_pantalla, 90, 214 - sube, reloj ? P.r : P.w, 1, "c");
+      cartel(reloj ? "LAS HORAS EXTRA TAMBIÉN REBOTAN" : "TRES ARCHIVOS. CERO DAÑO.", P.w, reloj ? P.r : P.w);
+    }
+  },
+  debil(u, d, l) {
+    arena(u, { vidas: 2 });
+    // se oscurece todo menos el punto débil
+    const k = enfrentar(u, .1, .4);
+    g.fillStyle = `rgba(0,0,0,${.65 * k})`; g.fillRect(0, 42, W, 158);
+    const cx = 90, cy = 140, r = 14 + (onda(u, 3) ? 2 : 0);
+    if (k > .5) {
+      rect(cx - r, cy, r * 2, 2, P.y); rect(cx, cy - r, 2, r * 2, P.y);
+      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([a, b]) => { rect(cx + a * r - (a > 0 ? 6 : 0), cy + b * r, 6, 2, P.y); rect(cx + a * r, cy + b * r - (b > 0 ? 6 : 0), 2, 6, P.y); });
+    }
+    if (u > d * .35) sombra(l.texto_pantalla, 90, 210, P.y, 1, "c");
+    if (u > d * .45) cartel("TODOS CON LOS MISMOS DATOS", P.y, P.y);
+  },
+  critico(u, d, l) {
+    const impacto = d * .45;
+    const vida = u > impacto ? 1 - enfrentar(u, impacto, .5) : 1;
+    arena(u, { vidas: 2, vida, golpeado: u > impacto && u < impacto + .6, sacude: sacudir(u, impacto, 6, .5) });
+    // "1 SISTEMA": un disco de datos dorado que se carga y sale disparado
+    const carga = enfrentar(u, .05, impacto - .25), vuela = enfrentar(u, impacto - .25, .25);
+    if (u < impacto + .05) {
+      const x = 46 + vuela * 44, y = 166 - vuela * 40, e = 1 + carga;
+      rect(x - 8 * e, y - 6 * e, 16 * e, 12 * e, P.y); rect(x - 8 * e, y - 6 * e, 16 * e, 3 * e, P.o); rect(x - 8 * e, y, 16 * e, 1 * e, P.o);
+      if (onda(u, 6)) for (let i = 0; i < 6; i++) rect(x + Math.cos(i) * 18 * e, y + Math.sin(i) * 18 * e, 2, 2, P.y);
+      if (carga > .3 && vuela === 0) sombra("1 SISTEMA", 46, 132, P.y, 1, "c");
+    }
+    if (u > impacto && u < impacto + .12) rect(0, 0, W, H, P.w);
+    if (u > impacto) {
+      sombra(l.texto_pantalla, 90, 210, P.y, 1, "c");
+      for (let i = 0; i < 5; i++) spr("estrella", 30 + i * 26, 70 - ((Math.floor(u * 8) + i) % 2) * 4, 1);
+      cartel("SE ACTUALIZA SOLO", P.y, P.y);
+    }
+  },
+  derrotado(u, d, l) {
+    const fin = d * (l.frac ?? .32);
+    if (u >= fin) return cta(u - fin, l);
+    const k = enfrentar(u, 0, fin);
+    arena(u, { vidas: 2, vida: 0, jefe: onda(u, 6) && k < .8, golpeado: true, jy: 82 + k * 30 });
+    sombra("JEFE", 90, 96, P.y, 3, "c"); sombra("DERROTADO", 90, 126, P.y, 2, "c");
+    for (let i = 0; i < 6; i++) spr("moneda", 14 + i * 28, 208 - ((Math.floor(u * 8) + i) % 2) * 5, 2);
+  },
+});
+
 function enemigo(tipo, x, y, u) {
   const ojos = (ex, ey, sep) => {
     rect(ex - sep, ey, 8, 8, P.w); rect(ex + sep - 8, ey, 8, 8, P.w);

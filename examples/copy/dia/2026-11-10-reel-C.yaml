@@ -1,0 +1,71 @@
+# Reel C · Pantalla de sistema (formato nuevo: tablero que se llena con la voz). Pilar: soluciones. Escena de ejemplo.
+# escena: intro | escaneo | tarjeta | resumen | cierre. tarjeta.grafica: barras | lista. tono: oro | rojo | verde
+formato: sistema
+titulo: Lunes, 7:00 a. m.
+audio: assets/voice/elevenlabs/2026-11-10-reel-C.mp3
+salida: data/dias/2026-11-10/reel-C
+musica: digital-lemonade
+musica_db: -22
+whatsapp: "+502 3808 9808"
+panel: "PANEL · TU NEGOCIO"
+dia: "LUNES"
+horas: ["06:59", "07:00"]
+estado: "Oficina vacía. Sistema despierto."
+modulos: [Inventario, Cotizaciones, Pedidos de ruta, Equipos]
+caption: >-
+  Imaginate llegar el lunes y que el café sea lo único pendiente. ☕
+  Hay negocios donde las alertas, los seguimientos y los pedidos ya están listos antes de que alguien prenda la luz.
+  ¿Qué te gustaría que el tuyo te dijera cada mañana? Contanos o escribinos al WhatsApp +502 3808 9808. (Escena de ejemplo.)
+hashtags: [PymesGuatemala, Automatizacion, InventarioInteligente, Digitalizacion, NegociosGT]
+lineas:
+  - texto: Lunes, siete de la mañana. Todavía no llegaste a la oficina.
+    escena: intro
+    sfx: [[0.35, tick]]
+  - texto: Pero tu sistema ya revisó todo.
+    escena: escaneo
+    sfx: [[0.1, whoosh], [0.55, tick], [0.7, tick], [0.85, tick]]
+  - texto: Tres productos están bajo el mínimo, y el pedido ya está listo para mandar.
+    tarjeta:
+      etiqueta: INVENTARIO
+      tono: rojo
+      hace: "06:58"
+      titulo: "3 productos bajo el mínimo"
+      detalle: "Pedido sugerido listo para enviar."
+      grafica: barras
+      minimo: 40
+      datos: [["Caja 18", 12], ["Cinta", 140], ["Esquin.", 22], ["Stretch", 9], ["Caja 30", 86]]
+    clave: "PEDIDO LISTO"
+    clave_frac: 0.7
+    sfx: [[0.05, pop], [0.7, pop]]
+  - texto: Dos cotizaciones llevan cinco días sin respuesta. Toca dar seguimiento.
+    tarjeta:
+      etiqueta: COTIZACIONES
+      tono: oro
+      hace: "06:59"
+      titulo: "2 sin respuesta"
+      detalle: "Recordatorio programado para hoy."
+      grafica: lista
+      datos: [["Cotización #118", "5 días"], ["Cotización #121", "5 días"]]
+    clave: "SEGUIMIENTO"
+    clave_frac: 0.75
+    sfx: [[0.05, pop]]
+  - texto: Y los pedidos de la ruta de ayer ya están cargados. Nadie los digitó de noche.
+    tarjeta:
+      etiqueta: RUTA
+      tono: verde
+      hace: "07:00"
+      titulo: "Pedidos de ayer, cargados"
+      detalle: "Tomados en el celular, en la ruta."
+      grafica: lista
+      datos: [["Ruta 1", "✓"], ["Ruta 2", "✓"], ["Ruta 3", "✓"]]
+    clave: "NADIE DIGITÓ"
+    clave_frac: 0.7
+    sfx: [[0.05, pop], [0.4, tick], [0.5, tick], [0.6, tick]]
+  - texto: Así arranca el día cuando tu negocio te avisa a vos, y no al revés.
+    escena: resumen
+    frase: "Tu negocio<br><em>te avisa a vos.</em>"
+    sfx: [[0.1, whoosh]]
+  - texto: Contanos qué te gustaría saber cada mañana.
+    escena: cierre
+    titulo: "¿Qué querés saber<br><em>cada mañana?</em>"
+    sfx: [[0.3, pop]]

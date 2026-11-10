@@ -1,0 +1,50 @@
+# Reel B · Mito vs. realidad (carta que se voltea, look risográfico). Pilar: educativo (trabajar en la nube).
+formato: mito
+titulo: Tres mitos de la nube
+audio: assets/voice/elevenlabs/2026-11-10-reel-B.mp3
+salida: data/dias/2026-11-10/reel-B
+musica: pamgaea
+musica_db: -22
+whatsapp: "+502 3808 9808"
+caption: >-
+  "La nube" suena a algo lejano, caro y complicado. Spoiler: probablemente ya usás varias sin darte cuenta. ☁️
+  ¿Cuál de estos mitos te habían contado? Dejalo en los comentarios.
+  Y si querés saber qué tendría sentido subir primero en tu negocio, escribinos al WhatsApp +502 3808 9808.
+hashtags: [Nube, PymesGuatemala, TransformacionDigital, Digitalizacion, EmprendedoresGT]
+lineas:
+  - texto: Tres mitos de tener tu negocio en la nube.
+    escena: titulo
+    grande: "3 mitos"
+    serif: "de tener tu negocio en la nube"
+    sfx: [[0.05, whoosh]]
+  - texto: "Mito uno: es menos seguro que tenerlo en mi compu."
+    escena: mito
+    n: 1
+    pantalla: Es menos seguro que mi compu
+    sfx: [[0.02, whoosh], [0.32, thud], [0.72, marker]]
+  - texto: "Realidad: tu compu se puede dañar o perder. En la nube, tus datos tienen respaldo."
+    escena: realidad
+    pantalla: Tus datos, con respaldo.
+    sfx: [[0.05, paper], [0.3, pop]]
+  - texto: "Mito dos: hay que comprar servidores carísimos."
+    escena: mito
+    n: 2
+    pantalla: Hay que comprar servidores
+    sfx: [[0.02, whoosh], [0.32, thud], [0.72, marker]]
+  - texto: "Realidad: no comprás equipo. Usás lo que necesitás y crece con vos."
+    escena: realidad
+    pantalla: Sin servidores. Crece con vos.
+    sfx: [[0.05, paper], [0.3, pop]]
+  - texto: "Mito tres: solo lo puedo ver desde la oficina."
+    escena: mito
+    n: 3
+    pantalla: Solo desde la oficina
+    sfx: [[0.02, whoosh], [0.32, thud], [0.72, marker]]
+  - texto: "Realidad: lo ves desde el celular, estés donde estés."
+    escena: realidad
+    pantalla: Desde tu celular, donde estés.
+    sfx: [[0.05, paper], [0.3, pop]]
+  - texto: Contanos cuál te habían contado.
+    escena: cierre
+    grande: "¿Cuál te creíste?"
+    sfx: [[0.3, pop]]

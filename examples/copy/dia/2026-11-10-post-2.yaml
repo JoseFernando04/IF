@@ -1,0 +1,14 @@
+# Post 2 · Este o este (imagen única, invita a comentar). Pilar: llamado a la acción (cierre de mes / datos en un solo lugar).
+formato: este-o-este
+salida: data/dias/2026-11-10/post-2
+titulo_tiktok: "¿A o B? Así es tu cierre de mes 📅"
+pregunta: "¿CÓMO ES TU CIERRE DE MES?"
+opciones:
+  - {texto: "Un fin de semana cuadrando tres Excel distintos.", nota: "…y el lunes todavía no cuadra."}
+  - {texto: "El reporte ya está listo el día uno.", nota: "Todos trabajan con los mismos datos."}
+comenta: "Comentá A o B 👇"
+caption: >-
+  Sin pena: la mayoría está en la A, y nadie lo dice en voz alta. 📅😮‍💨
+  Contanos en los comentarios cuál es la tuya.
+  Si querés recuperar tus fines de semana de cierre, escribinos al WhatsApp +502 3808 9808 y vemos cómo juntar todo en un solo lugar.
+hashtags: [CierreDeMes, PymesGuatemala, Contabilidad, Digitalizacion, EmprendedoresGT]

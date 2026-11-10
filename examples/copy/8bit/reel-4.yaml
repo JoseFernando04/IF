@@ -1,0 +1,35 @@
+# Reel 8-bit 4 · Jefe final: el cierre de mes. Pilar: soluciones (datos en un solo sistema). Día 2026-11-10, reel A.
+# Escenas nuevas por construir en templates/video/8bit/reel.html: jefe, ataque, debil, critico, derrotado.
+titulo: "Jefe final: el cierre de mes"
+audio: assets/voice/elevenlabs/2026-11-10-reel-A.mp3
+caption: >-
+  Hay un jefe que aparece todos los meses, siempre el mismo día, y casi nadie lo derrota sin perder un fin de semana. 🎮
+  ¿Cuántas vidas te cuesta a vos el cierre? Contanos en los comentarios.
+  Y si querés el truco para ganarle, escribinos al WhatsApp +502 3808 9808. El diagnóstico es sin compromiso.
+hashtags: [CierreDeMes, PymesGuatemala, GamerMode, Digitalizacion, NegociosGT]
+lineas:
+  - texto: Último día del mes. Aparece el jefe final, el cierre.
+    escena: jefe
+    nombre: EL CIERRE
+    sfx: [[0.1, alerta], [0.6, golpe]]
+  - texto: Lo atacás con tres archivos distintos. No le hace nada.
+    escena: ataque
+    arma: excel
+    texto_pantalla: "0 DE DAÑO"
+    sfx: [[0.2, seleccion], [0.55, golpe]]
+  - texto: Lo atacás con horas extra. Tampoco.
+    escena: ataque
+    arma: reloj
+    texto_pantalla: "-1 VIDA"
+    sfx: [[0.2, seleccion], [0.6, caida]]
+  - texto: Su punto débil, que todos trabajen con los mismos datos.
+    escena: debil
+    texto_pantalla: "PUNTO DÉBIL"
+    sfx: [[0.3, alerta]]
+  - texto: Un solo sistema, que se actualiza solo.
+    escena: critico
+    texto_pantalla: "¡GOLPE CRÍTICO!"
+    sfx: [[0.1, poder], [0.5, golpe]]
+  - texto: Jefe derrotado. Contanos tu caso. El diagnóstico es sin compromiso.
+    escena: derrotado
+    sfx: [[0.05, punto], [0.4, seleccion]]

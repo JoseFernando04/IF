@@ -52,7 +52,7 @@ VideosInstagram/                → lo que ya se publicó
 | Tipografía cinética | ✅ listo (`cinetica`) | Palabras grandes al ritmo de la voz |
 | POV del dueño | ✅ listo (`pov`) | "POV: es cierre de mes y…" con texto en pantalla |
 | Cuenta regresiva / top 3 | ✅ listo (`top3`, estilo suizo) | Lista rápida con números grandes |
-| Pantalla de sistema | por construir | Tablero tipo software: alertas, gráficas, inventario en vivo |
+| Pantalla de sistema | ✅ listo (`sistema`) | Tablero tipo software: reloj, escaneo y tarjetas de alerta que se apilan |
 | Papel y libreta (estilo A) | prototipo | Papel, marcador y escritura a mano |
 
 ### Posts
@@ -75,6 +75,7 @@ VideosInstagram/                → lo que ya se publicó
 |---|---|---|
 | 2026-11-08 | A chat (inventario) ✅ producido · B mito vs. realidad (digitalizar) ✅ producido · C top 3 (vendedores de calle) ✅ producido | 1 checklist (comprar sistema) · 2 este o este (cotizaciones) · 3 frase de dueño (memoria) |
 | 2026-11-09 | A POV del dueño (catálogo) ✅ producido · B antes/después (activos) ✅ producido · C tipografía cinética (así trabajamos; reemplaza la versión de charlas) ✅ producido | 1 infografía (estante con sensores) · 2 diccionario del dueño · 3 recibo (costo de no ordenar) |
+| 2026-11-10 | A 8-bit "jefe final: el cierre de mes" ✅ producido · B mito vs. realidad (la nube) ✅ producido · C pantalla de sistema (lunes 7:00, formato nuevo) ✅ producido | 1 checklist (5 cosas que debería avisarte solo) · 2 este o este (cierre de mes) · 3 frase de dueño (doña Marta) |
 
 ## Reglas de contenido (siempre)
 

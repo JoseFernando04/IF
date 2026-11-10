@@ -1,0 +1,23 @@
+# Post 1 · Checklist para guardar (carrusel). Pilar: educativo (lo que un sistema debería avisarte solo).
+formato: checklist
+salida: data/dias/2026-11-10/post-1
+titulo_tiktok: "5 cosas que tu negocio debería avisarte sin que preguntés 🔔"
+whatsapp: "+502 3808 9808"
+etiqueta: "PARA GUARDAR"
+titulo: "5 cosas que tu negocio debería <em>avisarte solo</em>."
+bajada: "Si para saber alguna tenés que llamar, buscar o preguntar, ahí hay tiempo que se va."
+guardar: "Guardalo y marcá cuántas tenés hoy"
+items:
+  - {p: "¿Qué producto está por acabarse?", r: "Antes de que el cliente lo pida, no después.", corto: "Lo que está por acabarse"}
+  - {p: "¿Qué cotización lleva días sin respuesta?", r: "La que no seguís, la cierra otro.", corto: "Cotizaciones sin respuesta"}
+  - {p: "¿Qué se vendió hoy?", r: "Hoy mismo, no mañana cuando alguien lo digite.", corto: "Las ventas de hoy, hoy"}
+  - {p: "¿Cuál es el precio vigente?", r: "Uno solo, el mismo para todo tu equipo.", corto: "Un solo precio vigente"}
+  - {p: "¿Quién tiene cada equipo?", r: "Laptops, herramientas y celulares, con nombre y fecha.", corto: "Quién tiene cada equipo"}
+resumen: "Si ya te avisa las cinco, vas adelantado."
+cierre: "¿Cuántas <em>te avisa hoy</em>?"
+cierre_bajada: "Contanos en los comentarios. Si fueron menos de tres, escribinos y vemos por dónde empezar."
+caption: >-
+  Hay preguntas que te hacés todos los días y que, la verdad, ya no deberías tener que hacer. 🔔
+  Guardá este carrusel y contá cuántas te contesta tu negocio sin que levantés el teléfono.
+  ¿Te quedaste corto? Escribinos al WhatsApp +502 3808 9808 y vemos juntos por cuál empezar.
+hashtags: [PymesGuatemala, Automatizacion, TipsDeNegocio, Digitalizacion, NegociosGT]

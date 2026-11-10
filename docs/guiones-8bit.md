@@ -60,7 +60,7 @@ Los tres reels son **a una sola voz**, sin conversación.
 
 # Guiones nuevos (mismo estilo que los reels 1 y 3)
 
-## Reel 4 · "Jefe final: el cierre de mes" (~22 s)
+## Reel 4 · "Jefe final: el cierre de mes" (~24 s) — producido 2026-11-10 (`examples/copy/8bit/reel-4.yaml`, escenas jefe/ataque/debil/critico/derrotado)
 
 **Tema:** datos dispersos y cierre de inventario.
 
