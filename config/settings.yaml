@@ -53,6 +53,26 @@ music:
   duck_ratio: 2.5           # cuánto baja (más alto = la música se apaga más al hablar)
   volume_no_voice_db: -12
 
+# Video con IA (de pago por generación). Solo imagen de apoyo: la voz sigue siendo la del equipo.
+higgsfield:
+  modelo: bytedance/seedance-2.5/text-to-video
+  resolucion: 720p          # 480p | 720p | 1080p (más resolución = más créditos)
+  aspecto: "9:16"
+  duracion: 5               # segundos por toma (4 a 30)
+  audio: false              # el sonido lo ponemos nosotros (voz, música, efectos)
+  max_tomas_por_reel: 5     # tope para no gastar de más
+  # USD por segundo (open.higgsfield.ai, revisado 2026-11-10). Solo para estimar antes de generar.
+  usd_por_segundo:
+    bytedance/seedance-2.5/text-to-video: {480p: 0.1177, 720p: 0.2647, 1080p: 0.6518}
+    xai/grok-imagine-video/v1.5/reference-to-video: {480p: 0.08, 720p: 0.14, 1080p: 0.25}   # máx. 15 s por toma
+  max_usd_por_corrida: 7.0  # si el plan cuesta más que esto, no se lanza
+  # Se agrega al final de cada prompt para que todas las tomas se vean de la misma marca.
+  estilo: >-
+    Cinematic documentary realism, shot on 35mm, shallow depth of field, slow deliberate camera move.
+    Warm golden light, dark forest-green tones in walls and shadows, ivory highlights, well exposed (not underexposed).
+    Small humble family-run business in Guatemala, modest scale, never a large industrial facility.
+    People seen only from behind, in silhouette or hands only. No readable text, no logos, no subtitles, no watermark.
+
 limits:
   caption_max_chars: 2200
   hashtags_max: 5

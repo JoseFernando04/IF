@@ -59,6 +59,7 @@ VideosInstagram/                → lo que ya se publicó
 | POV del dueño | ✅ listo (`pov`) | "POV: es cierre de mes y…" con texto en pantalla |
 | Cuenta regresiva / top 3 | ✅ listo (`top3`, estilo suizo) | Lista rápida con números grandes |
 | Pantalla de sistema | ✅ listo (`sistema`) | Tablero tipo software: reloj, escaneo y tarjetas de alerta que se apilan |
+| **Cine (video con IA)** | ✅ listo (`cine`: `tools/generar_clip.py` + `tools/render_formato.py`, `--borrador` = video sin voz) | Tomas reales generadas con Higgsfield + voz del equipo + una sola acción por WhatsApp. Ver "Enfoque cine" abajo |
 | Papel y libreta (estilo A) | prototipo | Papel, marcador y escritura a mano |
 
 ### Posts
@@ -74,6 +75,40 @@ VideosInstagram/                → lo que ya se publicó
 | Recibo | ✅ listo (`recibo`) | Ticket con lo que cuesta un problema (sin cifras inventadas) | Una situación que todos reconocen |
 | Infografía simple | ✅ listo (`infografia`) | Un dato del proceso explicado en una imagen |
 | Carrusel 8-bit | por construir | Mismo universo de los reels de videojuego |
+
+## Enfoque cine: de vistas a clientes (desde 2026-11-10)
+
+Los formatos animados (8-bit, chat, mito…) sirven para **alcance**. El formato `cine` sirve para **convertir**:
+se ve como un negocio real, habla de un solo dolor y pide una sola acción.
+
+**Estructura fija (20-30 s, una sola voz del equipo):**
+
+| Parte | Tiempo | Qué hace | Imagen |
+|---|---|---|---|
+| Gancho | 0-3 s | Nombra el dolor con una hora o situación concreta ("Son las seis de la tarde y…") | Toma IA: el dueño de espaldas, en su negocio |
+| Causa | 3-10 s | Le quita la culpa a la gente y la pone en el proceso | Toma IA: detalle (cuaderno, papeles, manos) |
+| Solución | 10-18 s | Qué hace IF, en una frase y sin tecnicismos | Toma IA: celular o pantalla desenfocada en el mismo lugar |
+| Alivio | 18-23 s | Cómo se siente el negocio ordenado | Toma IA: el mismo lugar, en calma |
+| Acción | últimos 4-5 s | **Una palabra clave por WhatsApp** ("Escribinos BODEGA") | Tarjeta de marca, sin IA |
+
+**Reglas del formato:**
+
+- **Una palabra clave distinta por reel** (BODEGA, COTIZAR, RUTA…). Quien escribe esa palabra dice de qué reel vino:
+  así se mide cuál convierte, sin esperar la Fase 4. Anotar los mensajes recibidos por palabra.
+- La acción es **una sola** y se repite igual en la voz, en pantalla y en la descripción. Nada de "seguinos y comentá y…".
+- Un reel = un dolor = un tipo de negocio. Rotar: bodega, ferretería, distribuidora, taller, oficina.
+- Voz del equipo tal cual (ElevenLabs). Las tomas se generan **sin audio**; música `if-firma` baja y efectos mínimos.
+- Solo palabras clave en pantalla (2-3 palabras por línea), sin subtítulos.
+- Tomas: 4 por reel, 5-6 s, 720p vertical. Personas solo de espaldas, en silueta o manos: nunca una cara que parezca
+  un cliente o un testimonio. Sin texto ni logos dentro de la toma. La descripción dice "Escena de ejemplo, imágenes generadas con IA".
+- Mismo look en todas las tomas (luz dorada, sombras verde bosque): sale de `config/settings.yaml > higgsfield.estilo`.
+- Sigue aplicando: sin clientes, cifras ni testimonios inventados; nada se publica sin aprobación.
+
+**Orden obligatorio (para no gastar a ciegas):** 1) concepto, gancho y guion medidos a la duración de las tomas (≈ 2,7 palabras por segundo:
+una toma de 5 s = 12-14 palabras) → 2) el equipo aprueba el guion → 3) recién entonces `tools/generar_clip.py <yaml> --confirmar` →
+4) `tools/render_formato.py <yaml> --borrador` (video completo sin voz) → 5) el equipo graba la voz → 6) `tools/render_formato.py <yaml>`.
+**Nunca generar tomas sin guion aprobado.** Ejemplo: `examples/copy/cine/asi-se-siente-bodega.yaml` (serie «Así se siente / Así es»).
+En la rutina diaria: de las 3 opciones de reel, **una** puede ser `cine`; las tomas solo se generan si esa opción es la elegida.
 
 ## Historial (para no repetir)
 

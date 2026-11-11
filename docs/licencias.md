@@ -26,6 +26,8 @@ Todo el stack es gratuito para uso comercial. Revisar esta tabla antes de agrega
 | ElevenLabs (plan pago del usuario) | Voz de los reels | Según su plan | Pago | Confirmar licencia comercial en la cuenta |
 | Azure AI Speech (F0) | Voz en la nube (en evaluación) | Términos de Azure: el audio generado se puede usar comercialmente | 0 hasta 500 000 car./mes | Requiere cuenta y clave (`docs/guia-voces.md`) |
 | Google Cloud Text-to-Speech | Voz en la nube (en evaluación) | Términos de Google Cloud: uso comercial permitido | 0 hasta 1 M car./mes (Chirp 3 HD) | Requiere cuenta y clave |
+| higgsfield-client 0.2.0 (SDK) | Cliente de la API de Higgsfield | Apache-2.0 | 0 | Revisado 2026-11-10: paquete oficial en PyPI, única dependencia `httpx` |
+| Higgsfield API · Seedance 2.5 (plan pago del usuario) | Tomas de video con IA para el formato `cine` | Según los términos de la cuenta | Pago por generación (créditos) | Confirmar en la cuenta el uso comercial de los videos generados. Clave en `.env` (`HF_KEY`) |
 | ElevenLabs (capa gratis) | — | Sin licencia comercial | **Descartado** | El plan Starter (~USD 5-6/mes) sí la incluye |
 | Chatterbox Multilingual | Voz (en evaluación) | MIT | 0 | En `.venv-tts` |
 | Piper + voces es_MX claude / ald | Voz (en evaluación) | GPL-3.0 (motor, uso interno) · Apache 2.0 / Unlicense (voces) | 0 | claude = femenina, ald = masculina |

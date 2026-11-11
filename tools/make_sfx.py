@@ -72,8 +72,18 @@ def paper(sec: float = 0.3) -> np.ndarray:
     return norm((lowpass(n, 0.3) * 0.5 + crackle) * np.exp(-tt * 9), 0.4)
 
 
+def cierre(sec: float = 2.2) -> np.ndarray:
+    """Cierre suave tipo tecnológico: dos notas cálidas que entran despacio y se apagan. Sin golpe ni campana."""
+    tt = t(sec)
+    env = np.minimum(tt / 0.45, 1.0) ** 2 * np.exp(-np.maximum(tt - 0.45, 0) * 2.1)   # ataque lento: no suena a campana
+    nota = lambda f, a: a * (np.sin(2 * np.pi * f * tt) + 0.18 * np.sin(2 * np.pi * 2 * f * tt))
+    x = nota(220.0, 1.0) + nota(329.63, 0.7) * np.minimum(tt / 0.8, 1.0) + nota(110.0, 0.5)
+    aire = lowpass(rng.standard_normal(len(tt)), 0.05) * 0.25 * np.sin(np.pi * np.minimum(tt / 0.9, 1.0)) ** 2
+    return norm((x + aire) * env * (1 + 0.04 * np.sin(2 * np.pi * 4.5 * tt)), 0.5)
+
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    for name, fn in {"whoosh": whoosh, "thud": thud, "pop": pop, "tick": tick, "marker": marker, "paper": paper}.items():
+    for name, fn in {"whoosh": whoosh, "thud": thud, "pop": pop, "tick": tick, "marker": marker, "paper": paper, "cierre": cierre}.items():
         sf.write(OUT / f"{name}.wav", fn(), SR)
         print("✔", name)

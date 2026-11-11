@@ -1,0 +1,52 @@
+# Formato cine narrativo · «Cierre de mes». Pilar: soluciones. Guion aprobado por el equipo el 2026-11-10.
+# Fórmula: gesto cotidiano → pasa algo imposible → la cámara se aleja y revela algo grande.
+# Una sola toma de 10 s (Grok Imagine Video 1.5, 720p = USD 0.14/s → USD 1.40 por intento). Tope acordado: 3 intentos.
+# El aviso "Escena de ejemplo, imágenes generadas con IA" va SOLO en la descripción (lo pega el equipo), no en el video.
+formato: cine
+titulo: Cierre de mes
+serie: ""
+modelo: xai/grok-imagine-video/v1.5/reference-to-video
+resolucion: 720p
+estilo: ""
+audio: assets/voice/elevenlabs/cine-ep2-cierre.mp3
+salida: data/dias/cine-cierre-de-mes/reel-A
+musica: digital-lemonade   # tecnología / relajado (CC BY: el crédito se agrega solo a la descripción)
+musica_db: -22
+whatsapp: "+502 3808 9808"
+palabra_clave: CIERRE
+titulo_tiktok: "El último en irte de la oficina siempre sos vos 🌙"
+caption: >-
+  El cierre de mes no se arregla quedándote más tarde. Se arregla cuando los números se ordenan solos durante el mes. 🌙
+  Escribinos la palabra CIERRE al WhatsApp +502 3808 9808 y contanos cómo lo hacés hoy.
+  (Escena de ejemplo, imágenes generadas con IA.)
+hashtags: [PymesGuatemala, CierreDeMes, Automatizacion, Digitalizacion, NegociosGT]
+lineas:
+  - texto: Otra noche de cierre de mes. Y otra vez, el último en irte sos vos.
+    titular: "Otra noche de <em>cierre de mes.</em>"
+    sfx: [[0.0, thud]]
+    toma:
+      id: 01-cierre
+      duracion: 10
+      desde: 0.35          # salta una tarjeta con letras inventadas que el modelo puso en los primeros cuadros
+      prompt: >-
+        Vertical cinematic shot, night, one continuous take. The shot STARTS INSIDE as a medium close-up of a Guatemalan man
+        about thirty years old, short dark hair, trimmed beard, smart casual shirt, sitting alone at a clean modern desk in a
+        contemporary small office: glass partition, dark green accent wall, a laptop and a large monitor showing dense
+        spreadsheet grids, a few printed reports beside the keyboard, one warm golden desk lamp. First half: he rubs his tired
+        eyes, exhales, and reaches out to switch off the desk lamp. At the midpoint the lamp goes dark, and the spreadsheet
+        grids lift out of the monitor and the papers as thousands of glowing golden data particles and thin lines of light,
+        swirling upward, then assembling in the air into one clean floating holographic dashboard made of golden light:
+        bar charts, a rising line graph and green check marks. He looks up at it and smiles, relieved, closing the laptop.
+        Final three seconds: the camera pulls BACK and away from him, out through the window glass, ending on a wide exterior
+        view of a modern office building at night where his window is the only one glowing gold.
+        Photorealistic, high-end tech commercial look, 35mm, shallow depth of field, warm gold and deep forest green palette.
+        No readable text, no letters, no numbers, no logos, no subtitles, no watermark.
+  - texto: El cierre no debería costarte noches enteras. Debería estar listo cuando apagás la luz.
+    titular: ""            # pantalla limpia: el panel de luz es el protagonista
+    clave: "LISTO AL APAGAR LA LUZ"
+    clave_frac: 0.45
+    sfx: [[0.0, whoosh]]
+  - texto: Escribinos la palabra cierre por WhatsApp, y lo armamos con vos.
+    escena: cierre
+    titulo: "y lo armamos con vos."
+    sfx: [[0.0, cierre]]     # cierre suave (el equipo no quiso la campana del logo sonoro)

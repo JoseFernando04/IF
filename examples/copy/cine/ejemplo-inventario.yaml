@@ -1,0 +1,54 @@
+# Reel de formato `cine` (video con IA + voz del equipo). Pilar: soluciones. Escena de ejemplo.
+# Estructura de conversión: gancho (dolor) → causa → solución → cómo se siente → una sola acción.
+# Cada línea lleva su toma: {id, prompt en inglés, duracion}. El estilo común sale de settings.yaml > higgsfield.estilo.
+formato: cine
+titulo: Las seis de la tarde
+audio: assets/voice/elevenlabs/ejemplo-cine.mp3
+salida: data/dias/ejemplo-cine/reel-A
+musica: if-firma
+musica_db: -22
+whatsapp: "+502 3808 9808"
+palabra_clave: BODEGA        # lo que la persona escribe por WhatsApp; cambia por reel para medir cuál convierte
+caption: >-
+  Si para saber cuánto te queda tenés que llamar a alguien, el problema no es tu gente: es dónde vive la información. 📦
+  Escribinos la palabra BODEGA al WhatsApp +502 3808 9808 y contanos cómo llevás tu inventario hoy.
+  (Escena de ejemplo, imágenes generadas con IA.)
+hashtags: [PymesGuatemala, InventarioInteligente, Bodega, Digitalizacion, NegociosGT]
+lineas:
+  - texto: Son las seis de la tarde, y todavía no sabés cuánto producto te queda.
+    clave: "6:00 P. M."
+    toma:
+      id: 01-gancho
+      duracion: 5
+      prompt: >-
+        Inside a small, modest single-story storeroom of a family business, corrugated metal roof, concrete floor,
+        low metal shelves only slightly taller than a person, unevenly stacked cardboard boxes. One lone owner seen from behind
+        standing in the narrow aisle, looking at the shelves. Late afternoon light through an open doorway, scene clearly visible,
+        dark green painted walls. Slow push-in from behind.
+  - texto: No es que tu gente trabaje mal. Es que tu bodega vive en un cuaderno, y en la memoria de alguien.
+    clave: "EN UN CUADERNO"
+    toma:
+      id: 02-cuaderno
+      duracion: 6
+      prompt: >-
+        Extreme close-up of worn hands flipping the pages of a battered spiral notebook resting on a cardboard box,
+        a pen behind, dust in the light. Macro lens, slow lateral slide.
+  - texto: Nosotros armamos sistemas a la medida, para que veás tu inventario en el celular, en el momento.
+    clave: "A LA MEDIDA"
+    toma:
+      id: 03-celular
+      duracion: 6
+      prompt: >-
+        Close-up of hands holding a smartphone in a tidy warehouse aisle, the screen glowing softly and out of focus,
+        organized shelves blurred behind. Slow orbit around the hands.
+  - texto: Sin cambiar cómo trabajás. Ordenando lo que ya hacés.
+    clave: "ORDEN"
+    toma:
+      id: 04-orden
+      duracion: 5
+      prompt: >-
+        Wide shot of the same small warehouse, now tidy, boxes aligned on shelves, morning light coming through a high window,
+        a worker in silhouette walking calmly down the aisle. Slow rising crane move.
+  - texto: Escribinos la palabra bodega por WhatsApp, y contanos cómo llevás tu inventario hoy.
+    escena: cierre            # tarjeta de marca (sin IA): palabra clave + número de WhatsApp
+    clave: "ESCRIBINOS: BODEGA"

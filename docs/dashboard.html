@@ -1,0 +1,174 @@
+<title>Panel de Publicaciones IF</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: cabecera con resumen, tres paneles (avance por día, formato, redes) y tabla filtrable de piezas. */
+:root{
+  --bg:#fefcf3; --surface:#ffffff; --fg:#0a1410; --muted:#5b685f; --line:#e4e1d2;
+  --accent:#1d362b; --gold:#c9a00c;
+  --ok:#2f7d4f; --ok-bg:#e1f1e6; --warn:#a8710a; --warn-bg:#fbefcc; --off:#8a8f8b; --off-bg:#ecebe4;
+  --f-display:'Space Grotesk',system-ui,sans-serif; --f-body:'Inter',system-ui,sans-serif; --f-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0a1410; --surface:#11201a; --fg:#fefcf3; --muted:#9db0a5; --line:#23382d;
+  --accent:#f0c419; --gold:#f0c419; --ok:#6fd195; --ok-bg:#173a28; --warn:#f0c419; --warn-bg:#3b3210; --off:#8d9a92; --off-bg:#1b2a23; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a1410; --surface:#11201a; --fg:#fefcf3; --muted:#9db0a5; --line:#23382d;
+  --accent:#f0c419; --gold:#f0c419; --ok:#6fd195; --ok-bg:#173a28; --warn:#f0c419; --warn-bg:#3b3210; --off:#8d9a92; --off-bg:#1b2a23; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:14px/1.5 var(--f-body);padding-block:28px 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+h1{font:700 26px/1.15 var(--f-display);margin:0;text-wrap:balance}
+h2{font:500 12px var(--f-display);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+header p{margin:4px 0 0;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.tile b{display:block;font:700 34px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.tile span{color:var(--muted);font-size:13px}
+.tile.ok b{color:var(--ok)} .tile.warn b{color:var(--warn)} .tile.off b{color:var(--off)}
+.panels{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px}
+@media(max-width:760px){.panels{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.stack{display:flex;flex-direction:column;gap:16px}
+.row{display:grid;grid-template-columns:84px 1fr 56px;align-items:center;gap:10px;margin-bottom:9px}
+.bar{display:flex;height:16px;border-radius:3px;overflow:hidden;background:var(--off-bg)}
+.bar i{display:block;height:100%}
+.s-pub{background:var(--ok)} .s-pen{background:var(--gold)} .s-des{background:var(--off)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.kv{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--line)}
+.kv:last-child{border:0}
+.kv b{font:700 18px var(--f-display)}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.chip{font:500 13px var(--f-body);color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.chip:focus-visible,.dayhd:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.sep{width:1px;background:var(--line);margin:0 4px}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th{font:500 11px var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 10px;border-bottom:1px solid var(--line)}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border:0}
+.pill{display:inline-block;font:500 12px var(--f-body);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.p-publicado{background:var(--ok-bg);color:var(--ok)} .p-pendiente{background:var(--warn-bg);color:var(--warn)} .p-descartado{background:var(--off-bg);color:var(--off)}
+.net{display:inline-block;font:500 11px var(--f-mono);border:1px solid var(--line);border-radius:4px;padding:1px 6px;margin-right:4px}
+.net.none{color:var(--muted);border-style:dashed}
+.tipo{font:500 11px var(--f-mono);color:var(--muted);text-transform:uppercase}
+.note{color:var(--muted);font-size:12px}
+.empty{padding:24px;text-align:center;color:var(--muted)}
+.foot{color:var(--muted);font-size:12px}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Panel de publicaciones</h1>
+    <p>IF Techworks · Instagram y TikTok · datos de <span class="mono">docs/publicaciones.yaml</span></p>
+  </header>
+
+  <section class="tiles" id="tiles" aria-label="Resumen"></section>
+
+  <section class="panels">
+    <div class="panel">
+      <h2>Avance por día</h2>
+      <div id="days"></div>
+      <div class="legend">
+        <span><i class="s-pub"></i>Publicado</span><span><i class="s-pen"></i>Pendiente</span><span><i class="s-des"></i>Descartado</span>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="panel"><h2>Por formato</h2><div id="tipos"></div></div>
+      <div class="panel"><h2>Publicado por red</h2><div id="redes"></div></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Piezas</h2>
+    <div class="toolbar" id="filtros"></div>
+    <div class="tw"><table>
+      <thead><tr><th>Día</th><th>Pieza</th><th>Tema</th><th>Estado</th><th>Redes</th></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table></div>
+    <div class="empty" id="empty" hidden>Ninguna pieza coincide con el filtro.</div>
+  </section>
+
+  <p class="foot">Para marcar algo como subido: <span class="mono">tools/publicaciones.py marcar &lt;día&gt; &lt;pieza&gt; --redes ig,tt --fecha AAAA-MM-DD</span></p>
+</div>
+
+<script>
+const DATA = [
+["2026-11-07","reel-8bit-inicial","reel","Primer reel 8-bit (VideosInstagram/Reel2.mp4)","publicado",["ig","tt"],"antes de la rutina diaria"],
+["2026-11-07","reel-documental-voz-jose","reel","Primer reel documental (VideosInstagram/Reel1.mp4)","publicado",["ig","tt"],"antes de la rutina diaria"],
+["2026-11-08","post-1-checklist","post","6 preguntas antes de pagar por un sistema 📋","publicado",["ig","tt"],"fecha sin registrar"],
+["2026-11-08","post-2-este-o-este","post","¿A o B? Así sale tu cotización hoy 👀","descartado",[],"no llamó la atención"],
+["2026-11-08","post-3-frase-de-dueno","post","«Yo me acuerdo de todo»… famosas últimas palabras 🙃","publicado",["ig","tt"],"fecha sin registrar"],
+["2026-11-08","reel-A-chat","reel","El mensaje que nadie quiere mandar","publicado",["ig","tt"],"fecha sin registrar"],
+["2026-11-08","reel-B-mito","reel","Tres mitos de digitalizar tu negocio","publicado",["ig","tt"],"fecha sin registrar"],
+["2026-11-08","reel-C-top3","reel","Tres señales para dejar la libreta","publicado",["ig","tt"],"fecha sin registrar"],
+["2026-11-09","post-1-infografia","post","El estante que te avisa antes de quedarte sin producto 📦","pendiente",[],""],
+["2026-11-09","post-2-diccionario","post","Diccionario del dueño de pyme, edición Guatemala 📖","pendiente",[],""],
+["2026-11-09","post-3-recibo","post","El ticket que pagás cada semana sin darte cuenta 🧾","pendiente",[],""],
+["2026-11-09","reel-A-pov","reel","POV - la lista de precios actualizada","pendiente",[],""],
+["2026-11-09","reel-B-antes-despues","reel","¿Quién tiene la laptop 4?","pendiente",[],""],
+["2026-11-09","reel-C-cinetica","reel","Así trabajamos","pendiente",[],""],
+["2026-11-10","post-1-checklist","post","5 cosas que tu negocio debería avisarte sin que preguntés 🔔","pendiente",[],""],
+["2026-11-10","post-2-este-o-este","post","¿A o B? Así es tu cierre de mes 📅","pendiente",[],""],
+["2026-11-10","post-3-frase-de-dueno","post","Todo negocio tiene una doña Marta 👀","pendiente",[],""],
+["2026-11-10","reel-A-8bit-jefe-final","reel","Jefe final: el cierre de mes","pendiente",[],""],
+["2026-11-10","reel-B-mito-nube","reel","Tres mitos de la nube","pendiente",[],""],
+["2026-11-10","reel-C-pantalla-sistema","reel","Lunes, 7:00 a. m.","pendiente",[],""]
+].map(([dia,pieza,tipo,tema,estado,redes,nota])=>({dia,pieza,tipo,tema,estado,redes,nota}));
+
+const NAMES={ig:"Instagram",tt:"TikTok"};
+const $=id=>document.getElementById(id);
+const cnt=(arr,f)=>arr.filter(f).length;
+const fmtDay=d=>{const [y,m,dd]=d.split("-");return dd+"/"+m};
+const state={estado:"todos",tipo:"todos"};
+
+function tiles(){
+  const p=cnt(DATA,x=>x.estado==="publicado"),q=cnt(DATA,x=>x.estado==="pendiente"),d=cnt(DATA,x=>x.estado==="descartado");
+  const pct=Math.round(p/(p+q)*100);
+  $("tiles").innerHTML=
+   `<div class="tile"><b>${DATA.length}</b><span>Piezas registradas</span></div>
+    <div class="tile ok"><b>${p}</b><span>Publicadas</span></div>
+    <div class="tile warn"><b>${q}</b><span>Pendientes de subir</span></div>
+    <div class="tile off"><b>${d}</b><span>Descartadas</span></div>
+    <div class="tile"><b>${pct}%</b><span>Subido de lo que no se descartó</span></div>`;
+}
+function days(){
+  const ds=[...new Set(DATA.map(x=>x.dia))];
+  $("days").innerHTML=ds.map(d=>{
+    const a=DATA.filter(x=>x.dia===d),n=a.length;
+    const seg=(e,c)=>{const k=cnt(a,x=>x.estado===e);return k?`<i class="${c}" style="width:${k/n*100}%" title="${e}: ${k}"></i>`:""};
+    const p=cnt(a,x=>x.estado==="publicado");
+    return `<div class="row"><span class="mono">${fmtDay(d)}</span><div class="bar">${seg("publicado","s-pub")}${seg("pendiente","s-pen")}${seg("descartado","s-des")}</div><span class="mono note">${p}/${n}</span></div>`;
+  }).join("");
+}
+function side(){
+  $("tipos").innerHTML=["reel","post"].map(t=>{
+    const a=DATA.filter(x=>x.tipo===t);
+    return `<div class="kv"><span>${t==="reel"?"Reels":"Posts"}</span><span class="note">${cnt(a,x=>x.estado==="publicado")} publ. · ${cnt(a,x=>x.estado==="pendiente")} pend. · ${cnt(a,x=>x.estado==="descartado")} desc.</span><b>${a.length}</b></div>`;
+  }).join("");
+  $("redes").innerHTML=Object.keys(NAMES).map(r=>
+    `<div class="kv"><span>${NAMES[r]}</span><b>${cnt(DATA,x=>x.redes.includes(r))}</b></div>`).join("");
+}
+function chips(){
+  const defs=[["estado",[["todos","Todos"],["pendiente","Pendientes"],["publicado","Publicadas"],["descartado","Descartadas"]]],
+              ["tipo",[["todos","Reels y posts"],["reel","Reels"],["post","Posts"]]]];
+  $("filtros").innerHTML=defs.map((g,i)=>(i?'<span class="sep"></span>':'')+g[1].map(([v,l])=>
+    `<button class="chip" data-k="${g[0]}" data-v="${v}" aria-pressed="${state[g[0]]===v}">${l}</button>`).join("")).join("");
+  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{state[b.dataset.k]=b.dataset.v;chips();rows()});
+}
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function rows(){
+  const a=DATA.filter(x=>(state.estado==="todos"||x.estado===state.estado)&&(state.tipo==="todos"||x.tipo===state.tipo));
+  $("tbody").innerHTML=a.map(x=>`<tr>
+    <td class="mono">${fmtDay(x.dia)}</td>
+    <td><div class="mono">${esc(x.pieza)}</div><span class="tipo">${x.tipo}</span></td>
+    <td>${esc(x.tema)}${x.nota?`<div class="note">${esc(x.nota)}</div>`:""}</td>
+    <td><span class="pill p-${x.estado}">${x.estado}</span></td>
+    <td>${x.redes.length?x.redes.map(r=>`<span class="net">${r.toUpperCase()}</span>`).join(""):'<span class="net none">—</span>'}</td></tr>`).join("");
+  $("empty").hidden=a.length>0;
+}
+tiles();days();side();chips();rows();
+</script>

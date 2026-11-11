@@ -105,7 +105,7 @@ def lista(piezas: list[dict], solo_pendientes: bool) -> None:
             dia = p["dia"]
             print(f"\n{dia}")
         redes = ",".join(p.get("redes") or [])
-        extra = f"  [{redes} · {p['fecha']}]" if p["estado"] == "publicado" else ""
+        extra = f"  [{redes} · {p['fecha'] or 'sin fecha'}]" if p["estado"] == "publicado" else ""
         print(f"  {MARCA[p['estado']]} {p['pieza']:28s} {p.get('tema', '')}{extra}")
 
 

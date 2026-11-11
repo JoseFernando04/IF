@@ -25,44 +25,60 @@ piezas:
   pieza: post-1-checklist
   tipo: post
   tema: 6 preguntas antes de pagar por un sistema 📋
-  estado: pendiente
-  redes: []
+  estado: publicado
+  redes:
+  - ig
+  - tt
   fecha: null
+  nota: fecha sin registrar
 - dia: '2026-11-08'
   pieza: post-2-este-o-este
   tipo: post
   tema: ¿A o B? Así sale tu cotización hoy 👀
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
+  nota: no llamó la atención
 - dia: '2026-11-08'
   pieza: post-3-frase-de-dueno
   tipo: post
   tema: «Yo me acuerdo de todo»… famosas últimas palabras 🙃
-  estado: pendiente
-  redes: []
+  estado: publicado
+  redes:
+  - ig
+  - tt
   fecha: null
+  nota: fecha sin registrar
 - dia: '2026-11-08'
   pieza: reel-A-chat
   tipo: reel
   tema: El mensaje que nadie quiere mandar
-  estado: pendiente
-  redes: []
+  estado: publicado
+  redes:
+  - ig
+  - tt
   fecha: null
+  nota: fecha sin registrar
 - dia: '2026-11-08'
   pieza: reel-B-mito
   tipo: reel
   tema: Tres mitos de digitalizar tu negocio
-  estado: pendiente
-  redes: []
+  estado: publicado
+  redes:
+  - ig
+  - tt
   fecha: null
+  nota: fecha sin registrar
 - dia: '2026-11-08'
   pieza: reel-C-top3
   tipo: reel
   tema: Tres señales para dejar la libreta
-  estado: pendiente
-  redes: []
+  estado: publicado
+  redes:
+  - ig
+  - tt
   fecha: null
+  nota: fecha sin registrar
 - dia: '2026-11-09'
   pieza: post-1-infografia
   tipo: post

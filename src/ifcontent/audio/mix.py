@@ -63,6 +63,8 @@ def build_sfx_track(events: list[dict], duration: float, out: Path, voice: Path 
     for e in events:
         clip, csr = sf.read(ASSETS_DIR / "sfx" / f"{e['sfx']}.wav", dtype="float32")
         assert csr == sr, "los SFX deben estar a 48 kHz (tools/make_sfx.py)"
+        if clip.ndim == 2:  # efecto estéreo (p. ej. if-logo): a mono
+            clip = clip.mean(axis=1)
         i0 = int(e["t"] * sr)
         seg = clip[: max(0, len(track) - i0)] * 10 ** (e.get("gain_db", 0) / 20)
         track[i0 : i0 + len(seg)] += seg

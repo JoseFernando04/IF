@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<!-- Formato cine: tomas de video (cuadros extraídos por render_formato.py) + titular grande + palabra clave + cierre de marca.
+     Línea: texto, toma {id}, titular (HTML, <em> = dorado), clave, clave_frac, escena: cierre (titulo). -->
+<style>
+@font-face { font-family: "Inter"; src: url("__FONTS__/Inter.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Bricolage"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+:root { --verde: #0a1410; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; font-family: "Inter"; }
+#toma { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; transform-origin: 50% 50%; }
+#velo { position: absolute; inset: 0; background:
+  linear-gradient(180deg, rgba(10,20,16,.88) 0%, rgba(10,20,16,.55) 22%, rgba(10,20,16,0) 42%, rgba(10,20,16,0) 62%, rgba(10,20,16,.82) 100%); }
+#flash { position: absolute; inset: 0; background: var(--marfil); opacity: 0; z-index: 15; }
+#serie { position: absolute; top: 150px; left: 80px; font: 600 30px "Mono"; letter-spacing: 6px; color: var(--oro); z-index: 20; }
+#titular { position: absolute; top: 215px; left: 80px; right: 80px; font: 800 118px/0.98 "Bricolage"; letter-spacing: -3px; color: var(--marfil);
+  z-index: 20; text-shadow: 0 6px 40px rgba(0,0,0,.55); }
+#titular em { font-style: normal; color: var(--oro); }
+#titular .w { display: inline-block; }
+#clave { position: absolute; left: 80px; bottom: 330px; padding: 22px 38px; background: var(--oro); color: var(--verde); font: 800 72px/1 "Bricolage";
+  border-radius: 16px; transform-origin: 0 50%; z-index: 20; white-space: nowrap; }
+#cierre { position: absolute; inset: 0; background: var(--verde); display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; z-index: 40; }
+#fondo { position: absolute; inset: 0; opacity: .8; }
+#cierre > *:not(#fondo) { position: relative; }
+#cierre img { width: 280px; margin-bottom: 70px; }
+#cierre .pre { font: 600 40px "Mono"; letter-spacing: 6px; color: #9fb3a8; margin-bottom: 26px; }
+#cierre .h1 { font: 800 190px/0.95 "Bricolage"; color: var(--oro); letter-spacing: -6px; }
+#cierre .sub { margin-top: 36px; font: 500 46px/1.25 "Inter"; color: var(--marfil); padding: 0 110px; }
+#cierre .wa { margin-top: 64px; padding: 30px 54px; border-radius: 60px; background: var(--marfil); color: var(--verde); font: 800 56px "Inter"; }
+#cierre .web { margin-top: 30px; font: 500 32px "Mono"; color: #9fb3a8; }
+</style></head>
+<body>
+<img id="toma">
+<div id="velo"></div>
+<div id="flash"></div>
+<div id="serie"></div>
+<div id="titular"></div>
+<div id="clave"></div>
+<div id="cierre"><div id="fondo"></div><img src="__LOGO__"><div class="pre">ESCRIBINOS LA PALABRA</div><div class="h1" id="ch1"></div>
+  <div class="sub" id="csub"></div><div class="wa" id="wa"></div><div class="web">iftechworks.com</div></div>
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const R = __DATOS__;
+window.__ready = false;
+const L = R.lineas;
+const $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const back = (x) => { x = cl(x); const s = 1.7; return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2); };
+const fondoP = fondo($("fondo"), "malla", { colors: ["#0a1410", "#1d362b", "#162920", "#0a1410"] });
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.02) k = i; }); return k; };
+const iCierre = L.findIndex((x) => x.escena === "cierre");
+const tCierre = iCierre >= 0 ? L[iCierre].inicio : 1e9;
+// Cada toma dura desde su línea hasta la siguiente línea con toma (o el cierre).
+const tramos = L.map((l, i) => ({ l, i })).filter((x) => x.l.toma).map((x, k, arr) => ({
+  toma: x.l.toma, ini: x.l.inicio, fin: k + 1 < arr.length ? arr[k + 1].l.inicio : Math.min(tCierre, R.fin) }));
+$("serie").textContent = R.serie || "";
+$("ch1").textContent = R.palabra_clave; $("csub").innerHTML = (L[iCierre] || {}).titulo || ""; $("wa").textContent = "WhatsApp " + R.whatsapp;
+const partir = (html) => html.replace(/(<em>)?([^\s<]+)(<\/em>)?/g, (m) => `<span class="w">${m}</span>`);
+let titularDe = -1, cuadroAct = "";
+
+async function dibujar(t) {
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio, p = cl(dt / l.duracion);
+  const enCierre = t >= tCierre;
+  // Toma: el clip se reparte en su tramo (si la voz dura más que el clip, va apenas más lento).
+  const tr = tramos.filter((x) => t >= x.ini - 0.02).pop() || tramos[0];
+  if (tr) {
+    const q = cl((t - tr.ini) / Math.max(0.1, tr.fin - tr.ini));
+    const n = 1 + Math.round(q * (tr.toma.n - 1));
+    const src = `${tr.toma.base}/${String(n).padStart(4, "0")}.jpg`;
+    if (src !== cuadroAct) { cuadroAct = src; $("toma").src = src; await $("toma").decode(); }
+    $("toma").style.transform = `scale(${1.04 + 0.03 * q})`;
+    $("flash").style.opacity = t > 0.3 ? 0.55 * (1 - cl((t - tr.ini) / 0.22)) : 0;  // corte con destello entre tomas
+  }
+  $("serie").style.opacity = enCierre ? 0 : eo(t / 0.4);
+  // Titular: entra palabra por palabra al empezar la línea.
+  const lt = [...L.slice(0, i + 1)].reverse().find((x) => x.titular !== undefined);  // titular vacío = pantalla limpia
+  if (lt && lt.titular && !enCierre) {
+    const k = L.indexOf(lt);
+    if (k !== titularDe) { titularDe = k; $("titular").innerHTML = partir(lt.titular); }
+    const d = t - lt.inicio;
+    [...$("titular").querySelectorAll(".w")].forEach((w, j) => { const e = back((d - 0.05 - j * 0.11) / 0.3);
+      w.style.opacity = e > 0 ? 1 : 0; w.style.transform = `translateY(${(1 - cl(e, 0, 1.2)) * 46}px)`; });
+    $("titular").style.opacity = 1;
+  } else $("titular").style.opacity = 0;
+  const kc = l.clave && !enCierre ? back((p - (l.clave_frac ?? 0.45)) / 0.25) : 0;
+  $("clave").textContent = l.clave || ""; $("clave").style.opacity = kc > 0 ? 1 : 0; $("clave").style.transform = `rotate(-2deg) scaleX(${cl(kc, 0, 1.2)})`;
+  // Cierre
+  const dc = t - tCierre;
+  $("cierre").style.opacity = enCierre ? eo(dc / 0.3) : 0;
+  $("ch1").style.transform = `scale(${0.7 + 0.3 * back((dc - 0.15) / 0.4)})`;
+  $("wa").style.transform = `scale(${0.85 + 0.15 * back((dc - 0.7) / 0.35)})`;
+  (await fondoP).frame(t * 1000 * 0.3);
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = dibujar;
+window.__ready = true;
+</script>
+</body></html>

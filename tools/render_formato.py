@@ -3,6 +3,7 @@
 Uso:
   .venv/Scripts/python tools/render_formato.py examples/copy/dia/2026-11-08-reel-A.yaml
   .venv/Scripts/python tools/render_formato.py <yaml> --muestra 3.5,9,14   (sin audio: tiempos estimados, solo imágenes)
+  .venv/Scripts/python tools/render_formato.py <yaml> --borrador           (video completo SIN voz, tiempos estimados)
   opciones: --musica-db -20
 
 El YAML define: formato, titulo, audio, salida, musica, caption, hashtags, lineas (texto + campos de escena
@@ -40,6 +41,27 @@ def cortes_estimados(textos: list[str]) -> list[tuple[float, float]]:
         out.append((t, t + d))
         t += d + 0.25
     return out
+
+
+def preparar_tomas(lineas: list[dict], salida: Path, work: Path) -> None:
+    """Formato cine: extrae los cuadros de cada clip (<salida>/clips/<id>.mp4) a 1080x1920 y 30 fps para la plantilla."""
+    for l in lineas:
+        toma = l.get("toma")
+        if not toma:
+            continue
+        clip = salida / "clips" / f"{toma['id']}.mp4"
+        if not clip.exists():
+            sys.exit(f"✗ Falta la toma: {clip} (generala con tools/generar_clip.py)")
+        desde = float(toma.get("desde", 0))  # segundos a saltar al inicio (p. ej. texto falso que mete el modelo)
+        carpeta = work / "cuadros" / f"{toma['id']}-{desde:g}"
+        if not carpeta.exists() or clip.stat().st_mtime > carpeta.stat().st_mtime:
+            carpeta.mkdir(parents=True, exist_ok=True)
+            for viejo in carpeta.glob("*.jpg"):
+                viejo.unlink()
+            subprocess.run([ffmpeg_bin(), "-y", "-loglevel", "error", "-ss", f"{desde:.3f}", "-i", str(clip),
+                            "-vf", "fps=30,scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,crop=1080:1920",
+                            "-q:v", "3", str(carpeta / "%04d.jpg")], check=True)
+        l["toma"] = {"id": toma["id"], "n": len(list(carpeta.glob("*.jpg"))), "base": carpeta.as_uri()}
 
 
 def armar_html(g: dict, lineas: list[dict], fin: float, destino: Path) -> Path:
@@ -91,8 +113,9 @@ def main() -> None:
     work.mkdir(parents=True, exist_ok=True)
     textos = [l["texto"] for l in g["lineas"]]
     muestra = arg("--muestra")
+    borrador = "--borrador" in sys.argv  # video completo SIN voz, con tiempos estimados (para aprobar antes de grabar)
 
-    if muestra:
+    if muestra or borrador:
         cortes = cortes_estimados(textos)
     else:
         audio_in = ROOT / g["audio"]
@@ -110,6 +133,7 @@ def main() -> None:
     fin = round(LEAD_S + cortes[-1][1] + CIERRE_S, 3)
     for l in lineas:
         print(f"  {l['inicio']:6.2f}s +{l['duracion']:5.2f}  {l['texto']}")
+    preparar_tomas(lineas, salida, work)
     html_path = armar_html(g, lineas, fin, work / "reel.html")
 
     if muestra:
@@ -121,22 +145,27 @@ def main() -> None:
         return
 
     voz = work / "voz.wav"
-    subprocess.run([ffmpeg_bin(), "-y", "-loglevel", "error", "-i", str(audio_in),
-                    "-af", f"aresample=48000,adelay={int(LEAD_S * 1000)}:all=1,apad=whole_dur={fin}", "-ac", "1", str(voz)], check=True)
+    if borrador:
+        subprocess.run([ffmpeg_bin(), "-y", "-loglevel", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono",
+                        "-t", str(fin), str(voz)], check=True)
+    else:
+        subprocess.run([ffmpeg_bin(), "-y", "-loglevel", "error", "-i", str(audio_in),
+                        "-af", f"aresample=48000,adelay={int(LEAD_S * 1000)}:all=1,apad=whole_dur={fin}", "-ac", "1", str(voz)], check=True)
     sfx = [{"t": l["inicio"] + l["duracion"] * frac, "sfx": nombre, "gain_db": -10}
            for l, orig in zip(lineas, g["lineas"]) for frac, nombre in orig.get("sfx", [])]
     primer_plano = build_sfx_track(sfx, fin, work / "voz_sfx.wav", voice=voz)
     pista = get_track(g["musica"])
     db = float(arg("--musica-db") or g.get("musica_db", -20))
     audio = mix_audio(primer_plano, pista.path, fin, work / "audio.wav", volume_db=db)
-    render_html_video(html_path, fin, audio, salida / "reel.mp4", 1080, 1920, 30,
+    destino = salida / ("reel-borrador.mp4" if borrador else "reel.mp4")
+    render_html_video(html_path, fin, audio, destino, 1080, 1920, 30,
                       cover=salida / "cover.jpg", cover_t=g.get("portada_t", lineas[0]["inicio"] + lineas[0]["duracion"] * 0.8))
     caption = g["caption"].strip()
     if getattr(pista, "attribution", ""):
         caption += "\n\nMúsica: " + pista.attribution
     caption += "\n\n" + " ".join(f"#{h}" for h in g["hashtags"])
     (salida / "caption.txt").write_text(caption, encoding="utf-8")
-    print("✔", salida / "reel.mp4", f"({fin:.1f} s)")
+    print("✔", destino, f"({fin:.1f} s)" + (" · BORRADOR SIN VOZ" if borrador else ""))
 
 
 if __name__ == "__main__":

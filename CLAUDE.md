@@ -51,6 +51,10 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
 - **Control de lo publicado:** `docs/publicaciones.yaml` (vista en `docs/publicaciones.md`) con `tools/publicaciones.py`.
   Cuando el usuario diga qué subió ("ayer subí el reel A del 10"), correr `marcar <día> <pieza> --redes ig,tt --fecha AAAA-MM-DD`
   (o `descartar`). Al empezar el día: `sync` y `lista --pendientes` para recordar lo que falta subir.
+- **Formato `cine` (desde 2026-11-10):** reels para convertir vistas en clientes, con tomas de Higgsfield, voz del equipo y una
+  palabra clave por WhatsApp. Reglas en `docs/plan-contenido-diario.md` ("Enfoque cine"). Generar tomas cuesta créditos:
+  mostrar el plan y generar solo lo que el usuario eligió. `HF_KEY` en `.env`. Nunca generar tomas sin guion aprobado por el equipo.
+  Montaje: `tools/render_formato.py <yaml>` (`--borrador` = sin voz, tiempos estimados). Gastado al 2026-11-10: ~USD 6.76 de 15. Decir siempre el precio antes de generar; el aviso "Escena de ejemplo" va solo en la descripción, no en el video.
 - Commit y push solo cuando el usuario lo pide (suele pedirlo al cerrar el día).
 
 ## Herramientas listas
@@ -61,6 +65,7 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
 | Reel 8-bit | `tools/render_8bit.py examples/copy/8bit/<reel>.yaml` (escenas en `templates/video/8bit/reel.html`) |
 | Reels chat / mito / top3 / pov / antesdespues / cinetica | `tools/render_formato.py examples/copy/dia/<día>-reel-X.yaml` (`--muestra 3,9,15` sin audio = imágenes de muestra) |
 | Posts checklist / este-o-este / frase / infografia / diccionario / recibo | `tools/render_post.py examples/copy/dia/<día>-post-N.yaml` (plantilla `templates/graphics/posts/post.html`) |
+| Tomas de video con IA (formato `cine`) | `tools/generar_clip.py <yaml>` muestra el plan; `--confirmar` genera (Higgsfield · Seedance 2.5, **de pago**). Motor: `ifcontent.video.higgsfield`. Ejemplo del SDK: `examples/higgsfield/main.py` |
 | Fondos animados | `templates/shared/fondos.js` (Paper Shaders: `malla`, `grano`, `puntos`, `papel`, `trama`); Chromium con `--allow-file-access-from-files` |
 | Carrusel documental | `ifcontent.graphics.carousel_b.render_from_file(yaml, carpeta)` con YAML como `examples/copy/b/*.yaml` |
 | Revisar un audio | `ifcontent.audio.transcribe.transcribir([ruta])` (Whisper local) |

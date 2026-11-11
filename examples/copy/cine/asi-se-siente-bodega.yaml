@@ -1,0 +1,40 @@
+# Serie «Así se siente / Así es» · Episodio 1: la bodega. Formato cine. Pilar: soluciones. Escena de ejemplo.
+# Usa las DOS tomas ya pagadas (5 s cada una): la bodega gigante = cómo se siente; la pequeña = cómo es.
+# El guion está medido para la toma: cada línea dura ~5 s al ritmo normal de la voz (12-14 palabras).
+formato: cine
+titulo: Así se siente tu bodega
+serie: "ASÍ SE SIENTE · EP. 1"
+audio: assets/voice/elevenlabs/cine-ep1-bodega.mp3
+salida: data/dias/ejemplo-cine/reel-A
+musica: if-firma
+musica_db: -20
+whatsapp: "+502 3808 9808"
+palabra_clave: BODEGA
+caption: >-
+  Tu bodega no es enorme. Se siente enorme cuando nadie sabe qué hay adentro. 📦
+  Si para saber cuánto te queda hay que ir a contar, escribinos la palabra BODEGA al WhatsApp +502 3808 9808
+  y contanos cómo llevás tu inventario hoy. (Escena de ejemplo, imágenes generadas con IA.)
+hashtags: [PymesGuatemala, InventarioInteligente, Bodega, Digitalizacion, NegociosGT]
+lineas:
+  - texto: Así se siente tu bodega cuando no sabés cuánto producto te queda.
+    titular: "Así se <em>siente</em> tu bodega."
+    clave: "¿CUÁNTO QUEDA?"
+    clave_frac: 0.55
+    sfx: [[0.0, thud]]
+    toma:
+      id: 01-gancho-v1
+      duracion: 5
+      prompt: (ya generada el 2026-11-10) bodega industrial enorme al atardecer, dueño de espaldas.
+  - texto: Y así es en realidad. No te falta espacio ni gente. Te falta saber qué hay.
+    titular: "Y así <em>es</em>."
+    clave: "FALTA SABER QUÉ HAY"
+    clave_frac: 0.6
+    sfx: [[0.0, whoosh], [0.6, pop]]
+    toma:
+      id: 01-gancho
+      duracion: 5
+      prompt: (ya generada el 2026-11-10) bodega pequeña de negocio familiar, paredes verdes, dueño de espaldas.
+  - texto: Escribinos la palabra bodega por WhatsApp, y la ordenamos con vos.
+    escena: cierre
+    titulo: "y la ordenamos con vos."
+    sfx: [[0.0, if-logo]]
