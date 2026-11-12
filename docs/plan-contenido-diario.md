@@ -26,7 +26,8 @@ Cada día Claude propone **3 opciones de reel y 3 de post**; el equipo elige.
 
 ## Control de lo publicado
 
-Después de subir algo, basta con decirle a Claude qué fue (por ejemplo: *"ayer subí el reel A y el post 2 del 10, solo en Instagram"*).
+Lo más fácil: marcarlo en el **tablero** (https://claude.ai/artifact/Lhzfzm9U8GHYvEC1kt9Rim); Claude lo lee cada mañana.
+También se puede decirle a Claude qué fue (por ejemplo: *"ayer subí el reel A y el post 2 del 10, solo en Instagram"*).
 Claude lo marca con `tools/publicaciones.py` y queda en [publicaciones.md](publicaciones.md): ✅ publicado · ⏳ pendiente · ✖️ descartado.
 Cada mañana Claude muestra lo que sigue pendiente de días anteriores.
 
@@ -117,6 +118,7 @@ En la rutina diaria: de las 3 opciones de reel, **una** puede ser `cine`; las to
 | 2026-11-08 | A chat (inventario) ✅ producido · B mito vs. realidad (digitalizar) ✅ producido · C top 3 (vendedores de calle) ✅ producido | 1 checklist (comprar sistema) · 2 este o este (cotizaciones) · 3 frase de dueño (memoria) |
 | 2026-11-09 | A POV del dueño (catálogo) ✅ producido · B antes/después (activos) ✅ producido · C tipografía cinética (así trabajamos; reemplaza la versión de charlas) ✅ producido | 1 infografía (estante con sensores) · 2 diccionario del dueño · 3 recibo (costo de no ordenar) |
 | 2026-11-10 | A 8-bit "jefe final: el cierre de mes" ✅ producido · B mito vs. realidad (la nube) ✅ producido · C pantalla de sistema (lunes 7:00, formato nuevo) ✅ producido | 1 checklist (5 cosas que debería avisarte solo) · 2 este o este (cierre de mes) · 3 frase de dueño (doña Marta) |
+| 2026-11-11 | A chat (pedido perdido en un audio) ✅ producido · B top 3 (tareas a mano) ✅ producido · C POV (el que sabe todo se fue de vacaciones) ✅ producido | 1 infografía (taller: orden de trabajo) · 2 diccionario vol. 2 (oficina) · 3 recibo (cobrar tarde) |
 
 ## Reglas de contenido (siempre)
 

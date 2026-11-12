@@ -46,12 +46,17 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
   Se usa el audio tal cual; solo se agregan animación, música y efectos. Sin subtítulos (solo palabras clave en pantalla).
 - **Rotar formatos** (ningún formato dos días seguidos). Catálogo y estado en `docs/plan-contenido-diario.md`.
   El usuario quiere variedad real, siguiendo lo que hoy llama la atención en redes, no solo documental y 8-bit.
+  **Desde 2026-11-11:** al menos 1-2 de los 3 reels deben ser un formato NUEVO de `docs/tendencias-reels.md` (no la misma plantilla con otro texto).
 - Descripciones: llamativas, que **no repitan el guion**, con WhatsApp +502 3808 9808 y 5 hashtags. Los posts llevan además `titulo_tiktok` (máx. 90 caracteres).
 - Publicación: el equipo programa a mano en Meta Business Suite y TikTok (la automatización por API es la Fase 3).
 - **Control de lo publicado:** `docs/publicaciones.yaml` (vista en `docs/publicaciones.md`) con `tools/publicaciones.py`.
   Cuando el usuario diga qué subió ("ayer subí el reel A del 10"), correr `marcar <día> <pieza> --redes ig,tt --fecha AAAA-MM-DD`
   (o `descartar`). Al empezar el día: `sync` y `lista --pendientes` para recordar lo que falta subir.
-- **Formato `cine` (desde 2026-11-10):** reels para convertir vistas en clientes, con tomas de Higgsfield, voz del equipo y una
+- **Tablero interactivo (desde 2026-11-11):** https://claude.ai/artifact/Lhzfzm9U8GHYvEC1kt9Rim (fuente `docs/panel/publicaciones.html`).
+  El equipo marca ahí pendiente/subido/descartado. **Al empezar el día:** `ArtifactData list` de la colección `piezas` con `out_dir`
+  → `tools/publicaciones.py importar-panel <out_dir>` → `sync`. Piezas nuevas o marcadas por chat: `exportar-panel <carpeta>` y
+  subirlas con `ArtifactData batch` (id `<día>__<pieza>`, `if_version` si ya existen).
+- **Formato `cine` (desde 2026-11-10; EN PAUSA desde 2026-11-11 hasta que el usuario lo retome):** reels para convertir vistas en clientes, con tomas de Higgsfield, voz del equipo y una
   palabra clave por WhatsApp. Reglas en `docs/plan-contenido-diario.md` ("Enfoque cine"). Generar tomas cuesta créditos:
   mostrar el plan y generar solo lo que el usuario eligió. `HF_KEY` en `.env`. Nunca generar tomas sin guion aprobado por el equipo.
   Montaje: `tools/render_formato.py <yaml>` (`--borrador` = sin voz, tiempos estimados). Gastado al 2026-11-10: ~USD 6.76 de 15. Decir siempre el precio antes de generar; el aviso "Escena de ejemplo" va solo en la descripción, no en el video.

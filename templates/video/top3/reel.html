@@ -24,7 +24,7 @@ html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; backgro
 <div id="fondo"></div>
 <div id="bloque"></div>
 <div class="regla" id="r1" style="left:90px;top:200px;width:900px"></div>
-<div class="nota" style="left:90px;top:150px">IF TECHWORKS — SEÑALES</div>
+<div class="nota" id="serie" style="left:90px;top:150px">IF TECHWORKS — SEÑALES</div>
 <div class="nota" id="cont" style="right:90px;top:150px"></div>
 <div id="numcaja"><div id="num"></div></div>
 <div class="regla" id="r2" style="left:90px;top:1215px;width:900px"></div>
@@ -36,6 +36,7 @@ html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; backgro
 <script type="module">
 import { fondo } from "__SHARED__/fondos.js";
 const REEL = __DATOS__;
+if (REEL.serie) document.getElementById("serie").textContent = REEL.serie;
 window.__ready = false;
 const L = REEL.lineas, M = 90;
 const $ = (id) => document.getElementById(id);

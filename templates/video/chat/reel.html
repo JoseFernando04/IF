@@ -85,7 +85,7 @@ html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; backgro
   </div>
   <div class="vista llamada" id="v-llamada"><div class="onda" id="onda"></div><div class="avatar" id="av2"></div>
     <div class="nombre" id="nom2"></div><div class="sub" id="sub2"></div><div class="colgar"></div></div>
-  <div class="vista app" id="v-app"><div class="tit">INVENTARIO</div><div class="vivo"><i id="punto"></i>EN VIVO</div>
+  <div class="vista app" id="v-app"><div class="tit" id="apptit">INVENTARIO</div><div class="vivo"><i id="punto"></i>EN VIVO</div>
     <div class="h1" id="apph1"></div><div id="filas"></div></div>
   <div class="vista cierre" id="v-cierre"><img src="__LOGO__"><div class="h1" id="cierreh1"></div><div class="wa" id="wa"></div><div class="web">iftechworks.com</div></div>
 </div></div>
@@ -93,6 +93,7 @@ html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; backgro
 <script type="module">
 import { fondo } from "__SHARED__/fondos.js";
 const REEL = __DATOS__;
+if (REEL.etiqueta_app) document.getElementById("apptit").textContent = REEL.etiqueta_app;
 window.__ready = false;
 const L = REEL.lineas, C = REEL.contactos;
 const $ = (id) => document.getElementById(id);

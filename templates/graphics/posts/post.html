@@ -161,7 +161,7 @@ if (D.formato === "infografia") {
   const tops = [420, 690, 960];
   nueva("inf", `<div class="fondo"></div><div class="capa"><div class="eti">${D.etiqueta}</div><h1>${D.titulo}</h1></div>
     <div class="riel" style="top:${tops[0] + 125}px;height:${tops[2] - tops[0]}px"></div>
-    ${D.pasos.map((x, j) => `<div class="paso" style="top:${tops[j]}px"><div class="n">${j + 1}</div><div class="ilu">${ILU[j]}</div>
+    ${D.pasos.map((x, j) => `<div class="paso" style="top:${tops[j]}px"><div class="n">${j + 1}</div><div class="ilu">${x.ilu || ILU[j]}</div>
       <div><h3>${x.t}</h3><p>${x.d}</p></div></div>`).join("")}
     <div class="nota-pie">${D.nota}</div><div class="pag" style="color:var(--verde)">iftechworks.com</div>`,
     ["puntos", { back: "#fefcf3", fill: "#d9d3bf", size: 3, gap: 45 }]);

@@ -1,0 +1,34 @@
+# Post 2 · Diccionario del dueño de pyme, vol. 2 (carrusel de 5). Pilar: tips (con humor, oficina y cobros).
+formato: diccionario
+salida: data/dias/2026-11-11/post-2
+titulo_tiktok: "Diccionario del dueño de pyme, vol. 2: ahora en la oficina 📖😅"
+whatsapp: "+502 3808 9808"
+etiqueta: "DICCIONARIO DEL DUEÑO DE PYME · VOL. 2"
+titulo: "Más palabras que <em>todo dueño</em> conoce."
+bajada: "Ahora, en la oficina. Deslizá →"
+entradas:
+  - palabra: "Ya te deposito"
+    fon: "/ya te de·po·si·to/"
+    tipo: "LOC. ADV."
+    def: "Frase que puede significar hoy, el viernes o el otro mes."
+    ej: "«Me dijo “ya te deposito” el día quince. Del mes pasado.»"
+    cura: "Recordatorios de cobro automáticos."
+  - palabra: "Ahorita te lo busco"
+    fon: "/a·ho·ri·ta te lo bus·co/"
+    tipo: "LOC. VERBAL"
+    def: "Búsqueda de un documento que dura entre diez minutos y toda la tarde."
+    ej: "«La factura de marzo está en algún correo. De algún año.»"
+    cura: "Documentos ordenados y a un clic."
+  - palabra: "Lo vemos el lunes"
+    fon: "/lo ve·mos el lu·nes/"
+    tipo: "LOC. VERBAL"
+    def: "Pendiente que se mueve de semana en semana sin que nadie lo vea."
+    ej: "«El reporte de ventas lleva tres lunes esperando.»"
+    cura: "Reportes que se arman solos."
+cierre: "¿Cuál te <em>tocó</em> esta semana?"
+cierre_bajada: "Contanos en los comentarios. Y si alguna ya te cansó, escribinos: también tiene cura."
+caption: >-
+  Volvió el diccionario y esta vez se metió a la oficina. 📖☕
+  Deslizá, reíte y etiquetá a quien dice «lo vemos el lunes» cada semana.
+  Si querés curarte de alguna, escribinos al WhatsApp +502 3808 9808.
+hashtags: [HumorEmprendedor, PymesGuatemala, DueñosDeNegocio, Oficina, Chapines]

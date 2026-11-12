@@ -7,6 +7,12 @@ Uso:
   .venv/Scripts/python tools/publicaciones.py descartar 2026-11-10 post-2 [--nota "..."]
   .venv/Scripts/python tools/publicaciones.py pendiente 2026-11-10 post-2      (deshace marcar/descartar)
 
+Tablero interactivo (el equipo marca ahí): https://claude.ai/artifact/Lhzfzm9U8GHYvEC1kt9Rim
+  (fuente: docs/panel/publicaciones.html; base de datos del artifact, colección "piezas", id = <día>__<pieza>)
+  .venv/Scripts/python tools/publicaciones.py exportar-panel CARPETA    un JSON por pieza para cargar al tablero
+  .venv/Scripts/python tools/publicaciones.py importar-panel CARPETA    trae al YAML lo marcado en el tablero
+                                                                        (CARPETA = out_dir de ArtifactData list)
+
 La pieza se puede escribir corta ("reel-A", "post-2") o con el nombre de la carpeta.
 Estados: pendiente | publicado | descartado. Redes: ig (Instagram), tt (TikTok).
 """
@@ -109,6 +115,44 @@ def lista(piezas: list[dict], solo_pendientes: bool) -> None:
         print(f"  {MARCA[p['estado']]} {p['pieza']:28s} {p.get('tema', '')}{extra}")
 
 
+def doc_id(p: dict) -> str:
+    return f"{p['dia']}__{p['pieza']}"
+
+
+def exportar_panel(piezas: list[dict], carpeta: Path) -> None:
+    import json
+    carpeta.mkdir(parents=True, exist_ok=True)
+    for p in piezas:
+        d = {k: p.get(k) for k in ("dia", "pieza", "tipo", "tema", "estado", "redes", "fecha", "nota")}
+        d["redes"] = d["redes"] or []
+        (carpeta / f"{doc_id(p)}.json").write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"✔ {len(piezas)} piezas en {carpeta}")
+
+
+def importar_panel(piezas: list[dict], carpeta: Path) -> int:
+    import json
+    por_id = {doc_id(p): p for p in piezas}
+    cambios = 0
+    for f in sorted(carpeta.rglob("*.json")):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        if isinstance(d.get("data"), dict):
+            d = d["data"]
+        p = por_id.get(f.stem)
+        if not p or d.get("estado") not in MARCA:
+            continue
+        nuevo = {"estado": d["estado"], "redes": d.get("redes") or [], "fecha": d.get("fecha")}
+        if d.get("nota"):
+            nuevo["nota"] = d["nota"]
+        viejo = {k: p.get(k) for k in nuevo}
+        if viejo != {k: (v or ([] if k == "redes" else None)) for k, v in nuevo.items()} or (d.get("nota") or None) != p.get("nota"):
+            p.update(nuevo)
+            if not d.get("nota"):
+                p.pop("nota", None)
+            print(f"  {MARCA[p['estado']]} {p['dia']} {p['pieza']} → {p['estado']}")
+            cambios += 1
+    return cambios
+
+
 def main() -> None:
     if len(sys.argv) < 2:
         sys.exit(__doc__)
@@ -137,6 +181,12 @@ def main() -> None:
             p.pop("nota", None)
         guardar(piezas)
         print(f"✔ {p['dia']} {p['pieza']} → {p['estado']}")
+    elif cmd == "exportar-panel":
+        exportar_panel(piezas, Path(sys.argv[2]))
+    elif cmd == "importar-panel":
+        n = importar_panel(piezas, Path(sys.argv[2]))
+        guardar(piezas)
+        print(f"✔ {n} cambios traídos del tablero")
     else:
         sys.exit(__doc__)
 

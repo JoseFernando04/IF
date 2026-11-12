@@ -1,0 +1,242 @@
+<title>Tablero de publicaciones IF</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: una columna de días (más reciente arriba); cada pieza es una fila con su control de estado a la derecha. */
+:root{
+  --bg:#fefcf3; --surface:#ffffff; --line:#e4e2d6; --fg:#0f1f18; --muted:#5d6b63;
+  --accent:#1d362b; --gold:#f0c419; --gold-ink:#6b5300;
+  --ok:#1f7a4a; --ok-bg:#e3f3e9; --wait:#8a6400; --wait-bg:#fdf3cc; --off:#8b4141; --off-bg:#f6e4e2;
+  --f-display:"Space Grotesk",system-ui,sans-serif; --f-body:"Inter",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0a1410; --surface:#122219; --line:#24392e; --fg:#f2f0e4; --muted:#9fb0a6;
+  --accent:#f0c419; --gold:#f0c419; --gold-ink:#f0c419;
+  --ok:#7fd6a3; --ok-bg:#163826; --wait:#f0c419; --wait-bg:#33300f; --off:#e6a29c; --off-bg:#3a1f1d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a1410; --surface:#122219; --line:#24392e; --fg:#f2f0e4; --muted:#9fb0a6;
+  --accent:#f0c419; --gold:#f0c419; --gold-ink:#f0c419;
+  --ok:#7fd6a3; --ok-bg:#163826; --wait:#f0c419; --wait-bg:#33300f; --off:#e6a29c; --off-bg:#3a1f1d; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.45;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:6px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,5vw,40px);line-height:1.05;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--gold-ink);}
+.lede{color:var(--muted);margin:0;max-width:62ch}
+.status{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.status.warn{color:var(--off)}
+.summary{display:flex;flex-wrap:wrap;gap:8px}
+.filter{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--fg);
+  border-radius:999px;padding:7px 14px;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.filter b{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.filter[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.filter:focus-visible,.seg button:focus-visible,.chip:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.day{display:flex;flex-direction:column;gap:0}
+.day h2{font-family:var(--f-display);font-weight:500;font-size:18px;margin:0 0 8px;display:flex;gap:10px;align-items:baseline}
+.day h2 span{font-family:var(--f-mono);font-size:12px;color:var(--muted);font-weight:400}
+.list{border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;padding:14px 16px;border-top:1px solid var(--line);align-items:center}
+.row:first-child{border-top:0}
+.row[data-estado="publicado"]{box-shadow:inset 3px 0 var(--ok)}
+.row[data-estado="pendiente"]{box-shadow:inset 3px 0 var(--gold)}
+.row[data-estado="descartado"]{box-shadow:inset 3px 0 var(--off)}
+.row[data-estado="descartado"] .tema{text-decoration:line-through;color:var(--muted)}
+.info{min-width:0;display:flex;flex-direction:column;gap:2px}
+.tag{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+.tema{font-weight:500;overflow-wrap:anywhere}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--muted);padding:7px 11px;cursor:pointer;border-left:1px solid var(--line)}
+.seg button:first-child{border-left:0}
+.seg button[aria-pressed="true"][data-v="pendiente"]{background:var(--wait-bg);color:var(--wait);font-weight:600}
+.seg button[aria-pressed="true"][data-v="publicado"]{background:var(--ok-bg);color:var(--ok);font-weight:600}
+.seg button[aria-pressed="true"][data-v="descartado"]{background:var(--off-bg);color:var(--off);font-weight:600}
+.seg button:disabled{cursor:default}
+.extra{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{font:inherit;font-size:12.5px;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:4px 11px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
+.extra label{font-size:12.5px;color:var(--muted);display:inline-flex;gap:6px;align-items:center}
+.extra input{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;padding:4px 8px;min-width:0}
+.extra input[type="text"]{width:min(260px,100%)}
+.saving{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.empty{border:1px dashed var(--line);border-radius:10px;padding:28px 20px;color:var(--muted);text-align:center}
+footer{font-size:13px;color:var(--muted);max-width:62ch}
+footer code{font-family:var(--f-mono);font-size:12px}
+@media (max-width:560px){.row{grid-template-columns:1fr}.seg{width:100%}.seg button{flex:1}}
+@media (prefers-reduced-motion:no-preference){.row{transition:box-shadow .2s}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">IF Techworks · Instagram y TikTok</div>
+    <h1>¿Qué ya <em>subimos</em>?</h1>
+    <p class="lede">Marcá cada pieza como subida o descartada. Claude lee este tablero cada mañana, así que ya no hace falta contarle qué subiste.</p>
+    <div class="status" id="status" role="status">Cargando piezas…</div>
+  </header>
+
+  <nav class="summary" id="filters" aria-label="Filtrar por estado">
+    <button class="filter" data-f="pendiente" aria-pressed="true">Pendientes <b id="n-pendiente">–</b></button>
+    <button class="filter" data-f="publicado" aria-pressed="false">Subidas <b id="n-publicado">–</b></button>
+    <button class="filter" data-f="descartado" aria-pressed="false">Descartadas <b id="n-descartado">–</b></button>
+    <button class="filter" data-f="todo" aria-pressed="false">Todo <b id="n-todo">–</b></button>
+  </nav>
+
+  <main id="days">
+    <div class="empty">Aquí aparecen los reels y posts de cada día, agrupados por fecha. Claude agrega las piezas nuevas cuando las termina.</div>
+  </main>
+
+  <footer>Estados: ⏳ pendiente · ✅ subido · ✖ descartado. Al marcar «Subido» se ponen las dos redes y la fecha de hoy; podés cambiarlas. El registro del repositorio (<code>docs/publicaciones.yaml</code>) se actualiza cuando Claude lee este tablero.</footer>
+</div>
+
+<script>
+(function(){
+  const $ = s => document.querySelector(s);
+  const ESTADOS = [["pendiente","Pendiente"],["publicado","Subido"],["descartado","Descartado"]];
+  const DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+  const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+  let piezas = [], filtro = "pendiente", db = null, soloLectura = false;
+  const colas = {}, guardando = {};
+  try { const f = localStorage.getItem("if-filtro"); if (f) filtro = f; } catch(e){}
+
+  function hoyGT(){
+    const d = new Date(Date.now() - 6*3600*1000); // Guatemala, UTC-6
+    return d.toISOString().slice(0,10);
+  }
+  function nombreDia(iso){
+    const [y,m,d] = iso.split("-").map(Number);
+    if (!y || !m || !d) return iso;
+    const dt = new Date(Date.UTC(y,m-1,d));
+    return `${DIAS[dt.getUTCDay()]} ${d} de ${MESES[m-1]}`;
+  }
+  function etiqueta(p){
+    const m = /^(reel|post)-([A-Z0-9]+)-?(.*)$/i.exec(p.pieza || "");
+    if (!m) return p.pieza;
+    const tipo = m[1].toLowerCase() === "reel" ? "Reel" : "Post";
+    const formato = (m[3] || "").replace(/-/g," ");
+    return `${tipo} ${m[2]}${formato ? " · " + formato : ""}`;
+  }
+  function setStatus(t, warn){ const s = $("#status"); s.textContent = t; s.classList.toggle("warn", !!warn); }
+
+  function guardar(id, cambios){
+    if (!db || soloLectura) return;
+    const i = piezas.findIndex(p => p.id === id);
+    if (i >= 0) piezas[i] = Object.assign({}, piezas[i], cambios);
+    guardando[id] = true; render();
+    const body = Object.assign({}, cambios, { actualizado: new Date().toISOString(), origen: "panel" });
+    colas[id] = (colas[id] || Promise.resolve()).then(() => db.collection("piezas").doc(id).update(body))
+      .then(() => { guardando[id] = false; setStatus("Guardado · " + new Date().toLocaleTimeString("es-GT",{hour:"2-digit",minute:"2-digit"})); render(); })
+      .catch(e => {
+        guardando[id] = false;
+        if (e && e.code === "invalid_argument") { soloLectura = true; setStatus("Solo podés ver este tablero: tu acceso no permite marcar piezas.", true); }
+        else setStatus("No se pudo guardar el cambio. Revisá tu conexión y volvé a marcarlo.", true);
+        render();
+      });
+  }
+
+  function cambiarEstado(p, estado){
+    if (p.estado === estado) return;
+    const c = { estado };
+    if (estado === "publicado") {
+      c.redes = (p.redes && p.redes.length) ? p.redes : ["ig","tt"];
+      c.fecha = p.fecha || hoyGT();
+    } else { c.redes = []; c.fecha = null; }
+    guardar(p.id, c);
+  }
+
+  function fila(p){
+    const row = document.createElement("div");
+    row.className = "row"; row.dataset.estado = p.estado;
+    const info = document.createElement("div"); info.className = "info";
+    const tag = document.createElement("div"); tag.className = "tag"; tag.textContent = etiqueta(p);
+    const tema = document.createElement("div"); tema.className = "tema"; tema.textContent = p.tema || p.pieza;
+    info.append(tag, tema);
+    const seg = document.createElement("div"); seg.className = "seg"; seg.setAttribute("role","group"); seg.setAttribute("aria-label","Estado de " + (p.tema || p.pieza));
+    ESTADOS.forEach(([v, txt]) => {
+      const b = document.createElement("button"); b.type = "button"; b.dataset.v = v; b.textContent = txt;
+      b.setAttribute("aria-pressed", String(p.estado === v)); b.disabled = soloLectura || !db;
+      b.addEventListener("click", () => cambiarEstado(p, v));
+      seg.appendChild(b);
+    });
+    row.append(info, seg);
+
+    if (p.estado !== "pendiente" || p.nota || guardando[p.id]) {
+      const ex = document.createElement("div"); ex.className = "extra";
+      if (p.estado === "publicado") {
+        [["ig","Instagram"],["tt","TikTok"]].forEach(([r, txt]) => {
+          const c = document.createElement("button"); c.type = "button"; c.className = "chip"; c.textContent = txt;
+          const on = (p.redes || []).includes(r); c.setAttribute("aria-pressed", String(on)); c.disabled = soloLectura || !db;
+          c.addEventListener("click", () => {
+            const redes = on ? (p.redes || []).filter(x => x !== r) : [...(p.redes || []), r];
+            guardar(p.id, { redes: ["ig","tt"].filter(x => redes.includes(x)) });
+          });
+          ex.appendChild(c);
+        });
+        const l = document.createElement("label"); l.textContent = "Subido el";
+        const d = document.createElement("input"); d.type = "date"; d.id = "f-" + p.id; d.value = p.fecha || ""; d.disabled = soloLectura || !db;
+        d.addEventListener("change", () => guardar(p.id, { fecha: d.value || null }));
+        l.appendChild(d); ex.appendChild(l);
+      }
+      if (p.estado !== "pendiente" || p.nota) {
+        const l = document.createElement("label"); l.textContent = "Nota";
+        const n = document.createElement("input"); n.type = "text"; n.id = "n-" + p.id; n.value = p.nota || ""; n.disabled = soloLectura || !db;
+        n.placeholder = p.estado === "descartado" ? "¿Por qué se descartó?" : "Opcional";
+        n.addEventListener("change", () => guardar(p.id, { nota: n.value.trim() || null }));
+        l.appendChild(n); ex.appendChild(l);
+      }
+      if (guardando[p.id]) { const s = document.createElement("span"); s.className = "saving"; s.textContent = "guardando…"; ex.appendChild(s); }
+      row.appendChild(ex);
+    }
+    return row;
+  }
+
+  function render(){
+    const n = { pendiente:0, publicado:0, descartado:0 };
+    piezas.forEach(p => { if (n[p.estado] !== undefined) n[p.estado]++; });
+    $("#n-pendiente").textContent = n.pendiente; $("#n-publicado").textContent = n.publicado;
+    $("#n-descartado").textContent = n.descartado; $("#n-todo").textContent = piezas.length;
+    document.querySelectorAll(".filter").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === filtro)));
+
+    // Conserva el foco si alguien está escribiendo una nota.
+    const act = document.activeElement && document.activeElement.id && document.activeElement.tagName === "INPUT" ? document.activeElement.id : null;
+    const main = $("#days"); main.textContent = "";
+    const vis = piezas.filter(p => filtro === "todo" || p.estado === filtro);
+    if (!piezas.length) { main.innerHTML = '<div class="empty">Aquí aparecen los reels y posts de cada día, agrupados por fecha. Claude agrega las piezas nuevas cuando las termina.</div>'; return; }
+    if (!vis.length) {
+      const e = document.createElement("div"); e.className = "empty";
+      e.textContent = filtro === "pendiente" ? "No queda nada pendiente de subir. 🎉" : "No hay piezas con este estado.";
+      main.appendChild(e); return;
+    }
+    const grupos = {};
+    vis.forEach(p => (grupos[p.dia] = grupos[p.dia] || []).push(p));
+    Object.keys(grupos).sort().reverse().forEach(dia => {
+      const sec = document.createElement("section"); sec.className = "day";
+      const h = document.createElement("h2"); h.textContent = nombreDia(dia);
+      const s = document.createElement("span"); s.textContent = dia; h.appendChild(s);
+      const list = document.createElement("div"); list.className = "list";
+      grupos[dia].sort((a,b) => (b.tipo || "").localeCompare(a.tipo || "") || a.pieza.localeCompare(b.pieza)).forEach(p => list.appendChild(fila(p)));
+      sec.append(h, list); main.appendChild(sec);
+    });
+    if (act) { const el = document.getElementById(act); if (el) el.focus(); }
+  }
+
+  document.querySelectorAll(".filter").forEach(b => b.addEventListener("click", () => {
+    filtro = b.dataset.f; try { localStorage.setItem("if-filtro", filtro); } catch(e){} render();
+  }));
+  render();
+
+  (async () => {
+    if (!window.claude || !window.claude.use) { setStatus("Abrí este tablero en claude.ai para ver y marcar las piezas.", true); return; }
+    db = await window.claude.use("db");
+    if (!db) { setStatus("Iniciá sesión en claude.ai para ver y marcar las piezas.", true); return; }
+    let t = setTimeout(() => setStatus("No se pudo cargar el tablero todavía. Revisá tu conexión; se actualiza solo.", true), 10000);
+    db.collection("piezas").onSnapshot(snap => {
+      piezas = snap.docs.filter(d => d.exists).map(d => Object.assign({ id: d.id }, d.data()));
+      if (!snap.metadata.fromCache) { clearTimeout(t); if (!Object.values(guardando).some(Boolean)) setStatus(soloLectura ? "Solo lectura." : "Al día · los cambios se guardan solos."); }
+      render();
+    }, e => { clearTimeout(t); setStatus("Se perdió la conexión con el tablero. Recargá la página.", true); });
+  })();
+})();
+</script>

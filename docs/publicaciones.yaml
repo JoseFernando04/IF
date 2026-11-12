@@ -111,9 +111,11 @@ piezas:
   pieza: reel-B-antes-despues
   tipo: reel
   tema: ¿Quién tiene la laptop 4?
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-11'
 - dia: '2026-11-09'
   pieza: reel-C-cinetica
   tipo: reel
@@ -160,6 +162,48 @@ piezas:
   pieza: reel-C-pantalla-sistema
   tipo: reel
   tema: Lunes, 7:00 a. m.
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-11'
+  pieza: post-1-infografia-taller
+  tipo: post
+  tema: Tu cliente ya no tiene que llamar a preguntar si su carro está listo 🔧
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-11'
+  pieza: post-2-diccionario-vol2
+  tipo: post
+  tema: 'Diccionario del dueño de pyme, vol. 2: ahora en la oficina 📖😅'
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-11'
+  pieza: post-3-recibo-cobrar
+  tipo: post
+  tema: Lo que te cuesta cobrar tarde, en un solo ticket 🧾
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-11'
+  pieza: reel-A-chat-pedido-audio
+  tipo: reel
+  tema: El pedido que se perdió en un audio
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-11'
+  pieza: reel-B-top3-a-mano
+  tipo: reel
+  tema: Tres cosas que tu equipo sigue haciendo a mano
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-11'
+  pieza: reel-C-pov-juan-vacaciones
+  tipo: reel
+  tema: POV - el que sabe todo se fue de vacaciones
   estado: pendiente
   redes: []
   fecha: null

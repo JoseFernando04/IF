@@ -1,0 +1,65 @@
+# Reel A · Historia en el celular (chat). Pilar: soluciones (pedidos que no se pierden). Escena de ejemplo.
+formato: chat
+titulo: El pedido que se perdió en un audio
+audio: assets/voice/elevenlabs/2026-11-11-reel-A.mp3
+salida: data/dias/2026-11-11/reel-A
+musica: digital-lemonade
+musica_db: -21
+whatsapp: "+502 3808 9808"
+etiqueta_app: "PEDIDOS"
+contactos:
+  cliente:
+    {nombre: "Doña Ana · Tienda", inicial: "A", color: "#f0c419", sub: "en línea",
+     historial: [{de: cliente, texto: "Muchas gracias, todo llegó completo", hora: "vie"}, {de: yo, texto: "¡A la orden, doña Ana!", hora: "vie"}]}
+caption: >-
+  El pedido sí llegó. Estaba en el minuto tres de un audio que nadie terminó de escuchar. 🎧😬
+  Si tus pedidos viven entre audios, fotos y stickers, alguno se te va a escapar.
+  Escribinos al WhatsApp +502 3808 9808 y te contamos cómo dejar cada pedido registrado, llegue por donde llegue. (Escena de ejemplo.)
+hashtags: [PedidosWhatsApp, PymesGuatemala, Distribuidoras, Digitalizacion, NegociosGT]
+lineas:
+  - texto: Lunes, ocho de la mañana, y doña Ana te manda un audio de cuatro minutos.
+    chat: cliente
+    reloj: "08:00"
+    mensajes: [{de: cliente, texto: "🎤 Nota de voz · 4:12", hora: "08:00", frac: 0.55}]
+    clave: "4:12"
+    clave_frac: 0.7
+    sfx: [[0.55, pop]]
+  - texto: En el minuto tres viene el pedido.
+    chat: cliente
+    reloj: "08:01"
+    clave: "MINUTO 3"
+    clave_frac: 0.4
+  - texto: Le das like y se te pierde entre otros cuarenta chats.
+    chat: cliente
+    reloj: "08:02"
+    mensajes: [{de: yo, texto: "👍", hora: "08:02", frac: 0.3}]
+    clave: "+40 CHATS"
+    clave_frac: 0.6
+    sfx: [[0.3, pop], [0.6, whoosh]]
+  - texto: "El jueves te vuelve a escribir: ¿y mi pedido?"
+    chat: cliente
+    reloj: "jue"
+    mensajes: [{de: cliente, texto: "¿Y mi pedido? 😕", hora: "10:15", frac: 0.5}]
+    clave: "¿Y MI PEDIDO?"
+    clave_frac: 0.6
+    sfx: [[0.5, pop], [0.6, thud]]
+  - texto: Y vos ni sabías que había uno.
+    chat: cliente
+    reloj: "10:16"
+    borrador: "Doña Ana, fíjese que…"
+  - texto: Con un sistema de pedidos, cada uno queda registrado, con fecha y estado, aunque llegue por WhatsApp.
+    pantalla: app
+    reloj: "08:00"
+    titulo_app: "Ningún pedido<br>se pierde."
+    filas:
+      - {nombre: "Tienda doña Ana", nota: "Recibido lun 8:05 · en ruta", n: 14}
+      - {nombre: "Abarrotería El Sol", nota: "Recibido lun 9:20 · preparando", n: 8}
+      - {nombre: "Tienda La Esquina", nota: "Falta confirmar", n: 5, alerta: true}
+      - {nombre: "Depósito Central", nota: "Entregado", n: 22}
+    clave: "REGISTRADO"
+    clave_frac: 0.5
+    sfx: [[0.1, whoosh], [0.5, tick]]
+  - texto: Escribinos al WhatsApp y te contamos cómo.
+    pantalla: cierre
+    titulo: "Contanos tu caso.<br><em>Sin compromiso.</em>"
+    sfx: [[0.3, pop]]

@@ -1,0 +1,23 @@
+# Post 3 · Recibo (imagen única). Pilar: llamado a la acción (cobrar tarde). Sin cifras inventadas: cantidades de un mes "de ejemplo".
+formato: recibo
+salida: data/dias/2026-11-11/post-3
+titulo_tiktok: "Lo que te cuesta cobrar tarde, en un solo ticket 🧾"
+whatsapp: "+502 3808 9808"
+encabezado: "COMPROBANTE"
+sub: "El costo de<br>cobrar tarde"
+items:
+  - {q: 4, t: "«¿Ya me depositás?»"}
+  - {q: 2, t: "Tardes buscando facturas"}
+  - {q: 1, t: "«Pero si ya te pagué»"}
+  - {q: 1, t: "Proveedor esperando"}
+  - {q: 1, t: "Préstamo para planilla"}
+  - {q: 1, t: "Pena de cobrarle al cuate"}
+total: "TU FLUJO DE CAJA"
+nota: "Mes de ejemplo. No incluye las canas."
+pie: "GRACIAS POR SU PACIENCIA · VUELVA PRONTO"
+sello: "TIENE<br>ARREGLO"
+caption: >-
+  Vender está bien. Cobrar a tiempo es otra historia. 🧾😮‍💨
+  ¿Cuántas líneas de este ticket te tocaron este mes? Contanos en los comentarios.
+  Si querés que los recordatorios de cobro salgan solos, escribinos al WhatsApp +502 3808 9808 y vemos tu caso, sin compromiso.
+hashtags: [CuentasPorCobrar, PymesGuatemala, FlujoDeCaja, Digitalizacion, EmprendedoresGT]

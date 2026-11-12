@@ -1,0 +1,60 @@
+# Reel B · Top 3 / cuenta regresiva en estilo suizo. Pilar: tips (tareas que se pueden automatizar).
+# bloque: [columna, fila, ancho, alto] en módulos de 90 px (grilla de 12 × 21).
+formato: top3
+titulo: Tres cosas que tu equipo sigue haciendo a mano
+audio: assets/voice/elevenlabs/2026-11-11-reel-B.mp3
+salida: data/dias/2026-11-11/reel-B
+musica: voxel-revolution
+musica_db: -23
+whatsapp: "+502 3808 9808"
+serie: "IF TECHWORKS — A MANO"
+caption: >-
+  Copiar, pegar, sumar, llamar… y repetir la otra semana. 🔁
+  ¿Cuál de las tres le quita más tiempo a tu equipo? Dejalo en los comentarios.
+  Si querés que deje de hacerse a mano, escribinos al WhatsApp +502 3808 9808 y vemos por dónde empezar.
+hashtags: [Automatizacion, PymesGuatemala, Productividad, Digitalizacion, NegociosGT]
+lineas:
+  - texto: Tres cosas que tu equipo hace a mano cada semana, y ya no debería.
+    num: "3"
+    cont: "00 / 03"
+    lead: "Cada semana"
+    frase: "Hecho a mano."
+    bloque: [7, 3, 4, 4]
+    sfx: [[0.05, whoosh]]
+  - texto: "Tres: pasar los pedidos del WhatsApp a un Excel."
+    num: "3"
+    cont: "01 / 03"
+    lead: "Tarea 03"
+    frase: "Del chat al Excel."
+    sub: "→ copiar, pegar, equivocarse."
+    bloque: [8, 9, 3, 3]
+    sfx: [[0.02, tick]]
+  - texto: "Dos: armar el reporte de ventas del viernes, sumando a mano."
+    num: "2"
+    cont: "02 / 03"
+    lead: "Tarea 02"
+    frase: "El reporte del viernes."
+    bloque: [1, 2, 3, 3]
+    sfx: [[0.02, tick]]
+  - texto: "Uno: llamar a cada cliente para recordarle que pague."
+    num: "1"
+    cont: "03 / 03"
+    lead: "Tarea 01"
+    frase: "Llamar para cobrar."
+    bloque: [6, 6, 5, 5]
+    sfx: [[0.02, tick]]
+  - texto: Las tres se pueden automatizar, y tu equipo recupera ese tiempo para vender.
+    num: "✓"
+    cont: "SOLUCIÓN"
+    lead: "Las tres"
+    frase: "Se pueden automatizar."
+    bloque: [0, 2, 12, 11]
+    sfx: [[0.05, whoosh], [0.5, pop]]
+  - texto: Contanos cuál te quita más tiempo.
+    escena: cierre
+    num: ""
+    cont: "IF TECHWORKS"
+    lead: "Escribinos"
+    frase: "¿Cuál te quita más tiempo?"
+    bloque: [0, 2, 12, 11]
+    sfx: [[0.3, pop]]

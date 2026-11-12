@@ -1,0 +1,61 @@
+# Reel C · POV del dueño. Pilar: soluciones (información en un solo lugar). Escena de ejemplo.
+formato: pov
+titulo: POV - el que sabe todo se fue de vacaciones
+audio: assets/voice/elevenlabs/2026-11-11-reel-C.mp3
+salida: data/dias/2026-11-11/reel-C
+musica: digital-lemonade
+musica_db: -22
+whatsapp: "+502 3808 9808"
+ruta_solucion: "Pagos · todo el equipo"
+cel_titulo: "Pagos"
+plantilla: "pagos_de_todos.xlsx"
+pov: "POV: Juan, el que sabe todo, se fue de vacaciones"
+ruta: "Documentos › Administración › Pagos"
+actualizado: "Pagos al día · hoy"
+productos:
+  - {n: "Proveedor de cajas", p: "Pagado ✓"}
+  - {n: "Transporte", p: "Vence viernes"}
+  - {n: "Luz y agua", p: "Pagado ✓"}
+  - {n: "Repuestos", p: "Vence el 20"}
+caption: >-
+  Todo negocio tiene un Juan. Y todo Juan, tarde o temprano, se va de vacaciones. 🏖️📂
+  Si la información de tu negocio vive en la cabeza (o en la compu) de una sola persona, este video es para vos.
+  Escribinos al WhatsApp +502 3808 9808 y te mostramos cómo tenerla en un solo lugar para todo el equipo. (Escena de ejemplo.)
+hashtags: [Administracion, PymesGuatemala, Organizacion, Digitalizacion, NegociosGT]
+lineas:
+  - texto: Juan, el que sabe todo, se fue de vacaciones.
+    toast: {de: "Juan · Administración", inicial: "J", texto: "Me voy tranquilo 🏖️ Todo está en la carpeta."}
+    archivos:
+      - {nombre: "pagos.xlsx", tipo: xls, frac: 0.05}
+    sfx: [[0.2, pop]]
+  - texto: Abrís su carpeta y hay cinco archivos que dicen pagos.
+    archivos:
+      - {nombre: "pagos_nuevo.xlsx", tipo: xls, frac: 0.35}
+      - {nombre: "pagos_oct.xlsx", tipo: xls, frac: 0.45}
+      - {nombre: "pagos_NO_TOCAR.xlsx", tipo: xls, frac: 0.55}
+      - {nombre: "pagos_juan_v2.xlsx", tipo: xls, frac: 0.65}
+    clave: "5 × PAGOS"
+    clave_frac: 0.8
+    sfx: [[0.35, tick], [0.45, tick], [0.55, tick], [0.65, tick]]
+  - texto: Pagos, pagos nuevo, pagos no tocar.
+    resalta: [["pagos.xlsx", 0.0], ["pagos_nuevo.xlsx", 0.3], ["pagos_NO_TOCAR.xlsx", 0.62]]
+    sfx: [[0.02, tick], [0.3, tick], [0.62, tick]]
+  - texto: Le pagás al proveedor, y ya estaba pagado.
+    manda: "pagos_oct.xlsx"
+    sello: "PAGO DOBLE"
+    sello_frac: 0.6
+    sfx: [[0.15, whoosh], [0.6, thud]]
+  - texto: Con la información en un solo lugar, cualquiera del equipo sabe qué se debe y qué ya se pagó,
+    escena: solucion
+    clave: "UN SOLO LUGAR"
+    clave_frac: 0.6
+    sfx: [[0.05, whoosh], [0.55, pop]]
+  - texto: aunque Juan esté en la playa.
+    escena: solucion
+    clave: "SIN DEPENDER DE JUAN"
+    clave_frac: 0.3
+    sfx: [[0.1, pop]]
+  - texto: Contanos quién es el Juan de tu negocio.
+    escena: cierre
+    titulo: "¿Quién es el Juan<br><em>de tu negocio?</em>"
+    sfx: [[0.3, pop]]

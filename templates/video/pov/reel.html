@@ -66,9 +66,9 @@ html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; backgro
   <div class="barra"><i style="background:#d6432f"></i><i style="background:#f0c419"></i><i style="background:#57b96f"></i><span class="ruta" id="ruta"></span></div>
   <div id="archivos"></div>
   <div id="sol">
-    <div class="plantilla" id="plant"><div class="doc xls"><u style="top:40px"></u><u style="top:66px"></u><b>XLS</b></div><div class="nom">tu_plantilla.xlsx</div></div>
+    <div class="plantilla" id="plant"><div class="doc xls"><u style="top:40px"></u><u style="top:66px"></u><b>XLS</b></div><div class="nom" id="plantnom">tu_plantilla.xlsx</div></div>
     <div class="flecha" id="flecha"></div>
-    <div id="cel"><div class="pant"><div class="cab">Catálogo<small id="fecha"></small></div><div id="prods"></div></div></div>
+    <div id="cel"><div class="pant"><div class="cab"><span id="celtit">Catálogo</span><small id="fecha"></small></div><div id="prods"></div></div></div>
     <div class="pdf" id="pdf"><div class="doc"><b>PDF</b></div><div>Versión PDF<br><span style="color:var(--oro);font-size:24px">lista para vender</span></div></div>
   </div>
 </div>
@@ -94,6 +94,8 @@ $("pov").innerHTML = `<span>${R.pov}</span>`;
 $("ruta").textContent = R.ruta;
 $("prods").innerHTML = R.productos.map((p) => `<div class="prod"><i></i><div>${p.n}<b>${p.p}</b></div></div>`).join("");
 $("fecha").textContent = R.actualizado;
+if (R.plantilla) $("plantnom").textContent = R.plantilla;
+if (R.cel_titulo) $("celtit").textContent = R.cel_titulo;
 const ev = (k) => { for (const l of L) if (l[k] !== undefined) return l; };
 
 function dibujar(t) {
@@ -123,7 +125,7 @@ function dibujar(t) {
   const enSol = esc === "solucion";
   const ls = L.find((x) => x.escena === "solucion"), ds = t - (ls ? ls.inicio : 1e9);
   $("sol").style.clipPath = `inset(0 0 ${(1 - eo(ds / 0.6)) * 100}% 0)`;
-  $("ruta").textContent = enSol ? "Catálogo Inteligente" : R.ruta;
+  $("ruta").textContent = enSol ? (R.ruta_solucion || "Catálogo Inteligente") : R.ruta;
   $("plant").style.opacity = eo((ds - 0.3) / 0.4);
   $("flecha").style.width = (eo((ds - 1.0) / 0.6) * 150) + "px";
   $("cel").style.transform = `translateY(${(1 - eo((ds - 1.4) / 0.6)) * 900}px)`;
