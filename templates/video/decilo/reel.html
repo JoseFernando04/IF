@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Bricolage"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "SerifI"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+/* «Decilo así»: la frase exacta para una situación incómoda, escrita letra por letra en una tarjeta para copiar.
+   Escenas: gancho (frase grande), mensaje (tarjeta que se escribe + botón copiar), porque (frase grande), cierre. */
+:root { --verde: #0a1410; --verde2: #1d362b; --oro: #f0c419; --marfil: #fefcf3; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--verde); color: var(--marfil); }
+#fondo { position: absolute; inset: 0; opacity: .55; }
+#serie { position: absolute; left: 80px; top: 150px; display: flex; gap: 18px; align-items: center; font: 700 30px "Mono"; letter-spacing: 4px; }
+#serie b { background: var(--oro); color: var(--verde); padding: 12px 22px; border-radius: 40px; letter-spacing: 2px; }
+#ep { position: absolute; right: 80px; top: 150px; font: 700 30px "Mono"; letter-spacing: 4px; opacity: .7; }
+#grande { position: absolute; left: 80px; right: 80px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center;
+  font: 800 116px/1.0 "Bricolage"; letter-spacing: -4px; }
+#grande em { font: 400 132px/0.95 "SerifI"; color: var(--oro); letter-spacing: -2px; }
+#grande .w { display: inline-block; margin-right: 26px; }
+#tarjeta { position: absolute; left: 70px; right: 70px; top: 470px; background: var(--marfil); color: var(--verde); border-radius: 44px;
+  padding: 56px 60px 150px; box-shadow: 0 40px 90px rgba(0,0,0,.45); transform-origin: 50% 0; }
+#paso { font: 700 28px "Mono"; letter-spacing: 3px; color: var(--verde2); display: flex; gap: 16px; align-items: center; }
+#paso i { font-style: normal; background: var(--verde); color: var(--oro); width: 54px; height: 54px; border-radius: 50%;
+  display: grid; place-items: center; letter-spacing: 0; }
+#cuando { font: 500 34px "Tight"; color: #5b5f57; margin: 26px 0 30px; }
+#msg { font: 600 62px/1.24 "Tight"; letter-spacing: -1px; min-height: 380px; white-space: pre-wrap; }
+#msg .caret { display: inline-block; width: 6px; height: 64px; background: var(--verde); vertical-align: -10px; margin-left: 4px; }
+#copiar { position: absolute; left: 60px; bottom: 44px; padding: 22px 34px; border-radius: 30px; background: var(--verde); color: var(--oro);
+  font: 800 36px "Bricolage"; display: flex; gap: 14px; align-items: center; }
+#tip { position: absolute; left: 90px; right: 90px; top: 1290px; font: 500 40px/1.25 "Tight"; color: var(--marfil); }
+#tip b { color: var(--oro); font-weight: 800; }
+#wa { position: absolute; left: 80px; top: 1440px; padding: 26px 46px; border-radius: 60px; background: var(--oro); color: var(--verde); font: 800 52px "Bricolage"; }
+#logo { position: absolute; right: 80px; top: 1450px; width: 220px; }
+#guardar { position: absolute; left: 80px; top: 1600px; font: 700 30px "Mono"; letter-spacing: 3px; opacity: .8; }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="serie"><b>DECILO ASÍ</b><span id="tema"></span></div>
+<div id="ep"></div>
+<div id="grande"></div>
+<div id="tarjeta"><div id="paso"><i></i><span></span></div><div id="cuando"></div><div id="msg"></div>
+  <div id="copiar"><span>⧉</span><span id="copiartxt">Copiá y pegá</span></div></div>
+<div id="tip"></div>
+<div id="wa"></div><img id="logo" src="__LOGO__"><div id="guardar">GUARDALO PARA CUANDO TE PASE</div>
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const R = __DATOS__;
+window.__ready = false;
+const L = R.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const back = (x) => { x = cl(x); const s = 1.8; return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2); };
+$("tema").textContent = R.tema || ""; $("ep").textContent = R.episodio || "";
+const fondoP = fondo($("fondo"), "puntos", { back: "#0a1410", fill: "#1d362b", size: 3, gap: 44 });
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+// Un mensaje puede ocupar varias líneas de voz: se escribe desde la primera hasta el 85 % de la última.
+L.forEach((l, i) => { if (l.mensaje) { let j = i; while (L[j + 1] && L[j + 1].sigue) j++; l.fin = L[j].inicio + L[j].duracion * 0.85; } });
+const dueno = (i) => { while (i > 0 && L[i].sigue) i--; return i; };
+let armada = -1;
+function dibujar(t) {
+  fondoP.then((f) => f.frame(t * 1000 * 0.4));
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio;
+  const m = L[dueno(i)], esMsg = !!m.mensaje, esGrande = !esMsg && (l.grande || l.escena === "cierre");
+  // Frase grande (gancho / por qué / cierre): palabras que suben una por una.
+  if (armada !== i && esGrande) {
+    let dentro = false;
+    $("grande").innerHTML = l.grande.split("/").map((r) => `<div>${r.trim().split(/\s+/).map((w) => {
+      if (w.startsWith("*")) dentro = true;
+      const a = dentro; if (/\*[.,:;?!…]*$/.test(w)) dentro = false;
+      const x = w.replace(/\*/g, ""); return `<span class="w">${a ? `<em>${x}</em>` : x}</span>`; }).join("")}</div>`).join("");
+    armada = i;
+  }
+  $("grande").style.display = esGrande ? "flex" : "none";
+  if (esGrande) {
+    const ws = [...$("grande").querySelectorAll(".w")];
+    ws.forEach((w, j) => { const x = (dt - (j / ws.length) * l.duracion * 0.6) / 0.25;
+      w.style.opacity = x > 0 ? 1 : 0; w.style.transform = `translateY(${(1 - eo(x)) * 50}px)`; });
+    $("grande").style.top = l.escena === "cierre" ? "-260px" : "0";
+  }
+  // Tarjeta del mensaje
+  $("tarjeta").style.display = esMsg ? "block" : "none";
+  $("tip").style.display = esMsg ? "block" : "none";
+  if (esMsg) {
+    const d0 = t - m.inicio, k = eo(d0 / 0.4);
+    $("tarjeta").style.transform = `translateY(${(1 - k) * 120}px) rotate(${(1 - k) * -3}deg)`;
+    $("tarjeta").style.opacity = k;
+    $("paso").querySelector("i").textContent = m.n || ""; $("paso").querySelector("span").textContent = m.paso || "";
+    $("cuando").textContent = m.cuando || "";
+    const txt = m.mensaje, p = cl((t - m.inicio - 0.3) / (m.fin - m.inicio - 0.3));
+    const n = Math.round(txt.length * p), escribiendo = p < 1;
+    const parpadeo = escribiendo || Math.floor(t * 2.5) % 2 === 0;
+    $("msg").innerHTML = txt.slice(0, n).replace(/&/g, "&amp;").replace(/</g, "&lt;") + (parpadeo ? '<span class="caret"></span>' : "");
+    const copiado = t > m.fin + 0.25;
+    $("copiartxt").textContent = copiado ? "¡Copiado!" : "Copiá y pegá";
+    $("copiar").style.transform = `scale(${copiado ? 0.9 + 0.1 * back((t - m.fin - 0.25) / 0.3) : 1})`;
+    $("copiar").style.background = copiado ? "#f0c419" : "#0a1410"; $("copiar").style.color = copiado ? "#0a1410" : "#f0c419";
+    const tipTxt = l.tip || m.tip || "";
+    $("tip").innerHTML = tipTxt.replace(/\*([^*]+)\*/g, "<b>$1</b>");
+    $("tip").style.opacity = eo((t - m.inicio - 0.8) / 0.4);
+  }
+  const ci = l.escena === "cierre";
+  for (const id of ["wa", "logo", "guardar"]) $(id).style.display = ci ? "block" : "none";
+  $("wa").textContent = R.whatsapp;
+  $("wa").style.transform = `scale(${0.8 + 0.2 * back((dt - 0.3) / 0.35)})`;
+  $("serie").style.opacity = ci ? 0.4 : 1;
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>

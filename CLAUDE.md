@@ -68,7 +68,7 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
 |---|---|
 | Reel documental (estilo B) con audio externo | `tools/render_reel_voz.py --audio RUTA --tal-cual --musica ID --musica-db N` |
 | Reel 8-bit | `tools/render_8bit.py examples/copy/8bit/<reel>.yaml` (escenas en `templates/video/8bit/reel.html`) |
-| Reels chat / mito / top3 / pov / antesdespues / cinetica | `tools/render_formato.py examples/copy/dia/<día>-reel-X.yaml` (`--muestra 3,9,15` sin audio = imágenes de muestra) |
+| Reels chat / mito / top3 / pov / antesdespues / cinetica / sistema / decilo / trailer / diminuto | `tools/render_formato.py examples/copy/dia/<día>-reel-X.yaml` (`--muestra 3,9,15` sin audio = imágenes de muestra) |
 | Posts checklist / este-o-este / frase / infografia / diccionario / recibo | `tools/render_post.py examples/copy/dia/<día>-post-N.yaml` (plantilla `templates/graphics/posts/post.html`) |
 | Tomas de video con IA (formato `cine`) | `tools/generar_clip.py <yaml>` muestra el plan; `--confirmar` genera (Higgsfield · Seedance 2.5, **de pago**). Motor: `ifcontent.video.higgsfield`. Ejemplo del SDK: `examples/higgsfield/main.py` |
 | Fondos animados | `templates/shared/fondos.js` (Paper Shaders: `malla`, `grano`, `puntos`, `papel`, `trama`); Chromium con `--allow-file-access-from-files` |

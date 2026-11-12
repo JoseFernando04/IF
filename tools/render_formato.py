@@ -69,6 +69,7 @@ def armar_html(g: dict, lineas: list[dict], fin: float, destino: Path) -> Path:
     html = (TEMPLATES_DIR / "video" / g["formato"] / "reel.html").read_text(encoding="utf-8")
     html = (html.replace("__FONTS__", (ASSETS_DIR / "fonts").as_uri())
                 .replace("__SHARED__", (TEMPLATES_DIR / "shared").as_uri())
+                .replace("__PHOTOS__", (ASSETS_DIR / "photos").as_uri())
                 .replace("__LOGO__", (ASSETS_DIR / "logo" / "logo-white.png").as_uri())
                 .replace("__LOGO_OSCURO__", (ASSETS_DIR / "logo" / "logo-dark.png").as_uri())
                 .replace("__DATOS__", json.dumps(datos, ensure_ascii=False)))

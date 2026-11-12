@@ -19,7 +19,7 @@ y que **al menos 1-2 de los 3 reels del día sean un formato nuevo** de aquí. A
 | **«Cargando…»** | Cuadro congelado con un rótulo «cargando…» y corte al resultado completo en el golpe musical. | que.es |
 | **IA vs. hecho a mano** | Dos versiones del mismo resultado; la artesanal aparece al final. | que.es, SocialPilot |
 | **Dosis de realidad** (TikTok Next 2026 LATAM) | El público latino prefiere experiencias reales y crudas sobre la estética aspiracional. Detrás de cámaras, proceso real, sin pulir. | TikTok Newsroom |
-| **Bailes/sonidos del momento** («Dame Hombro», «Housewife») | El equipo bailando en la oficina humaniza a la marca (un bufete lo usó). **Ojo:** nuestra regla de música no permite meter esas canciones en el render; si se usan, se agregan desde la biblioteca comercial de la app al subir. | Metricool, que.es |
+| **Bailes/sonidos del momento** («Dame Hombro», «Housewife») | El equipo bailando en la oficina humaniza a la marca. **Decisión 2026-11-11: no usamos canciones de moda; seguimos con la música de `assets/music/library.yaml`.** | Metricool, que.es |
 
 Otras señales: los carruseles ganan en guardados y compartidos; el texto en pantalla y las palabras clave importan porque
 la gente busca dentro de Instagram como en Google.

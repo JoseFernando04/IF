@@ -148,16 +148,20 @@ piezas:
   pieza: reel-A-8bit-jefe-final
   tipo: reel
   tema: 'Jefe final: el cierre de mes'
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-11'
 - dia: '2026-11-10'
   pieza: reel-B-mito-nube
   tipo: reel
   tema: Tres mitos de la nube
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-11'
 - dia: '2026-11-10'
   pieza: reel-C-pantalla-sistema
   tipo: reel
@@ -204,6 +208,48 @@ piezas:
   pieza: reel-C-pov-juan-vacaciones
   tipo: reel
   tema: POV - el que sabe todo se fue de vacaciones
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-12'
+  pieza: post-1-impuesto-desorden
+  tipo: post
+  tema: El impuesto que pagás cada semana y nadie te cobra 🧾
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-12'
+  pieza: post-2-checklist-fin-de-ano
+  tipo: post
+  tema: 5 cosas para dejar en orden antes de que se acabe el año ✅
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-12'
+  pieza: post-3-frase-escuchar
+  tipo: post
+  tema: Lo que todo dueño piensa antes de que le vendan un sistema 🤔
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-12'
+  pieza: reel-A-decilo-ya-te-deposito
+  tipo: reel
+  tema: Decilo así - cuando te dicen «ya te deposito»
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-12'
+  pieza: reel-B-trailer-conteo-inventario
+  tipo: reel
+  tema: Tráiler - El conteo de inventario
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-12'
+  pieza: reel-C-texto-diminuto-horas
+  tipo: reel
+  tema: Texto diminuto - no necesita trabajar más horas
   estado: pendiente
   redes: []
   fecha: null

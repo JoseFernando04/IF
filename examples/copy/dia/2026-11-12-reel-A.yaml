@@ -1,0 +1,53 @@
+# Reel A · «Decilo así» (formato NUEVO, tendencia «decí exactamente esto»). Pilar: tips (cobros). Serie repetible.
+formato: decilo
+titulo: Decilo así - cuando te dicen «ya te deposito»
+audio: assets/voice/elevenlabs/2026-11-12-reel-A.mp3
+salida: data/dias/2026-11-12/reel-A
+musica: wholesome
+musica_db: -22
+whatsapp: "+502 3808 9808"
+tema: "COBROS"
+episodio: "01"
+caption: >-
+  Guardalo para la próxima vez que te digan «ya te deposito» 📌💸
+  Cobrar sin pelear y sin perder al cliente sí se puede: todo está en pedir una fecha, no un favor.
+  ¿Querés que esos recordatorios salgan solos, sin que tengás que acordarte? Escribinos al WhatsApp +502 3808 9808.
+  ¿Qué otra frase incómoda querés que resolvamos en el próximo «Decilo así»? Contanos 👇
+hashtags: [Cobranza, PymesGuatemala, TipsDeNegocio, EmprendedoresGT, Digitalizacion]
+lineas:
+  - texto: Cuando un cliente te dice «ya te deposito»… y pasa una semana.
+    grande: "«Ya te deposito»… / *y pasa una semana.*"
+    sfx: [[0.05, pop]]
+  - texto: No le mandés un «¿y mi pisto?». Mandale exactamente esto.
+    grande: "No le mandés / «¿y mi pisto?» / *Mandale esto:*"
+    sfx: [[0.1, whoosh]]
+  - texto: Primero, amable y con fecha.
+    n: 1
+    paso: "AMABLE Y CON FECHA"
+    cuando: "Cuando ya pasó el día que te dijo"
+    mensaje: "¡Hola! Te comparto la factura para que la tengás a mano. ¿Te queda bien depositar el viernes?"
+    tip: "*Por qué:* le ahorrás buscar la factura y le ponés una fecha."
+    sfx: [[0.05, whoosh]]
+  - texto: ¡Hola! Te comparto la factura para que la tengás a mano. ¿Te queda bien depositar el viernes?
+    sigue: true
+    sfx: [[0.95, pop]]
+  - texto: Si no contesta, tres días después.
+    n: 2
+    paso: "SI NO CONTESTA"
+    cuando: "Tres días después"
+    mensaje: "Hola, te escribo para confirmar el depósito del viernes. ¿Seguimos con esa fecha?"
+    tip: "*Por qué:* confirmás, no reclamás. La relación queda intacta."
+    sfx: [[0.05, whoosh]]
+  - texto: Hola, te escribo para confirmar el depósito del viernes. ¿Seguimos con esa fecha?
+    sigue: true
+    sfx: [[0.95, pop]]
+  - texto: ¿Por qué funciona? Porque pedís una fecha, no un favor.
+    grande: "Pedís una *fecha,* / no un favor."
+    sfx: [[0.5, thud]]
+  - texto: Y si no querés andar mandándolo vos, el recordatorio puede salir solo.
+    grande: "¿Y si el recordatorio / *sale solo?*"
+    sfx: [[0.6, pop]]
+  - texto: Escribinos al WhatsApp y te mostramos cómo.
+    escena: cierre
+    grande: "Escribinos / *y te mostramos cómo.*"
+    sfx: [[0.3, pop]]

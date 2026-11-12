@@ -61,6 +61,9 @@ VideosInstagram/                → lo que ya se publicó
 | Cuenta regresiva / top 3 | ✅ listo (`top3`, estilo suizo) | Lista rápida con números grandes |
 | Pantalla de sistema | ✅ listo (`sistema`) | Tablero tipo software: reloj, escaneo y tarjetas de alerta que se apilan |
 | **Cine (video con IA)** | ✅ listo (`cine`: `tools/generar_clip.py` + `tools/render_formato.py`, `--borrador` = video sin voz) | Tomas reales generadas con Higgsfield + voz del equipo + una sola acción por WhatsApp. Ver "Enfoque cine" abajo |
+| Decilo así | ✅ listo (`decilo`, desde 2026-11-12) | La frase exacta para una situación incómoda, escrita en una tarjeta con botón «copiá y pegá». Serie por tema (cobros, cotizaciones, atrasos) |
+| Tráiler de película | ✅ listo (`trailer`, desde 2026-11-12) | Barras de cine, rótulos en serif, fotos duotono y el título de la «película» (un dolor real). Voz grave |
+| Texto diminuto en loop | ✅ listo (`diminuto`, desde 2026-11-12) | 5-6 s: frase grande en voz + remate en letra minúscula que obliga a pausar. El detalle va en la descripción |
 | Papel y libreta (estilo A) | prototipo | Papel, marcador y escritura a mano |
 
 ### Posts
@@ -119,6 +122,7 @@ En la rutina diaria: de las 3 opciones de reel, **una** puede ser `cine`; las to
 | 2026-11-09 | A POV del dueño (catálogo) ✅ producido · B antes/después (activos) ✅ producido · C tipografía cinética (así trabajamos; reemplaza la versión de charlas) ✅ producido | 1 infografía (estante con sensores) · 2 diccionario del dueño · 3 recibo (costo de no ordenar) |
 | 2026-11-10 | A 8-bit "jefe final: el cierre de mes" ✅ producido · B mito vs. realidad (la nube) ✅ producido · C pantalla de sistema (lunes 7:00, formato nuevo) ✅ producido | 1 checklist (5 cosas que debería avisarte solo) · 2 este o este (cierre de mes) · 3 frase de dueño (doña Marta) |
 | 2026-11-11 | A chat (pedido perdido en un audio) ✅ producido · B top 3 (tareas a mano) ✅ producido · C POV (el que sabe todo se fue de vacaciones) ✅ producido | 1 infografía (taller: orden de trabajo) · 2 diccionario vol. 2 (oficina) · 3 recibo (cobrar tarde) |
+| 2026-11-12 | A decilo así (cobros: «ya te deposito») ✅ producido · B tráiler (el conteo de inventario) ✅ producido · C texto diminuto (no necesita más horas) ✅ producido — los tres formatos nuevos | 1 carrusel documental (el impuesto del desorden) · 2 checklist (cerrar el año) · 3 frase (antes de venderme, escuchame) |
 
 ## Reglas de contenido (siempre)
 

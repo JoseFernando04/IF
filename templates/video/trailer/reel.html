@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Bricolage"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Serif"; src: url("__FONTS__/InstrumentSerif-Regular.ttf"); }
+@font-face { font-family: "SerifI"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+/* Tráiler de película: barras de cine, rótulos en serif, fotos duotono con zoom lento, golpe blanco en cada corte
+   y el título de la «película» (un dolor real) en grande. Escenas: rotulo, foto, titulo, cierre. */
+:root { --negro: #050806; --verde: #0a1410; --verde2: #1d362b; --oro: #f0c419; --marfil: #fefcf3; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--negro); color: var(--marfil); }
+#foto { position: absolute; inset: 0; overflow: hidden; }
+#foto img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.25) brightness(.9); transform-origin: 50% 50%; }
+#foto .tinte1 { position: absolute; inset: 0; background: #1d362b; mix-blend-mode: multiply; }
+#foto .tinte2 { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(240,196,25,.0) 30%, rgba(240,196,25,.35)); mix-blend-mode: screen; }
+#foto .vin { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, transparent 35%, rgba(0,0,0,.85) 100%); }
+#grano { position: absolute; inset: 0; mix-blend-mode: screen; opacity: .22; }
+.barra { position: absolute; left: 0; right: 0; height: 250px; background: #000; z-index: 5; }
+#b1 { top: 0; } #b2 { bottom: 0; }
+#rotulo { position: absolute; left: 90px; right: 90px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; font: 400 112px/1.05 "Serif"; letter-spacing: -1px; }
+#rotulo em { font-family: "SerifI"; color: var(--oro); }
+#rotulo.chico { font-size: 80px; }
+#leyenda { position: absolute; left: 90px; right: 90px; top: 1380px; text-align: center; font: 600 54px/1.15 "Tight"; letter-spacing: 1px; text-transform: uppercase;
+  text-shadow: 0 4px 30px rgba(0,0,0,.8); }
+#leyenda em { font: 400 68px "SerifI"; text-transform: none; color: var(--oro); letter-spacing: 0; }
+#titulo { position: absolute; left: 60px; right: 60px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+#titulo .pre { font: 600 34px "Mono"; letter-spacing: 12px; color: var(--marfil); opacity: .8; margin-bottom: 40px; }
+#titulo .t { font: 800 150px/0.9 "Bricolage"; letter-spacing: -2px; text-transform: uppercase; color: var(--oro); }
+#titulo .post { font: 400 52px "SerifI"; margin-top: 46px; color: var(--marfil); }
+#cierre { position: absolute; left: 90px; right: 90px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+#cierre .prod { font: 600 30px "Mono"; letter-spacing: 8px; opacity: .75; }
+#cierre .frase { font: 400 104px/1.0 "Serif"; margin: 40px 0 60px; }
+#cierre .frase em { font-family: "SerifI"; color: var(--oro); }
+#cierre .wa { padding: 24px 44px; border-radius: 60px; background: var(--oro); color: var(--verde); font: 800 50px "Bricolage"; }
+#cierre img { width: 200px; margin-top: 60px; }
+#clasif { position: absolute; left: 90px; bottom: 300px; border: 3px solid var(--marfil); padding: 14px 20px; font: 700 24px/1.3 "Mono"; letter-spacing: 2px; z-index: 6; }
+#flash { position: absolute; inset: 0; background: #fff; z-index: 9; pointer-events: none; }
+</style></head>
+<body>
+<div id="foto"><img id="img"><div class="tinte1"></div><div class="tinte2"></div><div class="vin"></div></div>
+<div id="grano"></div>
+<div id="rotulo"></div>
+<div id="leyenda"></div>
+<div id="titulo"><div class="pre"></div><div class="t"></div><div class="post"></div></div>
+<div id="cierre"><div class="prod">UNA PRODUCCIÓN DE IF TECHWORKS</div><div class="frase"></div><div class="wa"></div><img src="__LOGO__"></div>
+<div id="clasif"></div>
+<div class="barra" id="b1"></div><div class="barra" id="b2"></div>
+<div id="flash"></div>
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const R = __DATOS__;
+window.__ready = false;
+const L = R.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const em = (s) => (s || "").replace(/\s*\/\s*/g, "<br>").replace(/\*([^*]+)\*/g, "<em>$1</em>");
+const granoP = fondo($("grano"), "grano", { back: "#000000", colors: ["#f0c419", "#1d362b"], softness: 0.2, intensity: 0.9, noise: 0.9, shape: "wave" });
+await new Promise((ok) => { $("img").onload = ok; $("img").src = "__PHOTOS__/" + (R.foto || "pasillo-tienda.jpg"); });
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+$("titulo").querySelector(".pre").textContent = R.pre_titulo || "";
+$("titulo").querySelector(".t").innerHTML = em(R.pelicula);
+$("titulo").querySelector(".post").textContent = R.post_titulo || "";
+$("cierre").querySelector(".wa").textContent = R.whatsapp;
+$("clasif").innerHTML = R.clasificacion || "";
+function dibujar(t) {
+  granoP.then((f) => f.frame(t * 1000 * 2));
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio, esc = l.escena || "rotulo";
+  // Fundido: entra en 0.35 s y sale en los últimos 0.25 s de la línea (salvo título y cierre, que golpean).
+  const entra = eo(dt / 0.35), sale = 1 - cl((dt - (l.duracion + 0.15)) / 0.25);
+  const vis = Math.min(entra, sale);
+  $("foto").style.opacity = esc === "foto" ? 1 : 0;
+  if (esc === "foto") {
+    const [x, y, z] = l.encuadre || [50, 50, 1.15], z2 = z + 0.12 * cl(dt / (l.duracion + 0.4));
+    $("img").style.objectPosition = `${x}% ${y}%`; $("img").style.transformOrigin = `${x}% ${y}%`; $("img").style.transform = `scale(${z2})`;
+    $("foto").style.opacity = vis;
+  }
+  $("rotulo").style.display = esc === "rotulo" ? "flex" : "none";
+  if (esc === "rotulo") { $("rotulo").innerHTML = em(l.rotulo); $("rotulo").className = l.chico ? "chico" : "";
+    $("rotulo").style.opacity = vis; $("rotulo").style.transform = `scale(${1 + 0.05 * cl(dt / l.duracion)})`; }
+  $("leyenda").innerHTML = esc === "foto" ? em(l.leyenda) : ""; $("leyenda").style.opacity = vis;
+  $("leyenda").style.transform = `translateY(${(1 - entra) * 20}px)`;
+  $("titulo").style.display = esc === "titulo" ? "flex" : "none";
+  if (esc === "titulo") { const s = 1.25 - 0.25 * eo(dt / 0.25) + 0.03 * cl(dt / l.duracion);
+    $("titulo").style.transform = `scale(${s}) translateX(${dt < 0.3 ? Math.sin(dt * 90) * 8 : 0}px)`;
+    $("titulo").querySelector(".post").style.opacity = eo((dt - l.duracion * 0.5) / 0.4); }
+  $("cierre").style.display = esc === "cierre" ? "flex" : "none";
+  if (esc === "cierre") { $("cierre").querySelector(".frase").innerHTML = em(l.frase); $("cierre").style.opacity = entra; }
+  $("clasif").style.opacity = esc === "cierre" ? 0 : (esc === "titulo" ? eo((dt - 0.6) / 0.4) : 0);
+  // Golpe blanco en los cortes marcados
+  $("flash").style.opacity = l.golpe ? 0.9 * (1 - cl(dt / 0.18)) * (dt >= 0 ? 1 : 0) : 0;
+  // Las barras de cine se cierran un poco en el título
+  const b = esc === "titulo" ? 250 + 60 * eo(dt / 0.3) : 250;
+  $("b1").style.height = $("b2").style.height = b + "px";
+}
+await granoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await granoP; };
+window.__ready = true;
+</script>
+</body></html>

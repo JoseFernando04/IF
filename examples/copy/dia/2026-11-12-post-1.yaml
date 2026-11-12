@@ -1,0 +1,70 @@
+# Post 1 · Carrusel documental (estilo B), idea «nombrá el concepto». Pilar: educativo.
+# Se renderiza con: ifcontent.graphics.carousel_b.render_from_file(<este yaml>, data/dias/2026-11-12/post-1)
+title: El impuesto del desorden
+pillar: educativo
+salida: data/dias/2026-11-12/post-1
+titulo_tiktok: "El impuesto que pagás cada semana y nadie te cobra 🧾"
+slides:
+  - layout: portada-foto
+    foto: pasillo-tienda.jpg
+    numero: "Q?"
+    linea: el impuesto que pagás
+    cinta: sin que nadie te cobre
+    archivo: Recibo_del_desorden.xlsx
+
+  - layout: cita
+    tag: "Impuesto del desorden · definición"
+    cita: "Lo que tu negocio pierde, en tiempo y en ventas, por no tener todo en un solo lugar."
+    pie: No llega factura. No sale en la contabilidad. Pero se paga cada semana.
+
+  - layout: chat
+    tag: "01"
+    heading: Respondés tarde porque *tenés que ir a revisar*
+    body: Mientras confirmás si hay, el cliente ya le preguntó a otro.
+    mensajes:
+      - {de: cliente, texto: "Buenas, ¿tienen el filtro de aceite para Hilux?", hora: "10:02"}
+      - {de: negocio, texto: "Déjeme ver en bodega y le aviso 🙏", hora: "10:05"}
+      - {de: negocio, texto: "Sí hay, ¿se lo aparto?", hora: "10:41"}
+      - {de: cliente, texto: "Ya lo compré en otro lado, gracias", hora: "10:42"}
+
+  - layout: archivos
+    tag: "02"
+    heading: Nadie sabe *cuál es el archivo bueno*
+    body: Cada quien trabaja con su copia y el lunes empieza con una reunión para ver cuál cuadra.
+    archivos:
+      - Precios.xlsx
+      - Precios_2026.xlsx
+      - Precios_2026_nuevo.xlsx
+      - Precios_ESTE_SÍ.xlsx
+    nota: ¿con cuál cotizaste?
+
+  - layout: libreta
+    tag: "03"
+    heading: Contás otra vez *lo que ya contaste*
+    body: Si el conteo no se actualiza con cada venta, cada mes empezás de cero.
+    titulo_libreta: Conteo · otra vez
+    lineas:
+      - {texto: "Cajas grandes → 36", tachado: true}
+      - {texto: "Cajas grandes → 41", tachado: true}
+      - {texto: "Cajas grandes → ", duda: "¿contamos ayer?"}
+
+  - layout: comparacion
+    tag: "Cómo se deja de pagar"
+    heading: Del desorden a *un solo lugar*
+    izquierda: Hoy
+    derecha: Con la información ordenada
+    filas:
+      - ["Vas a bodega a revisar", "Lo ves desde el celular"]
+      - ["Cuatro listas de precios", "Una, la misma para todos"]
+      - ["Contás cada fin de mes", "Se descuenta con cada venta"]
+
+  - layout: cta
+    heading: "¿Cuánto *impuesto* pagaste esta semana?"
+    body: Contanos dónde se te va el tiempo y te decimos por dónde empezar a dejar de pagarlo.
+    sello: Diagnóstico sin compromiso
+
+caption: >-
+  Hay un impuesto que no aparece en ningún recibo, pero que pagás cada semana: el impuesto del desorden. 🧾🙃
+  Se cobra en vueltas a bodega, en archivos repetidos y en ventas que se van mientras revisás.
+  Guardá este carrusel y contanos cuál te cobraron hoy. Si querés dejar de pagarlo, escribinos al WhatsApp +502 3808 9808.
+hashtags: [PymesGuatemala, Organizacion, Digitalizacion, NegociosGT, EmprendedoresGT]

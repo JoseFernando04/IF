@@ -1,0 +1,63 @@
+# Reel B · Tráiler de película (formato NUEVO). Pilar: soluciones (inventario al día). Humor con un dolor real de fin de año.
+# Voz: grave y lenta, como tráiler. Foto: assets/photos/pasillo-tienda.jpg (Unsplash), en distintos encuadres.
+formato: trailer
+titulo: Tráiler - El conteo de inventario
+audio: assets/voice/elevenlabs/2026-11-12-reel-B.mp3
+salida: data/dias/2026-11-12/reel-B
+musica: inspired
+musica_db: -18
+whatsapp: "+502 3808 9808"
+foto: pasillo-tienda.jpg
+pre_titulo: "ESTE DICIEMBRE"
+pelicula: "El conteo / de inventario"
+post_titulo: "Basada en hechos que se repiten cada año."
+clasificacion: "CLASIFICACIÓN D<br>APTA PARA DUEÑOS<br>CON NERVIOS"
+caption: >-
+  🎬 Este diciembre, en todas las bodegas del país… 🍿
+  Si ya sentiste el suspenso de no saber si lo que dice el cuaderno es lo que hay en el estante, esta película ya la viste.
+  La buena noticia: tiene final feliz. Escribinos al WhatsApp +502 3808 9808 antes del estreno y vemos cómo tener tu inventario al día.
+  Foto: Sean Foster en Unsplash.
+hashtags: [Inventario, PymesGuatemala, FinDeAño, Digitalizacion, NegociosGT]
+lineas:
+  - texto: Este diciembre…
+    rotulo: "Este *diciembre…*"
+    sfx: [[0.05, thud]]
+  - texto: un negocio que vendió como nunca…
+    escena: foto
+    encuadre: [50, 90, 1.5]
+    leyenda: "Un negocio que vendió / *como nunca…*"
+    golpe: true
+    sfx: [[0.0, whoosh]]
+  - texto: descubre que no sabe cuánto tiene en bodega.
+    escena: foto
+    encuadre: [20, 70, 1.6]
+    leyenda: "…no sabe cuánto / *tiene en bodega.*"
+    golpe: true
+    sfx: [[0.0, thud]]
+  - texto: Tres cuadernos. Dos Excel. Y ningún número cuadra.
+    rotulo: "Tres cuadernos. / Dos Excel. / *Ningún número cuadra.*"
+    sfx: [[0.1, tick], [0.4, tick], [0.75, thud]]
+  - texto: Un fin de semana entero… contando cajas.
+    escena: foto
+    encuadre: [80, 55, 2.0]
+    leyenda: "Un fin de semana entero… / *contando cajas.*"
+    golpe: true
+    sfx: [[0.0, whoosh]]
+  - texto: El conteo de inventario.
+    escena: titulo
+    golpe: true
+    sfx: [[0.0, thud], [0.05, whoosh]]
+  - texto: Basada en hechos que se repiten cada año.
+    escena: titulo
+  - texto: Este año, podés saltarte la película.
+    rotulo: "Este año, / podés *saltarte* / la película."
+    golpe: true
+    sfx: [[0.0, whoosh]]
+  - texto: Con el inventario al día, contar deja de ser un drama.
+    rotulo: "Con el inventario al día, / contar deja de ser / *un drama.*"
+    chico: true
+  - texto: Escribinos antes del estreno.
+    escena: cierre
+    frase: "Escribinos / *antes del estreno.*"
+    golpe: true
+    sfx: [[0.0, thud]]

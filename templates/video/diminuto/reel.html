@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Bricolage"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "SerifI"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+/* Texto diminuto en loop: una frase grande que se ve siempre (para que el loop no tenga corte) y, abajo, el remate
+   en letra minúscula que obliga a pausar o hacer zoom. La voz solo dice la frase grande; el detalle va en la descripción. */
+:root { --verde: #0a1410; --oro: #f0c419; --marfil: #fefcf3; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--marfil); color: var(--verde); }
+#papel { position: absolute; inset: 0; }
+#marca { position: absolute; left: 90px; top: 170px; font: 700 28px "Mono"; letter-spacing: 4px; opacity: .55; }
+#grande { position: absolute; left: 90px; right: 90px; top: 520px; font: 800 150px/0.95 "Bricolage"; letter-spacing: -6px; transform-origin: 0 0; }
+#grande .w { position: relative; display: inline-block; margin-right: 30px; }
+#grande .w i { position: absolute; left: -6px; right: -6px; bottom: 10px; height: 46px; background: var(--oro); z-index: -1; transform-origin: 0 50%; }
+#grande em { font: 400 172px/0.9 "SerifI"; letter-spacing: -2px; }
+#chico { position: absolute; left: 92px; right: 300px; font: 500 18px/1.35 "Mono"; color: #3d443f; }
+#logo { position: absolute; right: 90px; bottom: 300px; width: 110px; opacity: .85; }
+</style></head>
+<body>
+<div id="papel"></div>
+<div id="marca">IF TECHWORKS</div>
+<div id="grande"></div>
+<div id="chico"></div>
+<img id="logo" src="__LOGO_OSCURO__">
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const R = __DATOS__;
+window.__ready = false;
+const L = R.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const papelP = fondo($("papel"), "papel", { back: "#fefcf3", paper: "#fefcf3", shadow: "#d6ceb4", folds: 0.25, crumples: 0.15, roughness: 0.25 });
+// La frase grande es la de la primera línea (campo «grande»); se subraya palabra por palabra al ritmo de la voz.
+const l0 = L[0];
+let dentro = false;
+$("grande").innerHTML = l0.grande.split(/\s+/).map((w) => {
+  if (w.startsWith("*")) dentro = true;
+  const a = dentro; if (/\*[.,:;?!…]*$/.test(w)) dentro = false;
+  const x = w.replace(/\*/g, ""); return `<span class="w">${a ? `<em>${x}</em>` : x}<i></i></span>`; }).join("");
+$("chico").innerHTML = R.chico;
+const ws = [...$("grande").querySelectorAll(".w")];
+const marcas = new Set((l0.subraya || []).map((n) => n - 1));
+function dibujar(t) {
+  // El loop: todo visible desde el cuadro 0; solo cambian el subrayado y un respiro lento que vuelve a 1 al final.
+  const p = cl((t - l0.inicio) / l0.duracion);
+  ws.forEach((w, j) => {
+    const k = marcas.has(j) ? eo((p - j / ws.length) / 0.15) * (1 - eo((t - (R.fin - 0.45)) / 0.4)) : 0;
+    w.querySelector("i").style.transform = `scaleX(${k})`;
+  });
+  const respiro = 1 + 0.015 * Math.sin(Math.PI * cl(t / R.fin));
+  $("grande").style.transform = `scale(${respiro})`;
+  const alto = $("grande").getBoundingClientRect();
+  $("chico").style.top = (alto.bottom + 70) + "px";
+}
+await papelP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await papelP; };
+window.__ready = true;
+</script>
+</body></html>

@@ -1,0 +1,23 @@
+# Reel C · Texto diminuto en loop (formato NUEVO). Pilar: llamado a la acción. 5-6 s que se repiten; el detalle va en la descripción.
+# La voz solo dice la frase grande. El texto chico NO se lee en voz alta (esa es la gracia: pausar o hacer zoom).
+formato: diminuto
+titulo: Texto diminuto - no necesita trabajar más horas
+audio: assets/voice/elevenlabs/2026-11-12-reel-C.mp3
+salida: data/dias/2026-11-12/reel-C
+musica: pamgaea
+musica_db: -20
+whatsapp: "+502 3808 9808"
+chico: >-
+  …necesita dejar de copiar a mano los pedidos del WhatsApp al Excel, de buscar la factura en tres carpetas y de
+  preguntar «¿quién tiene eso?» cada mañana. Eso se puede automatizar. Si llegaste hasta aquí con zoom, ya sabés:
+  escribinos al +502 3808 9808 y lo vemos juntos. (Y sí, podés soltar el zoom.)
+caption: >-
+  Pausá el video. Leé la letra chiquita. 🔍😅
+  Muchos negocios no necesitan más horas ni más gente: necesitan dejar de hacer dos veces lo mismo.
+  ¿Cuál es la tarea que más te repetís en la semana? Contanos y te decimos si se puede automatizar. WhatsApp +502 3808 9808.
+hashtags: [Automatizacion, PymesGuatemala, Productividad, EmprendedoresGT, Digitalizacion]
+lineas:
+  - texto: Tu negocio no necesita trabajar más horas.
+    grande: "Tu negocio no necesita *trabajar más horas.*"
+    subraya: [3]
+    sfx: [[0.4, pop]]
