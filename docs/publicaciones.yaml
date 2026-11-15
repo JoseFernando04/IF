@@ -83,30 +83,34 @@ piezas:
   pieza: post-1-infografia
   tipo: post
   tema: El estante que te avisa antes de quedarte sin producto 📦
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-09'
   pieza: post-2-diccionario
   tipo: post
   tema: Diccionario del dueño de pyme, edición Guatemala 📖
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-12'
 - dia: '2026-11-09'
   pieza: post-3-recibo
   tipo: post
   tema: El ticket que pagás cada semana sin darte cuenta 🧾
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-09'
   pieza: reel-A-pov
   tipo: reel
   tema: POV - la lista de precios actualizada
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-12'
 - dia: '2026-11-09'
   pieza: reel-B-antes-despues
   tipo: reel
@@ -120,16 +124,18 @@ piezas:
   pieza: reel-C-cinetica
   tipo: reel
   tema: Así trabajamos
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-10'
   pieza: post-1-checklist
   tipo: post
   tema: 5 cosas que tu negocio debería avisarte sin que preguntés 🔔
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-12'
 - dia: '2026-11-10'
   pieza: post-2-este-o-este
   tipo: post
@@ -152,7 +158,7 @@ piezas:
   redes:
   - ig
   - tt
-  fecha: '2026-11-11'
+  fecha: '2026-11-12'
 - dia: '2026-11-10'
   pieza: reel-B-mito-nube
   tipo: reel
@@ -166,9 +172,11 @@ piezas:
   pieza: reel-C-pantalla-sistema
   tipo: reel
   tema: Lunes, 7:00 a. m.
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-15'
 - dia: '2026-11-11'
   pieza: post-1-infografia-taller
   tipo: post
@@ -201,9 +209,11 @@ piezas:
   pieza: reel-B-top3-a-mano
   tipo: reel
   tema: Tres cosas que tu equipo sigue haciendo a mano
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-15'
 - dia: '2026-11-11'
   pieza: reel-C-pov-juan-vacaciones
   tipo: reel
@@ -215,9 +225,11 @@ piezas:
   pieza: post-1-impuesto-desorden
   tipo: post
   tema: El impuesto que pagás cada semana y nadie te cobra 🧾
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-15'
 - dia: '2026-11-12'
   pieza: post-2-checklist-fin-de-ano
   tipo: post
@@ -250,6 +262,48 @@ piezas:
   pieza: reel-C-texto-diminuto-horas
   tipo: reel
   tema: Texto diminuto - no necesita trabajar más horas
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-15'
+  pieza: post-1-este-o-este-ventas
+  tipo: post
+  tema: ¿A o B? Así sabés cuánto vendiste hoy 💸
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-15'
+  pieza: post-2-infografia-herramientas
+  tipo: post
+  tema: Nunca más «¿alguien vio el taladro?» 🔧 Así se controla cada herramienta
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-15'
+  pieza: post-3-recibo-diciembre
+  tipo: post
+  tema: El ticket de diciembre que todo dueño de negocio ya pagó alguna vez 🎄🧾
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-15'
+  pieza: reel-A-cargando-cotizacion
+  tipo: reel
+  tema: Cargando - la cotización que nunca llegó
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-15'
+  pieza: reel-B-lo-que-pediste
+  tipo: reel
+  tema: Lo que pediste vs. lo que te entregaron
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-15'
+  pieza: reel-C-sistema-viernes
+  tipo: reel
+  tema: Viernes, 5:30 p. m.
   estado: pendiente
   redes: []
   fecha: null

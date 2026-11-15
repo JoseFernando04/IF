@@ -1,0 +1,58 @@
+# Reel B · «Lo que pediste vs. lo que te entregaron» (formato NUEVO, tendencia nov-2026). Pilar: propósito y proceso
+# (cómo trabaja IF: escuchar primero, entregar solo lo necesario). Humor con giro final. Escena de ejemplo.
+# escena: pedido (marcar) | entrega | ventanas (cuenta) | manual (paginas) | clave (nota) | reves (frase) | final (solo) | cierre (frase)
+formato: pediste
+titulo: Lo que pediste vs. lo que te entregaron
+audio: assets/voice/elevenlabs/2026-11-15-reel-B-sin-sigla.mp3  # se cortó «En IF» (la voz lo decía «ai-ef»)
+salida: data/dias/2026-11-15/reel-B
+musica: wholesome
+musica_db: -22
+whatsapp: "+502 3808 9808"
+pedido_n: "PEDIDO #001 · TU NEGOCIO"
+pedido_t: "Un sistema / *sencillo*"
+items: ["Ver mi inventario", "Cotizar rápido", "Cobrar a tiempo"]
+caption: >-
+  Pediste algo sencillo y te llegó una nave espacial con manual incluido. 📦🚀😅
+  Pasa más de lo que se cree: sistemas tan completos que nadie en el equipo termina usando.
+  Nosotros empezamos por lo que de verdad necesitás y lo dejamos funcionando así de simple.
+  ¿Qué le pedirías vos a tu sistema? Contanos en los comentarios o escribinos al WhatsApp +502 3808 9808.
+hashtags: [SoftwareAMedida, PymesGuatemala, Digitalizacion, HumorDeOficina, NegociosGT]
+lineas:
+  - texto: Pediste un sistema para tu negocio.
+    escena: pedido
+    sfx: [[0.1, whoosh]]
+  - texto: Algo sencillo, ver tu inventario, cotizar y cobrar.
+    escena: pedido
+    marcar: true
+    sfx: [[0.2, tick], [0.45, tick], [0.7, tick]]
+  - texto: Y esto fue lo que te entregaron.
+    escena: entrega
+    pie: "Venía con / *de todo.*"
+    golpe: true
+    sfx: [[0.0, thud], [0.6, paper]]
+  - texto: Catorce pantallas para hacer una venta.
+    escena: ventanas
+    cuenta: "pantallas / *para una venta*"
+    sfx: [[0.1, pop], [0.3, pop], [0.5, pop], [0.7, pop]]
+  - texto: Un manual de ochenta páginas.
+    escena: manual
+    paginas: 80
+    sfx: [[0.3, thud]]
+  - texto: Y una contraseña que solo sabe el que lo instaló.
+    escena: clave
+    pie: "Y solo él / *la sabe.*"
+    nota: "«Preguntale / al ingeniero»"
+    sfx: [[0.1, paper]]
+  - texto: Lo hacemos al revés, primero vemos cómo trabajás.
+    escena: reves
+    golpe: true
+    frase: "Primero vemos / *cómo trabajás.*"
+    sfx: [[0.0, whoosh]]
+  - texto: Y te entregamos lo que pediste. Nada más.
+    escena: final
+    solo: "Nada *más.*"
+    sfx: [[0.2, pop], [0.4, pop], [0.6, pop]]
+  - texto: Contanos qué necesitás.
+    escena: cierre
+    frase: "¿Qué le pedirías / *a tu sistema?*"
+    sfx: [[0.2, pop]]

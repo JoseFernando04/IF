@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<!-- Formato «Cargando…» (tendencia nov-2026): el negocio se queda congelado en una barra de carga sobre el caos
+     y, en el golpe, corte seco al resultado listo. Escenas: pide | carga | falla | listo | cierre.
+     carga: {pct, paso}  ·  pide/falla: {mensaje}  ·  falla: {sello}  ·  listo: {doc, filas, clave}  ·  cierre: {frase} -->
+<style>
+@font-face { font-family: "Bricolage"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "SerifI"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+:root { --verde: #0a1410; --verde2: #162920; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --rojo: #e2553f; --ok: #57b96f; --gris: #8fa49a; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--verde); color: var(--marfil); font-family: "Tight"; }
+#fondo { position: absolute; inset: 0; opacity: .55; }
+/* El caos: un escritorio de ventanas, papelitos y archivos repetidos */
+#caos { position: absolute; inset: 0; transform-origin: 50% 50%; }
+.v { position: absolute; border-radius: 22px; background: var(--marfil); color: var(--verde); box-shadow: 0 24px 60px rgba(0,0,0,.45); overflow: hidden; }
+.v .bar { height: 46px; background: #d9d3bf; display: flex; align-items: center; gap: 10px; padding: 0 18px; font: 600 22px "Mono"; color: #3d443f; }
+.v .bar i { width: 14px; height: 14px; border-radius: 50%; background: #b9b19a; }
+.v.xls .bar { background: #1e6b41; color: #fefcf3; } .v.xls .bar i { background: rgba(255,255,255,.4); }
+.grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; font: 500 22px "Mono"; }
+.grid span { border-right: 2px solid #e2dccb; border-bottom: 2px solid #e2dccb; padding: 10px 12px; height: 26px; }
+.grid span.q { color: var(--rojo); font-weight: 800; }
+.pap { position: absolute; padding: 26px 26px; font: 400 44px/1.05 "SerifI"; color: var(--verde); box-shadow: 0 14px 30px rgba(0,0,0,.35); }
+.burb { position: absolute; max-width: 600px; padding: 26px 32px; border-radius: 34px 34px 34px 8px; background: #fefcf3; color: var(--verde); font: 500 40px/1.25 "Tight";
+  box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+.burb small { display: block; font: 600 22px "Mono"; color: #6b726d; margin-bottom: 10px; letter-spacing: 2px; }
+#vela { position: absolute; inset: 0; background: rgba(10,20,16,.0); }
+/* Ventana de carga */
+#modal { position: absolute; left: 90px; right: 90px; top: 760px; padding: 50px 56px 56px; border-radius: 40px; background: rgba(13,26,20,.94);
+  border: 3px solid rgba(254,252,243,.14); box-shadow: 0 40px 120px rgba(0,0,0,.6); transform-origin: 50% 50%; }
+#modal .et { font: 700 28px "Mono"; letter-spacing: 6px; color: var(--oro); }
+#modal .tt { display: flex; align-items: center; gap: 30px; margin: 24px 0 40px; font: 800 104px/1 "Bricolage"; letter-spacing: -3px; }
+#spin { width: 74px; height: 74px; border-radius: 50%; border: 12px solid rgba(254,252,243,.15); border-top-color: var(--oro); box-sizing: border-box; flex: none; }
+#prog { height: 40px; border-radius: 20px; background: rgba(254,252,243,.1); overflow: hidden; }
+#prog b { display: block; height: 100%; width: 0; border-radius: 20px; background: var(--oro);
+  background-image: repeating-linear-gradient(-45deg, rgba(10,20,16,.18) 0 18px, transparent 18px 36px); }
+#modal .pie { display: flex; justify-content: space-between; align-items: baseline; margin-top: 30px; }
+#paso { font: 500 42px "Tight"; color: #c5d3cb; }
+#pct { font: 800 92px "Mono"; letter-spacing: -4px; font-variant-numeric: tabular-nums; }
+#sello { position: absolute; left: 50%; top: 1360px; padding: 22px 46px; border: 10px solid var(--rojo); border-radius: 22px; color: var(--rojo);
+  font: 800 92px "Bricolage"; letter-spacing: 2px; white-space: nowrap; transform-origin: 50% 50%; background: rgba(10,20,16,.85); }
+/* Listo: corte seco a marfil */
+#listo { position: absolute; inset: 0; background: var(--marfil); color: var(--verde); }
+#listo .et { position: absolute; left: 90px; top: 250px; font: 700 30px "Mono"; letter-spacing: 6px; color: #1e6b41; }
+#listo .pct { position: absolute; left: 86px; top: 300px; font: 800 300px/1 "Bricolage"; letter-spacing: -14px; }
+#listo .barra { position: absolute; left: 90px; right: 90px; top: 640px; height: 40px; border-radius: 20px; background: var(--ok); }
+#doc { position: absolute; left: 90px; right: 90px; top: 780px; padding: 46px 50px; border-radius: 34px; background: #fff; border: 3px solid #e2dccb;
+  box-shadow: 0 30px 70px rgba(10,20,16,.12); transform-origin: 50% 0; }
+#doc .cab { display: flex; justify-content: space-between; align-items: center; font: 700 30px "Mono"; color: #6b726d; }
+#doc .cab b { padding: 10px 22px; border-radius: 30px; background: var(--ok); color: var(--verde); font: 800 30px "Tight"; }
+#doc h3 { margin: 26px 0 20px; font: 800 64px "Bricolage"; letter-spacing: -1px; }
+#doc .f { display: flex; justify-content: space-between; padding: 20px 0; border-top: 2px solid #eee8d8; font: 500 38px "Tight"; }
+#doc .f span:last-child { font: 700 34px "Mono"; color: #1e6b41; }
+#clave { position: absolute; left: 90px; top: 1540px; padding: 22px 40px; background: var(--oro); color: var(--verde); font: 800 96px/1 "Bricolage";
+  border-radius: 18px; letter-spacing: -2px; transform-origin: 0 50%; white-space: nowrap; }
+/* Cierre */
+#cierre { position: absolute; inset: 0; background: var(--verde); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+#cierre img { width: 260px; margin-bottom: 80px; }
+#cierre .frase { font: 800 104px/1.0 "Bricolage"; letter-spacing: -3px; padding: 0 80px; }
+#cierre .frase em { font: 400 120px "SerifI"; color: var(--oro); letter-spacing: 0; }
+#cierre .wa { margin-top: 70px; padding: 26px 50px; border-radius: 60px; background: var(--oro); color: var(--verde); font: 800 54px "Bricolage"; }
+#gancho { position: absolute; left: 90px; right: 90px; top: 760px; font: 800 150px/0.95 "Bricolage"; letter-spacing: -6px; }
+#gancho em { font: 400 170px/0.9 "SerifI"; color: var(--oro); letter-spacing: -2px; }
+#flash { position: absolute; inset: 0; background: #fff; pointer-events: none; }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="caos">
+  <div class="v xls" style="left:-40px;top:170px;width:620px;transform:rotate(-4deg)"><div class="bar"><i></i><i></i>precios_2024.xlsx</div>
+    <div class="grid"><span>Caja 18</span><span>Q ?</span><span class="q">#REF!</span><span>Cinta</span><span>Q ?</span><span></span><span>Stretch</span><span class="q">VIEJO</span><span></span><span>Esquinero</span><span>Q ?</span><span></span></div></div>
+  <div class="v xls" style="left:430px;top:300px;width:660px;transform:rotate(5deg)"><div class="bar"><i></i><i></i>precios_FINAL.xlsx</div>
+    <div class="grid"><span>Caja 18</span><span>Q ?</span><span></span><span>Cinta</span><span class="q">¿IVA?</span><span></span><span>Stretch</span><span>Q ?</span><span></span><span>Esquinero</span><span></span><span></span></div></div>
+  <div class="v xls" style="left:180px;top:520px;width:640px;transform:rotate(-2deg)"><div class="bar"><i></i><i></i>precios_FINAL_v2(1).xlsx</div>
+    <div class="grid"><span>Caja 18</span><span class="q">???</span><span></span><span>Cinta</span><span>Q ?</span><span></span></div></div>
+  <div class="pap" style="left:640px;top:120px;background:#f0c419;transform:rotate(7deg)">llamar al<br>proveedor!!</div>
+  <div class="pap" style="left:40px;top:1240px;background:#f6e7a1;transform:rotate(-8deg)">¿precio con<br>o sin IVA?</div>
+  <div class="v" style="left:560px;top:1290px;width:470px;transform:rotate(6deg)"><div class="bar"><i></i><i></i>cotizacion.docx</div>
+    <div style="padding:30px;font:500 28px/1.6 'Tight'">Estimado cliente:<br>Por este medio le<br>hacemos llegar la cot…<br><span style="background:#f0c419">[PEGAR TABLA AQUÍ]</span></div></div>
+  <div class="pap" style="left:300px;top:1560px;background:#fefcf3;transform:rotate(3deg)">PDF → ¿dónde<br>se guardó?</div>
+</div>
+<div id="vela"></div>
+<div class="burb" id="pide" style="left:90px;top:300px"><small id="pideQuien">CLIENTE · 9:02</small><span id="pideTxt"></span></div>
+<div id="gancho"></div>
+<div id="modal"><div class="et" id="modalEt">COTIZACIÓN</div><div class="tt"><div id="spin"></div><span id="ttTxt">Cargando…</span></div>
+  <div id="prog"><b></b></div><div class="pie"><div id="paso"></div><div id="pct">0 %</div></div></div>
+<div class="burb" id="falla" style="left:90px;top:300px"><small id="fallaQuien">CLIENTE · 4:47 PM</small><span id="fallaTxt"></span></div>
+<div id="sello"></div>
+<div id="listo"><div class="et">COTIZACIÓN LISTA</div><div class="pct">100 %</div><div class="barra"></div>
+  <div id="doc"><div class="cab"><span id="docN"></span><b>✓ ENVIADA</b></div><h3 id="docT"></h3><div id="docF"></div></div>
+</div>
+<div id="clave"></div>
+<div id="cierre"><img src="__LOGO__"><div class="frase"></div><div class="wa"></div></div>
+<div id="flash"></div>
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const R = __DATOS__;
+window.__ready = false;
+const L = R.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const eb = (x) => { x = cl(x); const c = 1.7; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const em = (s) => (s || "").replace(/\s*\/\s*/g, "<br>").replace(/\*([^*]+)\*/g, "<em>$1</em>");
+const fondoP = fondo($("fondo"), "puntos", { back: "#0a1410", fill: "#1d362b", size: 3, gap: 44 });
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+$("cierre").querySelector(".wa").textContent = R.whatsapp;
+const piezas = [...$("caos").children];
+const rot = piezas.map((p) => p.style.transform);
+// Porcentaje que muestra la barra en un momento dado: avanza de la línea anterior a la actual en el primer 70 %.
+function pctEn(i, dt) {
+  let prev = 0;
+  for (let k = 0; k < i; k++) if (L[k].escena === "carga") prev = L[k].pct;
+  const l = L[i];
+  if (l.escena === "falla") return 99;
+  if (l.escena !== "carga") return prev;
+  return prev + (l.pct - prev) * eo(dt / (l.duracion * 0.7));
+}
+function dibujar(t) {
+  fondoP.then((f) => f.frame(t * 1000));
+  const i = lineaEn(t), l = L[i], dt = Math.max(0, t - l.inicio), esc = l.escena;
+  const congelado = esc === "carga" || esc === "falla";
+  // Caos: aparece pieza por pieza durante la carga; «congelado» = tirones cada 0.4 s, como pantalla trabada.
+  const nCarga = L.filter((x, k) => k <= i && x.escena === "carga").length;
+  const visibles = esc === "pide" ? 0 : Math.min(piezas.length, Math.round(nCarga * 2 + (esc === "carga" ? eo(dt / 0.8) * 2 : 2)));
+  const salto = Math.floor(t / 0.4);
+  piezas.forEach((p, k) => {
+    const on = k < visibles;
+    const jx = congelado ? (((salto * 7 + k * 13) % 9) - 4) : 0, jy = congelado ? (((salto * 5 + k * 11) % 7) - 3) : 0;
+    p.style.opacity = on ? 1 : 0;
+    p.style.transform = `${rot[k]} translate(${jx}px, ${jy}px)`;
+  });
+  $("caos").style.filter = congelado ? `saturate(${esc === "falla" ? .2 : .55}) blur(${esc === "falla" ? 3 : 1.5}px)` : "none";
+  $("caos").style.display = (esc === "listo" || esc === "cierre") ? "none" : "block";
+  $("vela").style.background = congelado ? `rgba(10,20,16,${esc === "falla" ? .62 : .42})` : "rgba(10,20,16,.2)";
+  // Mensaje del cliente
+  $("pide").style.display = esc === "pide" ? "block" : "none";
+  if (esc === "pide") { $("pideTxt").textContent = l.mensaje; $("pideQuien").textContent = l.quien || "CLIENTE · 9:02 AM";
+    const k = eb(dt / 0.45); $("pide").style.transform = `translateY(${(1 - k) * 60}px) scale(${0.9 + 0.1 * k})`; $("pide").style.opacity = cl(dt / 0.2); }
+  $("gancho").style.display = esc === "pide" && l.gancho ? "block" : "none";
+  if (esc === "pide" && l.gancho) { $("gancho").innerHTML = em(l.gancho); const kg = eo((dt - 0.25) / 0.4);
+    $("gancho").style.opacity = cl((dt - 0.25) / 0.2); $("gancho").style.transform = `translateY(${(1 - kg) * 40}px)`; }
+  // Ventana de carga
+  const conModal = esc === "carga" || esc === "falla";
+  $("modal").style.display = conModal ? "block" : "none";
+  if (conModal) {
+    const primera = L.findIndex((x) => x.escena === "carga") === i;
+    const k = primera ? eb(dt / 0.45) : 1;
+    $("modal").style.transform = `scale(${0.85 + 0.15 * k})`; $("modal").style.opacity = primera ? cl(dt / 0.2) : 1;
+    const p = pctEn(i, dt);
+    $("prog").querySelector("b").style.width = p + "%";
+    $("prog").querySelector("b").style.background = esc === "falla" ? "var(--rojo)" : "";
+    $("pct").textContent = Math.floor(p) + " %";
+    $("pct").style.color = esc === "falla" ? "var(--rojo)" : "";
+    $("pct").style.opacity = esc === "falla" && Math.floor(t * 3) % 2 ? .35 : 1;
+    $("paso").textContent = esc === "falla" ? (l.paso || "Sin respuesta…") : l.paso;
+    // El spinner gira a saltos (se traba igual que todo lo demás)
+    $("spin").style.transform = `rotate(${Math.floor(t / 0.4) * 45 + (esc === "carga" ? Math.floor(t * 8) * 45 : 0)}deg)`;
+    $("spin").style.borderTopColor = esc === "falla" ? "var(--rojo)" : "";
+    $("ttTxt").textContent = esc === "falla" ? "Cargando…" : "Cargando…";
+    $("modal").style.top = esc === "falla" ? "820px" : "760px";
+  }
+  // Respuesta del cliente que llega tarde + sello
+  $("falla").style.display = esc === "falla" ? "block" : "none";
+  $("sello").style.display = esc === "falla" ? "block" : "none";
+  if (esc === "falla") {
+    const kb = eb((dt - l.duracion * 0.35) / 0.4);
+    $("fallaTxt").textContent = l.mensaje; $("fallaQuien").textContent = l.quien || "CLIENTE · 4:47 PM";
+    $("falla").style.opacity = cl((dt - l.duracion * 0.35) / 0.15); $("falla").style.transform = `translateY(${(1 - kb) * 60}px)`;
+    const ks = cl((dt - l.duracion * 0.62) / 0.18);
+    $("sello").textContent = l.sello; $("sello").style.opacity = ks;
+    $("sello").style.transform = `translateX(-50%) rotate(-8deg) scale(${1.6 - 0.6 * eo(ks)})`;
+  }
+  // Listo
+  $("listo").style.display = esc === "listo" ? "block" : "none";
+  if (esc === "listo") {
+    $("docN").textContent = l.doc || "COTIZACIÓN #0124"; $("docT").textContent = l.titulo || "";
+    $("docF").innerHTML = (l.filas || []).map(([a, b], k) => `<div class="f" style="opacity:${cl((dt - 0.35 - k * 0.18) / 0.2)}"><span>${a}</span><span>${b}</span></div>`).join("");
+    const kd = eb((dt - 0.1) / 0.45); $("doc").style.transform = `translateY(${(1 - kd) * 80}px)`; $("doc").style.opacity = cl((dt - 0.1) / 0.2);
+  }
+  const conClave = esc === "listo" && l.clave;
+  $("clave").style.display = conClave ? "block" : "none";
+  if (conClave) { const kc = eb((dt - l.duracion * 0.55) / 0.35); $("clave").textContent = l.clave;
+    $("clave").style.opacity = cl((dt - l.duracion * 0.55) / 0.1); $("clave").style.transform = `scale(${0.6 + 0.4 * kc}) rotate(-2deg)`; }
+  // Cierre
+  $("cierre").style.display = esc === "cierre" ? "flex" : "none";
+  if (esc === "cierre") { $("cierre").querySelector(".frase").innerHTML = em(l.frase); $("cierre").style.opacity = eo(dt / 0.3); }
+  $("flash").style.opacity = l.golpe ? 0.95 * (1 - cl(dt / 0.2)) : 0;
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>

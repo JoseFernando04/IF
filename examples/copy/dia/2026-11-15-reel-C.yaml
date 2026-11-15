@@ -1,0 +1,71 @@
+# Reel C · Pantalla de sistema (formato del 2026-11-10, ahora con el cierre de la semana). Pilar: soluciones
+# (activos asignados, cobros y entregas). Escena de ejemplo: datos inventados de un negocio de ejemplo, sin clientes reales.
+# escena: intro | escaneo | tarjeta | resumen | cierre. tarjeta.grafica: barras | lista. tono: oro | rojo | verde
+formato: sistema
+titulo: Viernes, 5:30 p. m.
+audio: assets/voice/elevenlabs/2026-11-15-reel-C.mp3
+salida: data/dias/2026-11-15/reel-C
+musica: digital-lemonade
+musica_db: -22
+whatsapp: "+502 3808 9808"
+panel: "PANEL · TU NEGOCIO"
+dia: "VIERNES"
+horas: ["17:29", "17:30"]
+estado: "Todos se van. El sistema no."
+modulos: [Equipos, Cobros, Entregas, Inventario]
+caption: >-
+  El viernes no debería terminar con «¿alguien vio el taladro?» 🔧🙃
+  Hay negocios que cierran la semana sabiendo qué equipo tiene cada quien, qué falta cobrar y qué sale el lunes, sin hacer una sola llamada.
+  ¿Qué es lo primero que te gustaría tener claro cada viernes? Contanos o escribinos al WhatsApp +502 3808 9808. (Escena de ejemplo.)
+hashtags: [PymesGuatemala, ControlDeActivos, Automatizacion, Digitalizacion, NegociosGT]
+lineas:
+  - texto: Viernes, cinco y media. Todos se van a su casa.
+    escena: intro
+    sfx: [[0.35, tick]]
+  - texto: Y tu sistema hace el cierre de la semana.
+    escena: escaneo
+    sfx: [[0.1, whoosh], [0.55, tick], [0.7, tick], [0.85, tick]]
+  - texto: El taladro y la escalera siguen con Luis. Ya le llegó el recordatorio.
+    tarjeta:
+      etiqueta: EQUIPOS
+      tono: oro
+      hace: "17:29"
+      titulo: "2 equipos sin devolver"
+      detalle: "Asignados a Luis desde el martes."
+      grafica: lista
+      datos: [["Taladro #07", "Luis"], ["Escalera 3 m", "Luis"]]
+    clave: "NADIE LOS BUSCA"
+    clave_frac: 0.7
+    sfx: [[0.05, pop], [0.7, pop]]
+  - texto: Tres facturas vencen el lunes. Los avisos salen solos.
+    tarjeta:
+      etiqueta: COBROS
+      tono: rojo
+      hace: "17:30"
+      titulo: "3 facturas vencen el lunes"
+      detalle: "Aviso de cobro programado."
+      grafica: lista
+      datos: [["Factura A-311", "lunes"], ["Factura A-314", "lunes"], ["Factura A-318", "lunes"]]
+    clave: "SIN LLAMADAS"
+    clave_frac: 0.72
+    sfx: [[0.05, pop], [0.75, pop]]
+  - texto: Y las entregas del lunes ya tienen ruta y mercadería apartada.
+    tarjeta:
+      etiqueta: ENTREGAS
+      tono: verde
+      hace: "17:30"
+      titulo: "Lunes, listo"
+      detalle: "Mercadería apartada en bodega."
+      grafica: lista
+      datos: [["Ruta 1", "✓"], ["Ruta 2", "✓"], ["Ruta 3", "✓"]]
+    clave: "LUNES LISTO"
+    clave_frac: 0.7
+    sfx: [[0.05, pop], [0.4, tick], [0.5, tick], [0.6, tick]]
+  - texto: Así se siente irte el viernes sin pendientes en la cabeza.
+    escena: resumen
+    frase: "Viernes<br><em>sin pendientes.</em>"
+    sfx: [[0.1, whoosh]]
+  - texto: Contanos cómo cerrás tu semana.
+    escena: cierre
+    titulo: "¿Cómo cerrás<br><em>tu semana?</em>"
+    sfx: [[0.3, pop]]

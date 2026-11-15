@@ -34,9 +34,9 @@ la gente busca dentro de Instagram como en Google.
    el remate («necesita dejar de copiar pedidos del WhatsApp al Excel»). Loop corto; la explicación va en la descripción.
 4. **Tráiler de película** · «Este diciembre… EL CIERRE DE CAJA». Barras negras de cine, títulos tipo tráiler, voz grave,
    golpes de sonido, fotos duotono de un negocio cerrando. Humor con un dolor real. (Sin Higgsfield: fotos propias o de banco libres.)
-5. **Lo que pediste vs. lo que te entregaron** · Giro final: «Pediste un sistema… te entregaron 14 pantallas y un manual de 80 páginas».
+5. ✅ *(hecho 2026-11-15, `pediste`)* **Lo que pediste vs. lo que te entregaron** · Giro final: «Pediste un sistema… te entregaron 14 pantallas y un manual de 80 páginas».
    Termina con cómo lo hace IF. Funciona como reel o carrusel.
-6. **Cargando…** · Cuadro congelado «Negocio cargando 37 %…» sobre el caos; corte seco al negocio ordenado en el golpe de la música.
+6. ✅ *(hecho 2026-11-15, `cargando`)* **Cargando…** · Cuadro congelado «Negocio cargando 37 %…» sobre el caos; corte seco al negocio ordenado en el golpe de la música.
 7. **Dosis de realidad (con el equipo)** · Clip vertical grabado con el celular por José/el equipo: «Así se ve por dentro un sistema
    que estamos haciendo» (pantallas reales, sin datos de clientes). Requiere que el equipo grabe 20-30 s; la animación solo agrega
    títulos y música. Es lo que más pide el algoritmo en LATAM ahora.

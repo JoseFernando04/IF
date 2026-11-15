@@ -1,0 +1,59 @@
+# Reel A · «Cargando…» (formato NUEVO, tendencia nov-2026). Pilar: soluciones (cotizaciones rápidas). Escena de ejemplo.
+# El negocio se queda trabado en una barra de carga sobre el caos; en el golpe, corte seco a la cotización lista.
+# escena: pide | carga (pct, paso) | falla (mensaje, sello) | listo (doc, titulo, filas, clave) | cierre (frase)
+formato: cargando
+titulo: Cargando - la cotización que nunca llegó
+audio: assets/voice/elevenlabs/2026-11-15-reel-A.mp3
+salida: data/dias/2026-11-15/reel-A
+musica: digital-lemonade
+musica_db: -22
+whatsapp: "+502 3808 9808"
+caption: >-
+  Si alguna vez te contestaron «gracias, ya lo conseguí», esta barra ya la conocés. ⏳😬
+  En una cotización, el que responde primero casi siempre se lleva la venta, y no siempre gana el que tiene mejor precio.
+  ¿Cuánto te tardás hoy en mandar una? Contanos en los comentarios o escribinos al WhatsApp +502 3808 9808 y vemos cómo bajarle. (Escena de ejemplo.)
+hashtags: [Cotizaciones, PymesGuatemala, Ventas, Digitalizacion, NegociosGT]
+lineas:
+  - texto: Un cliente te pide una cotización.
+    escena: pide
+    gancho: "Tu negocio, / *cargando…*"
+    mensaje: "Buenas, ¿me pasás precio de 40 cajas y 10 rollos de stretch? 🙏"
+    sfx: [[0.1, pop]]
+  - texto: Y empieza la carga.
+    escena: carga
+    pct: 8
+    paso: "Iniciando…"
+    sfx: [[0.1, whoosh]]
+  - texto: Buscás los precios en tres Excel distintos.
+    escena: carga
+    pct: 31
+    paso: "Buscando precios…"
+    sfx: [[0.3, tick], [0.55, tick], [0.8, tick]]
+  - texto: Le escribís al proveedor y esperás.
+    escena: carga
+    pct: 58
+    paso: "Esperando proveedor…"
+    sfx: [[0.4, tick]]
+  - texto: Lo armás en Word, lo pasás a PDF…
+    escena: carga
+    pct: 97
+    paso: "Convirtiendo a PDF…"
+    sfx: [[0.3, paper], [0.7, tick]]
+  - texto: Y cuando por fin lo mandás, ya le compró a otro.
+    escena: falla
+    paso: "Enviando…"
+    mensaje: "Gracias, ya lo conseguí 👍"
+    sello: "VENTA PERDIDA"
+    sfx: [[0.38, pop], [0.64, thud]]
+  - texto: Con tus precios en un solo lugar, la cotización sale en minutos.
+    escena: listo
+    golpe: true
+    doc: "COTIZACIÓN #0124"
+    titulo: "Cajas y stretch"
+    filas: [["Caja 18 × 40", "✓"], ["Stretch × 10", "✓"], ["PDF con tu logo", "✓"]]
+    clave: "EN MINUTOS"
+    sfx: [[0.0, whoosh], [0.55, pop]]
+  - texto: Escribinos y te mostramos cómo.
+    escena: cierre
+    frase: "Que tu negocio / *no se quede cargando.*"
+    sfx: [[0.2, pop]]

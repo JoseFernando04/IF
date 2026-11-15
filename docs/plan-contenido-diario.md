@@ -64,6 +64,8 @@ VideosInstagram/                → lo que ya se publicó
 | Decilo así | ✅ listo (`decilo`, desde 2026-11-12) | La frase exacta para una situación incómoda, escrita en una tarjeta con botón «copiá y pegá». Serie por tema (cobros, cotizaciones, atrasos) |
 | Tráiler de película | ✅ listo (`trailer`, desde 2026-11-12) | Barras de cine, rótulos en serif, fotos duotono y el título de la «película» (un dolor real). Voz grave |
 | Texto diminuto en loop | ✅ listo (`diminuto`, desde 2026-11-12) | 5-6 s: frase grande en voz + remate en letra minúscula que obliga a pausar. El detalle va en la descripción |
+| Cargando… | ✅ listo (`cargando`, desde 2026-11-15) | El negocio trabado en una barra de carga sobre el caos; golpe y corte seco al resultado listo |
+| Lo que pediste vs. lo que te entregaron | ✅ listo (`pediste`, desde 2026-11-15) | Expectativa (pedido sencillo) → giro (14 pantallas, manual, contraseña) → cómo lo hace IF |
 | Papel y libreta (estilo A) | prototipo | Papel, marcador y escritura a mano |
 
 ### Posts
@@ -123,9 +125,11 @@ En la rutina diaria: de las 3 opciones de reel, **una** puede ser `cine`; las to
 | 2026-11-10 | A 8-bit "jefe final: el cierre de mes" ✅ producido · B mito vs. realidad (la nube) ✅ producido · C pantalla de sistema (lunes 7:00, formato nuevo) ✅ producido | 1 checklist (5 cosas que debería avisarte solo) · 2 este o este (cierre de mes) · 3 frase de dueño (doña Marta) |
 | 2026-11-11 | A chat (pedido perdido en un audio) ✅ producido · B top 3 (tareas a mano) ✅ producido · C POV (el que sabe todo se fue de vacaciones) ✅ producido | 1 infografía (taller: orden de trabajo) · 2 diccionario vol. 2 (oficina) · 3 recibo (cobrar tarde) |
 | 2026-11-12 | A decilo así (cobros: «ya te deposito») ✅ producido · B tráiler (el conteo de inventario) ✅ producido · C texto diminuto (no necesita más horas) ✅ producido — los tres formatos nuevos | 1 carrusel documental (el impuesto del desorden) · 2 checklist (cerrar el año) · 3 frase (antes de venderme, escuchame) |
+| 2026-11-15 | A cargando… (cotización que llega tarde, formato nuevo) · B lo que pediste vs. lo que te entregaron (formato nuevo) · C pantalla de sistema (viernes 5:30: equipos, cobros, entregas) | 1 este o este (cuánto vendiste hoy) · 2 infografía (herramientas con QR) · 3 recibo (tu diciembre) |
 
 ## Reglas de contenido (siempre)
 
+- **Guiones de voz sin siglas** (desde 2026-11-15): ElevenLabs lee «IF» como «ai-ef» y «POV» letra por letra. En la voz decir «nosotros» o rehacer la frase; la sigla solo va en pantalla.
 - Voseo guatemalteco. Sin clientes, cifras ni testimonios inventados (las escenas son "de ejemplo").
 - Llamado a la acción con WhatsApp **+502 3808 9808**. Descripciones llamativas que **no repitan el guion**.
 - 5 hashtags. Si la música es CC BY, el crédito va en la descripción.

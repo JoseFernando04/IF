@@ -1,0 +1,23 @@
+# Post 3 · Recibo (imagen única). Pilar: tips / temporada (diciembre en un negocio). Sin cifras inventadas: un mes "de ejemplo".
+formato: recibo
+salida: data/dias/2026-11-15/post-3
+titulo_tiktok: "El ticket de diciembre que todo dueño de negocio ya pagó alguna vez 🎄🧾"
+whatsapp: "+502 3808 9808"
+encabezado: "COMPROBANTE"
+sub: "Tu diciembre,<br>en un ticket"
+items:
+  - {q: 1, t: "Inventario que no cuadra"}
+  - {q: 3, t: "Pedidos anotados dos veces"}
+  - {q: 1, t: "Aguinaldo calculado a mano"}
+  - {q: 1, t: "«El que sabe» de vacaciones"}
+  - {q: 2, t: "Sábados en la oficina"}
+  - {q: 1, t: "Cierre de año a última hora"}
+total: "TUS FIESTAS"
+nota: "Mes de ejemplo. Tamales no incluidos."
+pie: "FELICES FIESTAS · VUELVA EN ENERO"
+sello: "TIENE<br>ARREGLO"
+caption: >-
+  Diciembre es el mes que más se vende… y el que más se complica por dentro. 🎄😮‍💨
+  ¿Cuántas líneas de este ticket ya te tocaron? Contanos en los comentarios y etiquetá a quien también lo pagó.
+  Si querés llegar a diciembre con todo en orden, escribinos al WhatsApp +502 3808 9808 y vemos qué se puede arreglar antes de las fiestas.
+hashtags: [FinDeAño, PymesGuatemala, Diciembre, Digitalizacion, EmprendedoresGT]
