@@ -2,7 +2,7 @@
 
 Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml`. No editar a mano.
 
-**16 publicadas · 18 pendientes · 4 descartadas**
+**18 publicadas · 21 pendientes · 5 descartadas**
 
 | Día | Pieza | Tema | Estado | Redes | Subido |
 |---|---|---|---|---|---|
@@ -21,15 +21,15 @@ Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml
 | 2026-11-09 | reel-B-antes-despues | ¿Quién tiene la laptop 4? | ✅ publicado | Instagram, TikTok | 2026-11-11 |
 | 2026-11-09 | reel-C-cinetica | Así trabajamos | ✖️ descartado |  |  |
 | 2026-11-10 | post-1-checklist | 5 cosas que tu negocio debería avisarte sin que preguntés 🔔 | ✅ publicado | Instagram, TikTok | 2026-11-12 |
-| 2026-11-10 | post-2-este-o-este | ¿A o B? Así es tu cierre de mes 📅 | ⏳ pendiente |  |  |
+| 2026-11-10 | post-2-este-o-este | ¿A o B? Así es tu cierre de mes 📅 | ✖️ descartado |  |  |
 | 2026-11-10 | post-3-frase-de-dueno | Todo negocio tiene una doña Marta 👀 | ⏳ pendiente |  |  |
 | 2026-11-10 | reel-A-8bit-jefe-final | Jefe final: el cierre de mes | ✅ publicado | Instagram, TikTok | 2026-11-12 |
 | 2026-11-10 | reel-B-mito-nube | Tres mitos de la nube | ✅ publicado | Instagram, TikTok | 2026-11-11 |
 | 2026-11-10 | reel-C-pantalla-sistema | Lunes, 7:00 a. m. | ✅ publicado | Instagram, TikTok | 2026-11-15 |
 | 2026-11-11 | post-1-infografia-taller | Tu cliente ya no tiene que llamar a preguntar si su carro está listo 🔧 | ⏳ pendiente |  |  |
-| 2026-11-11 | post-2-diccionario-vol2 | Diccionario del dueño de pyme, vol. 2: ahora en la oficina 📖😅 | ⏳ pendiente |  |  |
+| 2026-11-11 | post-2-diccionario-vol2 | Diccionario del dueño de pyme, vol. 2: ahora en la oficina 📖😅 | ✅ publicado | Instagram, TikTok | 2026-11-15 |
 | 2026-11-11 | post-3-recibo-cobrar | Lo que te cuesta cobrar tarde, en un solo ticket 🧾 | ⏳ pendiente |  |  |
-| 2026-11-11 | reel-A-chat-pedido-audio | El pedido que se perdió en un audio | ⏳ pendiente |  |  |
+| 2026-11-11 | reel-A-chat-pedido-audio | El pedido que se perdió en un audio | ✅ publicado | Instagram, TikTok | 2026-11-15 |
 | 2026-11-11 | reel-B-top3-a-mano | Tres cosas que tu equipo sigue haciendo a mano | ✅ publicado | Instagram, TikTok | 2026-11-15 |
 | 2026-11-11 | reel-C-pov-juan-vacaciones | POV - el que sabe todo se fue de vacaciones | ⏳ pendiente |  |  |
 | 2026-11-12 | post-1-impuesto-desorden | El impuesto que pagás cada semana y nadie te cobra 🧾 | ✅ publicado | Instagram, TikTok | 2026-11-15 |
@@ -44,3 +44,9 @@ Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml
 | 2026-11-15 | reel-A-cargando-cotizacion | Cargando - la cotización que nunca llegó | ⏳ pendiente |  |  |
 | 2026-11-15 | reel-B-lo-que-pediste | Lo que pediste vs. lo que te entregaron | ⏳ pendiente |  |  |
 | 2026-11-15 | reel-C-sistema-viernes | Viernes, 5:30 p. m. | ⏳ pendiente |  |  |
+| 2026-11-16 | post-1-checklist-antes-de-firmar | 5 preguntas que tenés que hacer antes de pagar por un sistema 📝 | ⏳ pendiente |  |  |
+| 2026-11-16 | post-2-frase-yo-se-donde | «Yo sé dónde está todo»: la frase que todo dueño dijo alguna vez 🧠 | ⏳ pendiente |  |  |
+| 2026-11-16 | post-3-diccionario-vol3 | Diccionario del dueño de pyme, vol. 3: edición bodega y mostrador 📖📦 | ⏳ pendiente |  |  |
+| 2026-11-16 | reel-A-flechas-whatsapp-business | La función de WhatsApp Business que casi nadie usa | ⏳ pendiente |  |  |
+| 2026-11-16 | reel-B-respondiendo-cuanto-cuesta | Respondiendo - ¿cuánto cuesta un sistema a la medida? | ⏳ pendiente |  |  |
+| 2026-11-16 | reel-C-top3-todavia-no | Tres señales de que todavía no necesitás un sistema | ⏳ pendiente |  |  |

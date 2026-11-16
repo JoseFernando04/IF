@@ -1,0 +1,63 @@
+# Reel C · Top 3 (estilo suizo) con la tendencia «razones por las que NO necesitás…» (consejo honesto, a la contra de vender).
+# Pilar: propósito y proceso. bloque: [columna, fila, ancho, alto] en módulos de 90 px (grilla de 12 × 21).
+formato: top3
+titulo: Tres señales de que todavía no necesitás un sistema
+audio: assets/voice/elevenlabs/2026-11-16-reel-C.mp3
+salida: data/dias/2026-11-16/reel-C
+musica: voxel-revolution
+musica_db: -23
+whatsapp: "+502 3808 9808"
+serie: "IF TECHWORKS — TODAVÍA NO"
+caption: >-
+  Sí, hacemos sistemas. Y sí, te vamos a decir cuándo NO te hace falta uno. 🙅‍♂️✋
+  Hay negocios que funcionan perfecto con una hoja y buena memoria… hasta el día que dejan de hacerlo.
+  ¿Las tres siguen siendo ciertas en el tuyo? Contanos en los comentarios. Y si alguna ya no, escribinos al WhatsApp +502 3808 9808.
+hashtags: [ConsejosDeNegocio, PymesGuatemala, Emprendimiento, Digitalizacion, NegociosGT]
+lineas:
+  - texto: Tres señales de que todavía no necesitás un sistema. Y te lo decimos nosotros, que los hacemos.
+    num: "3"
+    cont: "00 / 03"
+    lead: "Consejo honesto"
+    frase: "Todavía no lo necesitás."
+    sub: "→ lo dice quien los hace."
+    bloque: [7, 3, 4, 4]
+    sfx: [[0.05, whoosh]]
+  - texto: "Tres: todo tu inventario cabe en una hoja, y siempre cuadra."
+    num: "3"
+    cont: "01 / 03"
+    lead: "Señal 03"
+    frase: "Cabe en una hoja."
+    sub: "→ y siempre cuadra."
+    bloque: [8, 9, 3, 3]
+    sfx: [[0.02, tick]]
+  - texto: "Dos: sos el único que vende, y te acordás de cada pedido."
+    num: "2"
+    cont: "02 / 03"
+    lead: "Señal 02"
+    frase: "Solo vos vendés."
+    sub: "→ y no se te olvida nada."
+    bloque: [1, 2, 3, 3]
+    sfx: [[0.02, tick]]
+  - texto: "Uno: cobrás en el momento, y nadie te queda debiendo."
+    num: "1"
+    cont: "03 / 03"
+    lead: "Señal 01"
+    frase: "Nadie te debe."
+    sub: "→ cobrás en el momento."
+    bloque: [6, 6, 5, 5]
+    sfx: [[0.02, tick]]
+  - texto: Si las tres son ciertas, seguí así. Si una ya no lo es, ahí sí hablemos.
+    num: "?"
+    cont: "¿Y SI UNA YA NO?"
+    lead: "Si una dejó de ser cierta"
+    frase: "Ahí sí hablemos."
+    bloque: [0, 2, 12, 11]
+    sfx: [[0.05, whoosh], [0.5, pop]]
+  - texto: Contanos cuál dejó de ser cierta.
+    escena: cierre
+    num: ""
+    cont: "IF TECHWORKS"
+    lead: "Escribinos"
+    frase: "¿Cuál dejó de ser cierta?"
+    bloque: [0, 2, 12, 11]
+    sfx: [[0.3, pop]]

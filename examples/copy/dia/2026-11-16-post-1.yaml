@@ -1,0 +1,24 @@
+# Post 1 · Checklist para guardar (carrusel). Pilar: educativo (qué preguntar antes de contratar un sistema).
+# Consejo neutral: sirve aunque no nos contraten a nosotros.
+formato: checklist
+salida: data/dias/2026-11-16/post-1
+titulo_tiktok: "5 preguntas que tenés que hacer antes de pagar por un sistema 📝"
+whatsapp: "+502 3808 9808"
+etiqueta: "ANTES DE FIRMAR"
+titulo: "5 preguntas antes de <em>pagar por un sistema.</em>"
+bajada: "Hacelas con quien sea que te cotice, nosotros incluidos. Las respuestas dicen mucho."
+guardar: "Guardalo para tu próxima reunión"
+items:
+  - {p: "¿Los datos son míos?", r: "Que puedas sacar tu información cuando querás, en un formato que se abra en cualquier lado.", corto: "Los datos son tuyos"}
+  - {p: "¿Qué pasa si se cae?", r: "Quién responde, en cuánto tiempo y por qué medio.", corto: "Soporte claro"}
+  - {p: "¿Mi equipo lo va a entender?", r: "Pedí ver una tarea real de tu negocio, no una demo general.", corto: "Una prueba con tu caso"}
+  - {p: "¿Se puede hacer por partes?", r: "Empezar por lo urgente y pagar por etapas, no todo de un solo.", corto: "Avance por etapas"}
+  - {p: "¿Cuánto cuesta mantenerlo?", r: "El precio de hoy y el de cada mes o año que viene después.", corto: "Costo total, no solo el inicial"}
+resumen: "Si te contestan las cinco sin rodeos, vas por buen camino."
+cierre: "¿Cuál <em>no te contestaron</em>?"
+cierre_bajada: "Contanos en los comentarios. Y si querés hacernos las cinco a nosotros, escribinos."
+caption: >-
+  Antes de firmar, preguntá. 📝 Estas cinco preguntas te ahorran sustos (y facturas) más adelante.
+  Sirven con cualquier proveedor, nosotros incluidos: guardá el carrusel y llevalo a tu próxima reunión.
+  ¿Querés hacernos las cinco? Escribinos al WhatsApp +502 3808 9808 y te contestamos sin letra pequeña.
+hashtags: [SoftwareAMedida, PymesGuatemala, TipsDeNegocio, Digitalizacion, NegociosGT]

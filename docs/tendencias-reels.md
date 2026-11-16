@@ -26,7 +26,7 @@ la gente busca dentro de Instagram como en Google.
 
 ## Formatos nuevos para IF (ninguno existe aún en el catálogo)
 
-1. **Flechas rojas** · «La función de WhatsApp Business que casi nadie usa». Capturas reales (o recreadas fielmente) con
+1. ✅ *(hecho 2026-11-16, `flechas`)* **Flechas rojas** · «La función de WhatsApp Business que casi nadie usa». Capturas reales (o recreadas fielmente) con
    flechas y círculos rojos que aparecen al ritmo de la voz. Educativo y útil: invita a guardar. Verificar cada paso en la app real.
 2. **Decilo así** · «Cuando un cliente te dice “ya te deposito”, mandale exactamente esto». Tarjeta de mensaje que se escribe
    letra por letra, con un botón «copiá y pegá». Tips con valor inmediato; serie repetible (cobros, cotizaciones, atrasos).
@@ -42,6 +42,9 @@ la gente busca dentro de Instagram como en Google.
    títulos y música. Es lo que más pide el algoritmo en LATAM ahora.
 8. **Nombrá el concepto** · Inventar un nombre memorable para un problema: «el impuesto del desorden», «el síndrome del Excel final».
    Tipografía grande + definición + ejemplo. Puede abrir una serie.
+
+9. ✅ *(hecho 2026-11-16, `respuesta`)* **Respondiendo a…** · Responder en video una pregunta frecuente mostrada como comentario
+   («¿cuánto cuesta un sistema?»). Nunca un usuario o comentario inventado: la burbuja dice «pregunta frecuente».
 
 Para cada uno: primero mostrar una imagen de muestra antes de construir la plantilla completa (30-60 min la primera vez).
 

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Inter"; src: url("__FONTS__/Inter.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Bricolage"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "SerifI"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+/* «Respondiendo a…» (tendencia: responder un comentario en video). La pregunta va en una burbuja de comentario
+   SIN usuario inventado: dice «pregunta frecuente». La respuesta se arma en tarjetas numeradas. */
+:root { --verde: #0a1410; --verde2: #13241c; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --gris: #9fb3a8; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--verde); color: var(--marfil); font-family: "Inter"; }
+#fondo { position: absolute; inset: 0; }
+#coment { position: absolute; left: 90px; top: 210px; max-width: 760px; background: var(--marfil); color: var(--verde); border-radius: 30px;
+  padding: 26px 36px 30px; box-shadow: 0 30px 80px rgba(0,0,0,.45); transform-origin: 0 0; z-index: 5; }
+#coment .de { display: flex; align-items: center; gap: 16px; font: 600 26px "Inter"; color: #4d5a53; margin-bottom: 14px; }
+#coment .de i { width: 50px; height: 50px; border-radius: 50%; background: var(--oro); display: grid; place-items: center; font: 800 28px "Bricolage";
+  font-style: normal; color: var(--verde); }
+#coment .q { font: 700 54px/1.12 "Inter"; letter-spacing: -1px; }
+#coment::after { content: ""; position: absolute; left: 60px; bottom: -22px; border: 22px solid transparent; border-top-color: var(--marfil); border-bottom: 0; }
+#escena { position: absolute; left: 90px; right: 90px; top: 580px; bottom: 300px; }
+.capa { position: absolute; inset: 0; opacity: 0; }
+#depende .g { font: 800 230px/0.9 "Bricolage"; letter-spacing: -10px; position: relative; display: inline-block; margin-top: 120px; }
+#depende .g i { position: absolute; left: -8px; right: -8px; bottom: 18px; height: 60px; background: var(--oro); z-index: -1; transform-origin: 0 50%; }
+#depende .s { font: 400 76px/1 "SerifI"; color: var(--oro); margin-top: 40px; }
+.tarj { position: absolute; left: 0; right: 0; height: 250px; border-radius: 34px; background: var(--verde3); display: flex; gap: 40px; align-items: center;
+  padding: 0 48px; box-sizing: border-box; transform-origin: 0 50%; }
+.tarj .n { font: 800 150px/1 "Bricolage"; color: var(--oro); width: 110px; text-align: center; letter-spacing: -6px; }
+.tarj .t { font: 800 58px/1.02 "Bricolage"; letter-spacing: -1.5px; }
+.tarj .t small { display: block; font: 400 32px/1.3 "Inter"; color: var(--gris); letter-spacing: 0; margin-top: 12px; }
+.tarj.on { background: var(--marfil); color: var(--verde); }
+.tarj.on .n { color: var(--verde); }
+.tarj.on .t small { color: #4d5a53; }
+#precio .tag { position: absolute; left: 140px; top: 120px; width: 520px; height: 300px; background: var(--marfil); color: var(--verde); border-radius: 30px 30px 30px 30px;
+  display: grid; place-items: center; padding-left: 60px; box-sizing: border-box; font: 800 140px "Bricolage"; letter-spacing: -4px; transform: rotate(-6deg); }
+#precio .tag::before { display: none; content: ""; position: absolute; left: 36px; top: 50%; width: 40px; height: 40px; margin-top: -20px; border-radius: 50%; background: var(--verde); }
+#precio .tachon { position: absolute; left: 110px; top: 260px; width: 600px; height: 18px; background: #e8321e; transform-origin: 0 50%; border-radius: 9px; }
+#precio .sello { position: absolute; left: 60px; top: 520px; padding: 22px 34px; border: 6px solid var(--oro); color: var(--oro); font: 800 56px/1 "Bricolage";
+  letter-spacing: -1px; transform: rotate(3deg); }
+#precio .bajo { position: absolute; left: 60px; top: 680px; font: 400 64px/1.05 "SerifI"; color: var(--marfil); }
+#fases .f { position: absolute; left: 0; right: 0; height: 200px; border-radius: 30px; border: 4px dashed #3c5a4b; box-sizing: border-box;
+  display: flex; align-items: center; padding: 0 44px; font: 700 50px "Bricolage"; color: #6d8478; gap: 30px; }
+#fases .f b { font: 700 28px "Mono"; letter-spacing: 3px; }
+#fases .f.on { border: 0; background: var(--oro); color: var(--verde); }
+#clave { position: absolute; left: 90px; bottom: 380px; font: 700 30px "Mono"; letter-spacing: 3px; color: var(--oro); }
+#cierre { position: absolute; inset: 0; background: var(--verde); opacity: 0; visibility: hidden; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; z-index: 30; }
+#cierre img { width: 260px; margin-bottom: 70px; }
+#cierre .h1 { font: 800 92px/1 "Bricolage"; color: var(--marfil); padding: 0 80px; letter-spacing: -3px; }
+#cierre .h1 em { font: 400 104px/0.9 "SerifI"; color: var(--oro); }
+#cierre .wa { margin-top: 70px; padding: 28px 50px; border-radius: 60px; background: var(--oro); color: var(--verde); font: 800 50px "Inter"; }
+#cierre .sub { margin-top: 34px; font: 500 30px "Mono"; color: var(--gris); letter-spacing: 2px; }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="coment"><div class="de"><i>?</i><span id="de"></span></div><div class="q" id="q"></div></div>
+<div id="escena">
+  <div class="capa" id="depende"><span class="g">Depende<i></i></span><div class="s" id="dependeS"></div></div>
+  <div class="capa" id="factores"></div>
+  <div class="capa" id="precio"><div class="tag">Q ???</div><div class="tachon"></div><div class="sello" id="sello"></div><div class="bajo" id="bajo"></div></div>
+  <div class="capa" id="fases"></div>
+</div>
+<div id="clave"></div>
+<div id="cierre"><img src="__LOGO__"><div class="h1" id="cierreH"></div><div class="wa" id="wa"></div><div class="sub" id="cierreS"></div></div>
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const R = __DATOS__;
+window.__ready = false;
+const L = R.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const back = (x) => { x = cl(x); const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const em = (s) => (s || "").replace(/\*([^*]+)\*/g, "<em>$1</em>").split(" / ").join("<br>");
+const fondoP = fondo($("fondo"), "puntos", { back: "#0a1410", fill: "#1d362b", size: 3, gap: 90, sizing: { offsetX: 0, offsetY: 0 } });
+$("de").textContent = R.de || "Pregunta frecuente";
+$("q").innerHTML = R.pregunta;
+$("wa").textContent = "WhatsApp " + R.whatsapp;
+$("dependeS").innerHTML = em(R.depende_s);
+$("sello").textContent = R.sello || "";
+$("bajo").innerHTML = em(R.bajo);
+const F = R.factores || [];
+$("factores").innerHTML = F.map((f, k) => `<div class="tarj" style="top:${k * 280}px"><div class="n">${k + 1}</div><div class="t">${f[0]}<small>${f[1]}</small></div></div>`).join("");
+$("fases").innerHTML = (R.fases || []).map((f, k) => `<div class="f" style="top:${80 + k * 240}px"><b>${f[0]}</b>${f[1]}</div>`).join("");
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+
+function dibujar(t) {
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio, esc = l.escena;
+  fondoP.then((f) => f.frame(0));
+  // Comentario: entra al inicio con rebote; en la pregunta se ve grande, después se achica arriba
+  const grande = esc === "pregunta";
+  const ent = back(t / 0.5);
+  // En la pregunta: grande y al centro. Luego sube y se achica para dejar lugar a la respuesta.
+  const sube = grande ? 0 : eo((t - (L[1]?.inicio ?? 0)) / 0.45);
+  const s = 1.2 - 0.32 * sube, y = 520 * (1 - sube);
+  $("coment").style.transform = `translateY(${y}px) scale(${ent * s})`;
+  $("coment").style.opacity = cl(t / 0.2);
+  const capas = { depende: "depende", factor: "factores", precio: "precio", fases: "fases" };
+  Object.entries(capas).forEach(([e, id]) => { $(id).style.opacity = esc === e ? eo(dt / 0.25) : 0; });
+  if (esc === "depende") $("depende").querySelector("i").style.transform = `scaleX(${eo((dt - 0.3) / 0.4)})`;
+  if (esc === "factor") {
+    [...$("factores").children].forEach((c, k) => {
+      const lk = L.findIndex((x) => x.escena === "factor" && x.n === k + 1);
+      const vis = lk !== -1 && lk <= i, p = lk === -1 ? 0 : (t - L[lk].inicio);
+      c.style.opacity = vis ? (k + 1 === l.n ? 1 : 0.55) : 0;
+      c.style.transform = `translateX(${vis ? (1 - eo(p / 0.35)) * 120 : 0}px) scale(${k + 1 === l.n ? 1 : 0.96})`;
+      c.classList.toggle("on", k + 1 === l.n);
+    });
+  }
+  if (esc === "precio") {
+    $("precio").querySelector(".tachon").style.transform = `rotate(-8deg) scaleX(${eo((dt - 0.4) / 0.3)})`;
+    $("sello").style.opacity = cl((dt - 0.9) / 0.15); $("sello").style.transform = `rotate(3deg) scale(${1.4 - 0.4 * back((dt - 0.9) / 0.3)})`;
+    $("bajo").style.opacity = cl((dt - 1.4) / 0.3);
+  }
+  if (esc === "fases") {
+    [...$("fases").children].forEach((c, k) => { c.style.opacity = cl((dt - k * 0.25) / 0.25);
+      c.classList.toggle("on", k === 0 && dt > 0.9); });
+  }
+  $("clave").textContent = l.clave || "";
+  $("clave").style.opacity = cl(dt / 0.3);
+  const fin = esc === "cierre";
+  $("cierre").style.opacity = fin ? eo(dt / 0.35) : 0;
+  $("cierre").style.visibility = fin ? "visible" : "hidden";
+  if (fin) { $("cierreH").innerHTML = em(l.frase); $("cierreS").textContent = l.sub || ""; }
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>

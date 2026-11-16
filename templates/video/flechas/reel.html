@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Inter"; src: url("__FONTS__/Inter.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Bricolage"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "SerifI"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+@font-face { font-family: "Mano"; src: url("__FONTS__/Caveat.ttf"); font-weight: 400 700; }
+/* Flechas rojas (tendencia nov-2026): pantallas de una app, recreadas, con flechas y círculos rojos «a mano»
+   sobre el botón que casi nadie conoce. El público copia los clics. Arriba: paso y palabra clave (no subtítulos). */
+:root { --verde: #0a1410; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --rojo: #e8321e;
+  --app: #ffffff; --appgris: #f0f2f5; --tx: #111b21; --tx2: #667781; --acento: #1aa260; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--marfil); font-family: "Inter"; }
+#fondo { position: absolute; inset: 0; }
+#paso { position: absolute; left: 90px; top: 150px; font: 700 30px "Mono"; letter-spacing: 3px; color: var(--verde); }
+#paso b { background: var(--verde); color: var(--oro); padding: 6px 14px; margin-right: 14px; }
+#clave { position: absolute; left: 90px; right: 90px; top: 215px; font: 800 92px/0.98 "Bricolage"; letter-spacing: -3px; color: var(--verde); }
+#clave em { font: 400 104px/0.9 "SerifI"; letter-spacing: -1px; }
+#clave .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 8px; margin-bottom: -8px; }
+#clave .w span { display: inline-block; }
+#tel { position: absolute; left: 190px; top: 470px; width: 700px; height: 1240px; border-radius: 84px; background: #0b0f0d;
+  box-shadow: 0 50px 120px rgba(10,20,16,.35), inset 0 0 0 3px #2a3a33; }
+#pantalla { position: absolute; inset: 18px; border-radius: 68px; overflow: hidden; background: var(--app); }
+.estado { position: absolute; top: 0; left: 0; right: 0; height: 74px; display: flex; justify-content: space-between; align-items: center;
+  padding: 0 56px; color: var(--tx); font: 600 28px "Inter"; z-index: 5; }
+.isla { position: absolute; top: 18px; left: 50%; width: 190px; height: 50px; margin-left: -95px; background: #000; border-radius: 30px; z-index: 6; }
+.vista { position: absolute; inset: 0; opacity: 0; background: var(--app); }
+.vista.on { opacity: 1; }
+.cab { position: absolute; top: 74px; left: 0; right: 0; height: 120px; display: flex; align-items: center; padding: 0 36px; gap: 22px;
+  font: 700 44px "Inter"; color: var(--tx); border-bottom: 1px solid #e9edef; }
+.cab .fl { font: 400 46px "Inter"; color: var(--tx); }
+.cab .esp { flex: 1; }
+.cab .ic { font: 700 44px "Inter"; color: var(--tx); width: 60px; text-align: center; }
+.lista { position: absolute; top: 210px; left: 0; right: 0; }
+.chat { display: flex; align-items: center; gap: 24px; padding: 20px 36px; }
+.chat .av { width: 92px; height: 92px; border-radius: 50%; flex: none; }
+.chat .t { flex: 1; font: 600 32px "Inter"; color: var(--tx); }
+.chat .t small { display: block; font: 400 26px "Inter"; color: var(--tx2); margin-top: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 430px; }
+.chat .hr { font: 400 22px "Inter"; color: var(--tx2); align-self: flex-start; margin-top: 8px; }
+.menu { position: absolute; top: 150px; right: 22px; width: 470px; background: #fff; border-radius: 22px; box-shadow: 0 16px 50px rgba(0,0,0,.22);
+  padding: 14px 0; transform-origin: 100% 0; z-index: 8; }
+.menu div { padding: 22px 34px; font: 400 30px "Inter"; color: var(--tx); }
+.opc { display: flex; align-items: center; gap: 28px; padding: 26px 40px; font: 400 32px "Inter"; color: var(--tx); }
+.opc i { width: 56px; height: 56px; border-radius: 16px; background: var(--appgris); flex: none; display: grid; place-items: center;
+  font: 700 26px "Inter"; font-style: normal; color: var(--acento); }
+.opc small { display: block; font: 400 24px "Inter"; color: var(--tx2); margin-top: 4px; }
+.sec { padding: 26px 40px 6px; font: 600 24px "Inter"; color: var(--acento); letter-spacing: 1px; }
+.vacio { position: absolute; top: 420px; left: 70px; right: 70px; text-align: center; font: 400 30px/1.4 "Inter"; color: var(--tx2); }
+.fab { position: absolute; right: 40px; bottom: 60px; width: 130px; height: 130px; border-radius: 36px; background: var(--acento);
+  color: #fff; font: 300 84px/130px "Inter"; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+.campo { margin: 26px 40px 0; border-bottom: 3px solid var(--acento); padding: 12px 0 18px; }
+.campo label { display: block; font: 600 24px "Inter"; color: var(--acento); margin-bottom: 10px; }
+.campo div { font: 400 34px/1.35 "Inter"; color: var(--tx); min-height: 46px; }
+.cur { display: inline-block; width: 3px; height: 40px; background: var(--acento); vertical-align: middle; margin-left: 2px; }
+.ayuda { margin: 14px 40px 0; font: 400 24px/1.4 "Inter"; color: var(--tx2); }
+.guardar { position: absolute; right: 40px; top: 102px; padding: 16px 30px; border-radius: 40px; background: var(--acento); color: #fff; font: 700 28px "Inter"; }
+.fondochat { position: absolute; top: 194px; left: 0; right: 0; bottom: 0; background: #efeae2; }
+.msgs { position: absolute; top: 230px; left: 0; right: 0; bottom: 140px; padding: 0 26px; display: flex; flex-direction: column; justify-content: flex-end; gap: 16px; }
+.m { max-width: 76%; padding: 20px 26px 12px; border-radius: 26px; font: 400 32px/1.3 "Inter"; color: var(--tx); background: #fff;
+  align-self: flex-start; border-top-left-radius: 6px; transform-origin: 0 100%; }
+.m.yo { align-self: flex-end; background: #d9fdd3; border-top-left-radius: 26px; border-top-right-radius: 6px; transform-origin: 100% 100%; }
+.m .h { display: block; text-align: right; font: 400 20px "Inter"; color: var(--tx2); margin-top: 6px; }
+.barra { position: absolute; left: 0; right: 0; bottom: 0; height: 130px; display: flex; align-items: center; gap: 16px; padding: 0 22px; background: #efeae2; }
+.entrada { flex: 1; height: 86px; border-radius: 44px; background: #fff; display: flex; align-items: center; padding: 0 32px; font: 400 32px "Inter"; color: var(--tx); }
+.entrada .ph { color: var(--tx2); }
+.env { width: 86px; height: 86px; border-radius: 50%; background: var(--acento); }
+.sug { position: absolute; left: 22px; right: 22px; bottom: 140px; background: #fff; border-radius: 22px; box-shadow: 0 10px 40px rgba(0,0,0,.18);
+  padding: 10px 0; transform-origin: 50% 100%; }
+.sug div { padding: 18px 30px; font: 400 28px "Inter"; color: var(--tx); }
+.sug b { color: var(--acento); margin-right: 14px; }
+/* Cierre */
+#cierre { position: absolute; inset: 0; background: var(--verde); opacity: 0; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; z-index: 30; }
+#cierre img { width: 260px; margin-bottom: 70px; }
+#cierre .h1 { font: 800 92px/1 "Bricolage"; color: var(--marfil); padding: 0 80px; letter-spacing: -3px; }
+#cierre .h1 em { font: 400 104px/0.9 "SerifI"; color: var(--oro); }
+#cierre .wa { margin-top: 70px; padding: 28px 50px; border-radius: 60px; background: var(--oro); color: var(--verde); font: 800 50px "Inter"; }
+#cierre .guarda { margin-top: 34px; font: 500 30px "Mono"; color: #9fb3a8; letter-spacing: 2px; }
+/* Marcas rojas (sobre todo) */
+#marcas { position: absolute; inset: 0; width: 1080px; height: 1920px; z-index: 20; pointer-events: none; overflow: visible; }
+#nota { position: absolute; font: 700 58px "Mano"; color: var(--rojo); z-index: 21; white-space: nowrap; transform-origin: 0 50%; }
+#aviso { position: absolute; left: 90px; bottom: 120px; font: 500 22px "Mono"; color: #6b7570; letter-spacing: 1px; }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="paso"></div>
+<div id="clave"></div>
+<div id="tel"><div id="pantalla">
+  <div class="isla"></div>
+  <div class="estado"><span>9:41</span><span>▮▮▮ 5G</span></div>
+
+  <div class="vista" id="v-chats">
+    <div class="cab"><span>Chats</span><span class="esp"></span><span class="ic">⌕</span><span class="ic" data-id="puntos">⋮</span></div>
+    <div class="lista" id="lista"></div>
+    <div class="menu" id="menu">
+      <div>Nueva difusión</div><div>Etiquetas</div><div>Mensajes destacados</div>
+      <div data-id="herramientas">Herramientas para la empresa</div><div>Ajustes</div>
+    </div>
+  </div>
+
+  <div class="vista" id="v-herramientas">
+    <div class="cab"><span class="fl">←</span><span style="font-size:38px">Herramientas para la empresa</span></div>
+    <div class="lista">
+      <div class="sec">TU EMPRESA</div>
+      <div class="opc"><i>◉</i><div>Perfil de empresa<small>Dirección, horario y sitio web</small></div></div>
+      <div class="opc"><i>▦</i><div>Catálogo<small>Mostrá tus productos</small></div></div>
+      <div class="sec">MENSAJES</div>
+      <div class="opc"><i>☺</i><div>Mensaje de bienvenida</div></div>
+      <div class="opc"><i>☾</i><div>Mensaje de ausencia</div></div>
+      <div class="opc" data-id="rapidas"><i>⚡</i><div>Respuestas rápidas<small>Reutilizá los mensajes que más mandás</small></div></div>
+      <div class="opc"><i>◆</i><div>Etiquetas</div></div>
+    </div>
+  </div>
+
+  <div class="vista" id="v-rapidas">
+    <div class="cab"><span class="fl">←</span><span>Respuestas rápidas</span></div>
+    <div class="vacio">Todavía no tenés respuestas rápidas.<br>Tocá <b>+</b> para crear la primera.</div>
+    <div class="fab" data-id="mas">+</div>
+  </div>
+
+  <div class="vista" id="v-editar">
+    <div class="cab"><span class="fl">✕</span><span>Respuesta rápida</span></div>
+    <div class="guardar" data-id="guardar">Guardar</div>
+    <div class="lista">
+      <div class="campo" data-id="mensaje"><label>Mensaje</label><div id="txtMsg"></div></div>
+      <div class="campo" data-id="atajo"><label>Atajo</label><div id="txtAtajo"></div></div>
+      <div class="ayuda">En un chat, escribí «/» y el atajo para usarla.</div>
+    </div>
+  </div>
+
+  <div class="vista" id="v-usar">
+    <div class="cab"><span class="fl">←</span><span class="chat" style="padding:0;gap:18px"><span class="av" style="width:70px;height:70px;background:#c7d3cc"></span>
+      <span class="t" style="font-size:32px" id="cliente"></span></span></div>
+    <div class="fondochat"></div>
+    <div class="msgs" id="msgs"></div>
+    <div class="sug" id="sug" data-id="sugerencia"></div>
+    <div class="barra"><div class="entrada" id="entrada"></div><div class="env"></div></div>
+  </div>
+</div></div>
+
+<svg id="marcas" viewBox="0 0 1080 1920"><path id="flecha" fill="none" stroke="#e8321e" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="punta" fill="none" stroke="#e8321e" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="circ" fill="none" stroke="#e8321e" stroke-width="10" stroke-linecap="round"/></svg>
+<div id="nota"></div>
+<div id="aviso"></div>
+<div id="cierre"><img src="__LOGO__"><div class="h1" id="cierreH"></div><div class="wa" id="wa"></div><div class="guarda">GUARDALO PARA DESPUÉS</div></div>
+
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const R = __DATOS__;
+window.__ready = false;
+const L = R.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const back = (x) => { x = cl(x); const c = 1.7; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const fondoP = fondo($("fondo"), "papel", { back: "#fefcf3", paper: "#fefcf3", shadow: "#d6ceb4", folds: 0.25, crumples: 0.15, roughness: 0.25 });
+const em = (s) => (s || "").replace(/\*([^*]+)\*/g, "<em>$1</em>");
+$("aviso").textContent = R.aviso || "";
+$("wa").textContent = "WhatsApp " + R.whatsapp;
+const colores = ["#c7d3cc", "#e6d7a8", "#b9cfe0", "#e3c0b8", "#cfd8b0", "#d8c7e3"];
+$("lista").innerHTML = (R.chats || []).map((c, i) => `<div class="chat"><span class="av" style="background:${colores[i % 6]}"></span>
+  <span class="t">${c[0]}<small>${c[1]}</small></span><span class="hr">${c[2]}</span></div>`).join("");
+$("cliente").textContent = R.cliente || "Cliente";
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+
+// Flecha que entra desde afuera del teléfono hacia el objetivo; círculo a mano alrededor del objetivo.
+function marcar(id, p, lado, nota) {
+  const el = id && document.querySelector(`.vista.on [data-id="${id}"]`);
+  const f = $("flecha"), pu = $("punta"), c = $("circ");
+  if (!el || p <= 0) { [f, pu, c].forEach((x) => x.setAttribute("d", "")); $("nota").style.opacity = 0; return; }
+  const r = el.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2, rx = r.width / 2 + 34, ry = r.height / 2 + 26;
+  // círculo: una vuelta y un poco más, ligeramente torcido
+  const pc = eo((p - 0.35) / 0.45), n = 40, vueltas = 1.12 * pc, pts = [];
+  for (let k = 0; k <= n; k++) { const a = -2.2 + vueltas * 2 * Math.PI * k / n, w = 1 + 0.04 * Math.sin(a * 3);
+    pts.push(`${(cx + rx * w * Math.cos(a)).toFixed(1)},${(cy + ry * w * Math.sin(a) - 6 * (k / n)).toFixed(1)}`); }
+  c.setAttribute("d", pc > 0 ? "M" + pts.join(" L") : "");
+  // flecha: curva desde el borde de la pantalla
+  const izq = lado === "izq", sx = izq ? 40 : 1040, sy = cy + (cy > 1100 ? -260 : 220);
+  const ex = izq ? r.left - 30 : r.right + 30, ey = cy + (sy > cy ? 16 : -16);
+  const mx = (sx + ex) / 2, my = Math.min(sy, ey) - 90;
+  f.setAttribute("d", `M${sx},${sy} Q${mx},${my} ${ex},${ey}`);
+  const len = f.getTotalLength(), pf = eo(p / 0.35);
+  f.style.strokeDasharray = len; f.style.strokeDashoffset = len * (1 - pf);
+  if (pf > 0.98) { const a = Math.atan2(ey - my, ex - mx), k = 46, s = 0.55;
+    pu.setAttribute("d", `M${ex - k * Math.cos(a - s)},${ey - k * Math.sin(a - s)} L${ex},${ey} L${ex - k * Math.cos(a + s)},${ey - k * Math.sin(a + s)}`);
+  } else pu.setAttribute("d", "");
+  const nt = $("nota"); nt.textContent = nota || ""; nt.style.opacity = nota ? eo((p - 0.6) / 0.25) : 0;
+  nt.style.left = (izq ? 30 : Math.max(40, sx - 20 - nt.offsetWidth)) + "px"; nt.style.top = (sy + (sy > cy ? 20 : -90)) + "px";
+  nt.style.transform = `rotate(-4deg) scale(${0.8 + 0.2 * back((p - 0.6) / 0.25)})`;
+}
+
+let armada = -1;
+function armarClave(l) {
+  let dentro = false;
+  $("clave").innerHTML = (l.clave || "").split(/\s+/).map((w) => {
+    if (w === "/") return "<br>";
+    if (w.startsWith("*")) dentro = true; const a = dentro; if (/\*[.,:;?!…]*$/.test(w)) dentro = false;
+    const x = w.replace(/\*/g, ""); return `<span class="w"><span>${a ? `<em>${x}</em>` : x}</span></span>`; }).join(" ");
+}
+function escribir(txt, p) { const n = Math.round((txt || "").length * cl(p)); return (txt || "").slice(0, n); }
+
+function dibujar(t) {
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio, p = cl(dt / l.duracion);
+  if (armada !== i) { armarClave(l); armada = i; }
+  [...$("clave").querySelectorAll(".w span")].forEach((s, j) => { s.style.transform = `translateY(${(1 - eo((dt - j * 0.06) / 0.35)) * 110}%)`; });
+  $("paso").innerHTML = l.paso ? `<b>${l.paso}</b>${R.serie || ""}` : (R.serie || "");
+  // Vista activa
+  const vista = l.vista || "chats";
+  document.querySelectorAll(".vista").forEach((v) => v.classList.toggle("on", v.id === "v-" + vista));
+  const ent = eo(dt / 0.3);
+  $("pantalla").style.transform = `translateX(${(1 - ent) * (i === 0 ? 0 : 60)}px)`;
+  $("pantalla").style.opacity = 0.3 + 0.7 * ent;
+  // Menú de los tres puntos
+  const menu = vista === "chats" && l.menu;
+  $("menu").style.display = menu ? "block" : "none";
+  if (menu) $("menu").style.transform = `scale(${eo((dt - 0.15) / 0.25)})`;
+  // Formulario
+  if (vista === "editar") {
+    const pm = cl((dt - 0.2) / (l.duracion * 0.7));
+    const msg = l.escribe === "mensaje" ? escribir(R.respuesta, pm) : (l.escribe === "atajo" || l.escribe === "listo" ? R.respuesta : "");
+    const at = l.escribe === "atajo" ? escribir(R.atajo, pm) : (l.escribe === "listo" ? R.atajo : "");
+    const cur = Math.floor(t * 2.4) % 2 ? "" : '<span class="cur"></span>';
+    $("txtMsg").innerHTML = msg + (l.escribe === "mensaje" ? cur : "");
+    $("txtAtajo").innerHTML = at + (l.escribe === "atajo" ? cur : "");
+  }
+  // Uso en un chat: el cliente pregunta, escribís «/», aparece la sugerencia y se manda
+  if (vista === "usar") {
+    const etapa = l.etapa || "barra";
+    const enviado = etapa === "enviado";
+    const msgs = [`<div class="m">${R.pregunta}<span class="h">10:14</span></div>`];
+    if (enviado) msgs.push(`<div class="m yo" style="transform:scale(${back(dt / 0.35)})">${R.respuesta}<span class="h">10:14 ✓✓</span></div>`);
+    $("msgs").innerHTML = msgs.join("");
+    const escrito = enviado ? "" : escribir(R.atajo, (dt - 0.3) / 0.8);
+    $("entrada").innerHTML = escrito ? escrito : '<span class="ph">Mensaje</span>';
+    const verSug = !enviado && escrito.length >= 1;
+    $("sug").style.display = verSug ? "block" : "none";
+    $("sug").innerHTML = `<div><b>${R.atajo}</b>${R.respuesta.slice(0, 34)}…</div>`;
+    $("sug").style.transform = `scaleY(${eo((dt - 0.4) / 0.2)})`;
+  }
+  // Marcas rojas: entran después de que la vista se asienta
+  const pm = cl((dt - (l.marca_t ?? 0.35)) / 1.1);
+  marcar(l.marca, (vista === "usar" && !$("sug").offsetParent && l.marca === "sugerencia") ? 0 : pm, l.lado || "der", l.nota);
+  // Cierre
+  const fin = l.escena === "cierre";
+  $("cierre").style.opacity = fin ? eo(dt / 0.35) : 0;
+  $("cierre").style.visibility = fin ? "visible" : "hidden";
+  if (fin) $("cierreH").innerHTML = em(l.frase).split(" / ").join("<br>");
+}
+// El papel no se mueve: se congela en una imagen fija. El lienzo WebGL vivo dejaba parches claros
+// detrás del texto que cambia al recorrer los cuadros en orden.
+{ const f = await fondoP; f.frame(0); await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  const cv = $("fondo").querySelector("canvas");
+  try { const url = cv.toDataURL("image/png"); if (url.length > 1000) {
+    $("fondo").style.background = `url(${url}) center / cover`; cv.style.display = "none"; } } catch (e) { console.error(e); } }
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>

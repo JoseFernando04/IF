@@ -140,7 +140,7 @@ piezas:
   pieza: post-2-este-o-este
   tipo: post
   tema: ¿A o B? Así es tu cierre de mes 📅
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-10'
@@ -188,9 +188,11 @@ piezas:
   pieza: post-2-diccionario-vol2
   tipo: post
   tema: 'Diccionario del dueño de pyme, vol. 2: ahora en la oficina 📖😅'
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-15'
 - dia: '2026-11-11'
   pieza: post-3-recibo-cobrar
   tipo: post
@@ -202,9 +204,11 @@ piezas:
   pieza: reel-A-chat-pedido-audio
   tipo: reel
   tema: El pedido que se perdió en un audio
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-15'
 - dia: '2026-11-11'
   pieza: reel-B-top3-a-mano
   tipo: reel
@@ -304,6 +308,48 @@ piezas:
   pieza: reel-C-sistema-viernes
   tipo: reel
   tema: Viernes, 5:30 p. m.
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-16'
+  pieza: post-1-checklist-antes-de-firmar
+  tipo: post
+  tema: 5 preguntas que tenés que hacer antes de pagar por un sistema 📝
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-16'
+  pieza: post-2-frase-yo-se-donde
+  tipo: post
+  tema: '«Yo sé dónde está todo»: la frase que todo dueño dijo alguna vez 🧠'
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-16'
+  pieza: post-3-diccionario-vol3
+  tipo: post
+  tema: 'Diccionario del dueño de pyme, vol. 3: edición bodega y mostrador 📖📦'
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-16'
+  pieza: reel-A-flechas-whatsapp-business
+  tipo: reel
+  tema: La función de WhatsApp Business que casi nadie usa
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-16'
+  pieza: reel-B-respondiendo-cuanto-cuesta
+  tipo: reel
+  tema: Respondiendo - ¿cuánto cuesta un sistema a la medida?
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-16'
+  pieza: reel-C-top3-todavia-no
+  tipo: reel
+  tema: Tres señales de que todavía no necesitás un sistema
   estado: pendiente
   redes: []
   fecha: null

@@ -1,0 +1,63 @@
+# Reel B · «Respondiendo a…» (formato NUEVO: responder un comentario en video). Pilar: llamado a la acción / educativo.
+# La pregunta es frecuente de verdad («¿cuánto cuesta?»), pero se muestra como «pregunta frecuente», sin usuario inventado.
+# Sin cifras: el precio se explica por factores y se invita al diagnóstico sin compromiso.
+# escena: pregunta | depende | factor (n) | precio | fases | cierre (frase, sub)
+formato: respuesta
+titulo: Respondiendo - ¿cuánto cuesta un sistema a la medida?
+audio: assets/voice/elevenlabs/2026-11-16-reel-B.mp3
+salida: data/dias/2026-11-16/reel-B
+musica: inspired
+musica_db: -23
+whatsapp: "+502 3808 9808"
+de: "Pregunta frecuente · nos la hacen seguido"
+pregunta: "¿Y cuánto cuesta un sistema a la medida? 🤔"
+depende_s: "…y te decimos *de qué.*"
+factores:
+  - ["Cuántos procesos", "Inventario solo no es lo mismo que inventario, ventas y cobros."]
+  - ["Cuántas personas", "Quiénes lo usan y desde dónde: bodega, ruta, oficina."]
+  - ["Con qué se conecta", "Si tiene que hablar con lo que ya usás, como tu facturación."]
+sello: "SIN PRECIO AL AIRE"
+bajo: "Primero vemos / *tu negocio.*"
+fases:
+  - ["PRIMERO", "Lo más urgente"]
+  - ["DESPUÉS", "Lo que sigue"]
+  - ["CUANDO QUERÁS", "El resto"]
+caption: >-
+  La pregunta que más nos hacen, contestada sin rodeos (y sin letra pequeña). 💬💸
+  Un sistema no se cotiza como una camisa de talla única: cambia con lo que tu negocio de verdad necesita.
+  ¿Querés saber cuánto costaría el tuyo? Escribinos al WhatsApp +502 3808 9808 y lo vemos juntos, sin compromiso.
+hashtags: [SoftwareAMedida, PymesGuatemala, Digitalizacion, PreguntasFrecuentes, NegociosGT]
+lineas:
+  - texto: Nos preguntan seguido cuánto cuesta un sistema a la medida.
+    escena: pregunta
+    sfx: [[0.05, pop]]
+  - texto: La respuesta honesta es que depende, y te explicamos de qué.
+    escena: depende
+    sfx: [[0.3, thud]]
+  - texto: "Uno: cuántos procesos querés ordenar."
+    escena: factor
+    n: 1
+    clave: "FACTOR 1 / 3"
+    sfx: [[0.05, whoosh]]
+  - texto: "Dos: cuántas personas lo van a usar, y desde dónde."
+    escena: factor
+    n: 2
+    clave: "FACTOR 2 / 3"
+    sfx: [[0.05, whoosh]]
+  - texto: "Tres: si se tiene que conectar con algo que ya usás, como tu facturación."
+    escena: factor
+    n: 3
+    clave: "FACTOR 3 / 3"
+    sfx: [[0.05, whoosh]]
+  - texto: Por eso no damos un precio al aire. Primero vemos tu negocio, sin compromiso.
+    escena: precio
+    sfx: [[0.3, marker], [0.45, thud]]
+  - texto: Y empezamos por lo más urgente, para que no pagués todo de un solo.
+    escena: fases
+    clave: "POR PARTES"
+    sfx: [[0.1, tick], [0.3, tick], [0.5, pop]]
+  - texto: Escribinos y te decimos cuánto costaría el tuyo.
+    escena: cierre
+    frase: "¿Cuánto costaría / *el tuyo?*"
+    sub: "DIAGNÓSTICO SIN COMPROMISO"
+    sfx: [[0.2, pop]]

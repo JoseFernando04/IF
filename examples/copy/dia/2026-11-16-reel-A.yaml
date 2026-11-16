@@ -1,0 +1,99 @@
+# Reel A · Flechas rojas (formato NUEVO, tendencia nov-2026: ~34× lo normal en negocios). Pilar: tips.
+# Pantallas de WhatsApp Business recreadas (sin logo) con flechas y círculos rojos sobre el botón que casi nadie usa.
+# ⚠ Antes de grabar: verificar cada paso en la app real del celular del equipo (Android: ⋮ › Herramientas para la empresa;
+#   en iPhone es Configuración › Herramientas para la empresa). Si cambia algún nombre, se corrige aquí.
+# vista: chats (menu: true) | herramientas | rapidas | editar (escribe: mensaje|atajo|listo) | usar (etapa: barra|enviado)
+# marca: data-id del objetivo (puntos, herramientas, rapidas, mas, mensaje, atajo, guardar, sugerencia) · lado: izq|der · nota: texto a mano
+formato: flechas
+titulo: La función de WhatsApp Business que casi nadie usa
+audio: assets/voice/elevenlabs/2026-11-16-reel-A.mp3
+salida: data/dias/2026-11-16/reel-A
+musica: digital-lemonade
+musica_db: -23
+whatsapp: "+502 3808 9808"
+serie: "WHATSAPP BUSINESS"
+aviso: "Pantallas recreadas · pueden variar según tu versión"
+cliente: "Cliente nuevo"
+pregunta: "Buenas, ¿a qué hora abren mañana? 🙏"
+respuesta: "¡Buenas! Abrimos de lunes a sábado, de 8:00 a 18:00 🕗"
+atajo: "/horario"
+chats:
+  - ["Cliente nuevo", "¿A qué hora abren?", "10:14"]
+  - ["Distribuidora", "Le confirmo el pedido", "10:02"]
+  - ["Cliente frecuente", "¿Siguen abiertos?", "9:47"]
+  - ["Proveedor", "📄 Factura.pdf", "9:30"]
+  - ["Cliente", "¿Dónde quedan?", "Ayer"]
+  - ["Cliente", "¿Hacen envíos?", "Ayer"]
+caption: >-
+  Hay un botón escondido en WhatsApp Business que te ahorra escribir lo mismo todo el día. ⚡📲
+  Funciona con horarios, precios, ubicación, datos para depositar… lo que más te pregunten.
+  Guardá este reel para hacerlo con calma, y si querés que tu negocio conteste y anote los pedidos solo, escribinos al WhatsApp +502 3808 9808.
+hashtags: [WhatsAppBusiness, TipsDeNegocio, PymesGuatemala, AtencionAlCliente, NegociosGT]
+lineas:
+  - texto: Si contestás lo mismo veinte veces al día, esta función te va a salvar.
+    vista: chats
+    clave: "Lo mismo, / *veinte veces.*"
+    sfx: [[0.05, whoosh]]
+  - texto: Abrí los tres puntitos y entrá a Herramientas para la empresa.
+    vista: chats
+    menu: true
+    paso: "PASO 1"
+    clave: "Herramientas / *para la empresa*"
+    marca: herramientas
+    lado: izq
+    nota: "¡aquí!"
+    sfx: [[0.1, pop], [0.45, marker]]
+  - texto: Tocá Respuestas rápidas.
+    vista: herramientas
+    paso: "PASO 2"
+    clave: "Respuestas / *rápidas*"
+    marca: rapidas
+    lado: der
+    marca_t: 0.15
+    sfx: [[0.2, marker]]
+  - texto: Y después, el botón de más.
+    vista: rapidas
+    paso: "PASO 3"
+    clave: "El botón *+*"
+    marca: mas
+    lado: izq
+    marca_t: 0.1
+    sfx: [[0.3, marker]]
+  - texto: Escribí lo que más te preguntan, por ejemplo tu horario.
+    vista: editar
+    escribe: mensaje
+    paso: "PASO 4"
+    clave: "Lo que más / *te preguntan*"
+    marca: mensaje
+    lado: der
+    marca_t: 1.2
+    sfx: [[0.15, tick], [0.35, tick], [0.55, tick]]
+  - texto: Ponele un atajo corto, como barra horario, y guardalo.
+    vista: editar
+    escribe: atajo
+    paso: "PASO 5"
+    clave: "Un atajo / *corto*"
+    marca: atajo
+    lado: izq
+    nota: "/horario"
+    marca_t: 0.6
+    sfx: [[0.3, tick], [0.85, pop]]
+  - texto: Ahora, en cualquier chat, escribís la barra y el atajo…
+    vista: usar
+    etapa: barra
+    clave: "Escribís / *la barra…*"
+    marca: sugerencia
+    lado: der
+    marca_t: 0.9
+    sfx: [[0.3, tick], [0.6, marker]]
+  - texto: y la respuesta sale completa, en un toque.
+    vista: usar
+    etapa: enviado
+    clave: "*En un toque.*"
+    sfx: [[0.05, pop]]
+  - texto: Guardalo para después. Y si querés que tu negocio conteste solo, escribinos.
+    escena: cierre
+    vista: usar
+    etapa: enviado
+    frase: "Que tu negocio / *conteste solo.*"
+    sfx: [[0.2, pop]]

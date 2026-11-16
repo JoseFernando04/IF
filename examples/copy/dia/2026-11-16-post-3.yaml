@@ -1,0 +1,34 @@
+# Post 3 · Diccionario del dueño de pyme, vol. 3 (carrusel de 5). Pilar: tips (con humor, bodega y ventas).
+formato: diccionario
+salida: data/dias/2026-11-16/post-3
+titulo_tiktok: "Diccionario del dueño de pyme, vol. 3: edición bodega y mostrador 📖📦"
+whatsapp: "+502 3808 9808"
+etiqueta: "DICCIONARIO DEL DUEÑO DE PYME · VOL. 3"
+titulo: "Palabras de <em>bodega y mostrador.</em>"
+bajada: "Volvió el diccionario. Deslizá →"
+entradas:
+  - palabra: "Ahí debe estar"
+    fon: "/a·hí de·be es·tar/"
+    tipo: "LOC. ADV."
+    def: "Ubicación exacta de un producto según alguien que no lo ha visto desde marzo."
+    ej: "«Ahí debe estar, atrás de las cajas. O adelante.»"
+    cura: "Inventario con ubicación, a la vista del celular."
+  - palabra: "Precio especial"
+    fon: "/pre·cio es·pe·cial/"
+    tipo: "S. M."
+    def: "Precio que cada vendedor recuerda distinto para el mismo cliente."
+    ej: "«A él siempre se lo dejamos en… ¿cuánto era?»"
+    cura: "Una sola lista de precios para todo el equipo."
+  - palabra: "Ya viene en camino"
+    fon: "/ya vie·ne en ca·mi·no/"
+    tipo: "LOC. VERBAL"
+    def: "Estado de un pedido del que nadie sabe en qué camión salió."
+    ej: "«Ya viene en camino. Desde el martes.»"
+    cura: "Seguimiento de entregas que el cliente puede ver."
+cierre: "¿Cuál se dijo <em>hoy</em> en tu negocio?"
+cierre_bajada: "Contanos en los comentarios. Y si alguna ya te cansó, escribinos: también tiene cura."
+caption: >-
+  El diccionario volvió, y esta vez se metió a la bodega y al mostrador. 📖📦
+  Deslizá, reíte y etiquetá a quien dice «ahí debe estar» sin levantarse de la silla.
+  Si querés curarte de alguna, escribinos al WhatsApp +502 3808 9808.
+hashtags: [HumorEmprendedor, PymesGuatemala, DueñosDeNegocio, Inventario, Chapines]

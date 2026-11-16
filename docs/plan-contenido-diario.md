@@ -66,6 +66,8 @@ VideosInstagram/                → lo que ya se publicó
 | Texto diminuto en loop | ✅ listo (`diminuto`, desde 2026-11-12) | 5-6 s: frase grande en voz + remate en letra minúscula que obliga a pausar. El detalle va en la descripción |
 | Cargando… | ✅ listo (`cargando`, desde 2026-11-15) | El negocio trabado en una barra de carga sobre el caos; golpe y corte seco al resultado listo |
 | Lo que pediste vs. lo que te entregaron | ✅ listo (`pediste`, desde 2026-11-15) | Expectativa (pedido sencillo) → giro (14 pantallas, manual, contraseña) → cómo lo hace IF |
+| Flechas rojas | ✅ listo (`flechas`, desde 2026-11-16) | Pantallas de una app recreadas (sin logo) con flechas y círculos rojos a mano sobre el botón poco conocido; paso a paso para guardar. Verificar cada paso en la app real antes de grabar |
+| Respondiendo a… | ✅ listo (`respuesta`, desde 2026-11-16) | Una pregunta frecuente en burbuja de comentario (sin usuario inventado) y la respuesta en tarjetas numeradas. Sin cifras |
 | Papel y libreta (estilo A) | prototipo | Papel, marcador y escritura a mano |
 
 ### Posts
@@ -126,6 +128,7 @@ En la rutina diaria: de las 3 opciones de reel, **una** puede ser `cine`; las to
 | 2026-11-11 | A chat (pedido perdido en un audio) ✅ producido · B top 3 (tareas a mano) ✅ producido · C POV (el que sabe todo se fue de vacaciones) ✅ producido | 1 infografía (taller: orden de trabajo) · 2 diccionario vol. 2 (oficina) · 3 recibo (cobrar tarde) |
 | 2026-11-12 | A decilo así (cobros: «ya te deposito») ✅ producido · B tráiler (el conteo de inventario) ✅ producido · C texto diminuto (no necesita más horas) ✅ producido — los tres formatos nuevos | 1 carrusel documental (el impuesto del desorden) · 2 checklist (cerrar el año) · 3 frase (antes de venderme, escuchame) |
 | 2026-11-15 | A cargando… (cotización que llega tarde, formato nuevo) · B lo que pediste vs. lo que te entregaron (formato nuevo) · C pantalla de sistema (viernes 5:30: equipos, cobros, entregas) | 1 este o este (cuánto vendiste hoy) · 2 infografía (herramientas con QR) · 3 recibo (tu diciembre) |
+| 2026-11-16 | A flechas rojas (respuestas rápidas de WhatsApp Business, formato nuevo) ✅ producido · B respondiendo a… (¿cuánto cuesta un sistema?, formato nuevo) ✅ producido · C top 3 (señales de que todavía NO necesitás un sistema) ✅ producido | 1 checklist (5 preguntas antes de pagar por un sistema) · 2 frase (yo sé dónde está todo) · 3 diccionario vol. 3 (bodega y mostrador) |
 
 ## Reglas de contenido (siempre)
 
