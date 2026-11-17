@@ -222,9 +222,11 @@ piezas:
   pieza: reel-C-pov-juan-vacaciones
   tipo: reel
   tema: POV - el que sabe todo se fue de vacaciones
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-16'
 - dia: '2026-11-12'
   pieza: post-1-impuesto-desorden
   tipo: post
@@ -238,9 +240,11 @@ piezas:
   pieza: post-2-checklist-fin-de-ano
   tipo: post
   tema: 5 cosas para dejar en orden antes de que se acabe el año ✅
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-16'
 - dia: '2026-11-12'
   pieza: post-3-frase-escuchar
   tipo: post
@@ -336,7 +340,7 @@ piezas:
   pieza: reel-A-flechas-whatsapp-business
   tipo: reel
   tema: La función de WhatsApp Business que casi nadie usa
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-16'
@@ -350,6 +354,48 @@ piezas:
   pieza: reel-C-top3-todavia-no
   tipo: reel
   tema: Tres señales de que todavía no necesitás un sistema
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-17'
+  pieza: post-1-este-o-este-precios
+  tipo: post
+  tema: ¿A o B? ¿Dónde vive la lista de precios de tu negocio? 🏷️
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-17'
+  pieza: post-2-infografia-pedido-entrega
+  tipo: post
+  tema: Del WhatsApp a la puerta del cliente sin que se pierda ni un pedido 🚚
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-17'
+  pieza: post-3-recibo-empleado-nuevo
+  tipo: post
+  tema: Lo que de verdad cuesta la primera semana de un empleado nuevo 🧾😅
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-17'
+  pieza: reel-A-nombra-archivo-final
+  tipo: reel
+  tema: Nombrá el problema - el síndrome del archivo final
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-17'
+  pieza: reel-B-realidad-nuestro-tablero
+  tipo: reel
+  tema: Dosis de realidad - nuestro propio tablero
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-17'
+  pieza: reel-C-decilo-mas-barato
+  tipo: reel
+  tema: Decilo así - cuando te piden «¿me lo dejás más barato?»
   estado: pendiente
   redes: []
   fecha: null

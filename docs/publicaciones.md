@@ -2,7 +2,7 @@
 
 Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml`. No editar a mano.
 
-**18 publicadas · 21 pendientes · 5 descartadas**
+**20 publicadas · 24 pendientes · 6 descartadas**
 
 | Día | Pieza | Tema | Estado | Redes | Subido |
 |---|---|---|---|---|---|
@@ -31,9 +31,9 @@ Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml
 | 2026-11-11 | post-3-recibo-cobrar | Lo que te cuesta cobrar tarde, en un solo ticket 🧾 | ⏳ pendiente |  |  |
 | 2026-11-11 | reel-A-chat-pedido-audio | El pedido que se perdió en un audio | ✅ publicado | Instagram, TikTok | 2026-11-15 |
 | 2026-11-11 | reel-B-top3-a-mano | Tres cosas que tu equipo sigue haciendo a mano | ✅ publicado | Instagram, TikTok | 2026-11-15 |
-| 2026-11-11 | reel-C-pov-juan-vacaciones | POV - el que sabe todo se fue de vacaciones | ⏳ pendiente |  |  |
+| 2026-11-11 | reel-C-pov-juan-vacaciones | POV - el que sabe todo se fue de vacaciones | ✅ publicado | Instagram, TikTok | 2026-11-16 |
 | 2026-11-12 | post-1-impuesto-desorden | El impuesto que pagás cada semana y nadie te cobra 🧾 | ✅ publicado | Instagram, TikTok | 2026-11-15 |
-| 2026-11-12 | post-2-checklist-fin-de-ano | 5 cosas para dejar en orden antes de que se acabe el año ✅ | ⏳ pendiente |  |  |
+| 2026-11-12 | post-2-checklist-fin-de-ano | 5 cosas para dejar en orden antes de que se acabe el año ✅ | ✅ publicado | Instagram, TikTok | 2026-11-16 |
 | 2026-11-12 | post-3-frase-escuchar | Lo que todo dueño piensa antes de que le vendan un sistema 🤔 | ⏳ pendiente |  |  |
 | 2026-11-12 | reel-A-decilo-ya-te-deposito | Decilo así - cuando te dicen «ya te deposito» | ⏳ pendiente |  |  |
 | 2026-11-12 | reel-B-trailer-conteo-inventario | Tráiler - El conteo de inventario | ⏳ pendiente |  |  |
@@ -47,6 +47,12 @@ Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml
 | 2026-11-16 | post-1-checklist-antes-de-firmar | 5 preguntas que tenés que hacer antes de pagar por un sistema 📝 | ⏳ pendiente |  |  |
 | 2026-11-16 | post-2-frase-yo-se-donde | «Yo sé dónde está todo»: la frase que todo dueño dijo alguna vez 🧠 | ⏳ pendiente |  |  |
 | 2026-11-16 | post-3-diccionario-vol3 | Diccionario del dueño de pyme, vol. 3: edición bodega y mostrador 📖📦 | ⏳ pendiente |  |  |
-| 2026-11-16 | reel-A-flechas-whatsapp-business | La función de WhatsApp Business que casi nadie usa | ⏳ pendiente |  |  |
+| 2026-11-16 | reel-A-flechas-whatsapp-business | La función de WhatsApp Business que casi nadie usa | ✖️ descartado |  |  |
 | 2026-11-16 | reel-B-respondiendo-cuanto-cuesta | Respondiendo - ¿cuánto cuesta un sistema a la medida? | ⏳ pendiente |  |  |
 | 2026-11-16 | reel-C-top3-todavia-no | Tres señales de que todavía no necesitás un sistema | ⏳ pendiente |  |  |
+| 2026-11-17 | post-1-este-o-este-precios | ¿A o B? ¿Dónde vive la lista de precios de tu negocio? 🏷️ | ⏳ pendiente |  |  |
+| 2026-11-17 | post-2-infografia-pedido-entrega | Del WhatsApp a la puerta del cliente sin que se pierda ni un pedido 🚚 | ⏳ pendiente |  |  |
+| 2026-11-17 | post-3-recibo-empleado-nuevo | Lo que de verdad cuesta la primera semana de un empleado nuevo 🧾😅 | ⏳ pendiente |  |  |
+| 2026-11-17 | reel-A-nombra-archivo-final | Nombrá el problema - el síndrome del archivo final | ⏳ pendiente |  |  |
+| 2026-11-17 | reel-B-realidad-nuestro-tablero | Dosis de realidad - nuestro propio tablero | ⏳ pendiente |  |  |
+| 2026-11-17 | reel-C-decilo-mas-barato | Decilo así - cuando te piden «¿me lo dejás más barato?» | ⏳ pendiente |  |  |

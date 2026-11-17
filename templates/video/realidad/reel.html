@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<!-- «Dosis de realidad» (formato realidad, desde 2026-11-17): un clip vertical grabado por el equipo con el celular
+     (pantallas reales, sin datos de clientes) + rótulos tipo nota adhesiva con palabras clave + cierre de marca.
+     El clip va en <salida>/clips/<id>.mp4 y se declara en la primera línea con toma: {id, desde}.
+     Línea: texto, clave (2-4 palabras, *x* = resaltado), escena: cierre (frase). Datos: etiqueta, whatsapp. -->
+<style>
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Bricolage"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "SerifI"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+:root { --verde: #0a1410; --oro: #f0c419; --marfil: #fefcf3; --gris: #9fb3a8; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+#toma { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; transform-origin: 50% 50%; }
+#velo { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0) 62%, rgba(0,0,0,.6) 100%); }
+#rec { position: absolute; left: 70px; top: 140px; display: flex; gap: 16px; align-items: center; padding: 14px 24px; border-radius: 40px;
+  background: rgba(10,20,16,.78); color: var(--marfil); font: 700 30px "Mono"; letter-spacing: 4px; z-index: 20; }
+#rec i { width: 22px; height: 22px; border-radius: 50%; background: #e5484d; }
+#hora { position: absolute; right: 70px; top: 150px; color: var(--marfil); font: 600 30px "Mono"; letter-spacing: 3px; z-index: 20;
+  text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+#nota { position: absolute; left: 70px; bottom: 340px; max-width: 860px; padding: 34px 44px 38px; background: var(--marfil); color: var(--verde);
+  font: 800 76px/1.02 "Bricolage"; letter-spacing: -2px; border-radius: 10px; box-shadow: 0 24px 60px rgba(0,0,0,.5); transform-origin: 0 100%; z-index: 20; }
+#nota em { font-style: normal; background: var(--oro); padding: 0 12px; border-radius: 6px; }
+#nota::before { content: ""; position: absolute; left: 50%; top: -22px; width: 150px; height: 44px; margin-left: -75px;
+  background: rgba(240,196,25,.75); transform: rotate(-3deg); }
+#cierre { position: absolute; inset: 0; background: var(--verde); display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; z-index: 40; }
+#fondo { position: absolute; inset: 0; opacity: .8; }
+#cierre > *:not(#fondo) { position: relative; }
+#cierre img { width: 270px; margin-bottom: 80px; }
+#cierre .h1 { font: 800 132px/0.96 "Bricolage"; letter-spacing: -5px; color: var(--marfil); padding: 0 80px; }
+#cierre .h1 em { font: 400 150px/0.9 "SerifI"; color: var(--oro); }
+#cierre .wa { margin-top: 80px; padding: 30px 54px; border-radius: 60px; background: var(--oro); color: var(--verde); font: 800 56px "Tight"; }
+#cierre .web { margin-top: 30px; font: 500 32px "Mono"; color: var(--gris); }
+</style></head>
+<body>
+<img id="toma">
+<div id="velo"></div>
+<div id="rec"><i></i><span id="eti"></span></div>
+<div id="hora"></div>
+<div id="nota"></div>
+<div id="cierre"><div id="fondo"></div><img src="__LOGO__"><div class="h1" id="cf"></div><div class="wa" id="wa"></div><div class="web">iftechworks.com</div></div>
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const R = __DATOS__;
+window.__ready = false;
+const L = R.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const back = (x) => { x = cl(x); const s = 1.7; return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2); };
+const md = (s) => s.replace(/\*([^*]+)\*/g, "<em>$1</em>").replace(/ \/ /g, "<br>");
+const fondoP = fondo($("fondo"), "malla", { colors: ["#0a1410", "#1d362b", "#162920", "#0a1410"] });
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.02) k = i; }); return k; };
+const iC = L.findIndex((x) => x.escena === "cierre"), tC = iC >= 0 ? L[iC].inicio : 1e9;
+const toma = (L.find((l) => l.toma) || {}).toma;
+$("eti").textContent = R.etiqueta || "SIN EDITAR";
+$("cf").innerHTML = md((L[iC] || {}).frase || ""); $("wa").textContent = "WhatsApp " + R.whatsapp;
+let notaDe = -1, cuadroAct = "";
+
+async function dibujar(t) {
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio, enC = t >= tC;
+  if (toma) {  // el clip corre a velocidad real (30 fps) y se queda en su último cuadro si la voz dura más
+    const n = 1 + Math.min(toma.n - 1, Math.floor(t * 30));
+    const src = `${toma.base}/${String(n).padStart(4, "0")}.jpg`;
+    if (src !== cuadroAct) { cuadroAct = src; $("toma").src = src; await $("toma").decode(); }
+    // pulso de mano: un vaivén mínimo, sin parecer efecto
+    $("toma").style.transform = `scale(1.035) translate(${Math.sin(t * 1.3) * 5}px, ${Math.sin(t * 0.9 + 1) * 6}px) rotate(${Math.sin(t * 0.7) * 0.25}deg)`;
+  }
+  $("rec").querySelector("i").style.opacity = Math.floor(t * 1.6) % 2 ? 0.25 : 1;
+  const s = Math.floor(t); $("hora").textContent = `00:${String(s).padStart(2, "0")}`;
+  // Nota con la palabra clave de la línea (si la tiene)
+  const lk = [...L.slice(0, i + 1)].reverse().find((x) => x.clave !== undefined);
+  if (lk && lk.clave && !enC) {
+    const k = L.indexOf(lk);
+    if (k !== notaDe) { notaDe = k; $("nota").innerHTML = md(lk.clave); }
+    const e = back((t - lk.inicio - 0.1) / 0.35);
+    $("nota").style.opacity = e > 0 ? 1 : 0;
+    $("nota").style.transform = `rotate(${k % 2 ? 1.5 : -1.5}deg) scale(${cl(e, 0, 1.2)})`;
+  } else $("nota").style.opacity = 0;
+  const dc = t - tC;
+  $("cierre").style.opacity = enC ? eo(dc / 0.3) : 0;
+  $("cf").style.transform = `scale(${0.8 + 0.2 * back((dc - 0.1) / 0.4)})`;
+  $("wa").style.transform = `scale(${0.85 + 0.15 * back((dc - 0.6) / 0.35)})`;
+  (await fondoP).frame(t * 1000 * 0.3);
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = dibujar;
+window.__ready = true;
+</script>
+</body></html>

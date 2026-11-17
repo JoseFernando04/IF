@@ -1,0 +1,61 @@
+# Reel A · «Nombrá el problema» (formato NUEVO `concepto`, tendencia «nombrá el concepto»). Pilar: educativo. Serie repetible.
+# Se le pone un nombre memorable a un dolor: el síndrome del archivo final. La voz lee los nombres de archivo (sin siglas).
+formato: concepto
+titulo: Nombrá el problema - el síndrome del archivo final
+audio: assets/voice/elevenlabs/2026-11-17-reel-A.mp3
+salida: data/dias/2026-11-17/reel-A
+musica: pamgaea
+musica_db: -21
+whatsapp: "+502 3808 9808"
+serie: NOMBRÁ EL PROBLEMA
+episodio: "01"
+archivos:
+  - inventario.xlsx
+  - inventario_final.xlsx
+  - inventario_final2.xlsx
+  - inv_final_ahorasi.xlsx
+  - inv_FINAL_v3_NOTOCAR.xlsx
+nombre_a: "El síndrome del"
+nombre_b: "archivo final."
+definicion: "Cuando hay cinco versiones del mismo archivo y nadie sabe cuál es la buena."
+sintomas:
+  - t: "Nadie sabe / cuál es *el bueno.*"
+    iconos: [["?", "¿este?"], ["?", "¿o este?"], ["?", "¿o este?"]]
+  - t: "Cada quien con / *su propia copia.*"
+    iconos: [["142", "la de bodega"], ["138", "la de ventas"]]
+  - t: "Solo lo entiende / *quien lo armó.*"
+    iconos: [["¿¡#!?", "todos los demás"]]
+cura_titulo: "No es otro archivo: / *es un solo lugar.*"
+cura_filas: ["Bodega", "Ventas", "Oficina"]
+cierre_frase: "¿Tu negocio / *lo tiene?*"
+caption: >-
+  Si alguna vez abriste un archivo que decía «final» y no era el final… bienvenido al club. 📂😵‍💫
+  No es desorden de la gente: es que cada área guarda su propia versión y nadie tiene la culpa de que no cuadren.
+  Cuando todos ven el mismo dato al mismo tiempo, se acaba el «¿cuál es el bueno?». Escribinos al WhatsApp +502 3808 9808 y te enseñamos cómo.
+  ¿Cómo se llama el archivo más «final» de tu negocio? Contanos 👇
+hashtags: [Excel, PymesGuatemala, Inventario, Digitalizacion, EmprendedoresGT]
+lineas:
+  - texto: Inventario final. Inventario final dos. Inventario final, ahora sí.
+    escena: archivos
+    sfx: [[0.05, pop], [0.3, pop], [0.55, pop], [0.8, pop]]
+  - texto: "Esto tiene nombre: el síndrome del archivo final."
+    escena: nombre
+    sfx: [[0.1, thud]]
+  - texto: Nadie sabe cuál es el bueno.
+    escena: sintoma
+    n: 1
+    sfx: [[0.05, whoosh]]
+  - texto: Cada quien tiene su copia, con números distintos.
+    escena: sintoma
+    n: 2
+    sfx: [[0.05, whoosh]]
+  - texto: Y el que lo armó es el único que lo entiende.
+    escena: sintoma
+    n: 3
+    sfx: [[0.05, whoosh]]
+  - texto: "La cura no es otro archivo: es un solo lugar donde todos ven lo mismo."
+    escena: cura
+    sfx: [[0.3, pop], [0.6, tick], [0.75, tick]]
+  - texto: Si tu negocio lo tiene, escribinos.
+    escena: cierre
+    sfx: [[0.2, pop]]

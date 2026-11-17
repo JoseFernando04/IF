@@ -37,10 +37,10 @@ la gente busca dentro de Instagram como en Google.
 5. ✅ *(hecho 2026-11-15, `pediste`)* **Lo que pediste vs. lo que te entregaron** · Giro final: «Pediste un sistema… te entregaron 14 pantallas y un manual de 80 páginas».
    Termina con cómo lo hace IF. Funciona como reel o carrusel.
 6. ✅ *(hecho 2026-11-15, `cargando`)* **Cargando…** · Cuadro congelado «Negocio cargando 37 %…» sobre el caos; corte seco al negocio ordenado en el golpe de la música.
-7. **Dosis de realidad (con el equipo)** · Clip vertical grabado con el celular por José/el equipo: «Así se ve por dentro un sistema
+7. ✅ *(plantilla 2026-11-17, `realidad`)* **Dosis de realidad (con el equipo)** · Clip vertical grabado con el celular por José/el equipo: «Así se ve por dentro un sistema
    que estamos haciendo» (pantallas reales, sin datos de clientes). Requiere que el equipo grabe 20-30 s; la animación solo agrega
    títulos y música. Es lo que más pide el algoritmo en LATAM ahora.
-8. **Nombrá el concepto** · Inventar un nombre memorable para un problema: «el impuesto del desorden», «el síndrome del Excel final».
+8. ✅ *(hecho 2026-11-17, `concepto`)* **Nombrá el concepto** · Inventar un nombre memorable para un problema: «el impuesto del desorden», «el síndrome del Excel final».
    Tipografía grande + definición + ejemplo. Puede abrir una serie.
 
 9. ✅ *(hecho 2026-11-16, `respuesta`)* **Respondiendo a…** · Responder en video una pregunta frecuente mostrada como comentario

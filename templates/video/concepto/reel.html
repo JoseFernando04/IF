@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<!-- «Nombrá el problema» (formato concepto, desde 2026-11-17): se le pone un nombre memorable a un dolor de negocio.
+     Escenas por línea: archivos (los archivos se multiplican) · nombre (diagnóstico grande) · sintoma (n) · cura · cierre.
+     Datos: serie, episodio, archivos [nombres], nombre_a, nombre_b (cursiva dorada), definicion,
+     sintomas [{t, iconos: [[marca, pie], …]}], cura_titulo, cura_filas [..], cierre_frase, whatsapp. -->
+<style>
+@font-face { font-family: "Bricolage"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "SerifI"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+:root { --verde: #0a1410; --verde2: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --gris: #9fb3a8; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--verde); color: var(--marfil); }
+#fondo { position: absolute; inset: 0; opacity: .7; }
+#serie { position: absolute; left: 80px; top: 150px; font: 700 30px "Mono"; letter-spacing: 5px; color: var(--oro); z-index: 5; }
+#ep { position: absolute; right: 80px; top: 150px; font: 700 30px "Mono"; letter-spacing: 4px; color: var(--gris); z-index: 5; }
+/* Archivos que se multiplican */
+#archivos { position: absolute; inset: 0; }
+.arch { position: absolute; left: 90px; display: flex; align-items: center; gap: 30px; padding: 22px 34px 22px 24px;
+  background: rgba(254,252,243,.06); border: 2px solid rgba(254,252,243,.14); border-radius: 22px; transform-origin: 0 50%; }
+.arch .ico { position: relative; width: 74px; height: 92px; background: var(--marfil); border-radius: 8px; flex: none;
+  clip-path: polygon(0 0, 70% 0, 100% 24%, 100% 100%, 0 100%); }
+.arch .ico::before { content: ""; position: absolute; left: 12px; right: 12px; top: 34px; bottom: 14px;
+  background: repeating-linear-gradient(0deg, #1d362b 0 4px, transparent 4px 14px), repeating-linear-gradient(90deg, #1d362b 0 4px, transparent 4px 18px); opacity: .55; }
+.arch .ico::after { content: ""; position: absolute; right: 0; top: 0; width: 22px; height: 22px; background: #c9c3ad; }
+.arch span { font: 600 48px "Mono"; letter-spacing: -1px; white-space: nowrap; }
+.arch.ultimo { background: var(--oro); border-color: var(--oro); color: var(--verde); }
+/* Diagnóstico */
+#nombre { position: absolute; left: 80px; right: 80px; top: 560px; z-index: 6; }
+#nombre .eti { display: inline-block; font: 700 32px "Mono"; letter-spacing: 6px; color: var(--verde); background: var(--oro); padding: 12px 22px; border-radius: 8px; }
+#nombre .a { margin-top: 40px; font: 800 150px/0.92 "Bricolage"; letter-spacing: -6px; }
+#nombre .b { font: 400 196px/0.9 "SerifI"; color: var(--oro); letter-spacing: -3px; }
+#nombre .def { margin-top: 56px; font: 500 48px/1.25 "Tight"; color: var(--marfil); max-width: 860px; }
+#nombre .def b { font: 700 36px "Mono"; color: var(--gris); letter-spacing: 2px; margin-right: 16px; }
+/* Síntomas */
+#sint { position: absolute; left: 80px; right: 80px; top: 520px; z-index: 6; }
+#sint .num { font: 700 34px "Mono"; letter-spacing: 6px; color: var(--oro); }
+#sint .t { margin-top: 30px; font: 800 112px/0.98 "Bricolage"; letter-spacing: -4px; }
+#sint .t em { font: 400 128px/0.9 "SerifI"; color: var(--oro); letter-spacing: -2px; }
+#sint .iconos { margin-top: 170px; display: flex; gap: 60px; justify-content: center; }
+.ic { display: flex; flex-direction: column; align-items: center; gap: 26px; }
+.ic .doc { position: relative; width: 200px; height: 250px; background: var(--marfil); border-radius: 18px;
+  clip-path: polygon(0 0, 72% 0, 100% 22%, 100% 100%, 0 100%); display: grid; place-items: center;
+  font: 800 92px "Bricolage"; color: var(--verde); letter-spacing: -3px; }
+.ic .doc.chico { font-size: 64px; }
+.ic .pie { font: 600 32px "Mono"; color: var(--gris); text-align: center; max-width: 280px; line-height: 1.25; }
+/* Cura */
+#cura { position: absolute; left: 90px; right: 90px; top: 580px; z-index: 6; }
+#cura .h { font: 800 104px/0.98 "Bricolage"; letter-spacing: -4px; }
+#cura .h em { font: 400 120px/0.9 "SerifI"; color: var(--oro); }
+#pantalla { margin-top: 80px; background: var(--marfil); color: var(--verde); border-radius: 36px; padding: 44px 50px;
+  box-shadow: 0 40px 90px rgba(0,0,0,.45); }
+#pantalla .top { font: 700 28px "Mono"; letter-spacing: 4px; color: var(--verde2); display: flex; justify-content: space-between; }
+#pantalla .top i { font-style: normal; width: 18px; height: 18px; border-radius: 50%; background: #2fa86b; display: inline-block; margin-right: 10px; vertical-align: 1px; }
+.fila { display: flex; justify-content: space-between; align-items: center; font: 700 56px "Tight"; padding: 30px 0; border-bottom: 3px solid #e4dfcf; }
+.fila:last-child { border-bottom: 0; }
+.fila b { width: 64px; height: 64px; border-radius: 50%; background: var(--verde); color: var(--oro); display: grid; place-items: center; font: 800 38px "Tight"; }
+/* Cierre */
+#cierre { position: absolute; inset: 0; background: var(--verde); display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; z-index: 40; }
+#cierre img { width: 270px; margin-bottom: 80px; }
+#cierre .h1 { font: 800 132px/0.96 "Bricolage"; letter-spacing: -5px; padding: 0 70px; }
+#cierre .h1 em { font: 400 150px/0.9 "SerifI"; color: var(--oro); }
+#cierre .wa { margin-top: 80px; padding: 30px 54px; border-radius: 60px; background: var(--oro); color: var(--verde); font: 800 56px "Tight"; }
+#cierre .web { margin-top: 30px; font: 500 32px "Mono"; color: var(--gris); }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="serie"></div><div id="ep"></div>
+<div id="archivos"></div>
+<div id="nombre"><div class="eti">DIAGNÓSTICO</div><div class="a" id="na"></div><div class="b" id="nb"></div><div class="def" id="def"></div></div>
+<div id="sint"><div class="num" id="snum"></div><div class="t" id="st"></div><div class="iconos" id="sic"></div></div>
+<div id="cura"><div class="h" id="ch"></div><div id="pantalla"><div class="top"><span><i></i>EN VIVO</span><span>UN SOLO LUGAR</span></div><div id="filas"></div></div></div>
+<div id="cierre"><img src="__LOGO__"><div class="h1" id="cf"></div><div class="wa" id="wa"></div><div class="web">iftechworks.com</div></div>
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const R = __DATOS__;
+window.__ready = false;
+const L = R.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const back = (x) => { x = cl(x); const s = 1.7; return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2); };
+const md = (s) => s.replace(/\*([^*]+)\*/g, "<em>$1</em>").replace(/ \/ /g, "<br>");
+const fondoP = fondo($("fondo"), "malla", { colors: ["#0a1410", "#1d362b", "#13241c", "#0a1410"], distortion: 0.6 });
+$("serie").textContent = R.serie || "NOMBRÁ EL PROBLEMA"; $("ep").textContent = R.episodio ? "#" + R.episodio : "";
+$("na").innerHTML = md(R.nombre_a); $("nb").innerHTML = md(R.nombre_b);
+$("def").innerHTML = `<b>(n.)</b>${R.definicion}`;
+$("ch").innerHTML = md(R.cura_titulo);
+$("filas").innerHTML = R.cura_filas.map((f) => `<div class="fila"><span>${f}</span><b>✓</b></div>`).join("");
+$("cf").innerHTML = md(R.cierre_frase); $("wa").textContent = "WhatsApp " + R.whatsapp;
+// Archivos: en columna, cada uno un poco más a la derecha (el desorden crece)
+const A = R.archivos;
+$("archivos").innerHTML = A.map((n, j) => `<div class="arch${j === A.length - 1 ? " ultimo" : ""}" style="top:${400 + j * 250}px;left:${90 + j * 22}px"><div class="ico"></div><span>${n}</span></div>`).join("");
+const arch = [...document.querySelectorAll(".arch")];
+const rot = A.map((_, j) => ((j * 37) % 7 - 3) * 0.6);
+const idx = (esc) => L.findIndex((l) => l.escena === esc);
+const iA = idx("archivos"), iN = idx("nombre"), iCura = idx("cura"), iC = idx("cierre");
+const tN = iN >= 0 ? L[iN].inicio : 1e9, tCura = iCura >= 0 ? L[iCura].inicio : 1e9, tC = iC >= 0 ? L[iC].inicio : 1e9;
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.02) k = i; }); return k; };
+let sintDe = -1;
+
+async function dibujar(t) {
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio;
+  // Archivos: aparecen repartidos en la línea «archivos»; luego quedan al fondo, borrosos.
+  const la = L[iA];
+  arch.forEach((a, j) => {
+    const tj = la.inicio + (la.duracion * 0.92) * (j / A.length);
+    const e = back((t - tj) / 0.32);
+    const atras = eo((t - tN) / 0.5);
+    a.style.opacity = (e > 0 ? 1 : 0) * (1 - 0.86 * atras);
+    a.style.transform = `rotate(${rot[j] * (1 + atras * 3)}deg) scale(${cl(e, 0, 1.2) * (1 - 0.12 * atras)})`;
+    a.style.filter = `blur(${atras * 6}px)`;
+  });
+  $("archivos").style.opacity = t >= tCura ? 1 - eo((t - tCura) / 0.3) : 1;
+  // Diagnóstico
+  const enNombre = l.escena === "nombre";
+  $("nombre").style.opacity = enNombre ? 1 : 0;
+  if (enNombre) {
+    $("nombre").querySelector(".eti").style.transform = `scale(${back(dt / 0.3)})`;
+    $("na").style.transform = `translateY(${(1 - eo((dt - 0.1) / 0.35)) * 60}px)`; $("na").style.opacity = eo((dt - 0.1) / 0.3);
+    $("nb").style.transform = `scale(${0.6 + 0.4 * back((dt - 0.45) / 0.4)})`; $("nb").style.opacity = eo((dt - 0.45) / 0.2);
+    $("nb").style.transformOrigin = "0 50%";
+    $("def").style.opacity = eo((dt - 1.0) / 0.4);
+  }
+  // Síntomas
+  const enS = l.escena === "sintoma";
+  $("sint").style.opacity = enS ? 1 : 0;
+  if (enS) {
+    const s = R.sintomas[l.n - 1];
+    if (sintDe !== i) {
+      sintDe = i;
+      $("snum").textContent = `SÍNTOMA ${l.n} / ${R.sintomas.length}`;
+      $("st").innerHTML = md(s.t);
+      $("sic").innerHTML = s.iconos.map(([m, p]) => `<div class="ic"><div class="doc${m.length > 3 ? " chico" : ""}">${m}</div><div class="pie">${p}</div></div>`).join("");
+    }
+    $("st").style.transform = `translateX(${(1 - eo(dt / 0.35)) * -80}px)`; $("st").style.opacity = eo(dt / 0.25);
+    [...$("sic").children].forEach((c, j) => { const e = back((dt - 0.35 - j * 0.18) / 0.35);
+      c.style.opacity = e > 0 ? 1 : 0; c.style.transform = `translateY(${(1 - cl(e, 0, 1.2)) * 80}px) rotate(${(j - 1) * 3 * (1 - cl(e))}deg)`; });
+  }
+  // Cura
+  const enCura = l.escena === "cura";
+  $("cura").style.opacity = enCura ? 1 : 0;
+  if (enCura) {
+    $("ch").style.opacity = eo(dt / 0.3);
+    $("pantalla").style.transform = `translateY(${(1 - back((dt - 0.3) / 0.45)) * 220}px)`;
+    $("pantalla").style.opacity = eo((dt - 0.3) / 0.25);
+    [...$("filas").children].forEach((f, j) => { const e = back((dt - 0.8 - j * 0.35) / 0.3);
+      f.querySelector("b").style.transform = `scale(${cl(e, 0, 1.2)})`; f.style.opacity = 0.35 + 0.65 * cl(e); });
+  }
+  // Cierre
+  const dc = t - tC;
+  $("cierre").style.opacity = t >= tC ? eo(dc / 0.3) : 0;
+  $("cf").style.transform = `scale(${0.8 + 0.2 * back((dc - 0.1) / 0.4)})`;
+  $("wa").style.transform = `scale(${0.85 + 0.15 * back((dc - 0.6) / 0.35)})`;
+  const sc = t < tC ? 1 : 0;
+  $("serie").style.opacity = sc; $("ep").style.opacity = sc;
+  (await fondoP).frame(t * 1000 * 0.3);
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = dibujar;
+window.__ready = true;
+</script>
+</body></html>

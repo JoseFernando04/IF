@@ -1,0 +1,40 @@
+# Reel B · «Dosis de realidad» (formato NUEVO `realidad`, tendencia TikTok Next 2026 LATAM: real y sin pulir). Pilar: propósito y proceso.
+# Todo es real: el tablero de publicaciones que el equipo usa de verdad. José graba 20-25 s con el celular (ver «toma» abajo).
+# Clip en data/dias/2026-11-17/reel-B/clips/pantalla.mp4. Sin datos de clientes en pantalla.
+# Producido 2026-11-17 SIN grabación del equipo: el clip sale de tools/grabar_tablero.py (tablero real, piezas reales,
+# --filtros 10.4,11.4,12.3 --toque 14.6 --compu-hasta 13.1 --dur 22.5). Si José graba uno propio, reemplaza ese archivo.
+# Qué grabar (vertical, en un solo plano, sin cortes): 1) el tablero en la compu, recorriendo la lista (5 s);
+# 2) el celular abriendo el tablero (5 s); 3) un dedo marcando una pieza como «subido» (5 s); 4) la lista otra vez (5 s).
+formato: realidad
+titulo: Dosis de realidad - nuestro propio tablero
+audio: assets/voice/elevenlabs/2026-11-17-reel-B.mp3
+salida: data/dias/2026-11-17/reel-B
+musica: inspired
+musica_db: -24
+whatsapp: "+502 3808 9808"
+etiqueta: "SIN EDITAR"
+caption: >-
+  Cero estudio, cero guion de agencia: esto es lo que usamos todos los días. 📱👀
+  Nos pasaba lo mismo que a muchos negocios: algo tan simple como saber qué ya se hizo vivía en la memoria de alguien.
+  Así que hicimos lo que hacemos para nuestros clientes: un sistema chiquito, a la medida, que cualquiera del equipo usa desde el celular.
+  ¿Qué es lo que se te olvida a cada rato en tu negocio? Contanos o escribinos al WhatsApp +502 3808 9808.
+hashtags: [DetrasDeCamaras, PymesGuatemala, SoftwareAMedida, Digitalizacion, EmprendedoresGT]
+lineas:
+  - texto: Esto no es un anuncio. Es nuestra pantalla de hoy.
+    toma: {id: pantalla}
+    clave: "Nuestra pantalla / *de hoy.*"
+  - texto: Publicamos en dos redes, y se nos olvidaba qué ya habíamos subido.
+    clave: "¿Ya lo *subimos?*"
+    sfx: [[0.6, pop]]
+  - texto: "Así que nos hicimos un tablero: cada pieza, pendiente, subida o descartada."
+    clave: "Pendiente · *subido* · / descartado"
+    sfx: [[0.4, tick], [0.6, tick], [0.8, tick]]
+  - texto: Lo marca cualquiera del equipo, desde el celular.
+    clave: "Desde el *celular.*"
+  - texto: Eso mismo hacemos para tu negocio, pero con tus pedidos, tu inventario o tus cobros.
+    clave: "Lo mismo, con / *tus pedidos.*"
+    sfx: [[0.3, whoosh]]
+  - texto: Escribinos y te enseñamos cómo se vería el tuyo.
+    escena: cierre
+    frase: "¿Cómo se vería / *el tuyo?*"
+    sfx: [[0.2, pop]]

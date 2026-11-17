@@ -1,0 +1,22 @@
+# Post 2 · Infografía simple (imagen única). Pilar: educativo (distribuidora: del pedido a la entrega). Escenario de ejemplo.
+formato: infografia
+salida: data/dias/2026-11-17/post-2
+titulo_tiktok: "Del WhatsApp a la puerta del cliente sin que se pierda ni un pedido 🚚"
+etiqueta: "CÓMO FUNCIONA"
+titulo: "Del mensaje <em>a la entrega.</em>"
+pasos:
+  - t: "El pedido queda anotado solo"
+    d: "Lo que el cliente pide por WhatsApp entra a una lista. Nadie lo copia a mano."
+    ilu: '<div style="position:absolute;left:30px;right:30px;top:30px;display:flex;flex-direction:column;gap:12px"><div style="align-self:flex-start;max-width:170px;padding:12px 16px;border-radius:16px 16px 16px 4px;background:#fefcf3;border:3px solid #1d362b;font:600 17px Tight;color:#0a1410;line-height:1.2">2 cajas de aceite y 1 de jabón 🙏</div><div style="align-self:flex-end;padding:10px 16px;border-radius:12px;background:#f0c419;font:800 17px Tight;color:#0a1410">Pedido #031 ✓</div></div>'
+  - t: "Bodega lo ve y lo prepara"
+    d: "Aparece en la pantalla de bodega en orden de llegada, con lo que hay que despachar."
+    ilu: '<div style="position:absolute;inset:30px 22px;border-radius:16px;background:#0a1410;padding:18px;box-sizing:border-box;font:700 17px Mono;color:#9fb3a8;display:flex;flex-direction:column;gap:10px"><div>BODEGA · HOY</div><div style="font:800 24px Tight;color:#fefcf3">#031 <span style="color:#f0c419">preparando</span></div><div style="font:800 24px Tight;color:#fefcf3;opacity:.55">#032 en cola</div><div style="font:800 24px Tight;color:#fefcf3;opacity:.35">#033 en cola</div></div>'
+  - t: "El cliente sabe cuándo llega"
+    d: "Cuando sale el camión, le llega un aviso. Se acaban los «¿y mi pedido?»."
+    ilu: '<div style="position:absolute;left:70px;top:14px;width:110px;height:200px;border-radius:22px;background:#0a1410;padding:8px;box-sizing:border-box"><div style="height:100%;border-radius:16px;background:#1d362b"></div></div><div style="position:absolute;left:10px;right:10px;top:70px;padding:12px;border-radius:12px;background:#f0c419;font:800 16px Tight;color:#0a1410;line-height:1.25;text-align:center">🚚 Tu pedido #031 va en camino</div>'
+nota: "Escenario de ejemplo"
+caption: >-
+  Un pedido que entra por WhatsApp no debería depender de que alguien se acuerde de anotarlo. 📲📦
+  Así se ve, en tres pasos, el camino de un pedido en una distribuidora ordenada: sin copiar a mano, sin perder mensajes y con el cliente enterado.
+  Guardala para cuando estés pensando en ordenar tus pedidos. ¿Querés verlo funcionando? Escribinos al WhatsApp +502 3808 9808.
+hashtags: [Distribuidoras, PymesGuatemala, Pedidos, Logistica, Digitalizacion]

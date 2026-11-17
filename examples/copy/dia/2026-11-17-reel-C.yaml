@@ -1,0 +1,53 @@
+# Reel C · «Decilo así» ep. 02 (serie; último uso del formato 2026-11-12). Pilar: tips (cotizaciones y precios).
+formato: decilo
+titulo: Decilo así - cuando te piden «¿me lo dejás más barato?»
+audio: assets/voice/elevenlabs/2026-11-17-reel-C.mp3
+salida: data/dias/2026-11-17/reel-C
+musica: wholesome
+musica_db: -22
+whatsapp: "+502 3808 9808"
+tema: "PRECIOS"
+episodio: "02"
+caption: >-
+  Guardalo para la próxima vez que te pidan descuento 📌🤝
+  Bajar el precio porque sí le enseña al cliente a pedirlo siempre. Ajustar lo que incluye cuida tu margen y la relación.
+  ¿Querés cotizaciones que ya digan todo lo que incluyen, listas en minutos? Escribinos al WhatsApp +502 3808 9808.
+  ¿Qué frase incómoda resolvemos en el ep. 03? Contanos 👇
+hashtags: [Ventas, PymesGuatemala, TipsDeNegocio, EmprendedoresGT, Cotizaciones]
+lineas:
+  - texto: Cuando un cliente te dice «¿me lo dejás más barato?».
+    grande: "«¿Me lo dejás / *más barato?*»"
+    sfx: [[0.05, pop]]
+  - texto: No le bajés el precio así nomás. Decile exactamente esto.
+    grande: "No le bajés / el precio así nomás. / *Decile esto:*"
+    sfx: [[0.1, whoosh]]
+  - texto: Primero, cambiá algo, no el precio.
+    n: 1
+    paso: "CAMBIÁ ALGO, NO EL PRECIO"
+    cuando: "Cuando te pide descuento"
+    mensaje: "¡Claro! Para bajarlo, ¿qué te parece si lo dejamos sin entrega y lo pasás a traer?"
+    tip: "*Por qué:* el precio baja porque baja el trabajo, no tu valor."
+    sfx: [[0.05, whoosh]]
+  - texto: ¡Claro! Para bajarlo, ¿qué te parece si lo dejamos sin entrega y lo pasás a traer?
+    sigue: true
+    sfx: [[0.95, pop]]
+  - texto: Si te dice que en otro lado está más barato.
+    n: 2
+    paso: "SI TE COMPARA"
+    cuando: "«En otro lado está más barato»"
+    mensaje: "Puede ser. Te mando por escrito todo lo que incluye el nuestro, para que comparés parejo."
+    tip: "*Por qué:* que compare lo que recibe, no solo el número."
+    sfx: [[0.05, whoosh]]
+  - texto: Puede ser. Te mando por escrito todo lo que incluye el nuestro, para que comparés parejo.
+    sigue: true
+    sfx: [[0.95, pop]]
+  - texto: ¿Por qué funciona? Porque bajás lo que incluye, no lo que vale.
+    grande: "Bajás lo que incluye, / *no lo que vale.*"
+    sfx: [[0.5, thud]]
+  - texto: Y si tus cotizaciones ya dijeran todo lo que incluyen, esta plática sería más corta.
+    grande: "¿Cotizaciones que / *ya lo dicen todo?*"
+    sfx: [[0.6, pop]]
+  - texto: Escribinos al WhatsApp y te mostramos cómo.
+    escena: cierre
+    grande: "Escribinos / *y te mostramos cómo.*"
+    sfx: [[0.3, pop]]

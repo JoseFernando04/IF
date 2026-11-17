@@ -68,6 +68,8 @@ VideosInstagram/                → lo que ya se publicó
 | Lo que pediste vs. lo que te entregaron | ✅ listo (`pediste`, desde 2026-11-15) | Expectativa (pedido sencillo) → giro (14 pantallas, manual, contraseña) → cómo lo hace IF |
 | Flechas rojas | ✅ listo (`flechas`, desde 2026-11-16) | Pantallas de una app recreadas (sin logo) con flechas y círculos rojos a mano sobre el botón poco conocido; paso a paso para guardar. Verificar cada paso en la app real antes de grabar |
 | Respondiendo a… | ✅ listo (`respuesta`, desde 2026-11-16) | Una pregunta frecuente en burbuja de comentario (sin usuario inventado) y la respuesta en tarjetas numeradas. Sin cifras |
+| Nombrá el problema | ✅ listo (`concepto`, desde 2026-11-17) | Archivos que se multiplican → «diagnóstico» con un nombre memorable para el dolor → 3 síntomas → la cura → cierre. Serie numerada |
+| Dosis de realidad | ✅ listo (`realidad`, desde 2026-11-17) | Clip vertical que graba el equipo (pantallas reales, sin datos de clientes) + notas adhesivas con palabras clave. Clip en `<salida>/clips/<id>.mp4` |
 | Papel y libreta (estilo A) | prototipo | Papel, marcador y escritura a mano |
 
 ### Posts
@@ -129,6 +131,7 @@ En la rutina diaria: de las 3 opciones de reel, **una** puede ser `cine`; las to
 | 2026-11-12 | A decilo así (cobros: «ya te deposito») ✅ producido · B tráiler (el conteo de inventario) ✅ producido · C texto diminuto (no necesita más horas) ✅ producido — los tres formatos nuevos | 1 carrusel documental (el impuesto del desorden) · 2 checklist (cerrar el año) · 3 frase (antes de venderme, escuchame) |
 | 2026-11-15 | A cargando… (cotización que llega tarde, formato nuevo) · B lo que pediste vs. lo que te entregaron (formato nuevo) · C pantalla de sistema (viernes 5:30: equipos, cobros, entregas) | 1 este o este (cuánto vendiste hoy) · 2 infografía (herramientas con QR) · 3 recibo (tu diciembre) |
 | 2026-11-16 | A flechas rojas (respuestas rápidas de WhatsApp Business, formato nuevo) ✅ producido · B respondiendo a… (¿cuánto cuesta un sistema?, formato nuevo) ✅ producido · C top 3 (señales de que todavía NO necesitás un sistema) ✅ producido | 1 checklist (5 preguntas antes de pagar por un sistema) · 2 frase (yo sé dónde está todo) · 3 diccionario vol. 3 (bodega y mostrador) |
+| 2026-11-17 | A nombrá el problema (el síndrome del archivo final, formato nuevo) · B dosis de realidad (nuestro propio tablero, formato nuevo; José graba el clip) · C decilo así ep. 02 («¿me lo dejás más barato?») | 1 este o este (lista de precios) · 2 infografía (distribuidora: del mensaje a la entrega) · 3 recibo (primera semana del nuevo) |
 
 ## Reglas de contenido (siempre)
 
