@@ -1,0 +1,24 @@
+# Marca de Flor de Loto Spa (sacada del arte del cliente, 2026-11-17). Confirmar con el logo original.
+cliente: flor-de-loto-spa
+colores:
+  fondo: "#300934"      # morado profundo (bandas inferiores del arte)
+  fondo2: "#3f0d43"     # morado ciruela
+  medio: "#5a1f6e"      # morado del círculo del logo
+  lila: "#b07cc6"       # flor de loto lila
+  acento: "#c9a24a"     # dorado (bordes, líneas, flor dorada)
+  texto: "#fdf9f0"      # marfil
+  papel: "#f7efe4"      # crema cálido de los fondos claros
+fuentes:                # parecidas a las del arte, todas OFL (Google Fonts) — falta descargarlas
+  titulo: Cinzel              # serif clásica tipo «FLOR DE LOTO»
+  script: Great Vibes         # caligrafía tipo «Masajes», «Reiki»
+  texto: Cormorant Garamond   # cuerpo de texto serif
+logo:
+  claro: material/logo/logo-desde-arte.png   # provisional; pedir el logo original en PNG
+  oscuro: ""
+contacto:
+  whatsapp: "5024 3516"
+  horario: "Lunes a domingo, con cita previa"
+  direccion: ""        # pendiente
+tono: cálido, sereno, elegante
+trato: tuteo
+hashtags_base: ["#FlorDeLotoSpa", "#SpaGuatemala", "#Masajes", "#Reiki", "#Bienestar"]

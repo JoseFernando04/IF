@@ -1,0 +1,60 @@
+# Reel B · «¿Qué te está pidiendo hoy?» (elige tu camino: cuerpo, mente, alma). Voz de José.
+formato: flor-de-loto
+titulo: Flor de Loto - Que te esta pidiendo hoy
+plantilla: campanas/flor-de-loto-spa/plantillas/reel.html
+fuentes: campanas/flor-de-loto-spa/fuentes
+logo: campanas/flor-de-loto-spa/material/logo/logo.png
+audio: campanas/flor-de-loto-spa/material/voz/reel-B.mp3
+salida: campanas/flor-de-loto-spa/salida/reel-B
+musica_archivo: campanas/flor-de-loto-spa/musica/flor-de-loto-calma.mp3
+musica_db: -18
+fondo_muestra: "#300934"
+whatsapp: "5024 3516"
+lineas:
+  - texto: Hay días en que te pide atención el cuerpo.
+    escena: camino
+    activa: cuerpo
+    sub: ¿Qué te está pidiendo *hoy*?
+  - texto: Otros, la mente.
+    escena: camino
+    activa: mente
+    sub: ¿Qué te está pidiendo *hoy*?
+  - texto: Y otros, algo más adentro.
+    escena: camino
+    activa: alma
+    sub: ¿Qué te está pidiendo *hoy*?
+  - texto: Para el cuerpo, masajes relajantes, terapéuticos, linfáticos y más.
+    escena: camino
+    activa: cuerpo
+    script: Masajes
+    items: [Relajantes, Terapéuticos, Linfáticos, "*y más…*"]
+  - texto: Para la mente, acompañamiento profesional con psicología.
+    escena: camino
+    activa: mente
+    script: Psicología
+    items: [Acompañamiento profesional, "*Bienestar emocional y mental*"]
+  - texto: Para el alma, reiki, para equilibrar tu energía.
+    escena: camino
+    activa: alma
+    script: Reiki
+    items: [Equilibra tu energía, "*Armoniza tu mente*"]
+  - texto: Los tres, en un mismo lugar.
+    escena: titulo
+    label: EN UN MISMO LUGAR
+    script: Cuerpo, mente|y alma
+    script_tam: 170
+  - texto: Flor de Loto Spa. Agenda tu cita por WhatsApp.
+    escena: cierre
+    script: Agenda tu cita
+    datos:
+      - 4a. calle 2-09, zona 2, Cobán
+      - Lunes a domingo, con cita previa
+caption: >-
+  ¿Cuerpo, mente o alma? 🪷 Cuéntanos en los comentarios qué te está pidiendo atención esta semana.
+
+  Para el cuerpo tenemos masajes; para la mente, acompañamiento con psicología; para el alma, reiki.
+  Y si no sabes por dónde empezar, escríbenos: te ayudamos a elegir.
+
+  📲 WhatsApp 5024 3516
+  📍 4a. calle 2-09, zona 2, Cobán · Lunes a domingo, con cita previa
+hashtags: [FlorDeLotoSpa, SpaCoban, Masajes, Reiki, Psicologia]

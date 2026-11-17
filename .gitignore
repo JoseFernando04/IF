@@ -24,3 +24,11 @@ assets/voice/*
 # Renders con voces reales o clonadas de personas (datos personales)
 prototypes/direcciones/b-conversacion/*.mp4
 prototypes/direcciones/b-voz/reel.mp4
+
+# Campañas de clientes: material, voces y renders (datos del cliente, fuera de git)
+campanas/*/material/
+campanas/*/salida/
+campanas/*/entregas/
+
+# Música compuesta para clientes: solo el mp3 va a git
+campanas/*/musica/*.wav

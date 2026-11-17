@@ -1,0 +1,59 @@
+# Reel A · «Respira con la flor» (pausa guiada). Voz de José, PAUSADA: respirar de verdad entre frases.
+# En pantalla solo palabras clave; la flor se abre al inhalar y se cierra al soltar.
+formato: flor-de-loto
+titulo: Flor de Loto - Respira con la flor
+plantilla: campanas/flor-de-loto-spa/plantillas/reel.html
+fuentes: campanas/flor-de-loto-spa/fuentes
+logo: campanas/flor-de-loto-spa/material/logo/logo.png
+audio: campanas/flor-de-loto-spa/material/voz/reel-A.mp3
+salida: campanas/flor-de-loto-spa/salida/reel-A
+musica_archivo: campanas/flor-de-loto-spa/musica/flor-de-loto-calma.mp3
+musica_db: -17
+fondo_muestra: "#300934"
+whatsapp: "5024 3516"
+lineas:
+  - texto: Dame veinte segundos.
+    escena: titulo
+    label: UNA PAUSA PARA TI
+    script: Dame 20 segundos
+  - texto: Inhala, dos, tres, cuatro.
+    escena: respira
+    fase: inhala
+    pantalla: Inhala
+    cuenta: 1 · 2 · 3 · 4
+  - texto: Suelta despacio.
+    escena: respira
+    fase: suelta
+    pantalla: Suelta
+  - texto: Otra vez. Inhala.
+    escena: respira
+    fase: inhala
+    pantalla: Inhala
+  - texto: Y suelta.
+    escena: respira
+    fase: suelta
+    pantalla: Suelta
+  - texto: Así se siente una pausa.
+    escena: titulo
+    script: Así se siente|una pausa
+    script_tam: 170
+  - texto: Ahora imagina una hora completa así.
+    escena: titulo
+    label: AHORA IMAGINA
+    script: Una hora así
+    sub: Masajes · Reiki · Psicología
+  - texto: En Flor de Loto Spa te esperamos. Agenda tu cita por WhatsApp.
+    escena: cierre
+    script: Te esperamos
+    datos:
+      - 4a. calle 2-09, zona 2, Cobán
+      - Lunes a domingo, con cita previa
+caption: >-
+  Si llegaste hasta el final, tu cuerpo ya te dio las gracias. 🪷
+
+  Ahora imagina eso, pero durante una hora completa, en un espacio pensado para que desconectes de verdad.
+  Guarda este video para la próxima vez que el día se ponga pesado.
+
+  📲 Agenda por WhatsApp al 5024 3516
+  📍 4a. calle 2-09, zona 2, Cobán · Lunes a domingo, con cita previa
+hashtags: [FlorDeLotoSpa, SpaCoban, Respira, Bienestar, Relajacion]

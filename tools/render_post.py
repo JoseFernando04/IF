@@ -2,6 +2,7 @@
 
 Uso: .venv/Scripts/python tools/render_post.py examples/copy/dia/2026-11-08-post-1.yaml
 El YAML define formato (checklist | este-o-este | frase), salida, caption, hashtags y los textos del formato.
+Campañas de clientes: claves opcionales plantilla, logo, logo_oscuro, fuentes (rutas desde la raíz).
 Salida: <salida>/slide-01.png …, caption.txt
 """
 import json
@@ -20,11 +21,13 @@ def main() -> None:
     salida = ROOT / g["salida"]
     (salida / "work").mkdir(parents=True, exist_ok=True)
     datos = {k: v for k, v in g.items() if k not in ("caption", "hashtags", "titulo_tiktok")}
-    html = (TEMPLATES_DIR / "graphics" / "posts" / "post.html").read_text(encoding="utf-8")
-    html = (html.replace("__FONTS__", (ASSETS_DIR / "fonts").as_uri())
+    plantilla = ROOT / g["plantilla"] if g.get("plantilla") else TEMPLATES_DIR / "graphics" / "posts" / "post.html"
+    html = plantilla.read_text(encoding="utf-8")
+    html = (html.replace("__FONTS__", (ROOT / g["fuentes"] if g.get("fuentes") else ASSETS_DIR / "fonts").as_uri())
+                .replace("__BASE__", plantilla.parent.as_uri())
                 .replace("__SHARED__", (TEMPLATES_DIR / "shared").as_uri())
-                .replace("__LOGO_OSCURO__", (ASSETS_DIR / "logo" / "logo-dark.png").as_uri())
-                .replace("__LOGO__", (ASSETS_DIR / "logo" / "logo-white.png").as_uri())
+                .replace("__LOGO_OSCURO__", (ROOT / g.get("logo_oscuro", g["logo"]) if g.get("logo") else ASSETS_DIR / "logo" / "logo-dark.png").as_uri())
+                .replace("__LOGO__", (ROOT / g["logo"] if g.get("logo") else ASSETS_DIR / "logo" / "logo-white.png").as_uri())
                 .replace("__DATOS__", json.dumps(datos, ensure_ascii=False)))
     html_path = salida / "work" / "post.html"
     html_path.write_text(html, encoding="utf-8")

@@ -62,6 +62,11 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
   Montaje: `tools/render_formato.py <yaml>` (`--borrador` = sin voz, tiempos estimados). Gastado al 2026-11-10: ~USD 6.76 de 15. Decir siempre el precio antes de generar; el aviso "Escena de ejemplo" va solo en la descripción, no en el video.
 - Commit y push solo cuando el usuario lo pide (suele pedirlo al cerrar el día).
 
+## Campañas para clientes (aparte de IF)
+
+- Clientes de marketing digital que IF todavía atiende: todo en `campanas/<cliente>/`, guía en `campanas/README.md`.
+  Marca, tono y contacto del cliente (no `config/brand.json`). El marketing digital nunca aparece en el contenido propio de IF.
+
 ## Herramientas listas
 
 | Para | Comando |

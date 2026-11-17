@@ -6,6 +6,7 @@ Uso:
   .venv/Scripts/python tools/render_formato.py <yaml> --borrador           (video completo SIN voz, tiempos estimados)
   opciones: --musica-db -20
 
+Campañas de clientes: claves opcionales plantilla, logo, logo_oscuro, fuentes, musica_archivo (rutas desde la raíz).
 El YAML define: formato, titulo, audio, salida, musica, caption, hashtags, lineas (texto + campos de escena
 + sfx: [[fracción, nombre de assets/sfx]]) y cualquier dato extra que la plantilla lea (va completo a __DATOS__).
 """
@@ -66,12 +67,14 @@ def preparar_tomas(lineas: list[dict], salida: Path, work: Path) -> None:
 
 def armar_html(g: dict, lineas: list[dict], fin: float, destino: Path) -> Path:
     datos = {k: v for k, v in g.items() if k not in ("lineas", "caption", "hashtags")} | {"lineas": lineas, "fin": fin}
-    html = (TEMPLATES_DIR / "video" / g["formato"] / "reel.html").read_text(encoding="utf-8")
-    html = (html.replace("__FONTS__", (ASSETS_DIR / "fonts").as_uri())
+    plantilla = ROOT / g["plantilla"] if g.get("plantilla") else TEMPLATES_DIR / "video" / g["formato"] / "reel.html"
+    html = plantilla.read_text(encoding="utf-8")
+    html = (html.replace("__FONTS__", (ROOT / g["fuentes"] if g.get("fuentes") else ASSETS_DIR / "fonts").as_uri())
+                .replace("__BASE__", plantilla.parent.as_uri())
                 .replace("__SHARED__", (TEMPLATES_DIR / "shared").as_uri())
                 .replace("__PHOTOS__", (ASSETS_DIR / "photos").as_uri())
-                .replace("__LOGO__", (ASSETS_DIR / "logo" / "logo-white.png").as_uri())
-                .replace("__LOGO_OSCURO__", (ASSETS_DIR / "logo" / "logo-dark.png").as_uri())
+                .replace("__LOGO_OSCURO__", (ROOT / g.get("logo_oscuro", g["logo"]) if g.get("logo") else ASSETS_DIR / "logo" / "logo-dark.png").as_uri())
+                .replace("__LOGO__", (ROOT / g["logo"] if g.get("logo") else ASSETS_DIR / "logo" / "logo-white.png").as_uri())
                 .replace("__DATOS__", json.dumps(datos, ensure_ascii=False)))
     destino.write_text(html, encoding="utf-8")
     return destino
@@ -95,11 +98,11 @@ def capturar(html_path: Path, tiempos: list[float], carpeta: Path) -> list[Path]
     return rutas
 
 
-def tira(rutas: list[Path], destino: Path) -> None:
+def tira(rutas: list[Path], destino: Path, fondo: str = "#0a1410") -> None:
     """Une los cuadros en una sola imagen de muestra (a media escala)."""
     ims = [Image.open(r).convert("RGB").resize((540, 960)) for r in rutas]
     sep = 24
-    out = Image.new("RGB", (len(ims) * 540 + (len(ims) + 1) * sep, 960 + 2 * sep), "#0a1410")
+    out = Image.new("RGB", (len(ims) * 540 + (len(ims) + 1) * sep, 960 + 2 * sep), fondo)
     for i, im in enumerate(ims):
         out.paste(im, (sep + i * (540 + sep), sep))
     out.save(destino, quality=92)
@@ -140,7 +143,7 @@ def main() -> None:
     if muestra:
         tiempos = [float(x) for x in muestra.split(",")]
         rutas = capturar(html_path, tiempos, work)
-        tira(rutas, salida / "muestra.jpg")
+        tira(rutas, salida / "muestra.jpg", g.get("fondo_muestra", "#0a1410"))
         Image.open(rutas[len(rutas) // 2]).convert("RGB").save(salida / "preview.png")
         print("✔ muestra en", salida / "muestra.jpg")
         return
@@ -155,7 +158,9 @@ def main() -> None:
     sfx = [{"t": l["inicio"] + l["duracion"] * frac, "sfx": nombre, "gain_db": -10}
            for l, orig in zip(lineas, g["lineas"]) for frac, nombre in orig.get("sfx", [])]
     primer_plano = build_sfx_track(sfx, fin, work / "voz_sfx.wav", voice=voz)
-    pista = get_track(g["musica"])
+    # Campañas de clientes: música del cliente por ruta, sin pasar por la biblioteca de IF
+    pista = (type("Pista", (), {"path": ROOT / g["musica_archivo"], "attribution": g.get("musica_credito", "")})
+             if g.get("musica_archivo") else get_track(g["musica"]))
     db = float(arg("--musica-db") or g.get("musica_db", -20))
     audio = mix_audio(primer_plano, pista.path, fin, work / "audio.wav", volume_db=db)
     destino = salida / ("reel-borrador.mp4" if borrador else "reel.mp4")

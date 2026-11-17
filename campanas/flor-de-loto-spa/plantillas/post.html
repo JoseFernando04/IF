@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<!-- Plantilla de posts de Flor de Loto Spa (cliente). Marca del cliente, NO de IF.
+     Formatos: carrusel | comparacion | checklist. Cada .slide = 1080×1350. -->
+<style>
+@font-face { font-family: "Cinzel"; src: url("__FONTS__/Cinzel.ttf"); font-weight: 400 900; }
+@font-face { font-family: "Vibes"; src: url("__FONTS__/GreatVibes.ttf"); }
+@font-face { font-family: "Corm"; src: url("__FONTS__/CormorantGaramond.ttf"); font-weight: 300 700; }
+@font-face { font-family: "Corm"; src: url("__FONTS__/CormorantGaramond-Italic.ttf"); font-style: italic; font-weight: 300 700; }
+:root { --morado: #300934; --ciruela: #3f0d43; --medio: #5a1f6e; --lila: #b07cc6; --oro: #c9a24a; --oro2: #e6c77a; --marfil: #fdf9f0; --papel: #f7efe4; }
+html, body { margin: 0; background: #222; }
+.slide { position: relative; width: 1080px; height: 1350px; overflow: hidden; box-sizing: border-box; padding: 110px 100px;
+  display: flex; flex-direction: column; font-family: "Corm"; }
+.oscuro { background: radial-gradient(ellipse 120% 80% at 50% 0%, var(--medio) 0%, var(--ciruela) 45%, var(--morado) 100%); color: var(--marfil); }
+.claro { background: radial-gradient(ellipse 110% 70% at 50% 0%, #fffaf2 0%, var(--papel) 60%, #efe2d2 100%); color: var(--morado); }
+.marco { position: absolute; inset: 38px; border: 2px solid var(--oro); border-radius: 6px; pointer-events: none; opacity: .75; }
+.marco::after { content: ""; position: absolute; inset: 10px; border: 1px solid var(--oro); opacity: .45; border-radius: 3px; }
+.loto-fondo { position: absolute; width: 900px; left: 90px; bottom: -260px; opacity: .13; }
+.medio { margin: auto 0; padding-bottom: 60px; }
+.marca { font: 600 26px "Cinzel"; letter-spacing: 9px; text-align: center; color: var(--oro); }
+.script { font-family: "Vibes"; font-weight: 400; color: var(--oro2); line-height: 1; }
+.claro .script { color: var(--medio); }
+.titulo { font: 700 74px/1.08 "Cinzel"; letter-spacing: 2px; text-align: center; margin: 0; }
+.sub { font: italic 500 44px/1.3 "Corm"; text-align: center; opacity: .92; }
+.regla { display: flex; align-items: center; gap: 22px; justify-content: center; margin: 34px 0; }
+.regla i { display: block; width: 170px; height: 2px; background: linear-gradient(90deg, transparent, var(--oro)); }
+.regla i:last-child { background: linear-gradient(90deg, var(--oro), transparent); }
+.regla svg { width: 54px; }
+.etiqueta { font: 600 28px "Cinzel"; letter-spacing: 10px; color: var(--oro); text-align: center; }
+.lista { list-style: none; padding: 0; margin: 10px 0 0; }
+.lista li { font: 500 46px/1.25 "Corm"; padding: 18px 0 18px 70px; position: relative; border-bottom: 1px solid rgba(201,162,74,.35); }
+.lista li:last-child { border-bottom: 0; }
+.lista li svg { position: absolute; left: 0; top: 26px; width: 44px; }
+.cuerpo-texto { font: 500 50px/1.35 "Corm"; text-align: center; }
+.cuerpo-texto em { color: var(--oro2); font-style: italic; }
+.pie { margin-top: auto; text-align: center; }
+.wa { display: inline-flex; align-items: center; gap: 22px; padding: 22px 46px; border-radius: 80px; background: var(--oro);
+  color: var(--morado); font: 700 46px "Cinzel"; letter-spacing: 2px; }
+.wa svg { width: 46px; height: 46px; }
+.claro .wa { background: var(--morado); color: var(--oro2); }
+.nota { font: italic 500 32px/1.3 "Corm"; margin-top: 22px; opacity: .85; }
+.desliza { position: absolute; right: 90px; bottom: 82px; font: 600 24px "Cinzel"; letter-spacing: 6px; color: var(--oro); }
+.num { position: absolute; left: 90px; bottom: 82px; font: 600 24px "Cinzel"; letter-spacing: 4px; color: var(--oro); opacity: .8; }
+.logo { width: 250px; display: block; margin: 0 auto; filter: drop-shadow(0 12px 30px rgba(0,0,0,.35)); }
+/* comparación */
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; margin-top: 40px; }
+.col { border: 2px solid var(--oro); border-radius: 26px; padding: 40px 34px; background: rgba(255,255,255,.04); }
+.claro .col { background: rgba(255,255,255,.6); }
+.col h3 { margin: 0 0 6px; font: 400 92px/1 "Vibes"; color: var(--medio); text-align: center; }
+.col .para { font: 600 22px "Cinzel"; letter-spacing: 5px; text-align: center; color: var(--oro); margin-bottom: 18px; }
+.col p { font: 500 38px/1.3 "Corm"; margin: 18px 0 0; padding-top: 18px; border-top: 1px solid rgba(201,162,74,.45); }
+/* checklist */
+.check li { padding-left: 86px; font-size: 45px; padding-top: 15px; padding-bottom: 15px; }
+.check li .caja { position: absolute; left: 0; top: 22px; width: 52px; height: 52px; border: 2px solid var(--oro); border-radius: 50%;
+  display: grid; place-items: center; }
+.check li .caja svg { position: static; width: 30px; }
+</style></head>
+<body>
+<div id="raiz"></div>
+<script>
+const R = __DATOS__;
+const LOGO = "__LOGO__";
+// Flor de loto en línea (dibujo propio, inspirado en la marca): pétalos que nacen de un mismo punto.
+function loto(color, grosor = 6, relleno = "none") {
+  const petalo = (ang, esc) => `<path transform="rotate(${ang} 100 170) translate(100 170) scale(${esc}) translate(-100 -170)"
+    d="M100 170 C 132 128, 134 72, 100 22 C 66 72, 68 128, 100 170 Z" fill="${relleno}" stroke="${color}" stroke-width="${grosor / esc}" stroke-linejoin="round"/>`;
+  return `<svg viewBox="0 0 200 190" xmlns="http://www.w3.org/2000/svg">
+    ${petalo(-68, .62)}${petalo(68, .62)}${petalo(-40, .82)}${petalo(40, .82)}${petalo(0, 1)}
+    <path d="M30 176 Q100 196 170 176" fill="none" stroke="${color}" stroke-width="${grosor}" stroke-linecap="round"/></svg>`;
+}
+const WA = `<svg viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3c.2.2 2.2 3.4 5.3 4.7 2 .9 2.8.9 3.8.8.6-.1 1.9-.8 2.1-1.5s.3-1.3.2-1.5-.3-.2-.6-.4z"/></svg>`;
+const OK = (c) => `<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="${c}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const regla = (c) => `<div class="regla"><i></i>${loto(c, 7)}<i></i></div>`;
+const esc = (s) => String(s ?? "").replace(/\*(.+?)\*/g, "<em>$1</em>");
+const fondoLoto = (c) => `<div class="loto-fondo">${loto(c, 2.2)}</div>`;
+const boton = (texto) => `<div class="wa">${WA}<span>${texto}</span></div>`;
+
+function slide(d, i, total) {
+  const tono = d.tono || "oscuro";
+  const oro = "#c9a24a";
+  let h = `<section class="slide ${tono}"><div class="marco"></div>${fondoLoto(tono === "oscuro" ? "#e6c77a" : "#5a1f6e")}`;
+  if (d.tipo === "portada") {
+    h += `<div class="marca">FLOR DE LOTO SPA</div>
+      <div class="medio"><div class="script"><div style="font-size:160px;text-align:center">${d.script}</div></div>
+      ${regla(oro)}<div class="sub">${esc(d.sub)}</div></div>`;
+  } else if (d.tipo === "servicio") {
+    const cab = `<div class="etiqueta">${d.etiqueta}</div>
+      <div class="script" style="font-size:150px;text-align:center;margin-top:10px">${d.script}</div>${regla(oro)}`;
+    h += `<div class="marca">FLOR DE LOTO SPA</div>`;
+    if (d.texto) h += `<div class="medio">${cab}<div class="cuerpo-texto">${esc(d.texto)}</div></div>`;
+    if (d.lista) h += `<div style="margin-top:90px">${cab}</div><ul class="lista">${d.lista.map((x) => `<li>${loto(oro, 9)}${esc(x)}</li>`).join("")}</ul>`;
+  } else if (d.tipo === "cierre") {
+    h += `<img class="logo" src="${LOGO}" style="margin-top:20px">
+      <div class="script" style="font-size:96px;text-align:center;margin-top:40px">${d.script}</div>
+      ${regla(oro)}<div class="cuerpo-texto" style="font-size:44px">${esc(d.texto)}</div>
+      <div class="pie">${boton(R.whatsapp)}<div class="nota">${esc(d.nota)}</div></div>`;
+  } else if (d.tipo === "comparacion") {
+    h += `<div class="marca" style="color:${tono === "oscuro" ? oro : "#5a1f6e"}">FLOR DE LOTO SPA</div>
+      <div class="titulo" style="margin-top:50px;font-size:64px">${d.titulo}</div>
+      <div class="cols">${d.columnas.map((c) => `<div class="col"><h3>${c.nombre}</h3><div class="para">${c.para}</div>
+        ${c.puntos.map((p) => `<p>${esc(p)}</p>`).join("")}</div>`).join("")}</div>
+      <div class="pie"><div class="sub" style="font-size:42px;margin-bottom:26px">${esc(d.pregunta)}</div>${boton(R.whatsapp)}</div>`;
+  } else if (d.tipo === "checklist") {
+    h += `<div class="marca">FLOR DE LOTO SPA</div>
+      <div class="titulo" style="margin-top:56px;font-size:66px">${d.titulo}</div>
+      <div style="height:40px"></div>
+      <ul class="lista check">${d.lista.map((x) => `<li><span class="caja">${OK("#e6c77a")}</span>${esc(x)}</li>`).join("")}</ul>
+      <div class="pie"><div class="script" style="font-size:76px;margin-bottom:20px">${d.remate}</div>${boton(R.whatsapp)}<div class="nota">${esc(d.nota)}</div></div>`;
+  }
+  if (total > 1) h += `<div class="num">${i + 1} / ${total}</div>` + (i < total - 1 ? `<div class="desliza">DESLIZA →</div>` : "");
+  return h + `</section>`;
+}
+const S = R.slides;
+document.getElementById("raiz").innerHTML = S.map((d, i) => slide(d, i, S.length)).join("");
+document.fonts.ready.then(() => Promise.all([...document.images].map((im) => im.complete ? 0 : new Promise((r) => (im.onload = im.onerror = r)))))
+  .then(() => { window.__ready = true; });
+</script>
+</body></html>

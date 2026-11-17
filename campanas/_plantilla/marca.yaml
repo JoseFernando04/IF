@@ -1,0 +1,21 @@
+# Marca del CLIENTE (no de IF). Sacar los datos de su logo, sitio o manual de marca; no inventarlos.
+cliente: nombre-del-cliente
+colores:
+  fondo: "#000000"      # color principal oscuro
+  fondo2: "#000000"     # variante
+  acento: "#000000"     # botones, resaltados
+  texto: "#ffffff"      # texto sobre el fondo
+  papel: "#ffffff"      # fondo claro
+fuentes:                # solo fuentes con licencia libre (OFL / Apache); registrar en docs/licencias.md si son nuevas
+  titulo: ""
+  texto: ""
+logo:
+  claro: material/logo/logo-claro.png    # para fondos oscuros
+  oscuro: material/logo/logo-oscuro.png  # para fondos claros
+contacto:
+  whatsapp: ""
+  correo: ""
+  otro: ""
+tono: ""                 # p. ej. cercano, premium, divertido
+trato: voseo             # voseo | tuteo | usted
+hashtags_base: []

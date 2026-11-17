@@ -1,0 +1,53 @@
+# Post 1 · Carrusel «Cuerpo, mente y alma» (6 láminas). Textos de servicios tomados del arte y el banner del cliente.
+formato: carrusel
+plantilla: campanas/flor-de-loto-spa/plantillas/post.html
+fuentes: campanas/flor-de-loto-spa/fuentes
+logo: campanas/flor-de-loto-spa/material/logo/logo.png
+salida: campanas/flor-de-loto-spa/salida/post-1
+whatsapp: "5024 3516"
+slides:
+  - tipo: portada
+    script: Cuerpo, mente<br>y alma
+    sub: Tres caminos a tu bienestar, en un mismo lugar.
+  - tipo: servicio
+    etiqueta: PARA TU CUERPO
+    script: Masajes
+    lista:
+      - Relajante y renovador
+      - Terapéutico y descarga muscular
+      - Linfático
+      - Piedras calientes
+      - Masaje con cacao
+  - tipo: servicio
+    etiqueta: PARA TU ALMA
+    script: Reiki
+    texto: Equilibra tu energía, *armoniza tu mente* y conecta con tu bienestar.
+  - tipo: servicio
+    etiqueta: PARA TU MENTE
+    script: Psicología
+    texto: Acompañamiento profesional para tu *bienestar emocional y mental*.
+  - tipo: servicio
+    tono: claro
+    etiqueta: Y ADEMÁS
+    script: Más terapias
+    lista:
+      - Ventosas
+      - Quiropráctico
+      - Limpieza facial
+      - Productos orgánicos de cuidado personal
+      - Certificado de regalo
+  - tipo: cierre
+    script: Tu momento te espera
+    texto: Ahora en un espacio más amplio y acogedor.<br>4a. calle 2-09, zona 2, Cobán.
+    nota: Lunes a domingo, con cita previa · Aceptamos tarjeta
+caption: >-
+  Hay días en que te pide atención la espalda. Otros, la cabeza. Y otros, algo más adentro. 🪷
+
+  En Flor de Loto Spa tienes los tres caminos en un mismo lugar: masajes para el cuerpo, reiki para el alma y
+  psicología para la mente. Desliza y descubre cuál es el tuyo hoy.
+
+  📍 4a. calle 2-09, zona 2, Cobán
+  🕊️ Lunes a domingo, con cita previa
+  📲 Agenda por WhatsApp al 5024 3516
+titulo_tiktok: Cuerpo, mente y alma en un mismo lugar en Cobán 🪷
+hashtags: [FlorDeLotoSpa, SpaCoban, Masajes, Reiki, Bienestar]

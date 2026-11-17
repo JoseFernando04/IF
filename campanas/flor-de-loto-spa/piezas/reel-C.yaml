@@ -1,0 +1,51 @@
+# Reel C · «Estrenamos espacio» (anuncio del espacio nuevo). Voz de José.
+# Si el cliente manda clips reales del local, se agregan como escenas de video (pendiente).
+formato: flor-de-loto
+titulo: Flor de Loto - Estrenamos espacio
+plantilla: campanas/flor-de-loto-spa/plantillas/reel.html
+fuentes: campanas/flor-de-loto-spa/fuentes
+logo: campanas/flor-de-loto-spa/material/logo/logo.png
+audio: campanas/flor-de-loto-spa/material/voz/reel-C.mp3
+salida: campanas/flor-de-loto-spa/salida/reel-C
+musica_archivo: campanas/flor-de-loto-spa/musica/flor-de-loto-calma.mp3
+musica_db: -18
+fondo_muestra: "#300934"
+whatsapp: "5024 3516"
+lineas:
+  - texto: Tenemos noticias.
+    escena: titulo
+    label: TENEMOS NOTICIAS
+    script: Estrenamos|espacio
+    script_tam: 190
+  - texto: Flor de Loto Spa ahora está en un lugar más amplio y acogedor, aquí en Cobán.
+    escena: titulo
+    label: AHORA MÁS
+    script: Amplio y|acogedor
+    script_tam: 180
+    sub: Aquí en Cobán
+  - texto: Más espacio, un ambiente más tranquilo y una decoración renovada.
+    escena: lista
+    label: LO NUEVO
+    items: [Más espacios, Ambiente tranquilo, Decoración renovada]
+  - texto: Lo que no cambia es el cuidado con que te atendemos, de lunes a domingo.
+    escena: titulo
+    label: LO QUE NO CAMBIA
+    script: El cuidado|de siempre
+    script_tam: 180
+    sub: Lunes a domingo, con cita previa
+  - texto: Ven a conocerlo. Agenda tu cita por WhatsApp.
+    escena: cierre
+    script: Ven a conocerlo
+    datos:
+      - 4a. calle 2-09, zona 2, Cobán
+      - Masajes · Reiki · Psicología
+caption: >-
+  Nos cambiamos de casa 🪷✨
+
+  Más espacio, un ambiente más tranquilo y una decoración renovada, pensada para que tu momento de bienestar sea
+  todavía mejor. Lo que no cambia: el trato y la atención personalizada de siempre.
+
+  Ven a conocernos 👇
+  📍 4a. calle 2-09, zona 2, Cobán
+  📲 Agenda por WhatsApp al 5024 3516 · Lunes a domingo, con cita previa
+hashtags: [FlorDeLotoSpa, SpaCoban, Coban, AltaVerapaz, Bienestar]

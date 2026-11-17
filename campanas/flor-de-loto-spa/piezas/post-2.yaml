@@ -1,0 +1,37 @@
+# Post 2 · «Relajante o terapéutico: ¿cuál te toca?» (comparación). Ambos masajes están en el menú del cliente.
+# Descripción general de cada tipo, sin promesas médicas. Confirmar con el cliente antes de publicar.
+formato: comparacion
+plantilla: campanas/flor-de-loto-spa/plantillas/post.html
+fuentes: campanas/flor-de-loto-spa/fuentes
+logo: campanas/flor-de-loto-spa/material/logo/logo.png
+salida: campanas/flor-de-loto-spa/salida/post-2
+whatsapp: "5024 3516"
+slides:
+  - tipo: comparacion
+    tono: claro
+    titulo: ¿Relajante o terapéutico?
+    columnas:
+      - nombre: Relajante
+        para: PARA DESCONECTAR
+        puntos:
+          - Para soltar el estrés del día.
+          - Presión suave y ritmo lento.
+          - Ideal si lo que necesitas es *apagar la mente* un rato.
+      - nombre: Terapéutico
+        para: PARA LA TENSIÓN
+        puntos:
+          - Para la espalda cargada y los nudos.
+          - Presión más firme en zonas puntuales.
+          - Ideal si sientes el *cuerpo pesado* y tenso.
+    pregunta: ¿Cuál te hace falta esta semana?
+caption: >-
+  ¿Relajante o terapéutico? 🤔 La pregunta que más nos hacen antes de agendar.
+
+  El relajante es para desconectarte: presión suave y cero prisa. El terapéutico va directo a esa tensión que cargas
+  en la espalda y los hombros. ¿No sabes cuál elegir? Escríbenos, te ayudamos a decidir.
+
+  Cuéntanos en los comentarios: ¿cuál te hace falta esta semana? 👇
+
+  📲 WhatsApp 5024 3516 · 📍 Zona 2, Cobán · Lunes a domingo, con cita previa
+titulo_tiktok: ¿Masaje relajante o terapéutico? Te ayudamos a elegir 💆
+hashtags: [FlorDeLotoSpa, SpaCoban, MasajeRelajante, MasajeTerapeutico, Bienestar]

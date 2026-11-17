@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<!-- Plantilla de reels de Flor de Loto Spa (cliente; marca del cliente, NO de IF).
+     Cada línea del guion trae «escena»: titulo | respira | camino | lista | cierre. Solo palabras clave en pantalla. -->
+<style>
+@font-face { font-family: "Cinzel"; src: url("__FONTS__/Cinzel.ttf"); font-weight: 400 900; }
+@font-face { font-family: "Vibes"; src: url("__FONTS__/GreatVibes.ttf"); }
+@font-face { font-family: "Corm"; src: url("__FONTS__/CormorantGaramond.ttf"); font-weight: 300 700; }
+@font-face { font-family: "Corm"; src: url("__FONTS__/CormorantGaramond-Italic.ttf"); font-style: italic; font-weight: 300 700; }
+:root { --morado: #300934; --ciruela: #3f0d43; --medio: #5a1f6e; --lila: #b07cc6; --oro: #c9a24a; --oro2: #e6c77a; --marfil: #fdf9f0; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--morado); color: var(--marfil); }
+#malla, #brillo, #chispas { position: absolute; inset: 0; }
+#brillo { background: radial-gradient(ellipse 70% 40% at 50% 46%, rgba(230,199,122,.16), transparent 70%); }
+#loto-fondo { position: absolute; width: 1300px; left: -110px; bottom: -420px; opacity: .07; }
+#marco { position: absolute; inset: 46px; border: 2px solid rgba(201,162,74,.55); border-radius: 8px; }
+#marca { position: absolute; top: 190px; left: 0; right: 0; text-align: center; font: 600 30px "Cinzel"; letter-spacing: 12px; color: var(--oro); }
+.esc { position: absolute; inset: 0; opacity: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 0 110px 140px; box-sizing: border-box; text-align: center; }
+.label { font: 600 34px "Cinzel"; letter-spacing: 12px; color: var(--oro); margin-bottom: 44px; }
+.script { font: 400 200px/1.02 "Vibes"; color: var(--oro2); text-shadow: 0 6px 40px rgba(0,0,0,.35); }
+.sub { font: italic 500 58px/1.3 "Corm"; color: var(--marfil); opacity: .92; margin-top: 30px; }
+.regla { display: flex; align-items: center; gap: 26px; margin: 40px 0; }
+.regla i { width: 200px; height: 2px; background: linear-gradient(90deg, transparent, var(--oro)); }
+.regla i:last-child { background: linear-gradient(90deg, var(--oro), transparent); }
+.regla svg { width: 64px; }
+.w { display: inline-block; }
+/* respira */
+.flor { width: 780px; height: 760px; position: relative; }
+.flor svg { width: 100%; height: 100%; overflow: visible; }
+.aro { position: absolute; left: 50%; top: 56%; width: 560px; height: 560px; margin: -280px; border-radius: 50%;
+  border: 2px solid rgba(230,199,122,.45); }
+.palabra { font: 400 170px/1 "Vibes"; color: var(--oro2); margin-top: 20px; }
+.cuenta { font: 600 40px "Cinzel"; letter-spacing: 14px; color: var(--oro); margin-top: 18px; }
+/* camino */
+.tres { display: flex; gap: 46px; margin-bottom: 70px; }
+.puerta { width: 230px; height: 330px; border-radius: 115px 115px 18px 18px; border: 2px solid rgba(201,162,74,.5);
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 34px; box-sizing: border-box;
+  font: 600 30px "Cinzel"; letter-spacing: 5px; color: rgba(253,249,240,.55); background: rgba(255,255,255,.03); }
+.puerta svg { width: 110px; margin-bottom: 30px; opacity: .55; }
+.puerta.on { border-color: var(--oro2); color: var(--marfil); background: linear-gradient(180deg, rgba(230,199,122,.22), rgba(90,31,110,.35));
+  box-shadow: 0 0 60px rgba(230,199,122,.35); }
+.puerta.on svg { opacity: 1; }
+.items { list-style: none; padding: 0; margin: 10px 0 0; }
+.items li { font: 500 60px/1.25 "Corm"; padding: 12px 0; }
+.items li em { color: var(--oro2); font-style: italic; }
+/* cierre */
+.logo { width: 430px; filter: drop-shadow(0 20px 50px rgba(0,0,0,.45)); }
+.wa { display: inline-flex; align-items: center; gap: 26px; padding: 30px 60px; border-radius: 100px; background: var(--oro);
+  color: var(--morado); font: 700 66px "Cinzel"; letter-spacing: 3px; margin-top: 50px; box-shadow: 0 16px 50px rgba(0,0,0,.35); }
+.wa svg { width: 66px; height: 66px; }
+.dato { font: 500 46px/1.35 "Corm"; margin-top: 34px; opacity: .92; }
+</style></head>
+<body>
+<div id="malla"></div><div id="brillo"></div><canvas id="chispas" width="1080" height="1920"></canvas>
+<div id="loto-fondo"></div><div id="marco"></div><div id="marca">FLOR DE LOTO SPA</div>
+<div id="escenas"></div>
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const R = __DATOS__;
+window.__ready = false;
+const L = R.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const eio = (x) => { x = cl(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const esc = (s) => String(s ?? "").replace(/\*(.+?)\*/g, "<em>$1</em>");
+const LOGO = "__LOGO__";
+const WA = `<svg viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3c.2.2 2.2 3.4 5.3 4.7 2 .9 2.8.9 3.8.8.6-.1 1.9-.8 2.1-1.5s.3-1.3.2-1.5-.3-.2-.6-.4z"/></svg>`;
+
+// Flor de loto en línea (dibujo propio). «abre» 0→1 separa los pétalos.
+function loto(color, grosor = 6, abre = 1, relleno = "none", id = "") {
+  const petalo = (ang, s, k) => `<path data-k="${k}" data-ang="${ang}" data-s="${s}"
+    transform="rotate(${ang * abre} 100 170) translate(100 170) scale(${s}) translate(-100 -170)"
+    d="M100 170 C 132 128, 134 72, 100 22 C 66 72, 68 128, 100 170 Z" fill="${relleno}" stroke="${color}"
+    stroke-width="${grosor / s}" stroke-linejoin="round"/>`;
+  return `<svg ${id ? `id="${id}"` : ""} viewBox="0 0 200 190" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="g${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b07cc6" stop-opacity=".55"/>
+    <stop offset="1" stop-color="#5a1f6e" stop-opacity=".25"/></linearGradient></defs>
+    ${petalo(-68, .62, 2)}${petalo(68, .62, 2)}${petalo(-40, .82, 1)}${petalo(40, .82, 1)}${petalo(0, 1, 0)}
+    <path d="M30 176 Q100 196 170 176" fill="none" stroke="${color}" stroke-width="${grosor}" stroke-linecap="round"/></svg>`;
+}
+const regla = () => `<div class="regla"><i></i>${loto("#c9a24a", 7)}<i></i></div>`;
+const palabras = (s) => String(s).split(/\s+/).map((w) => `<span class="w">${w}</span>`).join(" ");
+$("loto-fondo").innerHTML = loto("#e6c77a", 1.6);
+
+// ---- construir escenas ----
+const cont = $("escenas");
+const escenas = L.map((l, i) => {
+  const d = document.createElement("div");
+  d.className = "esc";
+  const e = l.escena;
+  if (e === "titulo") {
+    d.innerHTML = (l.label ? `<div class="label a">${l.label}</div>` : "") +
+      `<div class="script a" style="${l.script_tam ? `font-size:${l.script_tam}px` : ""}">${l.script.split("|").join("<br>")}</div>` +
+      regla() + (l.sub ? `<div class="sub a">${esc(l.sub)}</div>` : "");
+  } else if (e === "respira") {
+    d.innerHTML = `<div class="flor"><div class="aro"></div>${loto("#e6c77a", 3.2, 1, `url(#gf${i})`, `f${i}`)}</div>
+      <div class="palabra">${l.pantalla}</div>${l.cuenta ? `<div class="cuenta">${l.cuenta}</div>` : ""}`;
+  } else if (e === "camino") {
+    const ps = [["cuerpo", "CUERPO"], ["mente", "MENTE"], ["alma", "ALMA"]];
+    d.innerHTML = `<div class="tres">${ps.map(([k, n]) => `<div class="puerta ${k === l.activa ? "on" : ""}">${loto("#e6c77a", 7)}${n}</div>`).join("")}</div>` +
+      (l.script ? `<div class="script a" style="font-size:170px">${l.script}</div>` : "") +
+      (l.items ? `<ul class="items">${l.items.map((x) => `<li class="it">${esc(x)}</li>`).join("")}</ul>` : "") +
+      (l.sub ? `<div class="sub a">${esc(l.sub)}</div>` : "");
+  } else if (e === "lista") {
+    d.innerHTML = `<div class="label a">${l.label}</div>${regla()}
+      <ul class="items">${l.items.map((x) => `<li class="it" style="font-size:76px;padding:22px 0">${esc(x)}</li>`).join("")}</ul>`;
+  } else if (e === "cierre") {
+    d.innerHTML = `<img class="logo a" src="${LOGO}"><div class="script a" style="font-size:120px;margin-top:40px">${l.script || "Agenda tu cita"}</div>
+      <div class="wa a">${WA}<span>${R.whatsapp}</span></div>
+      ${(l.datos || []).map((x) => `<div class="dato a">${esc(x)}</div>`).join("")}`;
+  }
+  cont.appendChild(d);
+  return d;
+});
+
+// partículas doradas (deterministas)
+let s = 7; const rnd = () => ((s = (s * 16807) % 2147483647) / 2147483647);
+const P = Array.from({ length: 46 }, () => ({ x: rnd() * 1080, y: rnd() * 1920, r: 1.5 + rnd() * 4.5, v: 14 + rnd() * 30, f: rnd() * 6.28 }));
+const ctx = $("chispas").getContext("2d");
+function chispas(t) {
+  ctx.clearRect(0, 0, 1080, 1920);
+  for (const p of P) {
+    const y = ((p.y - t * p.v) % 1920 + 1920) % 1920, x = p.x + 18 * Math.sin(t * 0.4 + p.f);
+    const a = 0.25 + 0.25 * Math.sin(t * 1.3 + p.f);
+    const g = ctx.createRadialGradient(x, y, 0, x, y, p.r * 4);
+    g.addColorStop(0, `rgba(240,210,140,${a})`); g.addColorStop(1, "rgba(240,210,140,0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, p.r * 4, 0, 6.29); ctx.fill();
+  }
+}
+
+const mallaP = fondo($("malla"), "malla", { colors: ["#300934", "#3f0d43", "#5a1f6e", "#24062a"], distortion: 0.7, swirl: 0.25, frame: 2000 });
+const FUNDIDO = 0.45;
+function dibujar(t) {
+  mallaP.then((f) => f.frame(2000 + t * 1000 * 0.25));
+  chispas(t);
+  $("loto-fondo").style.transform = `rotate(${Math.sin(t * 0.15) * 2}deg) scale(${1 + 0.02 * Math.sin(t * 0.3)})`;
+  L.forEach((l, i) => {
+    const d = escenas[i];
+    const desde = i === 0 ? 0 : l.inicio - 0.15;
+    const hasta = i < L.length - 1 ? L[i + 1].inicio - 0.15 : R.fin + 1;
+    const op = cl((t - desde) / FUNDIDO) * (1 - cl((t - hasta) / FUNDIDO));
+    d.style.opacity = op;
+    if (op <= 0) return;
+    const lt = t - desde, p = cl((t - l.inicio) / l.duracion);
+    d.querySelectorAll(".a").forEach((el, j) => { const k = eo((lt - j * 0.18) / 0.8); el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * 40}px)`; });
+    d.querySelectorAll(".it").forEach((el, j) => {
+      const n = d.querySelectorAll(".it").length;
+      const k = eo((p - (j / n) * 0.75) / 0.18); el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * 30}px)`; });
+    d.querySelectorAll(".regla").forEach((el) => { const k = eo((lt - 0.2) / 0.9); el.style.opacity = k; el.style.transform = `scaleX(${0.3 + 0.7 * k})`; });
+    if (l.escena === "respira") {
+      // inhala: la flor se abre y crece; suelta: se cierra. Ritmo suave (ease in-out) durante toda la frase.
+      const q = eio(cl((t - l.inicio) / Math.max(1.2, l.duracion + 0.3)));
+      const abre = l.fase === "inhala" ? q : 1 - q;
+      const svg = d.querySelector("svg");
+      svg.querySelectorAll("path[data-k]").forEach((pt) => {
+        const ang = +pt.dataset.ang, sc = +pt.dataset.s;
+        pt.setAttribute("transform", `rotate(${ang * (0.25 + 0.75 * abre)} 100 170) translate(100 170) scale(${sc * (0.8 + 0.2 * abre)}) translate(-100 -170)`);
+      });
+      d.querySelector(".flor").style.transform = `scale(${0.82 + 0.22 * abre})`;
+      const aro = d.querySelector(".aro"); aro.style.transform = `scale(${0.7 + 0.55 * abre})`; aro.style.opacity = 0.25 + 0.6 * abre;
+      $("brillo").style.opacity = 0.6 + 0.6 * abre;
+    }
+    if (l.escena === "camino") {
+      d.querySelectorAll(".puerta.on").forEach((el) => { const k = eo(lt / 0.7); el.style.transform = `translateY(${-24 * k}px) scale(${1 + 0.06 * k})`; });
+    }
+    if (l.escena === "cierre") {
+      const lg = d.querySelector(".logo"); lg.style.transform += ` scale(${0.9 + 0.1 * eo(lt / 1.2)})`;
+    }
+  });
+  if (!L.some((l, i) => l.escena === "respira" && +escenas[i].style.opacity > 0)) $("brillo").style.opacity = 1;
+  const enCierre = L[L.length - 1].escena === "cierre" ? cl((t - L[L.length - 1].inicio + 0.15) / FUNDIDO) : 0;
+  $("marca").style.opacity = 1 - enCierre;
+}
+await mallaP;
+await document.fonts.ready;
+await Promise.all([...document.images].map((im) => im.complete ? 0 : new Promise((r) => (im.onload = im.onerror = r))));
+window.__seek = async (t) => { dibujar(t); const f = await mallaP; f.frame(2000 + t * 1000 * 0.25); };
+window.__ready = true;
+</script>
+</body></html>

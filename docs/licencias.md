@@ -23,6 +23,8 @@ Todo el stack es gratuito para uso comercial. Revisar esta tabla antes de agrega
 | Chiptune y SFX 8-bit (`assets/music/chiptune-bodega.wav`, `assets/sfx/8bit/`) | Reels 8-bit | Propios (sintetizados con `tools/make_chiptune.py`) | 0 | No requieren crédito |
 | Firma IF (`assets/music/if-firma.wav`, `assets/sfx/if-logo.wav`) | Sonido característico para posts y reels | Propios (sintetizados con `tools/make_firma.py`) | 0 | No requieren crédito |
 | Press Start 2P | Fuente de los reels 8-bit | SIL OFL 1.1 | 0 | Licencia en `assets/fonts/` |
+| Cinzel · Great Vibes · Cormorant Garamond | Fuentes de la campaña de Flor de Loto Spa (cliente) | SIL OFL 1.1 | 0 | Descargadas 2026-11-17 de github.com/google/fonts; licencias en `campanas/flor-de-loto-spa/fuentes/` |
+| Música «flor-de-loto-calma» | Fondo de los reels de Flor de Loto Spa (cliente) | Propia (sintetizada por IF) | 0 | `campanas/flor-de-loto-spa/musica/`; solo para ese cliente |
 | ElevenLabs (plan pago del usuario) | Voz de los reels | Según su plan | Pago | Confirmar licencia comercial en la cuenta |
 | Azure AI Speech (F0) | Voz en la nube (en evaluación) | Términos de Azure: el audio generado se puede usar comercialmente | 0 hasta 500 000 car./mes | Requiere cuenta y clave (`docs/guia-voces.md`) |
 | Google Cloud Text-to-Speech | Voz en la nube (en evaluación) | Términos de Google Cloud: uso comercial permitido | 0 hasta 1 M car./mes (Chirp 3 HD) | Requiere cuenta y clave |
