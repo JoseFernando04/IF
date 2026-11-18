@@ -16,14 +16,23 @@
     "muted": "#9ca3af"
   },
   "fonts": {
-    "heading": {"family": "Space Grotesk", "file": "SpaceGrotesk.ttf"},
-    "body": {"family": "Inter", "file": "Inter.ttf"},
-    "mono": {"family": "JetBrains Mono", "file": "JetBrainsMono.ttf"}
+    "heading": {
+      "family": "Space Grotesk",
+      "file": "SpaceGrotesk.ttf"
+    },
+    "body": {
+      "family": "Inter",
+      "file": "Inter.ttf"
+    },
+    "mono": {
+      "family": "JetBrains Mono",
+      "file": "JetBrainsMono.ttf"
+    }
   },
   "logo": "assets/logo/logo-white.png",
   "style": {
     "radius_px": 28,
-    "badge": "◆ Software empresarial · IoT · B2B",
+    "badge": "◆ Software · IoT · Automatizaciones · Presencia digital",
     "glow": true,
     "grid": true
   },
@@ -31,15 +40,71 @@
     "language": "es-GT",
     "voseo": true,
     "tone": "Profesional pero cercano y claro. Directo, sin paja técnica. Cada solución resuelve un problema concreto de operación: no tecnología por moda.",
-    "phrases_ok": ["Contanos tu situación", "Agendá una conversación", "Sin compromiso", "Respondemos en menos de 24 horas hábiles"],
-    "avoid": ["Inventar clientes, cifras o testimonios", "Promesas absolutas (100 %, garantizado)", "Anglicismos innecesarios", "Tuteo o ustedeo mezclado con voseo"]
+    "phrases_ok": [
+      "Contanos tu situación",
+      "Agendá una conversación",
+      "Sin compromiso",
+      "Respondemos en menos de 24 horas hábiles"
+    ],
+    "avoid": [
+      "Inventar clientes, cifras o testimonios",
+      "Promesas absolutas (100 %, garantizado)",
+      "Anglicismos innecesarios",
+      "Tuteo o ustedeo mezclado con voseo"
+    ]
   },
   "services": [
-    {"name": "Gestión de Inventario Inteligente", "summary": "Estantes con sensores IoT que reportan flujo en tiempo real, alertas automáticas de stock, asignación de activos por colaborador e histórico de proveedores."},
-    {"name": "Catálogo Inteligente", "summary": "Subís una plantilla y se genera el catálogo automáticamente: versión web y PDF lista para los vendedores."},
-    {"name": "Digitalización de Vendedores de Calle", "summary": "App web con catálogo digital y captura de órdenes y precompras; la fuerza de venta deja la libreta."},
-    {"name": "Pipeline comercial", "summary": "Pipeline ordenado, cotizaciones rastreables y métricas claras del equipo comercial."},
-    {"name": "Desarrollo a medida", "summary": "Contanos tu problema, te proponemos la solución. Diagnóstico, desarrollo, capacitación y acompañamiento."}
+    {
+      "name": "Gestión de inventario inteligente",
+      "group": "Software para tu operación",
+      "summary": "Estantes con sensores que reportan flujo en tiempo real: sabés qué entra, qué sale y qué falta sin contar a mano. Alertas de stock, dashboard en vivo y reportes históricos."
+    },
+    {
+      "name": "Catálogo inteligente",
+      "group": "Software para tu operación",
+      "summary": "Subís una plantilla y se genera el catálogo automáticamente: versión web y PDF, por canal o cliente, con actualización masiva."
+    },
+    {
+      "name": "Digitalización de vendedores de calle",
+      "group": "Software para tu operación",
+      "summary": "App web con catálogo digital y captura de órdenes y precompras desde el celular, sincronizada con inventario y funciona sin señal."
+    },
+    {
+      "name": "Agente de IA en WhatsApp",
+      "group": "Automatizaciones por WhatsApp",
+      "summary": "Responde a cualquier hora con la información de tu producto y tu web, atiende varias conversaciones a la vez y tu equipo entra solo a las que están listas para cerrar."
+    },
+    {
+      "name": "Seguimiento de cotizaciones",
+      "group": "Automatizaciones por WhatsApp",
+      "summary": "Cada cotización recibe seguimiento por WhatsApp el día 2, 5 y 10, con tu tono, sin depender de la memoria de nadie."
+    },
+    {
+      "name": "Recordatorios de pago",
+      "group": "Automatizaciones por WhatsApp",
+      "summary": "Para créditos y pagos recurrentes: el recordatorio sale solo antes o después del vencimiento, con los datos correctos cada vez."
+    },
+    {
+      "name": "Motor de reseñas de Google",
+      "group": "Automatizaciones por WhatsApp",
+      "summary": "Al cerrar el trabajo, el cliente recibe por WhatsApp el enlace directo a tu perfil de Google, sin suscripciones que limiten cuántas pedís."
+    },
+    {
+      "name": "Páginas web",
+      "group": "Presencia digital",
+      "summary": "Sitios rápidos y claros, a la medida de la marca, adaptados al celular, con WhatsApp y formularios integrados y listos para posicionarse en Google."
+    },
+    {
+      "name": "Contenido para redes sociales",
+      "group": "Presencia digital",
+      "summary": "Reels y carruseles con estrategia y posicionamiento orgánico, alineados a la marca. (Orgánico: no pauta ni campañas pagadas.)"
+    },
+    {
+      "name": "Desarrollo a medida",
+      "group": "Otros",
+      "summary": "Contanos tu problema, te proponemos la solución. Diagnóstico, desarrollo, capacitación y acompañamiento."
+    }
   ],
-  "community": "Charlas educativas gratuitas para escuelas y empresas, y un programa anual de digitalización pro-bono para ONGs, refugios y fundaciones."
+  "community": "Charlas educativas gratuitas para escuelas y empresas, y un programa anual de digitalización pro-bono para ONGs, refugios y fundaciones.",
+  "services_source": "iftechworks.com/servicios, revisado 2026-11-18"
 }

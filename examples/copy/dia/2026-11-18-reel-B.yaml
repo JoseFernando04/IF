@@ -1,0 +1,42 @@
+# Reel B · FORMATO NUEVO «Lista sin intro» (lista): el #1 aparece en el segundo 0, una imagen de referencia por punto.
+# Pilar: soluciones (servicios nuevos: reseñas de Google, páginas web, agente de IA en WhatsApp). Plantilla por construir
+# (templates/video/lista/reel.html) si el equipo la elige; muestra en data/dias/2026-11-18/reel-B/muestra.jpg.
+formato: lista
+titulo: Lo que tu cliente revisa antes de escribirte
+audio: assets/voice/elevenlabs/2026-11-18-reel-B.mp3
+salida: data/dias/2026-11-18/reel-B
+musica: if-firma
+musica_db: -22
+whatsapp: "+502 3808 9808"
+rotulo: "Lo que tu cliente revisa antes de escribirte"
+caption: >-
+  Antes del primer «hola», tu cliente ya te investigó. 🔍
+  Si alguna de las tres te quedó doliendo, tiene arreglo: reseñas que se piden solas, una página que abre rápido
+  y un WhatsApp que contesta aunque sean las diez de la noche.
+  Escribinos al WhatsApp +502 3808 9808 y vemos cuál te falta primero.
+hashtags: [ReseñasGoogle, PaginasWeb, WhatsAppBusiness, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: "Uno: tus reseñas en Google. Si la última es de hace dos años, duda."
+    punto: 1
+    titulo: "Tus reseñas<br>en Google."
+    sfx: [[0.02, whoosh], [0.35, tick]]
+    ref: {tipo: resenas, estrellas: 4, cuantas: "4 reseñas", ultima: "«Buen servicio.»", hace: "hace 2 años"}
+  - texto: "Dos: tu página en el celular. Si tarda o no encuentra cómo escribirte, se va."
+    punto: 2
+    titulo: "Tu página<br>en el celular."
+    sfx: [[0.02, whoosh], [0.3, tick]]
+    ref: {tipo: cargando, nota: "8 SEGUNDOS · SIN BOTÓN DE WHATSAPP"}
+  - texto: "Tres: si alguien le contesta. Pregunta a las diez de la noche y espera hasta mañana."
+    punto: 3
+    titulo: "Si alguien<br>le contesta."
+    sfx: [[0.02, whoosh], [0.12, pop], [0.62, thud]]
+    ref: {tipo: chat, pregunta: "¿Precio?", hora: "22:04", respuesta: "Buenos días, disculpe…", hora_r: "08:40"}
+  - texto: "Las tres se pueden dejar resueltas: reseñas que se piden solas, una página rápida y un agente que contesta a cualquier hora."
+    pantalla: resumen
+    sfx: [[0.12, tick], [0.36, tick], [0.6, tick]]
+    encabezado: "Las tres, resueltas."
+    items: ["Reseñas solas", "Página rápida", "Respuesta 24/7"]
+  - texto: Escribinos al WhatsApp y vemos cuál te falta.
+    pantalla: cierre
+    titulo: "¿Cuál te falta?<br><em>Escribinos.</em>"
+    sfx: [[0.3, pop]]

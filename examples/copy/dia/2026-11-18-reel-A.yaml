@@ -1,0 +1,67 @@
+# Reel A · Historia en el celular (chat). Pilar: soluciones (servicio nuevo: seguimiento de cotizaciones por WhatsApp). Escena de ejemplo.
+formato: chat
+titulo: La cotización que se enfrió
+audio: assets/voice/elevenlabs/2026-11-18-reel-A.mp3
+salida: data/dias/2026-11-18/reel-A
+musica: digital-lemonade
+musica_db: -21
+whatsapp: "+502 3808 9808"
+etiqueta_app: "COTIZACIONES"
+contactos:
+  cliente:
+    {nombre: "Ing. Pérez · Constructora", inicial: "P", color: "#f0c419", sub: "en línea",
+     historial: [{de: yo, texto: "📄 Cotizacion_materiales.pdf", hora: "mar"}]}
+caption: >-
+  No dijo que no. Dijo «lo pienso»… y nadie le volvió a preguntar. 🤔📄
+  La mayoría de cotizaciones no se pierden por precio: se enfrían en el chat.
+  Ahora el seguimiento puede salir solo, con tu tono, sin que nadie tenga que acordarse.
+  Escribinos al WhatsApp +502 3808 9808 y te mostramos cómo. (Escena de ejemplo.)
+hashtags: [Cotizaciones, WhatsAppBusiness, PymesGuatemala, Ventas, NegociosGT]
+lineas:
+  - texto: "Mandaste la cotización un martes y el cliente te contestó: lo voy a pensar."
+    chat: cliente
+    reloj: "mar"
+    mensajes: [{de: cliente, texto: "Gracias, lo voy a pensar 🤔", hora: "16:20", frac: 0.6}]
+    clave: "LO PIENSO"
+    clave_frac: 0.75
+    sfx: [[0.6, pop]]
+  - texto: Pasó una semana y nadie le volvió a escribir.
+    chat: cliente
+    reloj: "+7 días"
+    clave: "7 DÍAS"
+    clave_frac: 0.5
+    sfx: [[0.5, whoosh]]
+  - texto: No es que no le interesara. Se le olvidó, igual que a vos.
+    chat: cliente
+    reloj: "mar"
+    borrador: "Buenas, ¿cómo le fue con la…"
+  - texto: Cuando por fin le escribiste, ya le había comprado a otro.
+    chat: cliente
+    reloj: "mié"
+    mensajes: [{de: cliente, texto: "Ya lo resolví con otro proveedor, gracias 🙏", hora: "09:12", frac: 0.45}]
+    clave: "YA COMPRÓ"
+    clave_frac: 0.65
+    sfx: [[0.45, pop], [0.65, thud]]
+  - texto: "Ahora imaginá que el seguimiento sale solo: al día dos, al cinco y al diez, con tu tono."
+    pantalla: app
+    reloj: "08:00"
+    titulo_app: "Ninguna cotización<br>queda en el aire."
+    filas:
+      - {nombre: "Constructora Pérez", nota: "Día 2 enviado · día 5 programado", n: 2}
+      - {nombre: "Ferretería La Unión", nota: "Día 5 enviado · respondió", n: 5}
+      - {nombre: "Colegio San José", nota: "Día 10 · último aviso", n: 10, alerta: true}
+      - {nombre: "Hotel Las Flores", nota: "Aceptada", n: 0}
+    clave: "DÍA 2 · 5 · 10"
+    clave_frac: 0.55
+    sfx: [[0.1, whoosh], [0.55, tick]]
+  - texto: "Y tu equipo entra cuando el cliente dice: dale."
+    chat: cliente
+    reloj: "jue"
+    mensajes: [{de: cliente, texto: "Dale, ¿cuándo me lo pueden entregar? 👍", hora: "10:05", frac: 0.5}]
+    clave: "DALE"
+    clave_frac: 0.7
+    sfx: [[0.5, pop]]
+  - texto: Escribinos al WhatsApp y te contamos cómo.
+    pantalla: cierre
+    titulo: "Contanos tu caso.<br><em>Sin compromiso.</em>"
+    sfx: [[0.3, pop]]

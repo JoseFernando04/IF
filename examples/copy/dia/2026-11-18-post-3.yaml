@@ -1,0 +1,40 @@
+# Post 3 · Diccionario del dueño de pyme, vol. 4 (carrusel de 6). Pilar: tips (con humor; servicios nuevos de WhatsApp).
+formato: diccionario
+salida: data/dias/2026-11-18/post-3
+titulo_tiktok: "Diccionario del dueño de pyme, vol. 4: edición WhatsApp 📖💬"
+whatsapp: "+502 3808 9808"
+etiqueta: "DICCIONARIO DEL DUEÑO DE PYME · VOL. 4"
+titulo: "Edición <em>WhatsApp.</em>"
+bajada: "Las frases que más llegan al chat del negocio. Deslizá →"
+entradas:
+  - palabra: "¿Precio?"
+    fon: "/pre·cio/"
+    tipo: "S. M."
+    def: "Mensaje completo que llega a las 10:47 p. m. y se contesta a las 8:40 a. m., cuando ya compró en otro lado."
+    ej: "«¿Precio?» (Visto a las 8:40.)"
+    cura: "Un agente que responde en ese momento, con tu catálogo."
+  - palabra: "Lo voy a pensar"
+    fon: "/lo voy a pen·sar/"
+    tipo: "LOC. VERBAL"
+    def: "Frase que significa «escribime en unos días». Nadie le escribe."
+    ej: "«Lo voy a pensar.» (Lo sigue pensando.)"
+    cura: "Seguimiento automático al día 2, 5 y 10."
+  - palabra: "¿Cuándo vencía?"
+    fon: "/cuán·do ven·cí·a/"
+    tipo: "PREG."
+    def: "Lo que pregunta tu cliente de crédito tres días después de la fecha de pago."
+    ej: "«Uy, ¿ya era el 15?»"
+    cura: "Recordatorio antes y después del vencimiento, con el monto correcto."
+  - palabra: "Ahorita te dejo la reseña"
+    fon: "/a·ho·ri·ta te de·jo la re·se·ña/"
+    tipo: "PROMESA"
+    def: "Compromiso sincero de un cliente feliz que nunca encuentra el enlace."
+    ej: "«¡Quedó buenísimo! Ahorita te la dejo.»"
+    cura: "El enlace directo a tu perfil de Google, al cerrar el trabajo."
+cierre: "¿Cuál te llegó <em>esta semana</em>?"
+cierre_bajada: "Contanos en los comentarios. Las cuatro tienen cura por WhatsApp: escribinos."
+caption: >-
+  El diccionario volvió, y esta vez se metió al chat del negocio. 📖💬
+  Deslizá y etiquetá a quien todavía está esperando la reseña del «ahorita te la dejo».
+  Si querés que tu WhatsApp conteste, dé seguimiento, cobre y pida reseñas solo, escribinos al +502 3808 9808.
+hashtags: [WhatsAppBusiness, HumorEmprendedor, PymesGuatemala, DueñosDeNegocio, Chapines]

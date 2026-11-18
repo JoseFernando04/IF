@@ -70,6 +70,8 @@ VideosInstagram/                → lo que ya se publicó
 | Respondiendo a… | ✅ listo (`respuesta`, desde 2026-11-16) | Una pregunta frecuente en burbuja de comentario (sin usuario inventado) y la respuesta en tarjetas numeradas. Sin cifras |
 | Nombrá el problema | ✅ listo (`concepto`, desde 2026-11-17) | Archivos que se multiplican → «diagnóstico» con un nombre memorable para el dolor → 3 síntomas → la cura → cierre. Serie numerada |
 | Dosis de realidad | ✅ listo (`realidad`, desde 2026-11-17) | Clip vertical que graba el equipo (pantallas reales, sin datos de clientes) + notas adhesivas con palabras clave. Clip en `<salida>/clips/<id>.mp4` |
+| Lista sin intro | ✅ listo (`lista`, desde 2026-11-18) | El #1 aparece en el segundo 0, sin presentación; una imagen de referencia por punto |
+| A mano vs. agente | ✅ listo (`versus`, desde 2026-11-18) | Pantalla dividida: misma situación en dos versiones y giro final donde la persona gana |
 | Papel y libreta (estilo A) | prototipo | Papel, marcador y escritura a mano |
 
 ### Posts
@@ -132,6 +134,7 @@ En la rutina diaria: de las 3 opciones de reel, **una** puede ser `cine`; las to
 | 2026-11-15 | A cargando… (cotización que llega tarde, formato nuevo) · B lo que pediste vs. lo que te entregaron (formato nuevo) · C pantalla de sistema (viernes 5:30: equipos, cobros, entregas) | 1 este o este (cuánto vendiste hoy) · 2 infografía (herramientas con QR) · 3 recibo (tu diciembre) |
 | 2026-11-16 | A flechas rojas (respuestas rápidas de WhatsApp Business, formato nuevo) ✅ producido · B respondiendo a… (¿cuánto cuesta un sistema?, formato nuevo) ✅ producido · C top 3 (señales de que todavía NO necesitás un sistema) ✅ producido | 1 checklist (5 preguntas antes de pagar por un sistema) · 2 frase (yo sé dónde está todo) · 3 diccionario vol. 3 (bodega y mostrador) |
 | 2026-11-17 | A nombrá el problema (el síndrome del archivo final, formato nuevo) · B dosis de realidad (nuestro propio tablero, formato nuevo; José graba el clip) · C decilo así ep. 02 («¿me lo dejás más barato?») | 1 este o este (lista de precios) · 2 infografía (distribuidora: del mensaje a la entrega) · 3 recibo (primera semana del nuevo) |
+| 2026-11-18 | A chat (la cotización que se enfrió: seguimiento día 2·5·10) ✅ producido · B lista sin intro (lo que tu cliente revisa antes de escribirte, formato nuevo) ✅ producido · C a mano vs. agente (la máquina contesta, la persona vende, formato nuevo) ✅ producido — primer día con los servicios nuevos del sitio | 1 checklist (5 cosas que tu página web tiene que tener) · 2 frase (nadie volvió a escribir) · 3 diccionario vol. 4 (edición WhatsApp) |
 
 ## Reglas de contenido (siempre)
 

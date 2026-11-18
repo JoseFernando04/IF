@@ -10,14 +10,14 @@ y que **al menos 1-2 de los 3 reels del día sean un formato nuevo** de aquí. A
 |---|---|---|
 | **Captura con flechas rojas** | Capturas recortadas de una app con flechas/círculos rojos sobre UN botón poco conocido; el público copia los clics. Hook: «No hagás X sin usar esta función que…». Es el formato de negocios con mejor rendimiento de la semana (~34× lo normal). | tryvolume |
 | **«Decí exactamente esto»** | Frases palabra por palabra para una situación incómoda, en vez de explicar el concepto. Hook: «Cuando pase X, decí exactamente esto: “…”». ~19×. | tryvolume |
-| **Lista sin intro, una imagen por punto** | El #1 aparece en el segundo 0, sin presentación; cada punto tiene su imagen de referencia. | tryvolume |
+| ✅ *(hecho 2026-11-18, `lista`)* **Lista sin intro, una imagen por punto** | El #1 aparece en el segundo 0, sin presentación; cada punto tiene su imagen de referencia. | tryvolume |
 | **Clip corto en loop + contenido en la descripción** | 6-26 s en loop con un titular fuerte; el detalle va en el caption. Sube vistas por repetición. | tryvolume |
 | **Texto diminuto** | Texto muy pequeño que obliga a pausar o hacer zoom; la revelación tiene que valer la pena (oferta, opinión picante, chiste). | Pepper |
 | **«Razones por las que no necesitás…»** | Consejo con humor, a la contra de vender. | Pepper |
 | **Cinemático de lo cotidiano** | Un momento común filmado como cierre de película, transiciones dramáticas, audio invertido. | Pepper |
 | **Lo que pedí vs. lo que recibí (giro al final)** | Carrusel o video que construye expectativa y la rompe en la última imagen. | que.es |
 | **«Cargando…»** | Cuadro congelado con un rótulo «cargando…» y corte al resultado completo en el golpe musical. | que.es |
-| **IA vs. hecho a mano** | Dos versiones del mismo resultado; la artesanal aparece al final. | que.es, SocialPilot |
+| ✅ *(hecho 2026-11-18, `versus`: «a mano vs. agente», gana la persona)* **IA vs. hecho a mano** | Dos versiones del mismo resultado; la artesanal aparece al final. | que.es, SocialPilot |
 | **Dosis de realidad** (TikTok Next 2026 LATAM) | El público latino prefiere experiencias reales y crudas sobre la estética aspiracional. Detrás de cámaras, proceso real, sin pulir. | TikTok Newsroom |
 | **Bailes/sonidos del momento** («Dame Hombro», «Housewife») | El equipo bailando en la oficina humaniza a la marca. **Decisión 2026-11-11: no usamos canciones de moda; seguimos con la música de `assets/music/library.yaml`.** | Metricool, que.es |
 

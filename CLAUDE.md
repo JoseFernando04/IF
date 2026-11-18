@@ -23,6 +23,10 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
   En redes, cada formato usa sus fuentes OFL (documental: Bricolage/Instrument Serif/Inter Tight; 8-bit: Press Start 2P), con la paleta de marca.
 - Copy en español de Guatemala con **voseo** ("contanos", "agendá", "podés"). `copy/lint.py` detecta tuteo y tildes faltantes.
 - Nunca inventar clientes, cifras ni testimonios; los casos son "escenarios de ejemplo".
+- **Servicios (sitio actualizado, revisado 2026-11-18; lista completa en `config/brand.json > services`):** software para la operación
+  (inventario IoT, catálogo inteligente, vendedores de calle), **automatizaciones por WhatsApp** (agente de IA, seguimiento de
+  cotizaciones día 2·5·10, recordatorios de pago, motor de reseñas de Google), **presencia digital** (páginas web, contenido
+  para redes) y desarrollo a medida. «Pipeline comercial» ya no aparece en el sitio: no usarlo en contenido nuevo.
 - Pilares: educativo 35 %, soluciones 25 %, tips 20 %, propósito y proceso 10 %, CTA 10 %. 4 piezas/semana.
 - Contacto oficial: WhatsApp +502 3808 9808 · contacto@iftechworks.com (avisos van a este correo).
 
@@ -65,7 +69,7 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
 ## Campañas para clientes (aparte de IF)
 
 - Clientes de marketing digital que IF todavía atiende: todo en `campanas/<cliente>/`, guía en `campanas/README.md`.
-  Marca, tono y contacto del cliente (no `config/brand.json`). El marketing digital nunca aparece en el contenido propio de IF.
+  Marca, tono y contacto del cliente (no `config/brand.json`). En el contenido propio de IF sí se promociona el contenido orgánico para redes y las páginas web (desde 2026-11-18), pero nunca pauta ni campañas pagadas.
 
 ## Herramientas listas
 
@@ -73,7 +77,7 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
 |---|---|
 | Reel documental (estilo B) con audio externo | `tools/render_reel_voz.py --audio RUTA --tal-cual --musica ID --musica-db N` |
 | Reel 8-bit | `tools/render_8bit.py examples/copy/8bit/<reel>.yaml` (escenas en `templates/video/8bit/reel.html`) |
-| Reels chat / mito / top3 / pov / antesdespues / cinetica / sistema / decilo / trailer / diminuto / cargando / pediste / flechas / respuesta / concepto / realidad | `tools/render_formato.py examples/copy/dia/<día>-reel-X.yaml` (`--muestra 3,9,15` sin audio = imágenes de muestra) |
+| Reels chat / mito / top3 / pov / antesdespues / cinetica / sistema / decilo / trailer / diminuto / cargando / pediste / flechas / respuesta / concepto / realidad / lista / versus | `tools/render_formato.py examples/copy/dia/<día>-reel-X.yaml` (`--muestra 3,9,15` sin audio = imágenes de muestra) |
 | Posts checklist / este-o-este / frase / infografia / diccionario / recibo | `tools/render_post.py examples/copy/dia/<día>-post-N.yaml` (plantilla `templates/graphics/posts/post.html`) |
 | Clip del tablero real para el formato `realidad` (si el equipo no graba) | `tools/grabar_tablero.py <carpeta exportar-panel> <reel>/clips/pantalla.mp4 --dur N --filtros a,b,c --toque t` (compu + celular, base simulada: no escribe nada) |
 | Tomas de video con IA (formato `cine`) | `tools/generar_clip.py <yaml>` muestra el plan; `--confirmar` genera (Higgsfield · Seedance 2.5, **de pago**). Motor: `ifcontent.video.higgsfield`. Ejemplo del SDK: `examples/higgsfield/main.py` |

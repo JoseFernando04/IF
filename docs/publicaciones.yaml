@@ -256,9 +256,11 @@ piezas:
   pieza: reel-A-decilo-ya-te-deposito
   tipo: reel
   tema: Decilo así - cuando te dicen «ya te deposito»
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-17'
 - dia: '2026-11-12'
   pieza: reel-B-trailer-conteo-inventario
   tipo: reel
@@ -319,9 +321,11 @@ piezas:
   pieza: post-1-checklist-antes-de-firmar
   tipo: post
   tema: 5 preguntas que tenés que hacer antes de pagar por un sistema 📝
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-17'
 - dia: '2026-11-16'
   pieza: post-2-frase-yo-se-donde
   tipo: post
@@ -396,6 +400,48 @@ piezas:
   pieza: reel-C-decilo-mas-barato
   tipo: reel
   tema: Decilo así - cuando te piden «¿me lo dejás más barato?»
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-18'
+  pieza: post-1-checklist-pagina-web
+  tipo: post
+  tema: 5 cosas que tu página web tiene que tener antes de que pagués por ella 🌐
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-18'
+  pieza: post-2-frase-nadie-volvio
+  tipo: post
+  tema: La venta no se perdió por el precio 💬 Se perdió por esto
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-18'
+  pieza: post-3-diccionario-vol4-whatsapp
+  tipo: post
+  tema: 'Diccionario del dueño de pyme, vol. 4: edición WhatsApp 📖💬'
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-18'
+  pieza: reel-A-chat-cotizacion-enfriada
+  tipo: reel
+  tema: La cotización que se enfrió
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-18'
+  pieza: reel-B-lista-antes-de-escribirte
+  tipo: reel
+  tema: Lo que tu cliente revisa antes de escribirte
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-18'
+  pieza: reel-C-versus-maquina-persona
+  tipo: reel
+  tema: La máquina contesta, la persona vende
   estado: pendiente
   redes: []
   fecha: null

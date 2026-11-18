@@ -1,0 +1,47 @@
+# Reel C · FORMATO NUEVO «A mano vs. agente» (versus): dos versiones de la misma situación y giro final donde
+# lo hecho a mano gana. Pilar: propósito y proceso (servicio nuevo: agente de IA en WhatsApp). Escena de ejemplo.
+# Plantilla por construir (templates/video/versus/reel.html) si el equipo la elige; muestra en data/dias/2026-11-18/reel-C/muestra.jpg.
+formato: versus
+titulo: La máquina contesta, la persona vende
+audio: assets/voice/elevenlabs/2026-11-18-reel-C.mp3
+salida: data/dias/2026-11-18/reel-C
+musica: if-firma
+musica_db: -22
+whatsapp: "+502 3808 9808"
+caption: >-
+  Nadie quiere hablar con un robot… hasta que son las diez de la noche y nadie más contesta. 🤖🤝
+  La idea no es reemplazar a tu equipo: es que llegue a la conversación cuando ya hay algo que cerrar.
+  Escribinos al WhatsApp +502 3808 9808 y te mostramos cómo se vería con tu catálogo. (Escena de ejemplo.)
+hashtags: [InteligenciaArtificial, WhatsAppBusiness, AtencionAlCliente, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: "Mismo cliente, misma pregunta, a las diez de la noche: ¿qué precio tiene?"
+    pantalla: doble
+    pregunta: "¿Qué precio tiene?"
+    hora: "22:04"
+    sfx: [[0.02, whoosh], [0.12, pop]]
+  - texto: "Versión uno: le contestás mañana a las ocho y cuarenta. Ya le compró a otro."
+    pantalla: doble
+    lado: mano
+    reloj: "08:40"
+    nota: "Ya compró en otro lado."
+    sfx: [[0.05, tick], [0.6, thud]]
+  - texto: "Versión dos: un agente le responde en ese momento, con tu catálogo y tu página."
+    pantalla: doble
+    lado: agente
+    respuesta: "Te paso precios del catálogo 👇 ¿Para cuántas unidades?"
+    reloj: "22:04"
+    sfx: [[0.15, pop]]
+  - texto: "¿Y la atención a mano se acaba? Al contrario."
+    pantalla: giro
+    titulo: "Al contrario."
+    sfx: [[0.02, whoosh], [0.45, thud]]
+  - texto: "Cuando el cliente ya está listo para comprar, entra tu equipo a cerrar. La máquina contesta; la persona vende."
+    pantalla: giro
+    mensajes: ["Dale, ¿me lo entregan el jueves?", "¡Claro! Lo dejamos el jueves en la mañana."]
+    etiqueta: "TU EQUIPO ENTRÓ AL CHAT"
+    sfx: [[0.06, pop], [0.25, tick], [0.38, pop]]
+    remate: "La máquina contesta.<br><em>La persona vende.</em>"
+  - texto: Escribinos al WhatsApp y te mostramos cómo se ve con tu negocio.
+    pantalla: cierre
+    titulo: "Contanos tu caso.<br><em>Sin compromiso.</em>"
+    sfx: [[0.3, pop]]
