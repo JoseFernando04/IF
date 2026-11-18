@@ -136,7 +136,39 @@ En la rutina diaria: de las 3 opciones de reel, **una** puede ser `cine`; las to
 | 2026-11-17 | A nombrá el problema (el síndrome del archivo final, formato nuevo) · B dosis de realidad (nuestro propio tablero, formato nuevo; José graba el clip) · C decilo así ep. 02 («¿me lo dejás más barato?») | 1 este o este (lista de precios) · 2 infografía (distribuidora: del mensaje a la entrega) · 3 recibo (primera semana del nuevo) |
 | 2026-11-18 | A chat (la cotización que se enfrió: seguimiento día 2·5·10) ✅ producido · B lista sin intro (lo que tu cliente revisa antes de escribirte, formato nuevo) ✅ producido · C a mano vs. agente (la máquina contesta, la persona vende, formato nuevo) ✅ producido — primer día con los servicios nuevos del sitio | 1 checklist (5 cosas que tu página web tiene que tener) · 2 frase (nadie volvió a escribir) · 3 diccionario vol. 4 (edición WhatsApp) |
 
+## Prueba en paralelo: voz local con VoiceStudio (desde 2026-11-19, una semana)
+
+Objetivo: ver si la voz local puede reemplazar a ElevenLabs. **No cancelar ElevenLabs hasta terminar la prueba.**
+
+- Cada día: de los reels elegidos, **el más corto** se genera con VoiceStudio (Claude lo hace directo desde el guion);
+  los demás guiones se le pasan a José para ElevenLabs, como siempre. El equipo compara y anota cuál suena mejor.
+- VoiceStudio debe estar abierto **desde el menú Inicio** (API en `http://127.0.0.1:3900`; comprobar `/health`).
+- Generar con `POST /generate` (multipart): `engine=voxcpm2`, `language=es`, `seed=7`, `ref_audio` + `ref_text`
+  (transcripciones en `data/pruebas-voz/ref-textos.json`) e `instruct` de estilo:
+  «Tono conversacional y expresivo, como contando una historia en redes sociales: sube en las preguntas, hace pausas con
+  intención y enfatiza las palabras clave.» Opcional `guidance_scale=3.0`. **Sin puntuación dramática** (la v4 se descartó).
+- Referencias actuales: `data/pruebas-voz/ref-irvin-eleven.wav` (8 s, la que más gustó) y `ref-jose-eleven.wav` (29 s).
+  Salen de audios de ElevenLabs: **no publicar** con ellas hasta revisar los términos de ElevenLabs; lo ideal es que
+  José e Irvin graben referencias propias de 20-30 s hablando como en un reel (`docs/guia-grabar-voces.md`).
+- Guardar el audio como `assets/voice/elevenlabs/AAAA-MM-DD-reel-X.mp3` (mismo flujo de montaje) y además una copia
+  `data/pruebas-voz/AAAA-MM-DD-reel-X-local.wav`. Revisar con Whisper que diga el guion completo.
+- Problemas conocidos: pierde el acento del voseo («contestas» por «contestás»): probar escribirlo distinto y avisar
+  si no se corrige. Tarda ~3-5 min por reel (la VRAM queda al límite).
+- Registro: anotar cada día la elección del equipo en la tabla de abajo.
+
+| Día | Reel local | Resultado |
+|---|---|---|
+
 ## Reglas de contenido (siempre)
+
+- **Palabras que la gente busca (OpenSEO, desde 2026-11-19):** usar en temas, descripciones y hashtags lo que se busca en
+  Guatemala (detalle en `pruebas-herramientas/openseo/NOTAS.md`). **El foco sigue siendo dar a conocer los servicios de IF**
+  como hasta ahora; **solo algunos días** (no todos) una pieza sobre **«WhatsApp Business»** (14 800/mes) que termine en las
+  automatizaciones. Para lo demás, usar las palabras buscadas: «sistema de inventario» / «sistema de ventas e inventario», «bot de WhatsApp»,
+  «página web para mi negocio» (ángulo gratis vs. profesional). Decir «sistema de inventario» antes que «software a la medida».
+- **No hacer tutoriales paso a paso de configuración de apps** (como el de respuestas automáticas de WhatsApp Business del
+  2026-11-16): el usuario no encontró esa opción en la app. WhatsApp Business se trata con ideas, errores comunes y
+  comparaciones, no con «tocá aquí, luego aquí».
 
 - **Guiones de voz sin siglas** (desde 2026-11-15): ElevenLabs lee «IF» como «ai-ef» y «POV» letra por letra. En la voz decir «nosotros» o rehacer la frase; la sigla solo va en pantalla.
 - Voseo guatemalteco. Sin clientes, cifras ni testimonios inventados (las escenas son "de ejemplo").

@@ -32,3 +32,6 @@ campanas/*/entregas/
 
 # Música compuesta para clientes: solo el mp3 va a git
 campanas/*/musica/*.wav
+
+# Exportes de herramientas de terceros
+pruebas-herramientas/*/exportes/

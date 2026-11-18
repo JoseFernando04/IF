@@ -49,3 +49,7 @@ Para agregar pistas de Pixabay Music (licencia Pixabay, uso comercial sin atribu
 desde pixabay.com/music, guardalo en `assets/music/` y agregá su entrada en `library.yaml` con
 `license: Pixabay-Content-License` y `license_url: https://pixabay.com/service/license-summary/`.
 Guardá también una captura de la página de la pista como respaldo.
+| VoiceStudio 0.5.8 (debpalash/VoiceStudio, app de escritorio) | Estudio de voz local (en evaluación) | AGPL-3.0 (app) | 0 | Instalado 2026-11-18 desde el release oficial (sha256 verificado), solo para el usuario. Uso interno: no redistribuimos ni la exponemos como servicio. Estadísticas: «No, gracias». Pro (USD 199) y Cloud: no usados |
+| VoxCPM2 (openbmb/VoxCPM2, motor `voxcpm2` en VoiceStudio) | Voz diseñada por descripción (en evaluación) | Apache-2.0 según la ficha del modelo | 0 | La app marca los términos de uso comercial y de las salidas como «no verificados»: revisar la ficha antes de publicar audio. ~15 GB (motor + 5 GB de pesos) |
+| OmniVoice (k2-fsa/OmniVoice, modelo por defecto de VoiceStudio) | — | Código Apache-2.0, **pesos CC-BY-NC** | **No usar** | No comercial: no descargado |
+| CosyVoice 3 GGUF (Lourdle/Fun-CosyVoice3-0.5B-2512-GGUF) | — | Apache-2.0 (conversión de la comunidad) | **No usable** | Descargado 2026-11-18 (0,9 GB), pero su motor exige compilar cosyvoice.cpp: se puede borrar desde la app |

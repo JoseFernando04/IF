@@ -48,6 +48,8 @@ Instagram y TikTok. Construida solo con componentes gratuitos o de código abier
   proponer 3 reels (concepto + guion a una sola voz + imagen de muestra) y 3 posts terminados.
 - **Reels:** José genera la voz en ElevenLabs (plan pago) con el guion y la deja en `assets/voice/elevenlabs/AAAA-MM-DD-reel-X.mp3`.
   Se usa el audio tal cual; solo se agregan animación, música y efectos. Sin subtítulos (solo palabras clave en pantalla).
+  **Desde 2026-11-19 (una semana):** el reel elegido más corto se hace con voz local de VoiceStudio y los demás con ElevenLabs.
+  Ver «Prueba en paralelo» en `docs/plan-contenido-diario.md`.
 - **Rotar formatos** (ningún formato dos días seguidos). Catálogo y estado en `docs/plan-contenido-diario.md`.
   El usuario quiere variedad real, siguiendo lo que hoy llama la atención en redes, no solo documental y 8-bit.
   **Desde 2026-11-11:** al menos 1-2 de los 3 reels deben ser un formato NUEVO de `docs/tendencias-reels.md` (no la misma plantilla con otro texto).
@@ -100,6 +102,8 @@ IF Techworks tiene **2 personas**: Remotion es gratis para empresas de hasta 3 (
 | remotion-dev/remotion + remotion-dev/skills | Licencia propia de Remotion; skills sin licencia declarada | Alternativa al motor propio para formatos nuevos. |
 | heygen-com/hyperframes | Apache-2.0, organización | HTML → video: hace lo mismo que nuestro `render_html_video`. Baja prioridad. |
 | JohnHeibel/ClaudeAnimationBase | MIT, cuenta personal, sin cambios desde sep-2026 | Dibujos animados a mano. Baja prioridad. |
+| wide-trace/open-higgsfield (OpenHiggsfield) | **Sin licencia**, cuenta personal, 3 commits (ago-sep 2026), 6.3k estrellas sospechosas | ❌ **No instalar** (revisado 2026-11-18): sin app de escritorio; la web pide pegar la clave de Higgsfield en un sitio ajeno; self-host exige Node + cuenta de Vercel con subidas públicas; igual gasta créditos de Higgsfield y no aporta sobre `tools/generar_clip.py`. |
+| debpalash/VoiceStudio | AGPL-3.0 (app), organización activa (v0.5.8) | 🧪 **Instalado 2026-11-18, en evaluación** (alternativa local a ElevenLabs). Abrir **desde el menú Inicio** (si se abre desde Claude, sus archivos quedan en la carpeta aislada de Claude y el motor falla). API local `http://127.0.0.1:3900` (`/generate`, multipart). Motor `voxcpm2` (Apache-2.0) con voz diseñada por `instruct`: ~30 s por cada 5 s de audio en la RTX 3050 (VRAM al límite). Modelo por defecto OmniVoice = **no comercial**, no usar. Pruebas en `data/pruebas-voz/`. |
 Antes de instalar: fuente oficial, revisar SKILL.md y scripts (`npm install --ignore-scripts`), versiones fijas, `npm audit`. Registrar en `docs/licencias.md`.
 
 ## Estado actual
