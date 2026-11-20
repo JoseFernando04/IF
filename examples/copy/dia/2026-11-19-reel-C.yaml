@@ -1,0 +1,42 @@
+# Reel C · Mito vs. realidad (carta que se voltea, look risográfico). Pilar: tips (servicio: recordatorios de pago por WhatsApp).
+# El más corto del día: candidato a la voz local de VoiceStudio (prueba en paralelo).
+formato: mito
+titulo: Dos mitos de cobrar por WhatsApp
+audio: assets/voice/elevenlabs/2026-11-19-reel-C.mp3
+salida: data/dias/2026-11-19/reel-C
+musica: pamgaea
+musica_db: -22
+whatsapp: "+502 3808 9808"
+caption: >-
+  Cobrar incomoda, y por eso muchos prefieren esperar a que el cliente «se acuerde solo». 💸🙈
+  Spoiler: casi nunca se acuerda solo. Un mensaje a tiempo, con buen tono y los datos correctos, cuida la plata y la relación.
+  ¿Cuál de los dos te habían contado? Y si querés que los recordatorios salgan solos, escribinos al WhatsApp +502 3808 9808.
+hashtags: [Cobros, RecordatoriosDePago, WhatsAppBusiness, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: Dos mitos de cobrar por WhatsApp.
+    escena: titulo
+    grande: "2 mitos"
+    serif: "de cobrar por WhatsApp"
+    sfx: [[0.05, whoosh]]
+  - texto: "Mito uno: recordarle que pague lo ofende."
+    escena: mito
+    n: 1
+    pantalla: Recordarle que pague lo ofende
+    sfx: [[0.02, whoosh], [0.32, thud], [0.72, marker]]
+  - texto: "Realidad: lo que ofende es el tono. Un aviso amable antes de la fecha se agradece."
+    escena: realidad
+    pantalla: Un aviso amable, antes de la fecha.
+    sfx: [[0.05, paper], [0.3, pop]]
+  - texto: "Mito dos: para eso tengo buena memoria."
+    escena: mito
+    n: 2
+    pantalla: Para eso tengo buena memoria
+    sfx: [[0.02, whoosh], [0.32, thud], [0.72, marker]]
+  - texto: "Realidad: con pocos clientes, sí. Cuando crecés, alguien se queda sin aviso y vos sin cobrar."
+    escena: realidad
+    pantalla: El aviso sale solo, siempre.
+    sfx: [[0.05, paper], [0.3, pop]]
+  - texto: ¿Cuál te habían contado?
+    escena: cierre
+    grande: "¿Cuál te creíste?"
+    sfx: [[0.3, pop]]

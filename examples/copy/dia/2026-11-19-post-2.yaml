@@ -1,0 +1,35 @@
+# Post 2 · Este o este (imagen única, invita a comentar). Pilar: soluciones (catálogo inteligente).
+formato: este-o-este
+salida: data/dias/2026-11-19/post-2
+titulo_tiktok: "¿A o B? Cuando un cliente te pide precios por WhatsApp, ¿qué le mandás? 📲"
+pregunta: "TE PIDEN PRECIOS POR WHATSAPP…"
+opciones:
+  - {texto: "Le mandás 15 fotos, una por una.", nota: "…y la mitad con el precio del año pasado."}
+  - {texto: "Le mandás un enlace con tu catálogo al día.", nota: "Lo abre, escoge y te escribe con el pedido."}
+comenta: "Comentá A o B 👇"
+# Carrusel: portada A/B → equipo A → equipo B → cómo pasarte → cierre
+whatsapp: "+502 3808 9808"
+etiqueta: "TE PIDEN PRECIOS"
+slides:
+  - titulo: "Si sos del <em>equipo A…</em>"
+    marca: "✗"
+    puntos:
+      - "Mandás fotos una por una y el chat se llena."
+      - "Algún precio ya cambió y nadie actualizó la foto."
+      - "El cliente se cansa antes de llegar a la última."
+  - claro: true
+    titulo: "Si sos del <em>equipo B…</em>"
+    marca: "✓"
+    puntos:
+      - "Mandás un solo enlace con todo tu catálogo."
+      - "Cambiás un precio y se actualiza para todos."
+      - "El cliente escoge tranquilo y te escribe con el pedido."
+  - titulo: "Pasarte a la B <em>no es tan difícil.</em>"
+    texto: "Con un catálogo inteligente subís tu lista de productos una vez y se arma solo: versión web y PDF, listo para compartir por WhatsApp. Cuando cambia un precio, lo cambiás en un solo lugar."
+cierre: "¿Sos A o B? <em>Contanos.</em>"
+cierre_bajada: "Y si querés pasarte a la B, escribinos y te mostramos cómo quedaría tu catálogo."
+caption: >-
+  Si sos del equipo A, tranqui: casi todos empezamos así. 📸📸📸
+  El detalle es que cada foto suelta es un precio que alguien tiene que acordarse de cambiar, y el cliente se cansa antes de llegar a la última.
+  ¿Cuál es la tuya? Contanos en los comentarios. Y si querés un catálogo que se actualice solo y se comparta en un enlace, escribinos al WhatsApp +502 3808 9808.
+hashtags: [CatalogoDigital, VentasPorWhatsApp, PymesGuatemala, Ventas, NegociosGT]

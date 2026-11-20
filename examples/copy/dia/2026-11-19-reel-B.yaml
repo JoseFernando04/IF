@@ -1,0 +1,65 @@
+# Reel B · Habla el objeto (FORMATO NUEVO, `objeto`): la página web gratis confiesa. Pilar: soluciones (páginas web).
+# Palabra buscada: «página web para mi negocio» (ángulo gratis vs. profesional). Sin nombrar proveedores reales.
+formato: objeto
+titulo: Confesiones de una página web gratis
+audio: assets/voice/elevenlabs/2026-11-19-reel-B.mp3
+salida: data/dias/2026-11-19/reel-B
+musica: if-firma
+musica_db: -24
+whatsapp: "+502 3808 9808"
+rotulo: "HABLA EL OBJETO · 01"
+busqueda: "tu negocio cerca de mí"
+portada_t: 3.0
+caption: >-
+  Le dimos micrófono a la página web gratis y no se guardó nada. 🎤😅
+  No tiene nada de malo empezar con una; el problema es quedarse ahí cuando tu cliente ya te está buscando desde el celular.
+  ¿Cuál de estas confesiones te sonó conocida? Contanos 👇 Y si querés una página web para tu negocio con tu nombre y tu WhatsApp, escribinos al +502 3808 9808.
+hashtags: [PaginaWeb, PaginaWebParaMiNegocio, PymesGuatemala, PresenciaDigital, NegociosGT]
+lineas:
+  - texto: Hola. Soy la página web gratis de tu negocio, y te debo una confesión.
+    palabra: "Te debo una <em>confesión.</em>"
+    url: "tunegocio.sitiogratis-ejemplo.com"
+    cabecera: "Mi Negocio"
+    etiqueta: "la página web gratis"
+    cara: apenada
+    sfx: [[0.02, whoosh], [0.25, pop]]
+  - texto: Mi dirección es tan larga que nadie se la aprende.
+    palabra: "Nadie se <em>aprende</em> mi dirección"
+    etiqueta: null
+    cara: normal
+    url: "tunegocio.sitiogratis-ejemplo.com/sitio/inicio/pagina-principal-v2?id=00418"
+    sfx: [[0.1, tick]]
+  - texto: Muestro anuncios que vos nunca elegiste.
+    palabra: "Anuncios que <em>no elegiste</em>"
+    anuncios: 3
+    cara: apenada
+    sfx: [[0.15, pop], [0.4, pop], [0.65, pop]]
+  - texto: Cuando te buscan en Google, me cuesta aparecer.
+    palabra: "¿Y en Google? <em>No aparezco.</em>"
+    anuncios: 0
+    buscador: true
+    cara: triste
+    sfx: [[0.1, whoosh], [0.75, thud]]
+  - texto: "Y nadie me puso un botón de WhatsApp: el cliente entra… y se va."
+    palabra: "Sin botón de <em>WhatsApp</em>"
+    buscador: false
+    cursor: true
+    cara: apenada
+    sfx: [[0.3, tick], [0.55, tick], [0.9, whoosh]]
+  - texto: Gratis, es lo que te puedo dar.
+    palabra: "Gratis, <em>esto</em> te doy."
+    cursor: false
+    cara: triste
+    sfx: [[0.2, thud]]
+  - texto: Una página propia lleva tu nombre, abre rápido y lleva al cliente directo a tu WhatsApp.
+    palabra: "Tu nombre. Rápida. <em>Directo al chat.</em>"
+    url: "tunegocio.com"
+    cabecera: "Tu Negocio"
+    pulido: true
+    whatsapp: true
+    cara: feliz
+    sfx: [[0.05, whoosh], [0.35, pop], [0.7, pop]]
+  - texto: Escribinos y te contamos cómo sería la tuya.
+    palabra: "¿Cómo sería <em>la tuya?</em>"
+    cierre: true
+    sfx: [[0.3, pop]]

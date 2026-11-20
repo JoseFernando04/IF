@@ -92,6 +92,31 @@ html, body { margin: 0; background: #333; }
 .rec .sello { position: absolute; right: 120px; bottom: 210px; transform: rotate(-12deg); border: 8px solid #d6432f; color: #d6432f; font: 800 54px/1 "Bricolage";
   padding: 16px 26px; border-radius: 14px; background: rgba(251,250,245,.85); text-align: center; z-index: 3; }
 .rec .sello small { display: block; font: 700 24px "Mono"; letter-spacing: 2px; margin-top: 6px; }
+/* ── Slides genéricas de carrusel (desarrollo y cierre) ── */
+.gen { background: var(--verde); color: var(--marfil); }
+.gen.claro { background: var(--papel); color: var(--verde); }
+.gen .eti { font: 700 28px "Mono"; letter-spacing: 4px; color: var(--oro); }
+.gen.claro .eti { color: #2f6b4c; }
+.gen h1 { font: 800 96px/0.98 "Bricolage"; letter-spacing: -3px; margin: 40px 0 0; }
+.gen h1 em { font-style: normal; color: var(--oro); }
+.gen.claro h1 em { background: var(--oro); color: var(--verde); padding: 0 12px; }
+.gen .txt { font: 400 42px/1.32 "Tight"; color: #c9d3cd; margin-top: 40px; max-width: 880px; }
+.gen.claro .txt { color: #3d443f; }
+.gen .pts { margin-top: 60px; display: flex; flex-direction: column; gap: 40px; }
+.gen .pts > div { display: flex; gap: 34px; align-items: flex-start; font: 600 46px/1.22 "Tight"; }
+.gen .pts .caja { width: 84px; height: 84px; font-size: 44px; border-radius: 16px; }
+.gen.claro .pts .caja { border-color: var(--verde); color: var(--verde); }
+.gen .pts .x { background: transparent; border-color: #d6432f; color: #d6432f; }
+.gen .tira { margin: 10px -20px 0; padding: 34px 40px; background: #fbfaf5; color: #1b1a17; font: 600 46px/1.3 "Mono"; transform: rotate(-1.5deg);
+  box-shadow: 0 30px 70px rgba(0,0,0,.4); display: grid; grid-template-columns: 110px 1fr; }
+.gen .tira span:first-child { color: #d6432f; font-weight: 800; }
+.gen .grande { width: 520px; height: 440px; border-radius: 36px; background: #fff; box-shadow: 0 16px 40px rgba(10,20,16,.12); position: relative; overflow: hidden; margin-top: 50px; }
+.gen .grande > div { position: absolute; left: 10px; top: 10px; width: 250px; height: 210px; transform: scale(2); transform-origin: 0 0; }
+.gen .num { font: 800 230px/0.8 "Bricolage"; color: var(--oro); }
+.gen.claro .num { color: var(--verde); }
+.gen .capa { justify-content: center; padding-bottom: 190px; }
+.desliza { margin-top: auto; margin-bottom: 110px; font: 700 36px "Tight"; color: var(--oro); }
+.gen.claro .desliza { color: #2f6b4c; }
 </style></head>
 <body>
 <div id="raiz"></div>
@@ -117,8 +142,25 @@ const nueva = (clase, html, fondoDe) => {
   if (fondoDe) fondos.push(fondo(s.querySelector(".fondo"), ...fondoDe));
   return s;
 };
-const total = { checklist: 2 + Math.ceil(D.items?.length / 2) + 1, frase: 2 }[D.formato];
+const extra = (D.slides || []).length;
+const total = { checklist: 2 + Math.ceil(D.items?.length / 2) + 1, frase: 2, recibo: 1 + extra + 1, "este-o-este": 1 + extra + 1,
+  infografia: 1 + (D.pasos?.length || 0) + 1 }[D.formato];
 const pie = (n, oscuro) => `<img class="marca" src="${oscuro ? LOGO_OSCURO : LOGO}"><div class="pag">${n} / ${total}</div>`;
+// Slide de desarrollo: {eti, titulo, texto, puntos: [..], marca: "✓"|"✗"|"n", claro, tira: {q, t}}
+const desarrollo = (x, n) => {
+  const claro = !!x.claro, cajas = (x.puntos || []).map((t, j) => {
+    const m = x.marca || "n", c = m === "✗" ? "caja x" : "caja";
+    return `<div><span class="${c}">${m === "n" ? j + 1 : m}</span><span>${t}</span></div>`; }).join("");
+  nueva("gen" + (claro ? " claro" : ""), `<div class="fondo" style="opacity:${claro ? 1 : .5}"></div><div class="capa">
+    <div class="eti">${x.eti || D.etiqueta || ""}</div>${x.tira ? `<div class="tira" style="margin-top:50px"><span>${x.tira.q}×</span><span>${x.tira.t}</span></div>` : ""}
+    <h1 style="${x.tira ? "margin-top:80px" : ""}">${x.titulo}</h1>${x.texto ? `<div class="txt">${x.texto}</div>` : ""}
+    ${cajas ? `<div class="pts">${cajas}</div>` : ""}</div>${pie(n, claro)}${claro ? "" : ""}`,
+    claro ? ["grano", { back: "#f4eee2", colors: ["#f0c419", "#c9d9a8"], shape: "corners", softness: 0.8, intensity: 0.3, noise: 0.4 }]
+          : ["malla", { colors: ["#0a1410", "#0a1410", "#1d362b", "#3b3a10"], distortion: 0.8, swirl: 0.2, frame: 3000 + n * 1500 }]);
+  if (claro) raiz.lastChild.querySelector(".pag").style.color = "var(--verde)";
+};
+const cierreSlide = (n) => nueva("fd2", `<div class="capa"><div class="eti" style="font:700 28px Mono;letter-spacing:4px;color:var(--oro)">IF TECHWORKS</div>
+  <h1>${D.cierre}</h1><p>${D.cierre_bajada}</p><div class="cta">WhatsApp ${D.whatsapp}</div></div>${pie(n)}`);
 
 if (D.formato === "checklist") {
   nueva("ck", `<div class="fondo" style="opacity:.55"></div><div class="capa"><div class="eti">${D.etiqueta}</div><h1>${D.titulo}</h1>
@@ -147,6 +189,8 @@ if (D.formato === "este-o-este") {
     <div class="comenta">${D.comenta}</div>`,
     ["malla", { colors: ["#0a1410", "#1d362b", "#2f5d46", "#0a1410"], distortion: 0.9, swirl: 0.3, frame: 2000 }]);
   fondos.push(fondo(document.getElementById("fb"), "grano", { back: "#f0c419", colors: ["#f7d75a", "#e0a800"], shape: "wave", softness: 0.8, intensity: 0.4, noise: 0.3 }));
+  if (extra) { raiz.lastChild.insertAdjacentHTML("beforeend", `<div class="pag" style="z-index:6;color:var(--marfil);top:74px;bottom:auto">1 / ${total} →</div>`);
+    D.slides.forEach((x, k) => desarrollo(x, k + 2)); cierreSlide(total); }
 }
 
 if (D.formato === "frase") {
@@ -157,7 +201,17 @@ if (D.formato === "frase") {
     <h1>${D.titulo}</h1><p>${D.texto}</p><div class="cta">WhatsApp ${D.whatsapp}</div></div>${pie(2)}`);
 }
 
-if (D.formato === "infografia") {
+if (D.formato === "infografia" && D.carrusel) {
+  const claro = ["puntos", { back: "#fefcf3", fill: "#d9d3bf", size: 3, gap: 45 }];
+  nueva("gen claro", `<div class="fondo"></div><div class="capa"><div class="eti">${D.etiqueta}</div><h1 style="font-size:118px;margin-top:60px">${D.titulo}</h1>
+    <div class="txt">${D.bajada || ""}</div><div class="desliza">Deslizá, son ${D.pasos.length} pasos →</div></div>${pie(1, true)}`, claro);
+  D.pasos.forEach((x, j) => nueva("gen claro", `<div class="fondo"></div><div class="capa"><div class="eti">PASO ${j + 1} DE ${D.pasos.length}</div>
+    <div class="grande"><div>${x.ilu || ILU[j]}</div></div><h1 style="font-size:84px;margin-top:60px">${x.t}</h1><div class="txt">${x.d}</div></div>
+    ${pie(j + 2, true)}`, claro));
+  document.querySelectorAll(".gen.claro .pag").forEach((e) => (e.style.color = "var(--verde)"));
+  cierreSlide(total);
+  raiz.lastChild.insertAdjacentHTML("beforeend", `<div class="nota-pie" style="left:auto;right:90px;bottom:150px;color:#9fb3a8">${D.nota}</div>`);
+} else if (D.formato === "infografia") {
   const tops = [420, 690, 960];
   nueva("inf", `<div class="fondo"></div><div class="capa"><div class="eti">${D.etiqueta}</div><h1>${D.titulo}</h1></div>
     <div class="riel" style="top:${tops[0] + 125}px;height:${tops[2] - tops[0]}px"></div>
@@ -184,6 +238,8 @@ if (D.formato === "recibo") {
     <div class="barras"></div><div class="c" style="margin-top:10px;font-size:24px">${D.pie}</div></div>
     <div class="sello">${D.sello}<small>${D.whatsapp}</small></div>`,
     ["grano", { back: "#0a1410", colors: ["#1d362b", "#2f5d46"], shape: "blob", softness: 0.8, intensity: 0.3, noise: 0.3 }]);
+  if (extra) { raiz.lastChild.insertAdjacentHTML("beforeend", `<div class="pag" style="color:var(--oro);bottom:60px">1 / ${total} →</div>`);
+    D.slides.forEach((x, k) => desarrollo(x, k + 2)); cierreSlide(total); }
 }
 await Promise.all(fondos);
 await document.fonts.ready;

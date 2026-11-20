@@ -147,7 +147,7 @@ piezas:
   pieza: post-3-frase-de-dueno
   tipo: post
   tema: Todo negocio tiene una doña Marta 👀
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-10'
@@ -181,7 +181,7 @@ piezas:
   pieza: post-1-infografia-taller
   tipo: post
   tema: Tu cliente ya no tiene que llamar a preguntar si su carro está listo 🔧
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-11'
@@ -197,7 +197,7 @@ piezas:
   pieza: post-3-recibo-cobrar
   tipo: post
   tema: Lo que te cuesta cobrar tarde, en un solo ticket 🧾
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-11'
@@ -272,37 +272,39 @@ piezas:
   pieza: reel-C-texto-diminuto-horas
   tipo: reel
   tema: Texto diminuto - no necesita trabajar más horas
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-15'
   pieza: post-1-este-o-este-ventas
   tipo: post
   tema: ¿A o B? Así sabés cuánto vendiste hoy 💸
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-15'
   pieza: post-2-infografia-herramientas
   tipo: post
   tema: Nunca más «¿alguien vio el taladro?» 🔧 Así se controla cada herramienta
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-15'
   pieza: post-3-recibo-diciembre
   tipo: post
   tema: El ticket de diciembre que todo dueño de negocio ya pagó alguna vez 🎄🧾
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-15'
   pieza: reel-A-cargando-cotizacion
   tipo: reel
   tema: Cargando - la cotización que nunca llegó
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-18'
 - dia: '2026-11-15'
   pieza: reel-B-lo-que-pediste
   tipo: reel
@@ -330,16 +332,18 @@ piezas:
   pieza: post-2-frase-yo-se-donde
   tipo: post
   tema: '«Yo sé dónde está todo»: la frase que todo dueño dijo alguna vez 🧠'
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-16'
   pieza: post-3-diccionario-vol3
   tipo: post
   tema: 'Diccionario del dueño de pyme, vol. 3: edición bodega y mostrador 📖📦'
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-18'
 - dia: '2026-11-16'
   pieza: reel-A-flechas-whatsapp-business
   tipo: reel
@@ -442,6 +446,48 @@ piezas:
   pieza: reel-C-versus-maquina-persona
   tipo: reel
   tema: La máquina contesta, la persona vende
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-19'
+  pieza: post-1-recibo-conteo-fin-de-ano
+  tipo: post
+  tema: El ticket del conteo de inventario de fin de año que nadie quiere pagar 🧾📦
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-19'
+  pieza: post-2-este-o-este-catalogo
+  tipo: post
+  tema: ¿A o B? Cuando un cliente te pide precios por WhatsApp, ¿qué le mandás? 📲
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-19'
+  pieza: post-3-infografia-resenas-google
+  tipo: post
+  tema: Cómo conseguir más reseñas en Google sin rogarle a nadie ⭐
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-19'
+  pieza: reel-A-servilleta-sistema-inventario
+  tipo: reel
+  tema: ¿Cómo funciona un sistema de inventario?
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-19'
+  pieza: reel-B-objeto-pagina-web-gratis
+  tipo: reel
+  tema: Confesiones de una página web gratis
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-19'
+  pieza: reel-C-mito-cobrar-whatsapp
+  tipo: reel
+  tema: Dos mitos de cobrar por WhatsApp
   estado: pendiente
   redes: []
   fecha: null

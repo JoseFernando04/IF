@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Mano"; src: url("__FONTS__/Caveat.ttf"); font-weight: 400 700; }
+@font-face { font-family: "SG"; src: url("__FONTS__/SpaceGrotesk.ttf"); font-weight: 300 700; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+/* Formato «Te lo explico en una servilleta»: un concepto dibujado a mano, trazo por trazo, sobre una servilleta.
+   Cada línea del guion agrega trazos (se quedan); `limpiar: true` empieza una servilleta nueva. */
+:root { --bg: #0a1410; --tinta: #1d362b; --au: #f0c419; --tx: #fefcf3; --rojo: #c0392b; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); color: var(--tx); }
+#fondo { position: absolute; inset: 0; }
+#rotulo { position: absolute; left: 0; right: 0; top: 120px; text-align: center; font: 500 28px "Mono"; letter-spacing: 3px; color: var(--au); }
+#sub { position: absolute; left: 0; right: 0; top: 168px; text-align: center; font: 600 64px "Mano"; color: var(--tx); opacity: .85; }
+#serv { position: absolute; left: 60px; top: 300px; width: 960px; height: 1180px; transform-origin: 50% 50%; }
+#papel { position: absolute; inset: 0; background: #fbf8ee; border-radius: 6px;
+  box-shadow: 0 40px 80px rgba(0,0,0,.55), 0 6px 14px rgba(0,0,0,.4);
+  background-image:
+    linear-gradient(90deg, transparent 49.7%, rgba(120,110,90,.10) 50%, transparent 50.3%),
+    linear-gradient(0deg, transparent 49.8%, rgba(120,110,90,.10) 50%, transparent 50.2%),
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.7), transparent 60%),
+    radial-gradient(circle, rgba(150,140,115,.16) 1.5px, transparent 2px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 14px 14px; }
+#papel::after { content: ""; position: absolute; inset: 26px; border: 3px dotted rgba(150,140,115,.35); border-radius: 4px; }
+svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+#wa { position: absolute; left: 0; right: 0; top: 1560px; text-align: center; }
+#wa span { display: inline-block; padding: 30px 48px; border-radius: 999px; background: var(--au); color: var(--bg); font: 700 54px "SG"; }
+#logo { position: absolute; left: 50%; bottom: 110px; height: 78px; transform: translateX(-50%); }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="rotulo"></div>
+<div id="sub"></div>
+<div id="serv"><div id="papel"></div>
+  <svg id="lienzo" viewBox="0 0 960 1180">
+    <defs><filter id="mano" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"/>
+      <feDisplacementMap in="SourceGraphic" scale="5"/></filter></defs>
+    <g id="trazos" filter="url(#mano)"></g>
+    <g id="pluma" style="opacity:0"><rect x="-9" y="-150" width="18" height="40" rx="5" fill="#1d362b"/>
+      <rect x="-22" y="-112" width="44" height="120" rx="12" fill="#0f1d17"/><path d="M-9 8 L9 8 L3 26 L-3 26 Z" fill="#1d362b"/></g>
+  </svg>
+</div>
+<div id="wa"><span></span></div>
+<img id="logo" src="__LOGO__">
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, $ = (id) => document.getElementById(id), NS = "http://www.w3.org/2000/svg";
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const out = (x) => 1 - (1 - cl(x)) ** 3;
+const pop = (x) => { x = cl(x); return x === 0 ? 0 : 1 + 2.2 * (x - 1) ** 3 + 1.2 * (x - 1) ** 2; };
+const fondoP = fondo($("fondo"), "grano", { back: "#0a1410", colors: ["#1d362b", "#3a3412", "#0f1d17"], softness: 0.8, intensity: 0.25, noise: 0.18, shape: "corners" });
+const COL = { tinta: "#1d362b", oro: "#d9a90f", rojo: "#c0392b", gris: "#8a8270" };
+$("rotulo").textContent = REEL.rotulo || "TE LO EXPLICO EN UNA SERVILLETA";
+$("sub").textContent = REEL.sub || "";
+$("wa").querySelector("span").textContent = "WhatsApp " + REEL.whatsapp;
+
+// Arma todos los trazos de una vez. Cada trazo: {d} (camino), {texto, x, y, tam}, {resalta: [x,y,w,h]} (marcador),
+// con color (tinta/oro/rojo/gris), ancho y, opcional, `peso` (cuánto de la línea ocupa dibujarlo).
+const lienzo = $("trazos"), items = [];
+let hoja = 0;
+function armarTodo() {
+L.forEach((l, i) => {
+  if (l.limpiar) hoja++;
+  const tr = l.trazos || [], pesos = tr.map((t) => t.peso ?? (t.texto ? Math.max(1, t.texto.length / 9) : 1));
+  const total = pesos.reduce((a, b) => a + b, 0) || 1;
+  const ventana = l.dibuja ?? 0.85; // fracción de la línea en la que se dibuja todo
+  let acc = 0;
+  tr.forEach((t, j) => {
+    const a = (acc / total) * ventana, b = ((acc + pesos[j]) / total) * ventana; acc += pesos[j];
+    const color = COL[t.color || "tinta"] || t.color;
+    let el, len = 0, clip = null;
+    if (t.resalta) {
+      const [x, y, w, h] = t.resalta;
+      el = document.createElementNS(NS, "rect");
+      Object.entries({ x, y, width: w, height: h, rx: 8, fill: COL.oro, opacity: 0.45 }).forEach(([k, v]) => el.setAttribute(k, v));
+      el.style.transformBox = "fill-box"; el.style.transformOrigin = "0 50%";
+      lienzo.insertBefore(el, lienzo.firstChild);
+    } else if (t.texto != null) {
+      el = document.createElementNS(NS, "text");
+      el.setAttribute("x", t.x); el.setAttribute("y", t.y); el.setAttribute("fill", color);
+      el.setAttribute("text-anchor", t.ancla || "middle");
+      el.setAttribute("font-family", "Mano"); el.setAttribute("font-weight", t.negrita ? 700 : 600); el.setAttribute("font-size", t.tam || 60);
+      el.textContent = t.texto;
+      lienzo.appendChild(el);
+      const bb = el.getBBox();
+      clip = document.createElementNS(NS, "clipPath"); clip.id = `c${i}_${j}`;
+      const r = document.createElementNS(NS, "rect");
+      Object.entries({ x: bb.x - 10, y: bb.y - 20, width: 0, height: bb.height + 40 }).forEach(([k, v]) => r.setAttribute(k, v));
+      clip.appendChild(r); $("lienzo").querySelector("defs").appendChild(clip);
+      el.setAttribute("clip-path", `url(#${clip.id})`);
+      clip = { r, bb };
+    } else {
+      el = document.createElementNS(NS, "path");
+      el.setAttribute("d", t.d); el.setAttribute("fill", "none"); el.setAttribute("stroke", color);
+      el.setAttribute("stroke-width", t.ancho || 9); el.setAttribute("stroke-linecap", "round"); el.setAttribute("stroke-linejoin", "round");
+      lienzo.appendChild(el);
+      len = el.getTotalLength();
+      el.style.strokeDasharray = `${len} ${len}`;
+    }
+    items.push({ el, len, clip, linea: i, hoja, a, b, t });
+  });
+  l._hoja = hoja;
+});
+}
+
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+function dibujar(t) {
+  fondoP.then((f) => f.frame(t * 1000));
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio, p = cl(dt / l.duracion);
+  // La servilleta entra al inicio y se mece apenas; al limpiar, entra una nueva
+  const ini = L.findIndex((x) => x._hoja === l._hoja), t0 = L[ini].inicio, e = out((t - t0 + (ini === 0 ? 0.35 : 0)) / 0.45);
+  $("serv").style.transform = `translateY(${(1 - e) * 1400}px) rotate(${-1.6 + Math.sin(t * 0.7) * 0.35 + (1 - e) * 6}deg)`;
+  let pluma = null;
+  for (const it of items) {
+    if (it.hoja !== l._hoja) { it.el.style.display = "none"; continue; }
+    it.el.style.display = "";
+    const li = L[it.linea];
+    const k = it.linea < i ? 1 : it.linea > i ? 0 : cl((p - it.a) / Math.max(0.0001, it.b - it.a));
+    if (it.t.resalta) it.el.style.transform = `scaleX(${out(k)})`;
+    else if (it.clip) {
+      it.clip.r.setAttribute("width", (it.clip.bb.width + 20) * k);
+      if (k > 0 && k < 1) pluma = [it.clip.bb.x + it.clip.bb.width * k, it.clip.bb.y + it.clip.bb.height * 0.75];
+    } else {
+      it.el.style.strokeDashoffset = it.len * (1 - k);
+      if (k > 0 && k < 1) { const q = it.el.getPointAtLength(it.len * k); pluma = [q.x, q.y]; }
+    }
+  }
+  const pl = $("pluma");
+  if (pluma) { pl.style.opacity = 1; pl.setAttribute("transform", `translate(${pluma[0]} ${pluma[1] - 26}) rotate(18)`); }
+  else pl.style.opacity = 0;
+  const cierre = !!l.cierre;
+  $("wa").style.transform = `scale(${cierre ? pop((dt - 0.4) / 0.35) : 0})`;
+  $("logo").style.opacity = cierre ? cl((dt - 0.6) / 0.3) : 0;
+  $("rotulo").style.opacity = $("sub").style.opacity = cierre ? 0.0 : 1;
+}
+await fondoP;
+await document.fonts.load('600 60px Mano'); await document.fonts.load('700 60px Mano');
+await document.fonts.ready;
+armarTodo();
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>

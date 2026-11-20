@@ -72,7 +72,8 @@ VideosInstagram/                → lo que ya se publicó
 | Dosis de realidad | ✅ listo (`realidad`, desde 2026-11-17) | Clip vertical que graba el equipo (pantallas reales, sin datos de clientes) + notas adhesivas con palabras clave. Clip en `<salida>/clips/<id>.mp4` |
 | Lista sin intro | ✅ listo (`lista`, desde 2026-11-18) | El #1 aparece en el segundo 0, sin presentación; una imagen de referencia por punto |
 | A mano vs. agente | ✅ listo (`versus`, desde 2026-11-18) | Pantalla dividida: misma situación en dos versiones y giro final donde la persona gana |
-| Papel y libreta (estilo A) | prototipo | Papel, marcador y escritura a mano |
+| Te lo explico en una servilleta | ✅ listo (`servilleta`, desde 2026-11-19) | Un concepto dibujado a mano, trazo por trazo, sobre una servilleta (letra Caveat, marcador que sigue el trazo). Serie numerada. Reemplaza al prototipo «papel y libreta» |
+| Habla el objeto | ✅ listo (`objeto`, desde 2026-11-19) | Un objeto del negocio con cara confiesa sus defectos en primera persona. Hoy existe la página web (estados: url, anuncios, buscador, cursor, whatsapp, pulido, cara); otros objetos (cuaderno, Excel) se agregan a la plantilla |
 
 ### Posts
 
@@ -135,6 +136,7 @@ En la rutina diaria: de las 3 opciones de reel, **una** puede ser `cine`; las to
 | 2026-11-16 | A flechas rojas (respuestas rápidas de WhatsApp Business, formato nuevo) ✅ producido · B respondiendo a… (¿cuánto cuesta un sistema?, formato nuevo) ✅ producido · C top 3 (señales de que todavía NO necesitás un sistema) ✅ producido | 1 checklist (5 preguntas antes de pagar por un sistema) · 2 frase (yo sé dónde está todo) · 3 diccionario vol. 3 (bodega y mostrador) |
 | 2026-11-17 | A nombrá el problema (el síndrome del archivo final, formato nuevo) · B dosis de realidad (nuestro propio tablero, formato nuevo; José graba el clip) · C decilo así ep. 02 («¿me lo dejás más barato?») | 1 este o este (lista de precios) · 2 infografía (distribuidora: del mensaje a la entrega) · 3 recibo (primera semana del nuevo) |
 | 2026-11-18 | A chat (la cotización que se enfrió: seguimiento día 2·5·10) ✅ producido · B lista sin intro (lo que tu cliente revisa antes de escribirte, formato nuevo) ✅ producido · C a mano vs. agente (la máquina contesta, la persona vende, formato nuevo) ✅ producido — primer día con los servicios nuevos del sitio | 1 checklist (5 cosas que tu página web tiene que tener) · 2 frase (nadie volvió a escribir) · 3 diccionario vol. 4 (edición WhatsApp) |
+| 2026-11-19 | A te lo explico en una servilleta (cómo funciona un sistema de inventario, formato nuevo) ✅ producido · B habla el objeto (confesiones de una página web gratis, formato nuevo) ✅ producido · C mito vs. realidad (dos mitos de cobrar por WhatsApp) ✅ producido | 1 recibo (conteo de fin de año) · 2 este o este (fotos o catálogo) · 3 infografía (reseñas en Google) — primer día en carrusel de 5 slides |
 
 ## Prueba en paralelo: voz local con VoiceStudio (desde 2026-11-19, una semana)
 
@@ -158,6 +160,7 @@ Objetivo: ver si la voz local puede reemplazar a ElevenLabs. **No cancelar Eleve
 
 | Día | Reel local | Resultado |
 |---|---|---|
+| 2026-11-19 | — | Sin voz local: el equipo grabó las 3 voces en ElevenLabs |
 
 ## Reglas de contenido (siempre)
 
@@ -174,6 +177,9 @@ Objetivo: ver si la voz local puede reemplazar a ElevenLabs. **No cancelar Eleve
 - Voseo guatemalteco. Sin clientes, cifras ni testimonios inventados (las escenas son "de ejemplo").
 - Llamado a la acción con WhatsApp **+502 3808 9808**. Descripciones llamativas que **no repitan el guion**.
 - 5 hashtags. Si la música es CC BY, el crédito va en la descripción.
+- **Posts en carrusel de 4-5 slides** (desde 2026-11-19, pedido del equipo: los de una sola imagen «no pegan»). Portada con gancho → 2-3 de desarrollo → cierre con WhatsApp.
+  En `render_post.py`: recibo y este-o-este aceptan `slides:` (cada una con `titulo`, `texto`, `puntos`, `marca: ✓|✗`, `claro`, `tira: {q, t}`) + `cierre`/`cierre_bajada`;
+  la infografía con `carrusel: true` + `bajada` va un paso por slide. Ejemplos: `examples/copy/dia/2026-11-19-post-*.yaml`.
 - Posts: además, un título para TikTok (`titulo_tiktok` en el YAML, máx. 90 caracteres, llamativo y distinto a la descripción).
 - Sonido: los posts se publican con el sonido característico de IF (`if-firma`); ver `data/dias/2026-11-09/para-subir/sonido-IF/`.
 - Rotar pilares: educativo, soluciones, tips, propósito y proceso, llamado a la acción.

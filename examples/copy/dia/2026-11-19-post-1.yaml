@@ -1,0 +1,42 @@
+# Post 1 · Recibo (imagen única). Pilar: educativo (conteo de inventario de fin de año). Sin cifras inventadas.
+# Palabra buscada: «sistema de inventario». Servicio: inventario inteligente.
+formato: recibo
+salida: data/dias/2026-11-19/post-1
+titulo_tiktok: "El ticket del conteo de inventario de fin de año que nadie quiere pagar 🧾📦"
+whatsapp: "+502 3808 9808"
+encabezado: "COMPROBANTE"
+sub: "Conteo de inventario<br>de fin de año"
+items:
+  - {q: 1, t: "Sábado con la tienda cerrada"}
+  - {q: 3, t: "Cajas contadas dos veces"}
+  - {q: 9, t: "«¿Quién movió esto?»"}
+  - {q: 4, t: "Diferencias sin explicación"}
+  - {q: 1, t: "Domingo cuadrando el Excel"}
+  - {q: 2, t: "Pizzas para el equipo"}
+total: "TU FIN DE SEMANA"
+nota: "Conteo de ejemplo. Las pizzas sí eran necesarias."
+pie: "GRACIAS POR CONTAR"
+sello: "SE PUEDE<br>EVITAR"
+# Carrusel (desde 2026-11-19 los posts van en 4-5 slides): ticket → 3 de desarrollo → cierre
+etiqueta: "CONTEO DE FIN DE AÑO"
+slides:
+  - tira: {q: 1, t: "Sábado con la tienda cerrada"}
+    titulo: "Cerrar para contar <em>también cuesta.</em>"
+    texto: "Es un día sin vender, justo en la temporada en que más se vende."
+  - tira: {q: 4, t: "Diferencias sin explicación"}
+    titulo: "Lo que no cuadra <em>no aparece solo.</em>"
+    texto: "Cuando las entradas y salidas se anotan a mano, el error se descubre meses después, cuando ya nadie se acuerda."
+  - claro: true
+    titulo: "Con un sistema de inventario, <em>el conteo cambia.</em>"
+    marca: "✓"
+    puntos:
+      - "Cada entrada y salida queda registrada al momento."
+      - "Sabés qué se está acabando antes de que se acabe."
+      - "El conteo de fin de año confirma, ya no busca."
+cierre: "Que este sea <em>el último conteo así.</em>"
+cierre_bajada: "Contanos cómo es el conteo en tu negocio y te decimos por dónde empezar."
+caption: >-
+  Diciembre se acerca y con él, el famoso conteo: tienda cerrada, cajas por todos lados y alguien preguntando por qué no cuadra. 📦😮‍💨
+  Un sistema de inventario no te salva de revisar, pero sí de llegar a fin de año sin saber qué tenés. Si cada entrada y salida queda registrada sola, el conteo se vuelve una confirmación, no una búsqueda del tesoro.
+  ¿Cuál línea de este ticket ya pagaste? Contanos 👇 Y si este año querés que sea el último así, escribinos al WhatsApp +502 3808 9808.
+hashtags: [SistemaDeInventario, Inventario, FinDeAño, PymesGuatemala, NegociosGT]

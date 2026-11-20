@@ -1,0 +1,28 @@
+# Post 3 · Infografía simple (imagen única). Pilar: soluciones (motor de reseñas de Google). Escenario de ejemplo.
+formato: infografia
+salida: data/dias/2026-11-19/post-3
+titulo_tiktok: "Cómo conseguir más reseñas en Google sin rogarle a nadie ⭐"
+etiqueta: "CÓMO FUNCIONA"
+titulo: "Reseñas en Google, <em>sin rogar.</em>"
+pasos:
+  - t: "Terminás el trabajo"
+    d: "Entregaste el pedido o cerraste el servicio. El cliente está contento justo ahora."
+    ilu: '<div style="position:absolute;inset:40px 30px;border-radius:16px;background:#0a1410;padding:20px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:14px"><div style="font:700 17px Mono;color:#9fb3a8">TRABAJO #058</div><div style="font:800 30px Tight;color:#fefcf3">Entregado <span style="color:#f0c419">✓</span></div></div>'
+  - t: "Le llega el enlace por WhatsApp"
+    d: "Un mensaje amable, con tu tono, y el enlace directo a tu perfil de Google."
+    ilu: '<div style="position:absolute;left:24px;right:24px;top:36px;display:flex;flex-direction:column;gap:12px"><div style="align-self:flex-start;max-width:200px;padding:12px 16px;border-radius:16px 16px 16px 4px;background:#fefcf3;border:3px solid #1d362b;font:600 16px Tight;color:#0a1410;line-height:1.25">¡Gracias por tu compra! ¿Nos dejás tu opinión? 🙏</div><div style="align-self:flex-start;padding:10px 16px;border-radius:12px;background:#f0c419;font:800 16px Tight;color:#0a1410">⭐ Dejar reseña</div></div>'
+  - t: "Tu perfil crece solo"
+    d: "Sin pedirlo uno por uno ni acordarte de quién falta. El próximo cliente lee las opiniones antes de escribirte."
+    ilu: '<div style="position:absolute;inset:40px 30px;border-radius:16px;background:#fefcf3;border:3px solid #1d362b;padding:20px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:10px"><div style="font:800 24px Tight;color:#0a1410">Tu negocio</div><div style="font:800 26px Tight;color:#f0c419;letter-spacing:1px">★★★★★</div><div style="font:600 15px Mono;color:#6f6a5a">PERFIL DE EJEMPLO</div></div>'
+nota: "Escenario de ejemplo"
+# Carrusel: portada → un paso por slide (ilustración grande) → cierre
+carrusel: true
+whatsapp: "+502 3808 9808"
+bajada: "La mayoría de clientes contentos no deja reseña. No porque no quiera: porque nadie se lo pidió en el momento justo."
+cierre: "¿Querés que salga <em>solo</em> en tu negocio?"
+cierre_bajada: "Escribinos y te contamos cómo se vería el mensaje con tu tono."
+caption: >-
+  La mayoría de clientes contentos no deja reseña. No porque no quieran: porque nadie se lo pidió en el momento justo. ⭐📲
+  Así funciona, en tres pasos, pedir reseñas sin que se te olvide y sin sentirte insistente.
+  Guardala para cuando estés pensando cómo mejorar tu perfil de Google. ¿Querés que salga solo en tu negocio? Escribinos al WhatsApp +502 3808 9808.
+hashtags: [ReseñasGoogle, GoogleMaps, PymesGuatemala, WhatsAppBusiness, NegociosGT]

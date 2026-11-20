@@ -1,0 +1,75 @@
+# Reel A · Te lo explico en una servilleta (FORMATO NUEVO, `servilleta`). Pilar: educativo.
+# Palabra buscada: «sistema de inventario» / «cómo funciona un sistema de inventario». Servicio: inventario inteligente (estantes con sensores).
+formato: servilleta
+titulo: ¿Cómo funciona un sistema de inventario?
+audio: assets/voice/elevenlabs/2026-11-19-reel-A.mp3
+salida: data/dias/2026-11-19/reel-A
+musica: if-firma
+musica_db: -24
+whatsapp: "+502 3808 9808"
+rotulo: "TE LO EXPLICO EN UNA SERVILLETA · 01"
+sub: "sistema de inventario"
+portada_t: 5.5
+caption: >-
+  Nos preguntan mucho «¿y eso cómo funciona?», así que lo dibujamos en lo primero que encontramos en la mesa. ✍️🧻
+  Un sistema de inventario no es magia ni es solo para empresas grandes: es saber qué entra, qué sale y qué falta sin que nadie cuente cajas.
+  Guardalo para explicárselo a tu socio. ¿Querés ver cómo quedaría en tu bodega? Escribinos al WhatsApp +502 3808 9808.
+hashtags: [SistemaDeInventario, Inventario, PymesGuatemala, Bodega, NegociosGT]
+lineas:
+  - texto: ¿Cómo funciona un sistema de inventario? Te lo dibujo en una servilleta.
+    dibuja: 0.8
+    trazos:
+      - {texto: "¿Cómo funciona un", x: 480, y: 125, tam: 70}
+      - {texto: "sistema de inventario?", x: 480, y: 215, tam: 90, negrita: true}
+      - {d: "M165 245 Q480 262 795 238", color: oro, ancho: 10, peso: 0.6}
+    sfx: [[0.02, paper], [0.3, marker]]
+  - texto: Este es tu estante. Le ponemos sensores.
+    trazos:
+      - {d: "M232 330 L230 742", peso: 0.5}
+      - {d: "M728 330 L731 742", peso: 0.5}
+      - {d: "M218 470 L742 468", peso: 0.5}
+      - {d: "M216 610 L744 612", peso: 0.5}
+      - {d: "M214 744 L746 742", peso: 0.5}
+      - {d: "M265 468 L266 395 L350 393 L352 468 M370 468 L372 410 L440 409 L441 468 M560 468 L561 380 L650 382 L650 468", ancho: 7}
+      - {d: "M265 610 L266 540 L330 538 L332 610 M350 610 L352 520 L460 521 L461 610", ancho: 7}
+      - {d: "M480 742 L482 670 L560 668 L561 742 M580 742 L582 655 L690 656 L690 742", ancho: 7}
+      - {d: "M690 455 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 M690 597 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 M690 729 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0", color: oro, ancho: 9, peso: 0.6}
+      - {texto: "sensores", x: 845, y: 395, tam: 52, color: oro, negrita: true}
+      - {d: "M835 410 Q800 432 718 452", color: oro, ancho: 6, peso: 0.4}
+    sfx: [[0.05, marker], [0.55, marker]]
+  - texto: Cuando entra mercadería, el sistema la suma solo.
+    trazos:
+      - {d: "M40 560 L200 560 M172 538 L203 560 L172 582", ancho: 10}
+      - {texto: "+ entra", x: 118, y: 520, tam: 56, negrita: true}
+    sfx: [[0.1, marker], [0.5, pop]]
+  - texto: Cuando sale, la resta. Nadie anota nada en un cuaderno.
+    trazos:
+      - {d: "M760 560 L920 560 M892 538 L923 560 L892 582", ancho: 10}
+      - {texto: "− sale", x: 842, y: 520, tam: 56, negrita: true}
+      - {d: "M90 882 L92 1062 L252 1060 L250 880 Z M115 930 L225 931 M115 970 L226 969 M115 1010 L200 1011", ancho: 7}
+      - {texto: "cuaderno", x: 172, y: 862, tam: 46, color: gris}
+      - {d: "M70 860 L272 1082 M272 860 L70 1082", color: rojo, ancho: 12, peso: 0.6}
+    sfx: [[0.08, marker], [0.82, marker]]
+  - texto: Y cuando algo está por acabarse, te avisa al celular.
+    trazos:
+      - {d: "M600 700 Q650 780 700 828", color: oro, ancho: 6, peso: 0.4}
+      - {d: "M640 850 Q640 830 660 830 L800 830 Q820 830 820 850 L820 1080 Q820 1100 800 1100 L660 1100 Q640 1100 640 1080 Z M705 1078 L755 1078", ancho: 8}
+      - {resalta: [610, 912, 240, 70], peso: 0.4}
+      - {texto: "¡se acaba!", x: 730, y: 963, tam: 54, color: rojo, negrita: true}
+    sfx: [[0.3, marker], [0.75, pop]]
+  - texto: Vos ves todo en una pantalla, sin contar a mano cada sábado.
+    trazos:
+      - {d: "M320 880 L562 878 L560 1030 L322 1031 Z M440 1031 L441 1064 M392 1068 L490 1067", ancho: 8}
+      - {d: "M345 1002 L395 962 L440 986 L490 926 L536 946", color: oro, ancho: 8, peso: 0.6}
+      - {texto: "sin contar a mano", x: 480, y: 1135, tam: 56, negrita: true}
+    sfx: [[0.1, marker], [0.6, marker]]
+  - texto: ¿Querés uno así? Escribinos por WhatsApp.
+    limpiar: true
+    cierre: true
+    dibuja: 0.95
+    trazos:
+      - {texto: "¿Querés uno así?", x: 480, y: 400, tam: 104, negrita: true}
+      - {texto: "escribinos", x: 480, y: 560, tam: 96, color: oro, negrita: true}
+      - {d: "M480 610 Q505 700 480 790 M452 762 L480 795 L510 764", ancho: 9, peso: 0.5}
+      - {texto: "por WhatsApp", x: 480, y: 900, tam: 96, negrita: true}
+    sfx: [[0.02, paper], [0.5, pop]]

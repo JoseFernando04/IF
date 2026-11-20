@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "SG"; src: url("__FONTS__/SpaceGrotesk.ttf"); font-weight: 300 700; }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+@font-face { font-family: "Serif"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+@font-face { font-family: "Mano"; src: url("__FONTS__/Caveat.ttf"); font-weight: 400 700; }
+/* Formato «Habla el objeto»: un objeto del negocio con cara (aquí, la página web) confiesa sus defectos en primera persona.
+   Estado acumulado por línea: url, anuncios, buscador, cursor, whatsapp, pulido, cara, etiqueta. `palabra` = texto en pantalla. */
+:root { --bg: #0a1410; --sf: #162920; --sf2: #1d362b; --au: #f0c419; --tx: #fefcf3; --mu: #9ca3af; --rojo: #e05a47; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); color: var(--tx); font-family: "Tight"; }
+#fondo { position: absolute; inset: 0; }
+#rotulo { position: absolute; left: 80px; top: 110px; font: 500 26px "Mono"; letter-spacing: 3px; color: var(--au); }
+#palabra { position: absolute; left: 70px; right: 70px; top: 190px; height: 300px; display: flex; align-items: center; justify-content: center; text-align: center;
+  font: 700 100px/1.02 "SG"; letter-spacing: -2px; }
+#palabra em { font: 400 116px/1 "Serif"; color: var(--au); font-style: normal; letter-spacing: 0; }
+#palabra .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 10px; margin-bottom: -10px; }
+#palabra .w > span { display: inline-block; }
+#obj { position: absolute; left: 110px; top: 560px; width: 860px; height: 920px; transform-origin: 50% 100%; }
+#win { position: absolute; inset: 0; border-radius: 40px; background: #fefcf3; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,.5); }
+#barra { position: absolute; left: 0; right: 0; top: 0; height: 104px; background: #d9d4c4; display: flex; align-items: center; gap: 14px; padding: 0 28px; box-sizing: border-box; }
+#barra i { width: 22px; height: 22px; border-radius: 50%; background: #a39d8a; flex: none; }
+#url { flex: 1; margin-left: 14px; height: 60px; border-radius: 30px; background: #fefcf3; overflow: hidden; position: relative; }
+#url span { position: absolute; left: 26px; top: 0; line-height: 60px; font: 500 28px "Mono"; color: #3b3b3b; white-space: nowrap; }
+#cab { position: absolute; left: 0; right: 0; top: 104px; height: 90px; background: #ece7d7; display: flex; align-items: center; padding: 0 40px; font: 700 34px "SG"; color: #6f6a5a; }
+#cara { position: absolute; left: 0; right: 0; top: 230px; height: 360px; }
+#cara svg { width: 100%; height: 100%; overflow: visible; }
+#cuerpo { position: absolute; left: 50px; right: 50px; top: 620px; }
+#cuerpo b { display: block; height: 28px; border-radius: 14px; background: #ddd8c8; margin-bottom: 22px; }
+#ads .ad { position: absolute; width: 330px; padding: 22px 24px; box-sizing: border-box; border-radius: 14px; background: #c9c3b2; border: 4px solid #8f8977; color: #4a463c; box-shadow: 0 16px 30px rgba(0,0,0,.25); }
+#ads .ad .x { position: absolute; right: 12px; top: 6px; font: 700 30px "Tight"; }
+#ads .ad .k { font: 700 22px "Mono"; letter-spacing: 2px; }
+#ads .ad .l { height: 18px; border-radius: 9px; background: #9e9886; margin-top: 14px; }
+#busca { position: absolute; left: 30px; right: 30px; bottom: 30px; height: 520px; border-radius: 30px; background: #fff; box-shadow: 0 -10px 40px rgba(0,0,0,.25); padding: 34px; box-sizing: border-box; color: #333; }
+#busca .q { height: 76px; border-radius: 38px; border: 3px solid #cfcfcf; display: flex; align-items: center; padding: 0 30px; font: 500 34px "Tight"; gap: 18px; }
+#busca .r { margin-top: 30px; }
+#busca .r .t { height: 22px; width: 60%; border-radius: 11px; background: #8aa4c8; }
+#busca .r .d { height: 16px; width: 90%; border-radius: 8px; background: #e2e2e2; margin-top: 12px; }
+#busca .yo { position: absolute; right: 30px; bottom: 26px; font: 700 50px "Mano"; color: var(--rojo); }
+#wabtn { position: absolute; left: 50%; top: 700px; padding: 26px 46px; border-radius: 999px; background: var(--au); color: var(--bg); font: 800 44px "SG"; white-space: nowrap; transform: translateX(-50%); box-shadow: 0 14px 30px rgba(0,0,0,.25); }
+#rapida { position: absolute; right: 30px; top: 124px; padding: 10px 22px; border-radius: 999px; background: var(--sf2); color: var(--au); font: 700 28px "Mono"; }
+#cursor { position: absolute; left: 0; top: 0; width: 70px; }
+#etiq { position: absolute; left: -30px; top: -70px; padding: 18px 30px 20px; background: #fefcf3; border: 6px solid var(--rojo); border-radius: 18px; color: #1a1a1a; transform-origin: 30% 50%; box-shadow: 0 14px 30px rgba(0,0,0,.35); }
+#etiq small { display: block; background: var(--rojo); color: #fff; margin: -18px -30px 12px; padding: 8px 30px; font: 700 26px "Mono"; letter-spacing: 3px; }
+#etiq span { font: 700 56px "Mano"; }
+#cierre { position: absolute; left: 70px; right: 70px; top: 1180px; text-align: center; }
+#cierre h1 { margin: 0; font: 700 104px/1.02 "SG"; letter-spacing: -2px; }
+#cierre h1 em { font: 400 120px/1 "Serif"; color: var(--au); font-style: normal; }
+#wa { display: inline-block; margin-top: 60px; padding: 30px 46px; border-radius: 999px; background: var(--au); color: var(--bg); font: 700 54px "SG"; }
+#logo { position: absolute; left: 50%; bottom: 100px; height: 78px; transform: translateX(-50%); }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="rotulo"></div>
+<div id="palabra"></div>
+<div id="obj">
+  <div id="win">
+    <div id="barra"><i></i><i></i><i></i><div id="url"><span></span></div></div>
+    <div id="cab"></div>
+    <div id="rapida">⚡ abre rápido</div>
+    <div id="cara"><svg viewBox="-430 -180 860 360">
+      <g id="ojos">
+        <g transform="translate(-150 -30)"><ellipse rx="78" ry="92" fill="#fff" stroke="#1a1a1a" stroke-width="8"/><circle id="pi" r="32" fill="#1a1a1a"/><rect id="pdi" x="-86" y="-100" width="172" height="0" fill="#fefcf3"/></g>
+        <g transform="translate(150 -30)"><ellipse rx="78" ry="92" fill="#fff" stroke="#1a1a1a" stroke-width="8"/><circle id="pd" r="32" fill="#1a1a1a"/><rect id="pdd" x="-86" y="-100" width="172" height="0" fill="#fefcf3"/></g>
+      </g>
+      <path id="ci" d="" stroke="#1a1a1a" stroke-width="12" stroke-linecap="round" fill="none"/>
+      <path id="cd" d="" stroke="#1a1a1a" stroke-width="12" stroke-linecap="round" fill="none"/>
+      <ellipse id="ri" cx="-250" cy="80" rx="50" ry="26" fill="#f2a08f" opacity="0"/>
+      <ellipse id="rd" cx="250" cy="80" rx="50" ry="26" fill="#f2a08f" opacity="0"/>
+      <path id="boca" d="" fill="#3a1a14" stroke="#1a1a1a" stroke-width="10" stroke-linejoin="round"/>
+    </svg></div>
+    <div id="cuerpo"><b style="width:70%"></b><b></b><b style="width:85%"></b><b style="width:55%"></b></div>
+    <div id="wabtn">💬 Escribinos por WhatsApp</div>
+    <div id="ads"></div>
+    <div id="busca"><div class="q">🔍 <span id="bq"></span></div><div id="res"></div><div class="yo">¿y yo? 🥲</div></div>
+    <svg id="cursor" viewBox="0 0 24 36"><path d="M2 2 L2 30 L9 23 L14 34 L19 32 L14 21 L23 21 Z" fill="#111" stroke="#fff" stroke-width="2"/></svg>
+  </div>
+  <div id="etiq"><small>HOLA, SOY</small><span></span></div>
+</div>
+<div id="cierre"><h1 id="ctit"></h1><div id="wa"></div></div>
+<img id="logo" src="__LOGO__">
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const out = (x) => 1 - (1 - cl(x)) ** 3;
+const io = (x) => { x = cl(x); return x < 0.5 ? 4 * x ** 3 : 1 - (-2 * x + 2) ** 3 / 2; };
+const pop = (x) => { x = cl(x); return x === 0 ? 0 : 1 + 2.2 * (x - 1) ** 3 + 1.2 * (x - 1) ** 2; };
+const lerp = (a, b, k) => a + (b - a) * k;
+const fondoP = fondo($("fondo"), "grano", { back: "#0a1410", colors: ["#1d362b", "#3a3412", "#0f1d17"], softness: 0.8, intensity: 0.25, noise: 0.18, shape: "corners" });
+$("rotulo").textContent = REEL.rotulo || "";
+$("wa").textContent = "WhatsApp " + REEL.whatsapp;
+$("bq").textContent = REEL.busqueda || "tu negocio cerca de mí";
+$("res").innerHTML = [0, 1, 2, 3].map(() => `<div class="r"><div class="t"></div><div class="d"></div></div>`).join("");
+
+// Estado acumulado: para cada clave, el valor vigente y desde cuándo (para animar la entrada)
+const CLAVES = ["url", "anuncios", "buscador", "cursor", "whatsapp", "pulido", "cara", "etiqueta", "cabecera"];
+const estados = []; let st = { url: "", anuncios: 0, buscador: false, cursor: false, whatsapp: false, pulido: false, cara: "normal", etiqueta: null, cabecera: "" }, desde = {};
+L.forEach((l) => { st = { ...st }; desde = { ...desde };
+  CLAVES.forEach((k) => { if (k in l && l[k] !== st[k]) { st[k] = l[k]; desde[k] = l.inicio; } });
+  estados.push({ st, desde, prev: estados.length ? estados[estados.length - 1].st : st }); });
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+
+const maxAds = Math.max(0, ...estados.map((e) => e.st.anuncios || 0));
+const POS = [[-40, 300, -7], [520, 380, 6], [80, 560, 4], [480, 640, -5], [200, 170, 3]];
+$("ads").innerHTML = Array.from({ length: maxAds }, (_, k) => `<div class="ad" style="left:${POS[k % 5][0]}px;top:${POS[k % 5][1]}px"><span class="x">✕</span><div class="k">ANUNCIO</div><div class="l"></div><div class="l" style="width:60%"></div></div>`).join("");
+
+const CARAS = { // ceja (inclinación), curva de boca, mirada [x,y], rubor
+  normal: { ceja: 0, sube: 0, curva: 0.35, mira: [0, 0], rubor: 0 }, apenada: { ceja: 0.7, sube: 0, curva: -0.1, mira: [-18, 26], rubor: 1 },
+  triste: { ceja: 1, sube: 0, curva: -0.7, mira: [0, 20], rubor: 0 }, feliz: { ceja: 0, sube: 22, curva: 1, mira: [0, -6], rubor: 0.4 } };
+let armada = -1;
+function dibujar(t) {
+  fondoP.then((f) => f.frame(t * 1000));
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio, p = cl(dt / l.duracion), E = estados[i], s = E.st, d = (k) => t - (E.desde[k] ?? -99);
+  if (armada !== i) {
+    $("palabra").innerHTML = "<div>" + (l.palabra || "").split("<br>").map((ln) => ln.split(/ (?![^<]*<\/em>)/).map((w) => `<span class="w"><span>${w}</span></span>`).join(" ")).join("<br>") + "</div>";
+    $("ctit").innerHTML = l.cierre ? l.palabra || "" : "";
+    armada = i;
+  }
+  const cierre = !!l.cierre;
+  // Palabra clave
+  $("palabra").style.display = cierre ? "none" : "flex";
+  [...$("palabra").querySelectorAll(".w > span")].forEach((x, j) => { x.style.transform = `translateY(${(1 - out((dt - 0.05 - j * 0.07) / 0.35)) * 110}%)`; });
+  // El objeto: entra, flota, habla
+  const hablando = p > 0.02 && p < 0.97;
+  const ent = out((t - 0.0) / 0.5);
+  const zc = cierre ? io(dt / 0.6) : 0;
+  const esc = lerp(1, 0.62, zc), y = lerp(0, -520, zc) + (1 - ent) * 1300 + Math.sin(t * 2.1) * 8;
+  const squash = hablando ? 1 + Math.abs(Math.sin(t * 13)) * 0.012 : 1;
+  $("obj").style.transform = `translateY(${y}px) scale(${esc * (2 - squash)}, ${esc * squash}) rotate(${Math.sin(t * 1.3) * 0.8}deg)`;
+  // URL (se escribe y, si es larga, se desplaza)
+  const u = $("url").querySelector("span"), cambio = d("url");
+  const prevUrl = (estados[L.findIndex((x) => x.inicio === E.desde.url) - 1] || { st: { url: "" } }).st.url;
+  const nUrl = s.url.length, kU = cl(cambio / 0.9);
+  u.textContent = cambio < 0.15 && prevUrl ? prevUrl : s.url.slice(0, Math.ceil(nUrl * kU));
+  const ancho = u.scrollWidth, caja = $("url").clientWidth - 40;
+  u.style.transform = `translateX(${-Math.max(0, ancho - caja) * cl((cambio - 0.9) / 2.2)}px)`;
+  u.style.color = s.pulido ? "#1d362b" : "#3b3b3b"; u.style.fontWeight = s.pulido ? 700 : 500;
+  // Cabecera de la página
+  $("cab").textContent = s.cabecera || "";
+  $("cab").style.background = s.pulido ? "#1d362b" : "#ece7d7"; $("cab").style.color = s.pulido ? "#f0c419" : "#6f6a5a";
+  $("rapida").style.transform = `scale(${s.pulido ? pop((d("pulido") - 0.6) / 0.35) : 0})`;
+  // Anuncios
+  [...$("ads").children].forEach((a, k) => {
+    const visible = k < (s.anuncios || 0), base = POS[k % 5][2];
+    const kk = visible ? pop((d("anuncios") - 0.25 - k * 0.35) / 0.3) : 1 - out(d("anuncios") / 0.3);
+    a.style.transform = `rotate(${base}deg) scale(${(E.prev.anuncios > k && visible) ? 1 : kk})`;
+  });
+  // Buscador
+  const kb = s.buscador ? out((d("buscador") - 0.1) / 0.45) : 1 - out(d("buscador") / 0.35);
+  $("busca").style.transform = `translateY(${(1 - (s.buscador ? kb : (E.prev.buscador ? kb : 0))) * 620}px)`;
+  [...$("res").children].forEach((r, k) => { r.style.opacity = cl((d("buscador") - 0.6 - k * 0.2) / 0.2); });
+  document.querySelector("#busca .yo").style.transform = `scale(${s.buscador ? pop((d("buscador") - 1.6) / 0.35) : 0})`;
+  // Cursor: entra, busca el botón (no hay), se va
+  const cu = $("cursor");
+  if (s.cursor) {
+    const k = cl(d("cursor") / Math.max(1.5, l.duracion));
+    const pts = [[900, 900], [430, 720], [200, 780], [620, 760], [430, 860], [980, 600]];
+    const seg = k * (pts.length - 1), a = Math.min(pts.length - 2, Math.floor(seg)), f = io(seg - a);
+    cu.style.opacity = k < 0.97 ? 1 : 0;
+    cu.style.transform = `translate(${lerp(pts[a][0], pts[a + 1][0], f)}px, ${lerp(pts[a][1], pts[a + 1][1], f)}px)`;
+  } else cu.style.opacity = 0;
+  // Botón de WhatsApp
+  $("wabtn").style.transform = `translateX(-50%) scale(${s.whatsapp ? pop((d("whatsapp") - 0.3) / 0.35) : 0})`;
+  $("cuerpo").style.opacity = s.whatsapp ? 0 : 1;
+  // Etiqueta «Hola, soy»
+  const et = $("etiq");
+  if (s.etiqueta) { et.querySelector("span").textContent = s.etiqueta; et.style.transform = `rotate(-6deg) scale(${pop((d("etiqueta") - 0.15) / 0.35)})`; }
+  else et.style.transform = `rotate(-6deg) scale(${1 - out(d("etiqueta") / 0.25)})`;
+  // Cara: mezcla suave entre la expresión anterior y la actual
+  const A = CARAS[E.prev.cara] || CARAS.normal, B = CARAS[s.cara] || CARAS.normal, km = d("cara") < 50 ? io(d("cara") / 0.4) : 1;
+  const C = { ceja: lerp(A.ceja, B.ceja, km), sube: lerp(A.sube, B.sube, km), curva: lerp(A.curva, B.curva, km), rubor: lerp(A.rubor, B.rubor, km),
+    mira: [lerp(A.mira[0], B.mira[0], km), lerp(A.mira[1], B.mira[1], km)] };
+  if (s.cursor) { const k = cl(d("cursor") / Math.max(1.5, l.duracion)); C.mira = [Math.sin(k * 9) * 30, 24]; }
+  const [mx, my] = C.mira;
+  ["pi", "pd"].forEach((id) => { $(id).setAttribute("cx", mx); $(id).setAttribute("cy", my); });
+  const parp = (t % 3.4) < 0.14 ? 1 : 0; // parpadeo
+  ["pdi", "pdd"].forEach((id) => $(id).setAttribute("height", 200 * parp));
+  const ce = C.ceja * 26, sb = -150 - C.sube; // ceja > 0: la punta interior sube (apenada/triste)
+  $("ci").setAttribute("d", `M-215 ${sb + ce} L-90 ${sb - ce}`);
+  $("cd").setAttribute("d", `M90 ${sb - ce} L215 ${sb + ce}`);
+  $("ri").setAttribute("opacity", C.rubor * 0.8); $("rd").setAttribute("opacity", C.rubor * 0.8);
+  const ab = hablando ? (0.35 + 0.65 * Math.abs(Math.sin(t * 11.3) * Math.sin(t * 4.1 + 1))) : 0.06;
+  const w = 95, c = C.curva * 34;
+  $("boca").setAttribute("d", `M${-w} ${105 - c} Q0 ${105 + c} ${w} ${105 - c} Q0 ${105 + c + ab * 90} ${-w} ${105 - c} Z`);
+  // Cierre
+  $("cierre").style.opacity = cierre ? out((dt - 0.3) / 0.4) : 0;
+  $("wa").style.transform = `scale(${cierre ? pop((dt - 0.6) / 0.35) : 0})`;
+  $("logo").style.opacity = cierre ? cl((dt - 0.8) / 0.3) : 0;
+  $("rotulo").style.opacity = cierre ? 0 : 1;
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>
