@@ -1,0 +1,59 @@
+# Reel A · FORMATO NUEVO «Encontrá los 3 errores» (`errores`): juego de buscar fallas en un perfil de negocio de ejemplo.
+# Pilar: soluciones (servicio nuevo: contenido para redes). Perfil inventado y genérico, sin logos de ninguna red.
+formato: errores
+titulo: Encontrá los 3 errores - el perfil que pierde clientes
+audio: assets/voice/elevenlabs/2026-11-20-reel-A.mp3
+salida: data/dias/2026-11-20/reel-A
+musica: if-firma
+musica_db: -22
+whatsapp: "+502 3808 9808"
+rotulo: "Encontrá los <em>3 errores</em>"
+segundos: 5
+perfil:
+  usuario: "ferreteria.ejemplo"
+  nombre: "Ferretería Ejemplo"
+  iniciales: "FE"
+  publicaciones: 23
+  bio_mal: "✨ Bienvenidos ✨<br>Calidad y buen servicio 🙌"
+  bio_bien: "🔩 Herramientas, pintura y materiales<br>📍 Zona 7 · Entregas el mismo día"
+  boton_bien: "Catálogo"
+  fecha_mal: "hace 8 meses"
+  fecha_bien: "hace 2 días"
+  tiles_mal: ["Feliz año", "Promo", "Abierto", "Visítenos", "Promo", "Gracias", "Abierto", "Feliz año", "Bienvenidos"]
+  tiles_bien: ["Pintura para el fin de año", "¿Cuál brocha usar?", "Llegó: taladros", "Tip: medí antes", "Así entregamos", "Antes y después", "Nuevo en tienda", "3 errores al pintar", "Pedidos por WhatsApp"]
+caption: >-
+  ¿Los encontraste antes del segundo cinco? 👀🔴
+  Un perfil así no se ve mal: se ve cerrado. Y tu cliente decide en segundos si te escribe o sigue de largo.
+  Contanos cuántos encontraste 👇 Y si querés contenido para redes que tenga tu perfil vivo cada semana, escribinos al WhatsApp +502 3808 9808.
+hashtags: [ContenidoParaRedes, RedesSociales, PymesGuatemala, MarketingParaPymes, NegociosGT]
+lineas:
+  - texto: Este perfil de negocio tiene tres errores que le cuestan clientes. ¿Los encontrás?
+    escena: gancho
+    nota: "Perfil de ejemplo. <em>¿Los ves?</em>"
+    sfx: [[0.02, whoosh], [0.6, pop]]
+  - texto: Tenés cinco segundos. Cinco, cuatro, tres, dos, uno.
+    escena: cuenta
+    sfx: [[0.2, tick], [0.4, tick], [0.6, tick], [0.8, tick], [0.97, thud]]
+  - texto: "Uno: la descripción no dice qué vendés ni dónde estás."
+    escena: error
+    error: bio
+    nota: "No dice <em>qué vendés.</em>"
+    sfx: [[0.15, marker], [0.6, pop]]
+  - texto: "Dos: no hay cómo escribirte. Ni WhatsApp, ni un enlace."
+    escena: error
+    error: contacto
+    nota: "No hay <em>cómo escribirte.</em>"
+    sfx: [[0.15, marker], [0.6, pop]]
+  - texto: "Tres: la última publicación es de hace ocho meses. Parece cerrado."
+    escena: error
+    error: fecha
+    nota: "Parece <em>cerrado.</em>"
+    sfx: [[0.15, marker], [0.6, pop]]
+  - texto: "Arreglado: qué hacés en una frase, tu WhatsApp a un toque y contenido cada semana."
+    escena: arreglo
+    nota: "Claro. A un toque. <em>Vivo.</em>"
+    sfx: [[0.05, whoosh], [0.4, pop], [0.7, pop]]
+  - texto: ¿Cuántos encontraste? Si querés que revisemos tu perfil, escribinos.
+    escena: cierre
+    titulo: "¿Cuántos<br>encontraste?<br><em>Escribinos.</em>"
+    sfx: [[0.3, pop]]

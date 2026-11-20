@@ -74,6 +74,8 @@ VideosInstagram/                → lo que ya se publicó
 | A mano vs. agente | ✅ listo (`versus`, desde 2026-11-18) | Pantalla dividida: misma situación en dos versiones y giro final donde la persona gana |
 | Te lo explico en una servilleta | ✅ listo (`servilleta`, desde 2026-11-19) | Un concepto dibujado a mano, trazo por trazo, sobre una servilleta (letra Caveat, marcador que sigue el trazo). Serie numerada. Reemplaza al prototipo «papel y libreta» |
 | Habla el objeto | ✅ listo (`objeto`, desde 2026-11-19) | Un objeto del negocio con cara confiesa sus defectos en primera persona. Hoy existe la página web (estados: url, anuncios, buscador, cursor, whatsapp, pulido, cara); otros objetos (cuaderno, Excel) se agregan a la plantilla |
+| Encontrá los 3 errores | ✅ listo (`errores`, desde 2026-11-20) | Juego: una pantalla de ejemplo (perfil de negocio genérico, sin logos) con 3 fallas; cuenta regresiva de 5 s, cada error se encierra en rojo y al final se ve arreglado en verde. Invita a comentar cuántos encontraste |
+| Un día en la vida | ✅ listo (`undia`, desde 2026-11-20) | Estética de vlog (REC, hora grande, subtítulo en caja, emoji del momento): el día real de alguien del negocio; a mitad se «rebobina» y se ve el mismo día con la solución (acento dorado) |
 
 ### Posts
 
@@ -137,6 +139,7 @@ En la rutina diaria: de las 3 opciones de reel, **una** puede ser `cine`; las to
 | 2026-11-17 | A nombrá el problema (el síndrome del archivo final, formato nuevo) · B dosis de realidad (nuestro propio tablero, formato nuevo; José graba el clip) · C decilo así ep. 02 («¿me lo dejás más barato?») | 1 este o este (lista de precios) · 2 infografía (distribuidora: del mensaje a la entrega) · 3 recibo (primera semana del nuevo) |
 | 2026-11-18 | A chat (la cotización que se enfrió: seguimiento día 2·5·10) ✅ producido · B lista sin intro (lo que tu cliente revisa antes de escribirte, formato nuevo) ✅ producido · C a mano vs. agente (la máquina contesta, la persona vende, formato nuevo) ✅ producido — primer día con los servicios nuevos del sitio | 1 checklist (5 cosas que tu página web tiene que tener) · 2 frase (nadie volvió a escribir) · 3 diccionario vol. 4 (edición WhatsApp) |
 | 2026-11-19 | A te lo explico en una servilleta (cómo funciona un sistema de inventario, formato nuevo) ✅ producido · B habla el objeto (confesiones de una página web gratis, formato nuevo) ✅ producido · C mito vs. realidad (dos mitos de cobrar por WhatsApp) ✅ producido | 1 recibo (conteo de fin de año) · 2 este o este (fotos o catálogo) · 3 infografía (reseñas en Google) — primer día en carrusel de 5 slides |
+| 2026-11-20 | A encontrá los 3 errores (perfil de negocio sin vida → contenido para redes, formato nuevo) · B un día en la vida (vendedor de ruta → app para vendedores de calle, formato nuevo) · C nombrá el problema ep. 02 (el teléfono descompuesto → sistema de ventas e inventario) | 1 checklist (4 cosas para tu WhatsApp antes de diciembre) · 2 frase («sí hay, déjeme ver…», carrusel de 4) · 3 diccionario vol. 5 (edición diciembre) |
 
 ## Prueba en paralelo: voz local con VoiceStudio (desde 2026-11-19, una semana)
 
@@ -161,6 +164,7 @@ Objetivo: ver si la voz local puede reemplazar a ElevenLabs. **No cancelar Eleve
 | Día | Reel local | Resultado |
 |---|---|---|
 | 2026-11-19 | — | Sin voz local: el equipo grabó las 3 voces en ElevenLabs |
+| 2026-11-20 | **Los 3** (pedido de José): A y C con Irvin, B con José | ~1.5-2.5 min por reel; Whisper 98-100 %. Posibles fallas: «¿qué haces?» en A (voseo), «escribímos» en B. **Al equipo no le gustó ninguna: se rehicieron con ElevenLabs** |
 
 ## Reglas de contenido (siempre)
 

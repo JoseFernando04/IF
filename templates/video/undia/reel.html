@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "SG"; src: url("__FONTS__/SpaceGrotesk.ttf"); font-weight: 300 700; }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+@font-face { font-family: "Serif"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+/* Formato «Un día en la vida»: estética de vlog (REC, hora grande, subtítulo en caja) que recorre un día real del negocio;
+   a mitad, «rebobinar» y el mismo día con la solución (acento dorado). Escenas: hora | rebobinar | cierre. */
+:root { --bg: #0a1410; --sf: #162920; --au: #f0c419; --tx: #fefcf3; --mu: #9ca3af; --rojo: #e8412c; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); color: var(--tx); font-family: "Tight"; }
+#fondo { position: absolute; inset: 0; }
+#vista { position: absolute; inset: 0; }
+/* Marco de cámara */
+.esq { position: absolute; width: 90px; height: 90px; border: 0 solid rgba(254,252,243,.8); }
+.esq.a { left: 60px; top: 70px; border-width: 6px 0 0 6px; } .esq.b { right: 60px; top: 70px; border-width: 6px 6px 0 0; }
+.esq.c { left: 60px; bottom: 70px; border-width: 0 0 6px 6px; } .esq.d { right: 60px; bottom: 70px; border-width: 0 6px 6px 0; }
+#rec { position: absolute; left: 110px; top: 120px; font: 700 40px "Mono"; letter-spacing: 3px; display: flex; align-items: center; gap: 16px; }
+#rec i { width: 30px; height: 30px; border-radius: 50%; background: var(--rojo); }
+#tc { position: absolute; right: 110px; top: 124px; font: 500 36px "Mono"; color: rgba(254,252,243,.85); }
+#serie { position: absolute; left: 110px; top: 230px; font: 600 32px "Mono"; letter-spacing: 3px; color: var(--au); text-transform: uppercase; }
+#quien { position: absolute; left: 110px; top: 280px; font: 400 70px/1 "Serif"; }
+#hora { position: absolute; left: 100px; top: 380px; font: 700 250px/1 "SG"; letter-spacing: -10px; white-space: nowrap; }
+#hora small { font: 600 80px "SG"; letter-spacing: 0; margin-left: 18px; color: var(--au); }
+#objeto { position: absolute; left: 50%; top: 960px; width: 520px; height: 520px; margin: -260px 0 0 -260px; border-radius: 50%;
+  background: rgba(254,252,243,.07); box-shadow: inset 0 0 0 4px rgba(254,252,243,.12); display: flex; align-items: center; justify-content: center;
+  font: 290px/1 "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
+#tag { position: absolute; left: 50%; top: 1190px; transform: translateX(-50%); padding: 14px 28px; border-radius: 999px; background: var(--rojo); color: #fff;
+  font: 700 34px "Mono"; letter-spacing: 2px; white-space: nowrap; }
+#tag.bien { background: var(--au); color: var(--bg); }
+#sub { position: absolute; left: 90px; right: 90px; top: 1360px; text-align: center; }
+#sub span { display: inline; font: 700 66px/1.42 "Tight"; background: #fefcf3; color: #0a1410; padding: 6px 18px; box-decoration-break: clone; -webkit-box-decoration-break: clone; border-radius: 12px; }
+/* Línea del día */
+#dia { position: absolute; left: 110px; right: 110px; top: 1720px; height: 6px; background: rgba(254,252,243,.18); }
+#dia b { position: absolute; left: 0; top: 0; height: 100%; background: var(--rojo); }
+#dia i { position: absolute; top: -13px; width: 32px; height: 32px; margin-left: -16px; border-radius: 50%; background: #2a3a32; box-shadow: 0 0 0 5px var(--bg); }
+#dia i.on { background: var(--rojo); }
+.bien #dia b, .bien #dia i.on { background: var(--au); }
+/* Rebobinar */
+#rebobina { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 40px; }
+#rebobina .ico { font: 700 240px/1 "SG"; color: var(--au); letter-spacing: -30px; }
+#rebobina .t { font: 700 92px/1.05 "SG"; text-align: center; letter-spacing: -2px; }
+#rebobina .t em { font: 400 110px "Serif"; color: var(--au); font-style: normal; }
+#rayas { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(254,252,243,.07) 0 6px, transparent 6px 26px); display: none; }
+#cierre { position: absolute; left: 80px; right: 80px; top: 640px; display: none; }
+#cierre h1 { margin: 0; font: 700 124px/1 "SG"; letter-spacing: -3px; }
+#cierre h1 em { font: 400 146px/1 "Serif"; color: var(--au); font-style: normal; }
+#wa { display: inline-block; margin-top: 90px; padding: 30px 44px; border-radius: 999px; background: var(--au); color: var(--bg); font: 700 54px "SG"; }
+#logo { position: absolute; right: 80px; bottom: 90px; height: 80px; }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="vista">
+  <div class="esq a"></div><div class="esq b"></div><div class="esq c"></div><div class="esq d"></div>
+  <div id="rec"><i></i>REC</div><div id="tc"></div>
+  <div id="serie"></div><div id="quien"></div>
+  <div id="hora"></div>
+  <div id="objeto"></div><div id="tag"></div>
+  <div id="sub"></div>
+  <div id="dia"><b></b></div>
+</div>
+<div id="rayas"></div>
+<div id="rebobina"><div class="ico">◀◀</div><div class="t" id="rbt"></div></div>
+<div id="cierre"><h1 id="ctit"></h1><div id="wa"></div></div>
+<img id="logo" src="__LOGO__">
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const out = (x) => 1 - (1 - cl(x)) ** 3;
+const pop = (x) => { x = cl(x); return x === 0 ? 0 : 1 + 2.2 * (x - 1) ** 3 + 1.2 * (x - 1) ** 2; };
+const fondoA = fondo($("fondo"), "malla", { colors: ["#0a1410", "#0a1410", "#1d362b", "#2a1512"], distortion: 0.8, swirl: 0.3, frame: 2000 });
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+$("serie").textContent = REEL.serie || "UN DÍA EN LA VIDA DE";
+$("quien").textContent = REEL.quien || "";
+$("wa").textContent = "WhatsApp " + REEL.whatsapp;
+const giro = L.findIndex((l) => l.escena === "rebobinar");
+// Puntos de la línea del día: uno por escena de cada mitad
+const mitad = (i) => (giro >= 0 && i > giro ? 1 : 0);
+let armada = -1;
+function armar(i) {
+  const l = L[i];
+  $("hora").innerHTML = l.hora ? l.hora.replace(/ ?(a\. m\.|p\. m\.)/, " <small>$1</small>") : "";
+  $("objeto").textContent = l.objeto || "";
+  $("tag").textContent = l.tag || ""; $("tag").style.display = l.tag ? "block" : "none";
+  $("tag").className = mitad(i) ? "bien" : "";
+  $("sub").innerHTML = l.sub ? `<span>${l.sub}</span>` : "";
+  const grupo = L.map((x, k) => k).filter((k) => L[k].escena === "hora" && mitad(k) === mitad(i));
+  $("dia").innerHTML = "<b></b>" + grupo.map((k, j) => `<i style="left:${(j / Math.max(1, grupo.length - 1)) * 100}%" class="${k <= i ? "on" : ""}"></i>`).join("");
+  const pos = grupo.indexOf(i);
+  $("dia").querySelector("b").style.width = `${(Math.max(0, pos) / Math.max(1, grupo.length - 1)) * 100}%`;
+  $("rbt").innerHTML = l.titulo || "";
+  $("ctit").innerHTML = l.titulo || "";
+}
+function dibujar(t) {
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio;
+  fondoA.then((f) => f.frame(2000 + t * 600));
+  if (armada !== i) { armar(i); armada = i; }
+  const esc = l.escena, reb = esc === "rebobinar", cierre = esc === "cierre";
+  document.body.className = mitad(i) ? "bien" : "";
+  $("vista").style.display = reb || cierre ? "none" : "block";
+  $("rebobina").style.display = reb ? "flex" : "none";
+  $("rayas").style.display = reb ? "block" : "none";
+  $("cierre").style.display = cierre ? "block" : "none";
+  $("logo").style.opacity = cierre ? 1 : 0;
+  // REC parpadea; código de tiempo del «video»
+  $("rec").querySelector("i").style.opacity = Math.floor(t * 1.6) % 2 ? 0.2 : 1;
+  const s = Math.floor(t), f = Math.floor((t % 1) * 30);
+  $("tc").textContent = `00:${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}:${String(f).padStart(2, "0")}`;
+  // Cámara en mano: temblor suave
+  $("vista").style.transform = `translate(${Math.sin(t * 1.3) * 6}px, ${Math.cos(t * 1.7) * 5}px) rotate(${Math.sin(t * 0.9) * 0.25}deg)`;
+  if (esc === "hora") {
+    const h = out(dt / 0.3);
+    $("hora").style.opacity = h; $("hora").style.transform = `translateX(${(1 - h) * -120}px)`;
+    $("objeto").style.transform = `scale(${pop((dt - 0.15) / 0.35)}) rotate(${Math.sin(t * 2) * 3}deg)`;
+    $("tag").style.transform = `translateX(-50%) scale(${pop((dt - 0.6) / 0.3)})`;
+    const sA = out((dt - 0.35) / 0.3); $("sub").style.opacity = sA; $("sub").style.transform = `translateY(${(1 - sA) * 30}px)`;
+  }
+  if (reb) {
+    // Rebobinado: rayas que corren hacia arriba y el ícono que tiembla
+    $("rayas").style.transform = `translateY(${-(t * 900) % 26}px)`;
+    $("rebobina").querySelector(".ico").style.transform = `translateX(${Math.sin(t * 40) * 8}px) scale(${pop(dt / 0.3)})`;
+    const a = out((dt - 0.3) / 0.4); $("rbt").style.opacity = a;
+  }
+  if (cierre) { const a = out(dt / 0.45); $("ctit").style.opacity = a; $("ctit").style.transform = `translateY(${(1 - a) * 60}px)`;
+    $("wa").style.transform = `scale(${pop((dt - 0.5) / 0.35)})`; }
+}
+await fondoA;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoA; };
+window.__ready = true;
+</script>
+</body></html>

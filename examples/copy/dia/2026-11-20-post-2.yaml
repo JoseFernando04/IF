@@ -1,0 +1,26 @@
+# Post 2 · Frase de dueño (carrusel de 4). Pilar: soluciones (inventario inteligente con sensores).
+# Frase genérica, no de un cliente real ni un testimonio.
+formato: frase
+salida: data/dias/2026-11-20/post-2
+titulo_tiktok: "«Sí hay, déjeme ver…» 🫠 La frase que todo mostrador dijo alguna vez"
+whatsapp: "+502 3808 9808"
+cita: "«Sí hay, déjeme ver…»<br><em>(no había)</em>"
+quien: "— TODO MOSTRADOR,<br>UN SÁBADO A MEDIODÍA"
+slides:
+  - titulo: "El problema no es <em>la memoria.</em>"
+    texto: "Es que el inventario se cuenta una vez al mes y se vende todos los días. Entre conteo y conteo, nadie sabe de verdad qué hay."
+  - claro: true
+    titulo: "Cuando el estante <em>avisa solo:</em>"
+    marca: "✓"
+    puntos:
+      - "Sabés qué entra y qué sale, sin contar a mano."
+      - "Te llega una alerta antes de quedarte sin nada."
+      - "Contestás «sí hay» sin ir a la bodega."
+etiqueta: "PARA PENSARLO"
+titulo: "Que el «sí hay» <em>sea cierto.</em>"
+texto: "Estantes con sensores que reportan en tiempo real lo que entra y lo que sale. Escribinos y te contamos cómo funciona."
+caption: >-
+  Todos la dijimos alguna vez, con la mejor intención. 😅📦
+  No es falta de memoria: es que el inventario cambia más rápido de lo que alguien lo puede contar.
+  Etiquetá a quien siempre dice «déjeme ver». Y si querés saber qué hay sin ir a la bodega, escribinos al WhatsApp +502 3808 9808.
+hashtags: [SistemaDeInventario, Inventario, PymesGuatemala, DueñosDeNegocio, NegociosGT]

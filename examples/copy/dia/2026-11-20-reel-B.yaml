@@ -1,0 +1,67 @@
+# Reel B · FORMATO NUEVO «Un día en la vida» (`undia`): estética de vlog con la hora en grande; a mitad se rebobina
+# y se ve el mismo día con la solución. Pilar: soluciones (digitalización de vendedores de calle). Escena de ejemplo.
+formato: undia
+titulo: Un día en la vida de un vendedor de ruta
+audio: assets/voice/elevenlabs/2026-11-20-reel-B.mp3
+salida: data/dias/2026-11-20/reel-B
+musica: if-firma
+musica_db: -22
+whatsapp: "+502 3808 9808"
+serie: "Un día en la vida de"
+quien: "un vendedor de ruta"
+caption: >-
+  Nadie en esta historia hizo nada mal. 🚚📒 El vendedor trabajó todo el día; lo que le faltó fue información a tiempo.
+  Con una app en el celular ve existencias y precios de hoy, toma el pedido en la tienda (aunque no haya señal) y la oficina lo recibe sin pasar nada a mano.
+  ¿Tu negocio tiene vendedores en la calle? Escribinos al WhatsApp +502 3808 9808 y te enseñamos cómo se vería.
+hashtags: [VendedoresDeRuta, Distribuidoras, SistemaDeVentas, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: "Un día en la vida de un vendedor de ruta. Seis de la mañana: sale con su cuaderno."
+    escena: hora
+    hora: "6:00 a. m."
+    objeto: "🚚"
+    tag: "TODO EN PAPEL"
+    sub: "Sale con su cuaderno de pedidos."
+    sfx: [[0.02, whoosh], [0.55, pop]]
+  - texto: "Diez y media: ¿hay en bodega? Llama. Nadie contesta."
+    escena: hora
+    hora: "10:30 a. m."
+    objeto: "📞"
+    tag: "SIN RESPUESTA"
+    sub: "¿Hay en bodega? Nadie contesta."
+    sfx: [[0.05, whoosh], [0.75, thud]]
+  - texto: "Una de la tarde: da un precio de la lista vieja."
+    escena: hora
+    hora: "1:00 p. m."
+    objeto: "🧾"
+    tag: "LISTA DE SEPTIEMBRE"
+    sub: "Da un precio de la lista vieja."
+    sfx: [[0.05, whoosh], [0.6, tick]]
+  - texto: "Seis de la tarde: en la oficina, alguien pasa el cuaderno a mano."
+    escena: hora
+    hora: "6:00 p. m."
+    objeto: "📒"
+    tag: "TODO A MANO"
+    sub: "Alguien lo pasa todo a mano."
+    sfx: [[0.05, whoosh], [0.7, thud]]
+  - texto: Ahora, el mismo día con una app.
+    escena: rebobinar
+    titulo: "El mismo día,<br><em>con la app.</em>"
+    sfx: [[0.02, whoosh], [0.5, pop]]
+  - texto: "Ve existencias y precios de hoy, y toma el pedido aunque no haya señal."
+    escena: hora
+    hora: "10:30 a. m."
+    objeto: "📱"
+    tag: "PEDIDO TOMADO"
+    sub: "Existencias y precios de hoy, sin llamar."
+    sfx: [[0.05, whoosh], [0.5, pop], [0.8, tick]]
+  - texto: En la oficina, los pedidos ya están ahí.
+    escena: hora
+    hora: "6:00 p. m."
+    objeto: "✅"
+    tag: "NADA QUE PASAR"
+    sub: "Los pedidos ya están en la oficina."
+    sfx: [[0.05, whoosh], [0.55, pop]]
+  - texto: ¿Tenés vendedores en la calle? Escribinos.
+    escena: cierre
+    titulo: "¿Vendedores<br>en la calle?<br><em>Escribinos.</em>"
+    sfx: [[0.3, pop]]

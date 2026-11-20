@@ -309,16 +309,20 @@ piezas:
   pieza: reel-B-lo-que-pediste
   tipo: reel
   tema: Lo que pediste vs. lo que te entregaron
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-19'
 - dia: '2026-11-15'
   pieza: reel-C-sistema-viernes
   tipo: reel
   tema: Viernes, 5:30 p. m.
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-19'
 - dia: '2026-11-16'
   pieza: post-1-checklist-antes-de-firmar
   tipo: post
@@ -351,6 +355,7 @@ piezas:
   estado: descartado
   redes: []
   fecha: null
+  nota: No queremos configuraciones como tal
 - dia: '2026-11-16'
   pieza: reel-B-respondiendo-cuanto-cuesta
   tipo: reel
@@ -362,9 +367,11 @@ piezas:
   pieza: reel-C-top3-todavia-no
   tipo: reel
   tema: Tres señales de que todavía no necesitás un sistema
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-19'
 - dia: '2026-11-17'
   pieza: post-1-este-o-este-precios
   tipo: post
@@ -390,9 +397,11 @@ piezas:
   pieza: reel-A-nombra-archivo-final
   tipo: reel
   tema: Nombrá el problema - el síndrome del archivo final
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-19'
 - dia: '2026-11-17'
   pieza: reel-B-realidad-nuestro-tablero
   tipo: reel
@@ -411,9 +420,11 @@ piezas:
   pieza: post-1-checklist-pagina-web
   tipo: post
   tema: 5 cosas que tu página web tiene que tener antes de que pagués por ella 🌐
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-19'
 - dia: '2026-11-18'
   pieza: post-2-frase-nadie-volvio
   tipo: post
@@ -425,9 +436,11 @@ piezas:
   pieza: post-3-diccionario-vol4-whatsapp
   tipo: post
   tema: 'Diccionario del dueño de pyme, vol. 4: edición WhatsApp 📖💬'
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-19'
 - dia: '2026-11-18'
   pieza: reel-A-chat-cotizacion-enfriada
   tipo: reel
@@ -488,6 +501,48 @@ piezas:
   pieza: reel-C-mito-cobrar-whatsapp
   tipo: reel
   tema: Dos mitos de cobrar por WhatsApp
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-20'
+  pieza: post-1-checklist-whatsapp-diciembre
+  tipo: post
+  tema: 4 cosas para dejar listas en tu WhatsApp antes de diciembre 🎄📲
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-20'
+  pieza: post-2-frase-si-hay
+  tipo: post
+  tema: «Sí hay, déjeme ver…» 🫠 La frase que todo mostrador dijo alguna vez
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-20'
+  pieza: post-3-diccionario-vol5-diciembre
+  tipo: post
+  tema: 'Diccionario del dueño de pyme, vol. 5: edición diciembre 📖🎄'
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-20'
+  pieza: reel-A-errores-perfil-sin-vida
+  tipo: reel
+  tema: Encontrá los 3 errores - el perfil que pierde clientes
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-20'
+  pieza: reel-B-undia-vendedor-de-ruta
+  tipo: reel
+  tema: Un día en la vida de un vendedor de ruta
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-20'
+  pieza: reel-C-nombra-telefono-descompuesto
+  tipo: reel
+  tema: Nombrá el problema - el teléfono descompuesto del negocio
   estado: pendiente
   redes: []
   fecha: null

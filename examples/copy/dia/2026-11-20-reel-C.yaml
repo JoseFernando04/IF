@@ -1,0 +1,60 @@
+# Reel C · «Nombrá el problema» ep. 02 (`concepto`). Pilar: educativo → sistema de ventas e inventario (palabra buscada).
+# El dato que pasa por cuatro manos y llega distinto a cada una: el teléfono descompuesto del negocio.
+formato: concepto
+titulo: Nombrá el problema - el teléfono descompuesto del negocio
+audio: assets/voice/elevenlabs/2026-11-20-reel-C.mp3
+salida: data/dias/2026-11-20/reel-C
+musica: pamgaea
+musica_db: -21
+whatsapp: "+502 3808 9808"
+serie: NOMBRÁ EL PROBLEMA
+episodio: "02"
+archivos:
+  - venta_mostrador
+  - cuaderno_ventas.jpg
+  - ventas_hoy.xlsx
+  - aviso_bodega (WhatsApp)
+  - ventas_hoy_CORREGIDO.xlsx
+nombre_a: "El teléfono"
+nombre_b: "descompuesto."
+definicion: "Cuando un mismo dato pasa por cuatro manos y llega distinto a cada una."
+sintomas:
+  - t: "Cada copia / *lo cambia.*"
+    iconos: [["5", "mostrador"], ["5", "cuaderno"], ["3", "el Excel"]]
+  - t: "Bodega y el Excel / *no cuadran.*"
+    iconos: [["5", "bodega"], ["3", "el Excel"]]
+  - t: "El cliente se entera / *antes que vos.*"
+    iconos: [["¡!", "«¿y mi pedido?»"]]
+cura_titulo: "Se anota una vez / *y todos lo ven.*"
+cura_filas: ["Mostrador", "Bodega", "Oficina"]
+cierre_frase: "¿En tu negocio / *pasa?*"
+caption: >-
+  Nadie en la cadena se equivocó a propósito. 📞🔁 Pero cada vez que un dato se copia a mano, algo se pierde en el camino.
+  Un sistema de ventas e inventario hace que la venta del mostrador sea, al mismo tiempo, el dato de bodega y el de la oficina. Sin copiar, sin corregir.
+  ¿Cuántas manos toca una venta en tu negocio? Contanos 👇 o escribinos al WhatsApp +502 3808 9808.
+hashtags: [SistemaDeInventario, SistemaDeVentas, PymesGuatemala, Inventario, EmprendedoresGT]
+lineas:
+  - texto: Lo vendiste en el mostrador. Se anotó en el cuaderno. Se pasó al Excel. Se le avisó a bodega.
+    escena: archivos
+    sfx: [[0.05, pop], [0.3, pop], [0.55, pop], [0.8, pop]]
+  - texto: "Esto tiene nombre: el teléfono descompuesto del negocio."
+    escena: nombre
+    sfx: [[0.1, thud]]
+  - texto: Cada vez que alguien copia un dato, el dato cambia.
+    escena: sintoma
+    n: 1
+    sfx: [[0.05, whoosh]]
+  - texto: Bodega dice que hay cinco, y el Excel dice tres.
+    escena: sintoma
+    n: 2
+    sfx: [[0.05, whoosh]]
+  - texto: Y el cliente se entera antes que vos.
+    escena: sintoma
+    n: 3
+    sfx: [[0.05, whoosh]]
+  - texto: "La cura: un sistema de ventas e inventario donde se anota una vez y todos lo ven."
+    escena: cura
+    sfx: [[0.3, pop], [0.6, tick], [0.75, tick]]
+  - texto: Si en tu negocio pasa, escribinos.
+    escena: cierre
+    sfx: [[0.2, pop]]

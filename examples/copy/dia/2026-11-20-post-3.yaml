@@ -1,0 +1,34 @@
+# Post 3 · Diccionario del dueño de pyme, vol. 5: edición diciembre (carrusel de 5). Pilar: tips (con humor).
+formato: diccionario
+salida: data/dias/2026-11-20/post-3
+titulo_tiktok: "Diccionario del dueño de pyme, vol. 5: edición diciembre 📖🎄"
+whatsapp: "+502 3808 9808"
+etiqueta: "DICCIONARIO DEL DUEÑO DE PYME · VOL. 5"
+titulo: "Edición <em>diciembre.</em>"
+bajada: "Las palabras que más se oyen en un negocio entre el aguinaldo y el 24. Deslizá →"
+entradas:
+  - palabra: "Aguinaldo"
+    fon: "/a·gui·nal·do/"
+    tipo: "S. M."
+    def: "Dinero que llega a tus clientes en diciembre y a tu WhatsApp en forma de mensajes a medianoche que dicen «¿precio?»."
+    ej: "«¿Todavía hay? Es para regalo.» (23:52)"
+    cura: "Un agente que contesta con tu catálogo, aunque sea medianoche."
+  - palabra: "Lo vemos en enero"
+    fon: "/lo ve·mos en e·ne·ro/"
+    tipo: "LOC. MÁGICA"
+    def: "Fórmula que convierte cualquier pendiente de diciembre en un problema de febrero."
+    ej: "«El inventario lo vemos en enero.»"
+    cura: "Un sistema de inventario que cuenta solo, también en diciembre."
+  - palabra: "¿Me lo tenés para mañana?"
+    fon: "/me lo te·nés pa·ra ma·ña·na/"
+    tipo: "PREG. DEL 23"
+    def: "Pregunta que llega a las seis de la tarde sobre algo que no está en el mostrador, ni en la bodega, ni en la lista."
+    ej: "«Es que es para la cena.»"
+    cura: "Existencias en vivo: le contestás que sí (o que no) en segundos."
+cierre: "¿Cuál ya <em>escuchaste</em>?"
+cierre_bajada: "Contanos en los comentarios. Las tres tienen cura: escribinos antes de que llegue el 23."
+caption: >-
+  El diccionario volvió, ahora con luces navideñas. 📖🎄
+  Deslizá y etiquetá a quien ya está diciendo «lo vemos en enero».
+  Si querés llegar a diciembre con el WhatsApp contestando solo y el inventario al día, escribinos al +502 3808 9808.
+hashtags: [HumorEmprendedor, Diciembre, PymesGuatemala, DueñosDeNegocio, Chapines]
