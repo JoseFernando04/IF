@@ -590,3 +590,45 @@ piezas:
   estado: pendiente
   redes: []
   fecha: null
+- dia: '2026-11-23'
+  pieza: post-1-checklist-antes-del-black-friday
+  tipo: post
+  tema: 'Antes del Black Friday: revisá estas 4 cosas en tu negocio 🏷️✅'
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-23'
+  pieza: post-2-este-o-este-redes
+  tipo: post
+  tema: ¿A o B? Así publica tu negocio en redes 📱 (no hay respuesta incorrecta… casi)
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-23'
+  pieza: post-3-frase-resena-nunca-llego
+  tipo: post
+  tema: '«¡Claro que le dejo su reseña!» ⭐ (spoiler: nunca llegó)'
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-23'
+  pieza: reel-A-sospechoso-ventas-black-friday
+  tipo: reel
+  tema: Rueda de reconocimiento - quién se robó las ventas del Black Friday
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-23'
+  pieza: reel-B-receta-perder-un-cliente
+  tipo: reel
+  tema: Receta para perder un cliente en temporada alta
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-23'
+  pieza: reel-C-cargando-pagina-web
+  tipo: reel
+  tema: Cargando - el cliente que te buscó en Google
+  estado: pendiente
+  redes: []
+  fecha: null

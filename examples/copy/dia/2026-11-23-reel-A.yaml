@@ -1,0 +1,60 @@
+# Reel A · «Rueda de reconocimiento» (FORMATO NUEVO `sospechoso`, plantilla templates/video/sospechoso/reel.html desde 2026-11-23).
+# Tendencia: formato «Suspect» / rueda de sospechosos (oct-nov 2026). Pilar: educativo (sistema de inventario), semana del Black Friday (27-nov).
+# Tres sospechosos inocentes y un culpable; la solución entra como «caso cerrado». Escena de ejemplo: nadie real.
+formato: sospechoso
+titulo: Rueda de reconocimiento - quién se robó las ventas del Black Friday
+audio: assets/voice/elevenlabs/2026-11-23-reel-A.mp3
+salida: data/dias/2026-11-23/reel-A
+musica: pamgaea
+musica_db: -24
+whatsapp: "+502 3808 9808"
+rotulo: "RUEDA DE RECONOCIMIENTO"
+caso: "¿Quién se robó las ventas *del Black Friday?*"
+sospechosos:
+  - {emoji: "🙋", nombre: "El cliente que no compró"}
+  - {emoji: "🧑‍💼", nombre: "El vendedor nuevo"}
+  - {emoji: "🏷️", nombre: "La promoción"}
+  - {emoji: "📒", nombre: "El inventario"}
+cerrado:
+  etiqueta: "LA SOLUCIÓN"
+  titulo: "Un sistema de *inventario.*"
+  puntos: ["Qué hay, en el momento", "Qué se vendió hoy", "Qué se está acabando"]
+pie: "Que este viernes *no se te escape nada.*"
+caption: >-
+  Caso real en muchos negocios (escena de ejemplo): la promo estaba buenísima, la gente llegó… y las ventas igual se esfumaron. 🕵️📦
+  El culpable casi nunca es el cliente ni el vendedor: es no saber, en el momento, cuánto queda de lo que estás ofertando.
+  ¿A cuál sospechoso ya agarraste en tu negocio? Contanos 👇 Y si querés llegar al viernes con el inventario al día, escribinos al WhatsApp +502 3808 9808.
+hashtags: [BlackFriday, SistemaDeInventario, Inventario, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: Se perdieron las ventas del Black Friday. Hay cuatro sospechosos.
+    sfx: [[0.05, whoosh], [0.55, thud]]
+  - texto: Sospechoso uno, el cliente que preguntó y no compró. Inocente, nadie supo decirle si había.
+    foco: 1
+    veredicto: inocente
+    sello_frac: 0.6
+    nota: "Preguntó *tres veces* si había."
+    sfx: [[0.02, tick], [0.6, thud]]
+  - texto: Dos, el vendedor nuevo. Inocente, vendió lo que decía el cuaderno.
+    foco: 2
+    veredicto: inocente
+    sello_frac: 0.42
+    nota: "Vendió lo que decía *el cuaderno.*"
+    sfx: [[0.02, tick], [0.42, thud]]
+  - texto: Tres, la promoción. Inocente, nadie sabía cuánto quedaba.
+    foco: 3
+    veredicto: inocente
+    sello_frac: 0.4
+    nota: "Nadie sabía *cuánto quedaba.*"
+    sfx: [[0.02, tick], [0.4, thud]]
+  - texto: Y el culpable, el inventario que nadie actualizó.
+    foco: 4
+    veredicto: culpable
+    sello_frac: 0.45
+    nota: "Sin actualizar *desde octubre.*"
+    sfx: [[0.02, tick], [0.45, thud]]
+  - texto: Con un sistema de inventario, sabés en el momento qué hay y qué se está acabando.
+    escena: solucion
+    sfx: [[0.02, whoosh], [0.3, thud], [0.45, pop], [0.65, pop], [0.85, pop]]
+  - texto: Que este viernes no se te escape nada. Escribinos al WhatsApp.
+    escena: cierre
+    sfx: [[0.3, pop]]

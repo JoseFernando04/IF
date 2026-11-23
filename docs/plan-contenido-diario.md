@@ -78,6 +78,8 @@ VideosInstagram/                → lo que ya se publicó
 | Un día en la vida | ✅ listo (`undia`, desde 2026-11-20) | Estética de vlog (REC, hora grande, subtítulo en caja, emoji del momento): el día real de alguien del negocio; a mitad se «rebobina» y se ve el mismo día con la solución (acento dorado) |
 | Tier list | ✅ listo (`tierlist`, desde 2026-11-22) | Clasificación S-A-B-C-D de cómo los negocios hacen algo (inventario, cobros, pedidos); la S siempre es la solución. Invita a comentar la letra |
 | Tu negocio en resumen | ✅ listo (`resumen`, desde 2026-11-22) | Tarjetas de «resumen del año» con barra de historias (frase más dicha, hora favorita…), estética propia IF. Temporada: diciembre. Sin cifras inventadas |
+| Rueda de reconocimiento | ✅ listo (`sospechoso`, desde 2026-11-23) | Pared de estaturas con 4 sospechosos (emoji + placa); el foco pasa por cada uno, sello INOCENTE/CULPABLE, y «caso cerrado» con la solución |
+| Receta para… | ✅ listo (`receta`, desde 2026-11-23) | Tarjeta de cocina «Receta para <un desastre>»: ingredientes y pasos escritos a mano, sello «LISTO» y vuelta a «la receta de la casa» (la solución, con chat) |
 
 ### Posts
 
@@ -143,6 +145,7 @@ En la rutina diaria: de las 3 opciones de reel, **una** puede ser `cine`; las to
 | 2026-11-19 | A te lo explico en una servilleta (cómo funciona un sistema de inventario, formato nuevo) ✅ producido · B habla el objeto (confesiones de una página web gratis, formato nuevo) ✅ producido · C mito vs. realidad (dos mitos de cobrar por WhatsApp) ✅ producido | 1 recibo (conteo de fin de año) · 2 este o este (fotos o catálogo) · 3 infografía (reseñas en Google) — primer día en carrusel de 5 slides |
 | 2026-11-20 | A encontrá los 3 errores (perfil de negocio sin vida → contenido para redes, formato nuevo) · B un día en la vida (vendedor de ruta → app para vendedores de calle, formato nuevo) · C nombrá el problema ep. 02 (el teléfono descompuesto → sistema de ventas e inventario) | 1 checklist (4 cosas para tu WhatsApp antes de diciembre) · 2 frase («sí hay, déjeme ver…», carrusel de 4) · 3 diccionario vol. 5 (edición diciembre) |
 | 2026-11-22 | A tier list (dónde vive el inventario de tu negocio → sistema de inventario, formato nuevo) ✅ producido · B tu negocio en resumen 2026 (resumen del año → automatizaciones por WhatsApp, formato nuevo) ✅ producido · C decilo así ep. 03 («lo voy a pensar» → seguimiento de cotizaciones) ✅ producido | 1 carrusel documental (3 señales de que tu página web te cuesta clientes) · 2 infografía (agente de IA en WhatsApp, 3 pasos) · 3 recibo (oferta de fin de mes sin inventario al día) — se probaron 8-9 slides y se volvió a 5 |
+| 2026-11-23 | A rueda de reconocimiento (¿quién se robó las ventas del Black Friday? → sistema de inventario, formato nuevo) ✅ producido · B receta para perder un cliente en temporada alta (→ agente de IA en WhatsApp, formato nuevo) ✅ producido · C cargando… (el cliente que te buscó en Google → páginas web) ✅ producido (las 3 voces en ElevenLabs; la plantilla ahora acepta `caos`, `etiqueta`, `etiqueta_listo`, `insignia`) | 1 checklist (4 cosas antes del Black Friday) · 2 este o este (cómo publica tu negocio en redes → contenido para redes) · 3 frase («¡claro que le dejo su reseña!» → motor de reseñas) |
 
 ## Prueba en paralelo: voz local con VoiceStudio (desde 2026-11-19, una semana)
 

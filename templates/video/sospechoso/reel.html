@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Brico"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+@font-face { font-family: "Serif"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+/* Rueda de reconocimiento: 4 sospechosos contra la pared de estaturas; el foco pasa por cada uno,
+   se sella INOCENTE o CULPABLE, y al final «caso cerrado» con la solución. */
+:root { --verde: #0a1410; --verde2: #13241c; --oro: #f0c419; --marfil: #fefcf3; --gris: #9fb3a8; --rojo: #e07a5f; --ok: #9fd18b; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--verde); font-family: "Tight"; color: var(--marfil); }
+#fondo { position: absolute; inset: 0; }
+#pared { position: absolute; left: 0; right: 0; top: 500px; height: 900px; }
+.linea { position: absolute; left: 0; right: 0; height: 3px; background: #2a4a3a; }
+.linea b { position: absolute; top: -40px; font: 600 26px "Mono"; color: #4f7a63; letter-spacing: 2px; }
+.linea b.i { left: 22px; } .linea b.d { right: 22px; }
+#luz { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+#eti { position: absolute; left: 64px; top: 110px; font: 700 28px "Mono"; letter-spacing: 6px; color: var(--oro); z-index: 4; }
+#tit { position: absolute; left: 64px; right: 64px; top: 160px; font: 800 92px/1.0 "Brico"; letter-spacing: -2px; z-index: 4; }
+#tit em { font: 400 100px/1 "Serif"; color: var(--oro); letter-spacing: 0; }
+.sos { position: absolute; top: 760px; width: 240px; margin-left: -120px; text-align: center; z-index: 3; transform-origin: 50% 100%; }
+.sos .cara { font-size: 220px; line-height: 1; filter: drop-shadow(0 18px 18px #000a); }
+.sos .placa { margin: 26px auto 0; width: 210px; background: var(--marfil); color: var(--verde); border-radius: 10px; padding: 14px 10px 16px;
+              box-shadow: 0 10px 0 #00000066; }
+.sos .placa .n { font: 800 64px/1 "Brico"; }
+.sos .placa .nom { font: 700 26px/1.12 "Tight"; margin-top: 6px; min-height: 54px; }
+.sello { position: absolute; left: 50%; top: 120px; transform: translateX(-50%) rotate(-14deg); padding: 10px 16px; border: 7px solid;
+         border-radius: 12px; font: 800 40px "Brico"; letter-spacing: 1px; white-space: nowrap; background: #0a1410cc; }
+.sello.inocente { color: var(--ok); border-color: var(--ok); }
+.sello.culpable { color: var(--rojo); border-color: var(--rojo); font-size: 52px; }
+#ficha { position: absolute; left: 64px; right: 64px; top: 1500px; z-index: 4; }
+#ficha .k { font: 700 28px "Mono"; letter-spacing: 5px; color: var(--gris); }
+#ficha .v { font: 800 78px/1.04 "Brico"; margin-top: 14px; }
+#ficha .v em { font: 400 86px/1 "Serif"; color: var(--oro); }
+#caso { position: absolute; left: 70px; right: 70px; top: 560px; z-index: 6; background: var(--marfil); color: var(--verde);
+        border-radius: 28px; padding: 56px 56px 60px; box-shadow: 0 24px 0 #00000066; }
+#caso .k { font: 700 28px "Mono"; letter-spacing: 5px; color: #6f6a5a; }
+#caso .t { font: 800 76px/1.0 "Brico"; margin-top: 16px; letter-spacing: -1px; }
+#caso .t em { font: 400 82px/1 "Serif"; color: #2f6b4c; }
+#caso ul { list-style: none; padding: 0; margin: 40px 0 0; }
+#caso li { font: 700 46px "Tight"; padding: 22px 0; border-top: 3px dashed #d8d2bd; display: flex; gap: 22px; align-items: center; }
+#caso li i { font-style: normal; width: 64px; height: 64px; border-radius: 50%; background: var(--oro); display: flex; align-items: center;
+             justify-content: center; font: 800 38px "Brico"; flex: none; }
+#cerrado { position: absolute; right: 40px; top: -70px; transform: rotate(10deg); background: var(--oro); color: var(--verde);
+           font: 800 46px "Brico"; padding: 18px 28px; border-radius: 14px; box-shadow: 0 10px 0 #00000055; }
+#pie { position: absolute; left: 64px; right: 64px; z-index: 7; top: 1500px; font: 800 66px/1.06 "Brico"; }
+#pie em { font: 400 72px/1 "Serif"; color: var(--oro); }
+#wa { position: absolute; left: 64px; top: 1760px; font: 800 44px "Tight"; color: var(--verde); background: var(--oro);
+      padding: 22px 34px; border-radius: 999px; z-index: 7; }
+#logo { position: absolute; right: 64px; top: 1745px; width: 150px; z-index: 7; }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="pared"></div>
+<div id="luz"></div>
+<div id="eti"></div>
+<div id="tit"></div>
+<div id="ficha"><div class="k"></div><div class="v"></div></div>
+<div id="caso"><div id="cerrado">CASO CERRADO</div><div class="k"></div><div class="t"></div><ul></ul></div>
+<div id="pie"></div>
+<div id="wa"></div>
+<img id="logo" src="__LOGO__">
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (x) => { x = cl(x); return 1 - (1 - x) ** 3; };
+const back = (x) => { x = cl(x); const c = 1.7; return 1 + (c + 1) * (x - 1) ** 3 + c * (x - 1) ** 2; };
+const em = (s) => (s || "").replace(/\*(.+?)\*/g, "<em>$1</em>");
+const fondoP = fondo($("fondo"), "grano", { back: "#0a1410", colors: ["#1d362b", "#13241c"], shape: "corners", softness: 0.7, intensity: 0.4, noise: 0.3 });
+$("eti").textContent = REEL.rotulo || "RUEDA DE RECONOCIMIENTO";
+$("tit").innerHTML = em(REEL.caso);
+$("pie").innerHTML = em(REEL.pie);
+$("wa").textContent = "WhatsApp " + REEL.whatsapp;
+const C = REEL.cerrado || {};
+$("caso").querySelector(".k").textContent = C.etiqueta || "";
+$("caso").querySelector(".t").innerHTML = em(C.titulo);
+$("caso").querySelector("ul").innerHTML = (C.puntos || []).map((p) => `<li><i>✓</i>${p}</li>`).join("");
+
+// Pared de estaturas
+for (let k = 0; k < 9; k++) {
+  const d = document.createElement("div"); d.className = "linea"; d.style.top = k * 100 + "px";
+  const m = (2.1 - k * 0.1).toFixed(2);
+  d.innerHTML = `<b class="i">${m}</b><b class="d">${m}</b>`;
+  $("pared").appendChild(d);
+}
+// Sospechosos
+const S = REEL.sospechosos, N = S.length, X = (k) => 60 + (960 / N) * (k + 0.5);
+const els = S.map((s, k) => {
+  const d = document.createElement("div"); d.className = "sos"; d.style.left = X(k) + "px";
+  d.innerHTML = `<div class="cara">${s.emoji}</div><div class="placa"><div class="n">${k + 1}</div><div class="nom">${s.nombre}</div></div>`;
+  document.body.appendChild(d);
+  return d;
+});
+// Veredictos: la línea con foco k y veredicto
+const ver = {};
+L.forEach((l) => { if (l.foco && l.veredicto) ver[l.foco - 1] = { l, t: l.inicio + l.duracion * (l.sello_frac ?? 0.55) }; });
+Object.entries(ver).forEach(([k, v]) => {
+  const s = document.createElement("div"); s.className = "sello " + v.l.veredicto;
+  s.textContent = v.l.veredicto === "culpable" ? "CULPABLE" : "INOCENTE";
+  els[k].appendChild(s); v.el = s;
+});
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+const tSol = (L.find((l) => l.escena === "solucion") || { inicio: 1e9 }).inicio;
+const tCierre = (L.find((l) => l.escena === "cierre") || { inicio: 1e9 }).inicio;
+
+function dibujar(t) {
+  const i = lineaEn(t), l = L[i], foco = l.foco ? l.foco - 1 : -1;
+  // Título y entrada de los sospechosos (caminan desde la izquierda)
+  $("eti").style.opacity = ease(t / 0.4);
+  $("tit").style.opacity = ease(t / 0.5) * (1 - 0.0);
+  $("tit").style.transform = `translateY(${(1 - ease(t / 0.6)) * 50}px)`;
+  const sol = ease((t - tSol) / 0.5);
+  els.forEach((e, k) => {
+    const a = ease((t - 0.35 - k * 0.18) / 0.5);
+    const paso = Math.sin(cl((t - 0.35 - k * 0.18) / 0.5) * Math.PI * 3) * 8 * (1 - a);
+    const activo = k === foco, culpa = ver[k] && ver[k].l.veredicto === "culpable" && t >= ver[k].t;
+    const apagado = foco >= 0 ? !activo : false;
+    const esc = activo ? 1 + 0.08 * ease((t - l.inicio) / 0.35) : 1;
+    e.style.transform = `translateX(${(1 - a) * -900}px) translateY(${paso - sol * 60}px) scale(${esc})`;
+    e.style.opacity = (a > 0 ? 1 : 0) * (1 - sol * 0.85);
+    e.style.filter = apagado && !culpa ? "brightness(0.4) saturate(0.3)" : "none";
+    if (ver[k]) {
+      const dv = t - ver[k].t;
+      ver[k].el.style.opacity = dv >= 0 ? 1 : 0;
+      const s0 = ver[k].l.veredicto === "culpable" ? 2.2 : 1.8;
+      ver[k].el.style.transform = `translateX(-50%) rotate(-14deg) scale(${dv >= 0 ? s0 - (s0 - 1) * ease(dv / 0.18) : 1})`;
+    }
+  });
+  // Foco de luz sobre el sospechoso activo
+  const fx = foco >= 0 ? X(foco) : 540;
+  const fl = foco >= 0 ? ease((t - l.inicio) / 0.25) : 0;
+  $("luz").style.background = foco >= 0
+    ? `radial-gradient(ellipse 300px 700px at ${fx}px 900px, rgba(240,196,25,${0.20 * fl}) 0%, rgba(0,0,0,0) 70%), rgba(0,0,0,${0.35 * fl})`
+    : "none";
+  $("luz").style.opacity = 1 - sol;
+  // Ficha del sospechoso
+  const f = $("ficha");
+  if (foco >= 0) {
+    const s = S[foco], d = t - l.inicio;
+    f.querySelector(".k").textContent = `SOSPECHOSO #${foco + 1}`;
+    f.querySelector(".v").innerHTML = em(l.nota || s.nombre);
+    f.style.opacity = ease(d / 0.3); f.style.transform = `translateY(${(1 - ease(d / 0.4)) * 30}px)`;
+  } else f.style.opacity = 0;
+  if (t >= tSol) f.style.opacity = 0;
+  // Caso cerrado
+  const c = $("caso"), dc = t - tSol;
+  c.style.opacity = dc >= 0 ? ease(dc / 0.3) : 0;
+  c.style.transform = `translateY(${(1 - back(dc / 0.5)) * 300}px)`;
+  const cer = $("cerrado"), dd = dc - 0.6;
+  cer.style.opacity = dd >= 0 ? 1 : 0;
+  cer.style.transform = `rotate(10deg) scale(${dd >= 0 ? 2 - ease(dd / 0.2) : 1})`;
+  c.querySelectorAll("li").forEach((li, k) => {
+    const a = ease((dc - 0.4 - k * 0.45) / 0.35);
+    li.style.opacity = a; li.style.transform = `translateX(${(1 - a) * 60}px)`;
+  });
+  $("tit").style.opacity = ease(t / 0.5) * (1 - sol);
+  // Cierre
+  const dz = t - tCierre;
+  $("pie").style.opacity = dz >= 0 ? ease(dz / 0.4) : 0;
+  $("pie").style.transform = `translateY(${dz >= 0 ? (1 - ease(dz / 0.5)) * 40 : 0}px)`;
+  $("wa").style.opacity = dz >= 0 ? ease((dz - 0.7) / 0.4) : 0;
+  $("logo").style.opacity = dz >= 0 ? ease((dz - 0.7) / 0.4) : 0;
+  c.style.top = (560 - (dz >= 0 ? 120 * ease(dz / 0.5) : 0)) + "px";
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>

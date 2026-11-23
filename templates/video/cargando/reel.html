@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
-<!-- Formato «Cargando…» (tendencia nov-2026): el negocio se queda congelado en una barra de carga sobre el caos
+<!-- Claves opcionales del YAML: caos, etiqueta, etiqueta_listo, insignia (por defecto: cotización).
+     Formato «Cargando…» (tendencia nov-2026): el negocio se queda congelado en una barra de carga sobre el caos
      y, en el golpe, corte seco al resultado listo. Escenas: pide | carga | falla | listo | cierre.
      carga: {pct, paso}  ·  pide/falla: {mensaje}  ·  falla: {sello}  ·  listo: {doc, filas, clave}  ·  cierre: {frase} -->
 <style>
@@ -85,8 +86,8 @@ html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; backgro
   <div id="prog"><b></b></div><div class="pie"><div id="paso"></div><div id="pct">0 %</div></div></div>
 <div class="burb" id="falla" style="left:90px;top:300px"><small id="fallaQuien">CLIENTE · 4:47 PM</small><span id="fallaTxt"></span></div>
 <div id="sello"></div>
-<div id="listo"><div class="et">COTIZACIÓN LISTA</div><div class="pct">100 %</div><div class="barra"></div>
-  <div id="doc"><div class="cab"><span id="docN"></span><b>✓ ENVIADA</b></div><h3 id="docT"></h3><div id="docF"></div></div>
+<div id="listo"><div class="et" id="listoEt">COTIZACIÓN LISTA</div><div class="pct">100 %</div><div class="barra"></div>
+  <div id="doc"><div class="cab"><span id="docN"></span><b id="docB">✓ ENVIADA</b></div><h3 id="docT"></h3><div id="docF"></div></div>
 </div>
 <div id="clave"></div>
 <div id="cierre"><img src="__LOGO__"><div class="frase"></div><div class="wa"></div></div>
@@ -103,6 +104,11 @@ const em = (s) => (s || "").replace(/\s*\/\s*/g, "<br>").replace(/\*([^*]+)\*/g,
 const fondoP = fondo($("fondo"), "puntos", { back: "#0a1410", fill: "#1d362b", size: 3, gap: 44 });
 const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
 $("cierre").querySelector(".wa").textContent = R.whatsapp;
+// Opcionales: caos (HTML de las piezas de fondo), etiqueta (ventana de carga), etiqueta_listo, insignia (en el documento listo)
+if (R.caos) $("caos").innerHTML = R.caos;
+if (R.etiqueta) $("modalEt").textContent = R.etiqueta;
+if (R.etiqueta_listo) $("listoEt").textContent = R.etiqueta_listo;
+if (R.insignia) $("docB").textContent = R.insignia;
 const piezas = [...$("caos").children];
 const rot = piezas.map((p) => p.style.transform);
 // Porcentaje que muestra la barra en un momento dado: avanza de la línea anterior a la actual en el primer 70 %.

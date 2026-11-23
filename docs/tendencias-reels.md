@@ -21,6 +21,12 @@ y que **al menos 1-2 de los 3 reels del día sean un formato nuevo** de aquí. A
 | **Dosis de realidad** (TikTok Next 2026 LATAM) | El público latino prefiere experiencias reales y crudas sobre la estética aspiracional. Detrás de cámaras, proceso real, sin pulir. | TikTok Newsroom |
 | **Bailes/sonidos del momento** («Dame Hombro», «Housewife») | El equipo bailando en la oficina humaniza a la marca. **Decisión 2026-11-11: no usamos canciones de moda; seguimos con la música de `assets/music/library.yaml`.** | Metricool, que.es |
 
+**Revisión rápida 2026-11-23:** siguen fuertes las clasificaciones, listas, pantallas divididas, texto diminuto y reels con voz;
+reels cortos (menos de 25 s) que arrancan con movimiento y cierran con una invitación cálida. Formato «Suspect» (rueda de
+sospechosos) desde octubre → hecho como `sospechoso`. Temporada: Black Friday (27-nov) y diciembre. Fuentes:
+[mean.ceo · Instagram trends nov 2026](https://blog.mean.ceo/instagram-trends-november-2026/),
+[Virlo · semana del 16-nov](https://virlo.ai/trending-on-tiktok-this-week), [Gelato · TikTok trends](https://www.gelato.com/es/blog/tiktok-trends-right-now).
+
 Otras señales: los carruseles ganan en guardados y compartidos; el texto en pantalla y las palabras clave importan porque
 la gente busca dentro de Instagram como en Google.
 

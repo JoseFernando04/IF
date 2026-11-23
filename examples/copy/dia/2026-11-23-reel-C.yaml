@@ -1,0 +1,77 @@
+# Reel C · «Cargando…» (formato `cargando`, último uso 2026-11-15). Pilar: soluciones (páginas web). Escena de ejemplo.
+# Palabra buscada: «página web para mi negocio». El cliente busca, la página no le resuelve y se va; corte seco a la página lista.
+# escena: pide | carga (pct, paso) | falla (mensaje, sello) | listo (doc, titulo, filas, clave) | cierre (frase)
+formato: cargando
+titulo: Cargando - el cliente que te buscó en Google
+audio: assets/voice/elevenlabs/2026-11-23-reel-C.mp3
+salida: data/dias/2026-11-23/reel-C
+musica: digital-lemonade
+musica_db: -22
+whatsapp: "+502 3808 9808"
+caption: >-
+  Tu cliente no te va a llamar para preguntarte el horario: lo busca, y si no lo encuentra rápido, abre el siguiente resultado. 🔎⏳
+  Una página web no tiene que ser enorme. Tiene que abrir rápido en el celular, decir lo que hacés y llevar a tu WhatsApp en un toque.
+  ¿Tu negocio ya aparece cuando te buscan? Contanos 👇 Y si querés una página web que sí te traiga mensajes, escribinos al WhatsApp +502 3808 9808. (Escena de ejemplo.)
+hashtags: [PaginaWeb, PaginaWebParaNegocios, PymesGuatemala, PresenciaDigital, NegociosGT]
+lineas:
+  - texto: Un cliente busca tu negocio en Google.
+    escena: pide
+    gancho: "Tu página web, / *cargando…*"
+    quien: "BUSCANDO EN GOOGLE · 9:02 AM"
+    mensaje: "🔎 ferretería cerca de mí abierta hoy"
+    sfx: [[0.1, pop]]
+  - texto: Encuentra una página que tarda en abrir,
+    escena: carga
+    pct: 14
+    paso: "Abriendo página…"
+    sfx: [[0.1, whoosh]]
+  - texto: con el horario de hace dos años,
+    escena: carga
+    pct: 41
+    paso: "Cargando horario (2024)…"
+    sfx: [[0.4, tick]]
+  - texto: fotos que no se ven en el celular,
+    escena: carga
+    pct: 72
+    paso: "Ajustando fotos…"
+    sfx: [[0.3, tick], [0.7, tick]]
+  - texto: y ningún botón para escribirte.
+    escena: carga
+    pct: 98
+    paso: "Buscando el WhatsApp…"
+    sfx: [[0.5, tick]]
+  - texto: Así que se regresa y le escribe al de al lado.
+    escena: falla
+    paso: "Regresando a Google…"
+    quien: "EL CLIENTE, AL NEGOCIO DE AL LADO"
+    mensaje: "Buenas, ¿tienen abierto hoy? 👋"
+    sello: "CLIENTE PERDIDO"
+    sfx: [[0.38, pop], [0.64, thud]]
+  - texto: Una página web rápida, clara en el celular y con tu WhatsApp a un toque.
+    escena: listo
+    golpe: true
+    doc: "TU PÁGINA WEB"
+    titulo: "Abierta hoy · 8:00 a 18:00"
+    filas: [["Abre rápido en el celular", "✓"], ["Horario y fotos al día", "✓"], ["Botón de WhatsApp", "✓"]]
+    clave: "A UN TOQUE"
+    sfx: [[0.0, whoosh], [0.55, pop]]
+  - texto: Escribinos y te contamos cómo quedaría la tuya.
+    escena: cierre
+    frase: "Que te encuentren / *y te escriban.*"
+    sfx: [[0.2, pop]]
+# Fondo de caos propio (páginas web) y etiquetas de la plantilla
+etiqueta: "TU PÁGINA WEB"
+etiqueta_listo: "PÁGINA LISTA"
+insignia: "✓ EN LÍNEA"
+caos: >-
+  <div class="v" style="left:-40px;top:170px;width:640px;transform:rotate(-4deg)"><div class="bar"><i></i><i></i>negocio-ejemplo.com</div>
+  <div style="padding:30px;font:500 30px/1.5 'Tight'">Bienvenidos a nuestro sitio<br><span style="background:#f6e7a1">Horario: L-V 8 a 17 (2024)</span><br>Promociones: próximamente</div></div>
+  <div class="pap" style="left:640px;top:120px;background:#f0c419;transform:rotate(7deg)">¿y el<br>WhatsApp?</div>
+  <div class="v" style="left:430px;top:330px;width:620px;transform:rotate(5deg)"><div class="bar"><i></i><i></i>galeria.html</div>
+  <div style="padding:30px;font:600 30px/1.5 'Mono';color:#9a9384">[ imagen no disponible ]<br>[ imagen no disponible ]<br>foto_tienda_FINAL.jpg (8 MB)</div></div>
+  <div class="v" style="left:160px;top:560px;width:660px;transform:rotate(-2deg)"><div class="bar"><i></i><i></i>contacto.html</div>
+  <div style="padding:30px;font:500 30px/1.5 'Tight'">Contáctenos: llene el formulario<br>y le responderemos <span style="background:#f6e7a1">a la brevedad</span></div></div>
+  <div class="pap" style="left:40px;top:1240px;background:#f6e7a1;transform:rotate(-8deg)">hacé zoom<br>para leer</div>
+  <div class="v" style="left:560px;top:1290px;width:470px;transform:rotate(6deg)"><div class="bar"><i></i><i></i>error</div>
+  <div style="padding:30px;font:800 64px/1.1 'Tight'">404<br><span style="font:500 28px 'Tight'">Página no encontrada</span></div></div>
+  <div class="pap" style="left:300px;top:1560px;background:#fefcf3;transform:rotate(3deg)">la página<br>que hizo el sobrino</div>

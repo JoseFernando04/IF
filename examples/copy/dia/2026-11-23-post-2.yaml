@@ -1,0 +1,35 @@
+# Post 2 · Este o este (carrusel de 5: portada A/B → equipo A → equipo B → cómo pasarte → cierre).
+# Pilar: propósito y proceso → contenido para redes (orgánico, nunca pauta).
+formato: este-o-este
+salida: data/dias/2026-11-23/post-2
+titulo_tiktok: "¿A o B? Así publica tu negocio en redes 📱 (no hay respuesta incorrecta… casi)"
+pregunta: "¿CÓMO PUBLICA TU NEGOCIO EN REDES?"
+opciones:
+  - {texto: "Cuando hay tiempo y alguien se acuerda.", nota: "…la última fue en agosto, con la foto del estante."}
+  - {texto: "Con un plan: qué, qué día y para qué.", nota: "Cada pieza tiene un porqué."}
+comenta: "Comentá A o B 👇"
+whatsapp: "+502 3808 9808"
+etiqueta: "TUS REDES"
+slides:
+  - titulo: "Si sos del <em>equipo A…</em>"
+    marca: "✗"
+    puntos:
+      - "Subís algo cuando hay calma, y en temporada nunca hay calma."
+      - "Casi todo es «promo» o «ya abrimos», y la gente se acostumbra a pasarlo."
+      - "Quien te busca encuentra un perfil que parece cerrado."
+  - claro: true
+    titulo: "Si sos del <em>equipo B…</em>"
+    marca: "✓"
+    puntos:
+      - "Hay días fijos y temas que rotan: enseñar, mostrar, resolver."
+      - "Tus clientes aprenden algo útil y se acuerdan de vos."
+      - "Cada pieza termina en una sola acción: escribirte."
+  - titulo: "Pasarte a la B <em>no es publicar más.</em>"
+    texto: "Es publicar con intención: pocas piezas por semana, con el tono de tu marca, que respondan lo que tus clientes preguntan todos los días. Así trabajamos el contenido nuestro, y así lo hacemos para otros negocios."
+cierre: "¿Sos A o B? <em>Contanos.</em>"
+cierre_bajada: "Y si querés pasarte a la B sin que te quite el día, escribinos y te contamos cómo armamos un plan de contenido."
+caption: >-
+  Si sos del equipo A, tranqui: es el equipo más grande de todos. 📱😅
+  El problema no es publicar poco, es que lo que se publica no le dice nada nuevo a quien ya te sigue. Un plan sencillo (qué, qué día y para qué) cambia más que subir todos los días.
+  ¿A o B? Contanos 👇 Y si querés contenido para redes con estrategia y con tu marca, escribinos al WhatsApp +502 3808 9808.
+hashtags: [ContenidoParaRedes, RedesSociales, MarketingDeContenidos, PymesGuatemala, NegociosGT]

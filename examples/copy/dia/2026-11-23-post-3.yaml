@@ -1,0 +1,26 @@
+# Post 3 · Frase de cliente (carrusel de 4). Pilar: soluciones (motor de reseñas de Google).
+# Frase genérica, no de un cliente real ni un testimonio.
+formato: frase
+salida: data/dias/2026-11-23/post-3
+titulo_tiktok: "«¡Claro que le dejo su reseña!» ⭐ (spoiler: nunca llegó)"
+whatsapp: "+502 3808 9808"
+cita: "«¡Claro que le dejo<br>su reseña!»<br><em>(nunca llegó)</em>"
+quien: "— TODO CLIENTE FELIZ,<br>SALIENDO POR LA PUERTA"
+slides:
+  - titulo: "No es que no quiera. <em>Es que se le olvida.</em>"
+    texto: "Salió contento, llegó a su casa, y buscar tu negocio en Google para dejar estrellas quedó para «después». Y después nunca llega."
+  - claro: true
+    titulo: "Cuando la reseña <em>se pide sola:</em>"
+    marca: "✓"
+    puntos:
+      - "Al cerrar el trabajo, le llega un WhatsApp con el enlace directo."
+      - "Un toque y ya está en tu perfil de Google, sin buscar nada."
+      - "Pedís a cada cliente, sin límites ni suscripciones."
+etiqueta: "PARA PENSARLO"
+titulo: "Que la buena experiencia <em>quede escrita.</em>"
+texto: "Un motor de reseñas por WhatsApp que pide la reseña en el momento justo. Escribinos y te contamos cómo funciona."
+caption: >-
+  Todos lo dijimos alguna vez, con toda la intención del mundo. ⭐😅
+  Tus clientes contentos sí quieren ayudarte; lo difícil es acordarse de buscarte en Google cuando ya están en su casa. Por eso las reseñas se piden en el momento, con el enlace listo.
+  Etiquetá a quien te debe una reseña 👀 Y si querés que tu negocio las pida solo, escribinos al WhatsApp +502 3808 9808.
+hashtags: [ReseñasDeGoogle, GoogleMaps, AutomatizacionWhatsApp, PymesGuatemala, NegociosGT]

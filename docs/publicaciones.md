@@ -2,7 +2,7 @@
 
 Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml`. No editar a mano.
 
-**31 publicadas · 29 pendientes · 14 descartadas**
+**31 publicadas · 35 pendientes · 14 descartadas**
 
 | Día | Pieza | Tema | Estado | Redes | Subido |
 |---|---|---|---|---|---|
@@ -80,3 +80,9 @@ Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml
 | 2026-11-22 | reel-A-tierlist-donde-vive-el-inventario | Tier list - dónde vive el inventario de tu negocio | ⏳ pendiente |  |  |
 | 2026-11-22 | reel-B-resumen-tu-negocio-2026 | Tu negocio en resumen 2026 | ⏳ pendiente |  |  |
 | 2026-11-22 | reel-C-decilo-lo-voy-a-pensar | Decilo así - cuando te dicen «lo voy a pensar» | ⏳ pendiente |  |  |
+| 2026-11-23 | post-1-checklist-antes-del-black-friday | Antes del Black Friday: revisá estas 4 cosas en tu negocio 🏷️✅ | ⏳ pendiente |  |  |
+| 2026-11-23 | post-2-este-o-este-redes | ¿A o B? Así publica tu negocio en redes 📱 (no hay respuesta incorrecta… casi) | ⏳ pendiente |  |  |
+| 2026-11-23 | post-3-frase-resena-nunca-llego | «¡Claro que le dejo su reseña!» ⭐ (spoiler: nunca llegó) | ⏳ pendiente |  |  |
+| 2026-11-23 | reel-A-sospechoso-ventas-black-friday | Rueda de reconocimiento - quién se robó las ventas del Black Friday | ⏳ pendiente |  |  |
+| 2026-11-23 | reel-B-receta-perder-un-cliente | Receta para perder un cliente en temporada alta | ⏳ pendiente |  |  |
+| 2026-11-23 | reel-C-cargando-pagina-web | Cargando - el cliente que te buscó en Google | ⏳ pendiente |  |  |

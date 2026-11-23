@@ -1,0 +1,54 @@
+# Reel B · «Receta para…» (FORMATO NUEVO `receta`, plantilla templates/video/receta/reel.html desde 2026-11-23).
+# Tendencia: humor de recetas («receta para el desastre») + listas cortas con voz. Pilar: soluciones (agente de IA en WhatsApp).
+# Tarjeta de cocina que se llena a mano → sello «listo» → «receta de la casa» (la solución). En la voz, «inteligencia artificial», nunca «IA».
+formato: receta
+titulo: Receta para perder un cliente en temporada alta
+audio: assets/voice/elevenlabs/2026-11-23-reel-B.mp3
+salida: data/dias/2026-11-23/reel-B
+musica: wholesome
+musica_db: -23
+whatsapp: "+502 3808 9808"
+etiqueta: "RECETA DE TEMPORADA"
+receta: "Receta para *perder un cliente*"
+meta: ["⏱ Una noche", "🍽 Rinde: todos", "Dificultad: fácil"]
+casa:
+  etiqueta: "LA RECETA DE LA CASA"
+  titulo: "Un agente *que contesta.*"
+  hora: "HOY · 10:04 P. M."
+  chat:
+    - {t: "Buenas noches, ¿todavía tienen la oferta? 🙏", h: "10:04 p. m."}
+    - {t: "¡Sí! Quedan disponibles. ¿Te la aparto para mañana?", h: "10:04 p. m. · agente de IA", yo: true}
+  chat_fracs: [0.12, 0.38]
+  clave: "Contesta al momento, con *tus precios.*"
+  clave_frac: 0.6
+pie: "Pedí la receta *completa.*"
+caption: >-
+  Probada en miles de cocinas… perdón, de negocios. 👨‍🍳📲
+  En temporada alta los mensajes llegan de noche, y el que contesta primero casi siempre se queda con la venta. No es descuido: es que nadie puede estar pegado al celular a las diez de la noche.
+  ¿Qué paso de esta receta ya te tocó? Contanos 👇 Y si querés la receta de la casa (un agente de IA que contesta en tu WhatsApp con tus precios), escribinos al +502 3808 9808.
+hashtags: [BotDeWhatsApp, WhatsAppBusiness, AtencionAlCliente, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: Receta para perder un cliente en temporada alta.
+    sfx: [[0.05, paper], [0.6, pop]]
+  - texto: Ingredientes, un mensaje que llega a las diez de la noche, y un celular cargando en la cocina.
+    ingredientes: ["Un mensaje a las 10 p. m.", "Celular cargando en la cocina"]
+    fracs: [0.18, 0.62]
+    sfx: [[0.18, marker], [0.62, marker]]
+  - texto: Paso uno, dejalo en visto hasta mañana.
+    paso: "Dejalo en visto hasta mañana."
+    sfx: [[0.05, marker]]
+  - texto: Paso dos, contestale a las nueve, con un «¿todavía le interesa?».
+    paso: "A las 9 a. m.: «¿todavía le interesa?»"
+    sfx: [[0.05, marker]]
+  - texto: Paso tres, servilo frío. Ya le compró a otro.
+    paso: "Servilo frío. 🧊"
+    sello: "LISTO"
+    sello_sub: "YA LE COMPRÓ A OTRO"
+    sello_frac: 0.6
+    sfx: [[0.05, marker], [0.6, thud]]
+  - texto: La receta de la casa, un agente de inteligencia artificial en tu WhatsApp, que contesta al momento con tus precios y te pasa la venta lista.
+    escena: casa
+    sfx: [[0.02, whoosh], [0.12, pop], [0.38, pop]]
+  - texto: Pedí la receta completa. Escribinos al WhatsApp.
+    escena: cierre
+    sfx: [[0.3, pop]]

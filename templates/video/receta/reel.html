@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Brico"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+@font-face { font-family: "Serif"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+@font-face { font-family: "SerifR"; src: url("__FONTS__/InstrumentSerif-Regular.ttf"); }
+@font-face { font-family: "Mano"; src: url("__FONTS__/Caveat.ttf"); }
+/* Receta: tarjeta de cocina «Receta para <un desastre>» que se llena (ingredientes, pasos), sello de «listo»,
+   y vuelta a la «receta de la casa» (la solución) en verde y dorado. */
+:root { --verde: #0a1410; --verde2: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --tinta: #1f2a22; --gris: #7b7462; --rojo: #c4553b; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #e8e2d2; font-family: "Tight"; color: var(--tinta); }
+#fondo { position: absolute; inset: 0; }
+#carta { position: absolute; left: 60px; right: 60px; top: 90px; bottom: 90px; background: var(--marfil); border-radius: 14px;
+         box-shadow: 0 30px 60px #0003, 0 4px 0 #d6cfba; overflow: hidden; }
+#carta:before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 22px;
+  background: repeating-linear-gradient(90deg, var(--rojo) 0 44px, var(--marfil) 44px 88px); opacity: .85; }
+#eti { position: absolute; left: 70px; top: 80px; font: 700 30px "Mono"; letter-spacing: 6px; color: var(--gris); }
+#tit { position: absolute; left: 70px; right: 70px; top: 130px; font: 400 150px/0.9 "SerifR"; letter-spacing: -2px; }
+#tit em { font-family: "Serif"; color: var(--rojo); }
+#meta { position: absolute; left: 70px; right: 70px; top: 560px; display: flex; gap: 18px; flex-wrap: wrap; }
+#meta span { font: 600 29px "Mono"; border: 3px solid var(--tinta); border-radius: 999px; padding: 10px 22px; }
+.sec { position: absolute; left: 70px; right: 70px; font: 800 40px "Brico"; letter-spacing: 3px; color: var(--rojo);
+       border-bottom: 3px solid var(--tinta); padding-bottom: 10px; }
+#secI { top: 750px; } #secP { top: 1100px; }
+#ingr { position: absolute; left: 70px; right: 70px; top: 830px; }
+.ing { font: 400 50px/1.15 "Mano"; padding: 10px 0 10px 64px; position: relative; font-size: 68px; line-height: 1.05; }
+.ing:before { content: "●"; position: absolute; left: 14px; top: 12px; font-size: 26px; color: var(--rojo); }
+#pasos { position: absolute; left: 70px; right: 70px; top: 1180px; }
+.paso { display: flex; gap: 26px; align-items: flex-start; padding: 16px 0; }
+.paso b { flex: none; width: 76px; height: 76px; border-radius: 50%; background: var(--tinta); color: var(--marfil);
+          font: 800 42px "Brico"; display: flex; align-items: center; justify-content: center; }
+.paso span { font: 400 68px/1.0 "Mano"; padding-top: 4px; }
+#sello { position: absolute; left: 50%; top: 1525px; transform: translateX(-50%) rotate(-5deg); border: 8px solid var(--rojo); color: var(--rojo);
+         border-radius: 16px; padding: 14px 40px; font: 800 84px/1 "Brico"; text-align: center; white-space: nowrap; background: #fefcf3ee; z-index: 3; }
+#sello small { display: block; font: 600 30px "Mono"; letter-spacing: 3px; margin-top: 8px; }
+/* Receta de la casa */
+#casa { position: absolute; inset: 0; background: var(--verde); color: var(--marfil); z-index: 5; }
+#casa .k { position: absolute; left: 70px; top: 150px; font: 700 28px "Mono"; letter-spacing: 6px; color: var(--oro); }
+#casa .t { position: absolute; left: 70px; right: 70px; top: 200px; font: 800 120px/1.0 "Brico"; letter-spacing: -2px; }
+#casa .t em { font: 400 130px/1 "Serif"; color: var(--oro); letter-spacing: 0; }
+#chat { position: absolute; left: 60px; right: 60px; top: 560px; background: #13241c; border-radius: 36px; padding: 40px 34px 46px;
+        border: 3px solid #2a4a3a; }
+#chat .hora { text-align: center; font: 600 30px "Mono"; color: #9fb3a8; margin-bottom: 26px; }
+.bur { max-width: 82%; padding: 22px 28px; border-radius: 28px; font: 500 52px/1.18 "Tight"; margin: 18px 0; position: relative; }
+.bur small { display: block; font: 500 26px "Mono"; opacity: .7; margin-top: 8px; text-align: right; }
+.bur.ell { background: #fefcf3; color: var(--tinta); border-bottom-left-radius: 8px; }
+.bur.yo { background: var(--oro); color: var(--verde); margin-left: auto; border-bottom-right-radius: 8px; }
+#casa .clave { position: absolute; left: 70px; right: 70px; top: 1300px; font: 800 84px/1.04 "Brico"; }
+#casa .clave em { font: 400 92px/1 "Serif"; color: var(--oro); }
+#pie { position: absolute; left: 70px; right: 70px; top: 1460px; font: 800 70px/1.04 "Brico"; z-index: 6; color: var(--marfil); }
+#pie em { font: 400 76px/1 "Serif"; color: var(--oro); }
+#wa { position: absolute; left: 70px; top: 1730px; font: 800 44px "Tight"; color: var(--verde); background: var(--oro);
+      padding: 22px 34px; border-radius: 999px; z-index: 6; }
+#logo { position: absolute; right: 70px; top: 1715px; width: 150px; z-index: 6; }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="carta">
+  <div id="eti"></div><div id="tit"></div><div id="meta"></div>
+  <div class="sec" id="secI">INGREDIENTES</div><div id="ingr"></div>
+  <div class="sec" id="secP">PREPARACIÓN</div><div id="pasos"></div>
+  <div id="sello"></div>
+</div>
+<div id="casa"><div class="k"></div><div class="t"></div><div id="chat"><div class="hora"></div></div><div class="clave"></div></div>
+<div id="pie"></div>
+<div id="wa"></div>
+<img id="logo" src="__LOGO__">
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (x) => { x = cl(x); return 1 - (1 - x) ** 3; };
+const back = (x) => { x = cl(x); const c = 1.7; return 1 + (c + 1) * (x - 1) ** 3 + c * (x - 1) ** 2; };
+const em = (s) => (s || "").replace(/\*(.+?)\*/g, "<em>$1</em>");
+const fondoP = fondo($("fondo"), "papel", { back: "#e3dcc9", paper: "#efe8d6", shadow: "#7a6f5c", crumples: 0.2, folds: 0.3 });
+$("eti").textContent = REEL.etiqueta || "RECETA DE LA SEMANA";
+$("tit").innerHTML = em(REEL.receta);
+$("meta").innerHTML = (REEL.meta || []).map((m) => `<span>${m}</span>`).join("");
+$("pie").innerHTML = em(REEL.pie);
+$("wa").textContent = "WhatsApp " + REEL.whatsapp;
+const C = REEL.casa || {};
+$("casa").querySelector(".k").textContent = C.etiqueta || "RECETA DE LA CASA";
+$("casa").querySelector(".t").innerHTML = em(C.titulo);
+$("casa").querySelector(".hora").textContent = C.hora || "";
+$("casa").querySelector(".clave").innerHTML = em(C.clave);
+const burs = (C.chat || []).map((b) => {
+  const d = document.createElement("div"); d.className = "bur " + (b.yo ? "yo" : "ell");
+  d.innerHTML = `${b.t}${b.h ? `<small>${b.h}</small>` : ""}`; $("chat").appendChild(d); return d;
+});
+// Ingredientes y pasos: aparecen en su línea, en la fracción indicada
+const ings = [], pasos = [];
+L.forEach((l) => {
+  (l.ingredientes || []).forEach((x, k) => {
+    const d = document.createElement("div"); d.className = "ing"; d.innerHTML = x; $("ingr").appendChild(d);
+    const f = (l.fracs || [])[k] ?? (0.15 + k * 0.45);
+    ings.push({ el: d, t: l.inicio + l.duracion * f });
+  });
+  if (l.paso) {
+    const d = document.createElement("div"); d.className = "paso";
+    d.innerHTML = `<b>${pasos.length + 1}</b><span>${l.paso}</span>`; $("pasos").appendChild(d);
+    pasos.push({ el: d, t: l.inicio + 0.05 });
+  }
+});
+const listo = L.find((l) => l.sello);
+if (listo) $("sello").innerHTML = listo.sello + (listo.sello_sub ? `<small>${listo.sello_sub}</small>` : "");
+const tSello = listo ? listo.inicio + listo.duracion * (listo.sello_frac ?? 0.5) : 1e9;
+const lCasa = L.find((l) => l.escena === "casa"), tCasa = lCasa ? lCasa.inicio : 1e9;
+const tCierre = (L.find((l) => l.escena === "cierre") || { inicio: 1e9 }).inicio;
+
+function dibujar(t) {
+  $("eti").style.opacity = ease(t / 0.3);
+  $("tit").style.opacity = ease(t / 0.4);
+  $("tit").style.transform = `translateY(${(1 - ease(t / 0.6)) * 40}px)`;
+  [...$("meta").children].forEach((m, k) => { const a = ease((t - 0.6 - k * 0.2) / 0.35); m.style.opacity = a; m.style.transform = `scale(${0.8 + 0.2 * back((t - 0.6 - k * 0.2) / 0.4)})`; });
+  const t1 = Math.min(...ings.map((x) => x.t), 1e9) - 0.2, t2 = Math.min(...pasos.map((x) => x.t), 1e9) - 0.2;
+  $("secI").style.opacity = ease((t - t1) / 0.3); $("secP").style.opacity = ease((t - t2) / 0.3);
+  // Se escriben a mano: se destapan de izquierda a derecha
+  ings.forEach((x) => { const a = ease((t - x.t) / 0.7); x.el.style.opacity = a > 0 ? 1 : 0; x.el.style.clipPath = `inset(0 ${100 - a * 100}% 0 0)`; });
+  pasos.forEach((x) => { const a = ease((t - x.t) / 0.8); x.el.style.opacity = a > 0 ? 1 : 0; x.el.style.clipPath = `inset(0 ${100 - a * 100}% 0 0)`;
+                          x.el.querySelector("b").style.transform = `scale(${back((t - x.t) / 0.35)})`; });
+  const ds = t - tSello, s = $("sello");
+  s.style.opacity = ds >= 0 ? 1 : 0;
+  s.style.transform = `translateX(-50%) rotate(-5deg) scale(${ds >= 0 ? 2.2 - 1.2 * ease(ds / 0.18) : 1})`;
+  // Receta de la casa: barrido vertical desde abajo
+  const dc = t - tCasa, a = ease(dc / 0.45), casa = $("casa");
+  casa.style.clipPath = `inset(${(1 - a) * 100}% 0 0 0)`;
+  casa.style.display = dc >= 0 ? "block" : "none";
+  casa.querySelector(".k").style.opacity = ease((dc - 0.3) / 0.3);
+  casa.querySelector(".t").style.opacity = ease((dc - 0.35) / 0.3);
+  $("chat").style.opacity = ease((dc - 0.6) / 0.3);
+  const fr = C.chat_fracs || [0.25, 0.4];
+  burs.forEach((b, k) => { const tb = tCasa + (lCasa ? lCasa.duracion : 3) * (fr[k] ?? 0.4 + k * 0.15); const x = back((t - tb) / 0.35);
+                           b.style.opacity = t >= tb ? 1 : 0; b.style.transform = `scale(${0.6 + 0.4 * x})`; b.style.transformOrigin = b.classList.contains("yo") ? "100% 100%" : "0 100%"; });
+  const ck = casa.querySelector(".clave"), tk = tCasa + (lCasa ? lCasa.duracion : 3) * (C.clave_frac ?? 0.7);
+  ck.style.opacity = ease((t - tk) / 0.3) * (t >= tCierre ? 0 : 1);
+  ck.style.transform = `translateY(${(1 - ease((t - tk) / 0.4)) * 30}px)`;
+  const dz = t - tCierre;
+  $("pie").style.opacity = dz >= 0 ? ease(dz / 0.4) : 0;
+  $("pie").style.transform = `translateY(${dz >= 0 ? (1 - ease(dz / 0.5)) * 40 : 0}px)`;
+  $("wa").style.opacity = dz >= 0 ? ease((dz - 0.7) / 0.4) : 0;
+  $("logo").style.opacity = dz >= 0 ? ease((dz - 0.7) / 0.4) : 0;
+  $("chat").style.transform = `translateY(${dz >= 0 ? -60 * ease(dz / 0.5) : 0}px)`;
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>
