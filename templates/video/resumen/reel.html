@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Brico"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+@font-face { font-family: "Serif"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+/* «Tu negocio en resumen»: tarjetas de resumen del año, una por frase, con barra de historias. Estética propia IF. */
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0a1410; font-family: "Tight"; }
+.card { position: absolute; inset: 0; overflow: hidden; }
+.forma { position: absolute; border-radius: 50%; }
+.grano { position: absolute; inset: 0; opacity: .16; background-image: radial-gradient(#000 2px, transparent 2.4px); background-size: 10px 10px; }
+.eti { position: absolute; left: 72px; right: 72px; top: 150px; font: 700 32px/1.4 "Mono"; letter-spacing: 7px; }
+.grande { position: absolute; left: 72px; right: 72px; font: 800 168px/0.95 "Brico"; letter-spacing: -5px; }
+.grande em { font: 400 180px/0.95 "Serif"; letter-spacing: 0; }
+.grande .w { display: inline-block; }
+.remate { position: absolute; left: 72px; right: 72px; font: 700 52px/1.2 "Tight"; }
+.puntos { position: absolute; left: 72px; right: 72px; top: 520px; display: flex; flex-direction: column; gap: 40px; }
+.punto { display: flex; align-items: center; gap: 32px; font: 800 66px/1.05 "Brico"; color: #fefcf3; }
+.punto b { flex: none; width: 96px; height: 96px; border-radius: 50%; background: #f0c419; color: #0a1410; display: flex; align-items: center; justify-content: center; font: 800 52px "Brico"; }
+#barra { position: absolute; top: 56px; left: 48px; right: 48px; display: flex; gap: 12px; z-index: 10; }
+#barra i { flex: 1; height: 10px; border-radius: 5px; overflow: hidden; position: relative; }
+#barra i u { position: absolute; inset: 0; transform-origin: 0 50%; }
+#wa { position: absolute; left: 72px; top: 1300px; font: 800 52px "Tight"; color: #0a1410; background: #f0c419; padding: 28px 44px; border-radius: 999px; }
+#logo { position: absolute; left: 72px; top: 1500px; width: 200px; }
+</style></head>
+<body>
+<div id="cards"></div>
+<div id="barra"></div>
+<script type="module">
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas;
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (x) => { x = cl(x); return 1 - (1 - x) ** 3; };
+const back = (x) => { x = cl(x); const c = 1.6; return 1 + (c + 1) * (x - 1) ** 3 + c * (x - 1) ** 2; };
+const words = (s) => (s || "").replace(/\*(.+?)\*/g, (m, a) => a.split(" ").map((w) => `\u0001${w}`).join(" "))
+  .split(" ").map((w) => w.startsWith("\u0001") ? `<span class="w"><em>${w.slice(1)}</em></span>` : `<span class="w">${w}</span>`).join(" ");
+// Paleta por tarjeta: [fondo, tinta, acento, forma1, forma2]
+const TEMAS = [
+  ["#0a1410", "#fefcf3", "#f0c419", "#1d362b", "#f0c419"],
+  ["#f0c419", "#0a1410", "#0a1410", "#f7d75a", "#e0a800"],
+  ["#fefcf3", "#0a1410", "#1d362b", "#ece5cf", "#1d362b"],
+  ["#1d362b", "#fefcf3", "#f0c419", "#2f5d46", "#0a1410"],
+  ["#e07a5f", "#0a1410", "#0a1410", "#ea9a83", "#fefcf3"],
+  ["#fefcf3", "#0a1410", "#c99a00", "#f0c419", "#ece5cf"],
+  ["#0a1410", "#fefcf3", "#f0c419", "#1d362b", "#13241c"],
+  ["#0a1410", "#fefcf3", "#f0c419", "#f0c419", "#1d362b"],
+];
+const FORMAS = [  // [size, left, top] para forma1 y forma2 (px)
+  [[1240, -340, 820], [700, 560, 220]], [[1300, -420, -560], [460, 720, 1500]], [[1000, 420, 1180], [300, -80, 1580]],
+  [[900, 500, -260], [1200, -500, 1200]], [[1100, -300, 1100], [380, 760, 260]], [[640, 600, 1350], [1000, -460, -380]],
+  [[1300, -500, 900], [500, 700, -100]], [[700, 600, 1560], [1300, -560, -600]],
+];
+const cards = L.map((l, i) => {
+  const [bg, ink, acc, f1, f2] = TEMAS[i % TEMAS.length], fm = FORMAS[i % FORMAS.length];
+  const c = document.createElement("div"); c.className = "card"; c.style.background = bg; c.style.color = ink;
+  let h = `<div class="forma f1" style="width:${fm[0][0]}px;height:${fm[0][0]}px;left:${fm[0][1]}px;top:${fm[0][2]}px;background:${f1}"></div>
+    <div class="forma f2" style="width:${fm[1][0]}px;height:${fm[1][0]}px;left:${fm[1][1]}px;top:${fm[1][2]}px;background:${f2}"></div><div class="grano"></div>`;
+  const cierre = l.escena === "cierre";
+  if (l.tarjeta === "portada") {
+    h += `<div class="eti" style="color:${acc}">${REEL.etiqueta_portada || "RESUMEN 2026"}</div>
+      <div class="grande" style="top:1020px">${words(l.grande)}</div>
+      <div class="remate" style="top:1420px;color:#9fb3a8;font-weight:500">${REEL.bajada_portada || "Lo que tu año dijo de vos (aunque no lo hayás contado)."}</div>`;
+  } else if (l.puntos) {
+    h += `<div class="eti" style="color:${acc}">${l.etiqueta}</div>
+      <div class="puntos">${l.puntos.map((p, j) => `<div class="punto"><b>${j + 1}</b><span>${p}</span></div>`).join("")}</div>`;
+  } else if (cierre) {
+    h += `<div class="eti" style="color:${acc}">IF TECHWORKS</div>
+      <div class="grande" style="top:560px;font-size:150px">${words(REEL.cierre || "Que tu 2027 *se cuente distinto.*")}</div>
+      <div id="wa">WhatsApp ${REEL.whatsapp}</div><img id="logo" src="__LOGO__">`;
+  } else {
+    h += `<div class="eti" style="color:${ink}">${l.etiqueta}</div>
+      <div class="grande" style="top:${l.top || 560}px;${l.size ? `font-size:${l.size}px` : ""}">${words(l.grande)}</div>
+      <div class="remate" style="top:${l.remate_top || 1180}px">${l.remate || ""}</div>`;
+  }
+  c.innerHTML = h;
+  c.querySelectorAll(".grande em").forEach((e) => (e.style.color = acc));
+  document.getElementById("cards").appendChild(c);
+  return c;
+});
+const barra = document.getElementById("barra");
+L.forEach(() => barra.insertAdjacentHTML("beforeend", "<i><u></u></i>"));
+const segs = [...barra.querySelectorAll("i")];
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.12) k = i; }); return k; };
+
+function dibujar(t) {
+  const i = lineaEn(t);
+  cards.forEach((c, k) => {
+    const l = L[k], dt = t - (l.inicio - 0.12);
+    c.style.display = k === i || (k === i - 1 && t - (L[i].inicio - 0.12) < 0.35) ? "block" : "none";
+    c.style.zIndex = k;
+    if (k !== i) return;
+    // Entrada: la tarjeta sube y se asienta
+    const a = ease(dt / 0.35);
+    c.style.transform = k === 0 ? "none" : `translateY(${(1 - a) * 1920}px)`;
+    c.querySelectorAll(".forma").forEach((f, j) => (f.style.transform = `scale(${0.6 + 0.4 * back((dt - 0.1 - j * 0.1) / 0.7)}) rotate(${dt * (j ? -4 : 3)}deg)`));
+    const eti = c.querySelector(".eti"); if (eti) eti.style.opacity = ease((dt - 0.2) / 0.3);
+    c.querySelectorAll(".grande .w").forEach((w, j) => {
+      const p = back((dt - 0.3 - j * 0.09) / 0.45);
+      w.style.transform = `translateY(${(1 - p) * 140}px)`; w.style.opacity = cl((dt - 0.3 - j * 0.09) / 0.2);
+    });
+    const rem = c.querySelector(".remate");
+    if (rem) { const r = ease((dt - l.duracion * 0.55) / 0.35); rem.style.opacity = r; rem.style.transform = `translateY(${(1 - r) * 30}px)`; }
+    c.querySelectorAll(".punto").forEach((p, j) => {
+      const r = back((dt - 0.6 - j * (l.duracion * 0.22)) / 0.45);
+      p.style.transform = `translateX(${(1 - r) * -1100}px)`;
+    });
+    const wa = c.querySelector("#wa"), lg = c.querySelector("#logo");
+    if (wa) { const r = back((dt - 0.9) / 0.5); wa.style.transform = `scale(${0.6 + 0.4 * r})`; wa.style.opacity = cl((dt - 0.9) / 0.2); }
+    if (lg) lg.style.opacity = ease((dt - 1.2) / 0.4);
+  });
+  // Barra de historias
+  const claro = ["#f0c419", "#fefcf3", "#e07a5f"].includes(cards[i].style.background) || /254, 252, 243|240, 196, 25|224, 122, 95/.test(cards[i].style.background);
+  segs.forEach((s, k) => {
+    const l = L[k], p = k < i ? 1 : k > i ? 0 : cl((t - l.inicio) / Math.max(0.5, l.duracion));
+    s.style.background = claro ? "#0a141033" : "#fefcf344";
+    s.firstChild.style.background = claro ? "#0a1410" : "#fefcf3";
+    s.firstChild.style.transform = `scaleX(${p})`;
+  });
+}
+await document.fonts.ready;
+window.__seek = async (t) => dibujar(t);
+window.__ready = true;
+</script>
+</body></html>

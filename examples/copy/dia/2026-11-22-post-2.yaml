@@ -1,0 +1,28 @@
+# Post 2 · Infografía en carrusel (5 slides: portada → 3 pasos → cierre). Pilar: soluciones (agente de IA por WhatsApp).
+# Palabra buscada: «bot de WhatsApp». Escenario de ejemplo (negocio genérico, sin cliente real).
+formato: infografia
+carrusel: true
+salida: data/dias/2026-11-22/post-2
+titulo_tiktok: "Qué hace un agente de IA en tu WhatsApp mientras vos dormís 🤖📲"
+whatsapp: "+502 3808 9808"
+etiqueta: "CÓMO FUNCIONA"
+titulo: "Un mensaje a las 11 p. m., <em>paso a paso.</em>"
+bajada: "Así atiende un agente de IA en WhatsApp a un cliente que escribe cuando el negocio ya cerró. Y en qué momento entra tu equipo."
+nota: "Escenario de ejemplo"
+pasos:
+  - t: "El cliente escribe tarde"
+    d: "Pregunta por un producto a las 11 de la noche. Antes, ese mensaje esperaba hasta mañana… o se iba con otro."
+    ilu: '<div style="position:absolute;left:24px;right:24px;top:40px;display:flex;flex-direction:column;gap:12px"><div style="align-self:flex-end;font:700 15px Mono;color:#6f6a5a">11:04 p. m.</div><div style="align-self:flex-start;max-width:220px;padding:12px 16px;border-radius:16px 16px 16px 4px;background:#fefcf3;border:3px solid #1d362b;font:600 17px Tight;color:#0a1410;line-height:1.25">Buenas, ¿tienen disponible la mesa plegable? 🙏</div></div>'
+  - t: "Contesta y pregunta lo necesario"
+    d: "Responde al momento, con tu tono, y pregunta cuántas, para cuándo y si es con entrega. Si no sabe algo, no inventa: avisa a tu equipo."
+    ilu: '<div style="position:absolute;left:24px;right:24px;top:40px;display:flex;flex-direction:column;gap:12px"><div style="align-self:flex-end;max-width:230px;padding:12px 16px;border-radius:16px 16px 4px 16px;background:#1d362b;font:600 17px Tight;color:#fefcf3;line-height:1.25">¡Buenas noches! Sí, la tenemos. ¿Te mando fotos y medidas? 😊</div><div style="align-self:flex-end;font:700 14px Mono;color:#6f6a5a">11:04 p. m. ✓✓</div></div>'
+  - t: "Tu equipo cierra la venta"
+    d: "En la mañana el pedido ya está armado: alguien revisa, confirma y cobra. La máquina contesta; la persona vende."
+    ilu: '<div style="position:absolute;inset:40px 30px;border-radius:16px;background:#f0c419;padding:20px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:10px"><div style="font:700 16px Mono;color:#0a1410">8:00 A. M.</div><div style="font:800 26px Tight;color:#0a1410;line-height:1.15">Confirmado y cobrado 🤝</div></div>'
+cierre: "¿Cuántos mensajes de las 11 p. m. <em>se te fueron este año?</em>"
+cierre_bajada: "Contanos qué te preguntan más tus clientes y te mostramos cómo contestaría un agente con tu tono."
+caption: >-
+  Tu cliente no escribe en horario de oficina. Escribe cuando se acuerda: en el bus, en la cola, a las 11 de la noche. 🌙📲
+  Un agente de IA en WhatsApp no reemplaza a tu equipo: le deja el pedido listo para que en la mañana solo confirme y cobre. Y cuando no sabe algo, no inventa: le pasa la plática a una persona.
+  Guardá este carrusel y escribinos al WhatsApp +502 3808 9808 para ver cómo contestaría en tu negocio.
+hashtags: [BotDeWhatsApp, WhatsAppBusiness, AgenteDeIA, PymesGuatemala, NegociosGT]

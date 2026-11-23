@@ -2,7 +2,7 @@
 
 Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml`. No editar a mano.
 
-**30 publicadas · 24 pendientes · 14 descartadas**
+**31 publicadas · 29 pendientes · 14 descartadas**
 
 | Día | Pieza | Tema | Estado | Redes | Subido |
 |---|---|---|---|---|---|
@@ -63,7 +63,7 @@ Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml
 | 2026-11-18 | reel-B-lista-antes-de-escribirte | Lo que tu cliente revisa antes de escribirte | ⏳ pendiente |  |  |
 | 2026-11-18 | reel-C-versus-maquina-persona | La máquina contesta, la persona vende | ⏳ pendiente |  |  |
 | 2026-11-19 | post-1-recibo-conteo-fin-de-ano | El ticket del conteo de inventario de fin de año que nadie quiere pagar 🧾📦 | ⏳ pendiente |  |  |
-| 2026-11-19 | post-2-este-o-este-catalogo | ¿A o B? Cuando un cliente te pide precios por WhatsApp, ¿qué le mandás? 📲 | ⏳ pendiente |  |  |
+| 2026-11-19 | post-2-este-o-este-catalogo | ¿A o B? Cuando un cliente te pide precios por WhatsApp, ¿qué le mandás? 📲 | ✅ publicado | Instagram, TikTok | 2026-11-22 |
 | 2026-11-19 | post-3-infografia-resenas-google | Cómo conseguir más reseñas en Google sin rogarle a nadie ⭐ | ⏳ pendiente |  |  |
 | 2026-11-19 | reel-A-servilleta-sistema-inventario | ¿Cómo funciona un sistema de inventario? | ⏳ pendiente |  |  |
 | 2026-11-19 | reel-B-objeto-pagina-web-gratis | Confesiones de una página web gratis | ⏳ pendiente |  |  |
@@ -74,3 +74,9 @@ Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml
 | 2026-11-20 | reel-A-errores-perfil-sin-vida | Encontrá los 3 errores - el perfil que pierde clientes | ⏳ pendiente |  |  |
 | 2026-11-20 | reel-B-undia-vendedor-de-ruta | Un día en la vida de un vendedor de ruta | ⏳ pendiente |  |  |
 | 2026-11-20 | reel-C-nombra-telefono-descompuesto | Nombrá el problema - el teléfono descompuesto del negocio | ⏳ pendiente |  |  |
+| 2026-11-22 | post-1-documental-pagina-web-senales | 7 señales de que tu página web espanta clientes (la 4 es la más común) 🌐 | ⏳ pendiente |  |  |
+| 2026-11-22 | post-2-infografia-agente-whatsapp | Qué hace un agente de IA en tu WhatsApp mientras vos dormís 🤖📲 | ⏳ pendiente |  |  |
+| 2026-11-22 | post-3-recibo-oferta-fin-de-mes | El ticket de una oferta de fin de mes sin inventario al día 🧾🔥 | ⏳ pendiente |  |  |
+| 2026-11-22 | reel-A-tierlist-donde-vive-el-inventario | Tier list - dónde vive el inventario de tu negocio | ⏳ pendiente |  |  |
+| 2026-11-22 | reel-B-resumen-tu-negocio-2026 | Tu negocio en resumen 2026 | ⏳ pendiente |  |  |
+| 2026-11-22 | reel-C-decilo-lo-voy-a-pensar | Decilo así - cuando te dicen «lo voy a pensar» | ⏳ pendiente |  |  |

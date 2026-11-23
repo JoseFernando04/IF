@@ -76,6 +76,8 @@ VideosInstagram/                → lo que ya se publicó
 | Habla el objeto | ✅ listo (`objeto`, desde 2026-11-19) | Un objeto del negocio con cara confiesa sus defectos en primera persona. Hoy existe la página web (estados: url, anuncios, buscador, cursor, whatsapp, pulido, cara); otros objetos (cuaderno, Excel) se agregan a la plantilla |
 | Encontrá los 3 errores | ✅ listo (`errores`, desde 2026-11-20) | Juego: una pantalla de ejemplo (perfil de negocio genérico, sin logos) con 3 fallas; cuenta regresiva de 5 s, cada error se encierra en rojo y al final se ve arreglado en verde. Invita a comentar cuántos encontraste |
 | Un día en la vida | ✅ listo (`undia`, desde 2026-11-20) | Estética de vlog (REC, hora grande, subtítulo en caja, emoji del momento): el día real de alguien del negocio; a mitad se «rebobina» y se ve el mismo día con la solución (acento dorado) |
+| Tier list | ✅ listo (`tierlist`, desde 2026-11-22) | Clasificación S-A-B-C-D de cómo los negocios hacen algo (inventario, cobros, pedidos); la S siempre es la solución. Invita a comentar la letra |
+| Tu negocio en resumen | ✅ listo (`resumen`, desde 2026-11-22) | Tarjetas de «resumen del año» con barra de historias (frase más dicha, hora favorita…), estética propia IF. Temporada: diciembre. Sin cifras inventadas |
 
 ### Posts
 
@@ -140,6 +142,7 @@ En la rutina diaria: de las 3 opciones de reel, **una** puede ser `cine`; las to
 | 2026-11-18 | A chat (la cotización que se enfrió: seguimiento día 2·5·10) ✅ producido · B lista sin intro (lo que tu cliente revisa antes de escribirte, formato nuevo) ✅ producido · C a mano vs. agente (la máquina contesta, la persona vende, formato nuevo) ✅ producido — primer día con los servicios nuevos del sitio | 1 checklist (5 cosas que tu página web tiene que tener) · 2 frase (nadie volvió a escribir) · 3 diccionario vol. 4 (edición WhatsApp) |
 | 2026-11-19 | A te lo explico en una servilleta (cómo funciona un sistema de inventario, formato nuevo) ✅ producido · B habla el objeto (confesiones de una página web gratis, formato nuevo) ✅ producido · C mito vs. realidad (dos mitos de cobrar por WhatsApp) ✅ producido | 1 recibo (conteo de fin de año) · 2 este o este (fotos o catálogo) · 3 infografía (reseñas en Google) — primer día en carrusel de 5 slides |
 | 2026-11-20 | A encontrá los 3 errores (perfil de negocio sin vida → contenido para redes, formato nuevo) · B un día en la vida (vendedor de ruta → app para vendedores de calle, formato nuevo) · C nombrá el problema ep. 02 (el teléfono descompuesto → sistema de ventas e inventario) | 1 checklist (4 cosas para tu WhatsApp antes de diciembre) · 2 frase («sí hay, déjeme ver…», carrusel de 4) · 3 diccionario vol. 5 (edición diciembre) |
+| 2026-11-22 | A tier list (dónde vive el inventario de tu negocio → sistema de inventario, formato nuevo) ✅ producido · B tu negocio en resumen 2026 (resumen del año → automatizaciones por WhatsApp, formato nuevo) ✅ producido · C decilo así ep. 03 («lo voy a pensar» → seguimiento de cotizaciones) ✅ producido | 1 carrusel documental (3 señales de que tu página web te cuesta clientes) · 2 infografía (agente de IA en WhatsApp, 3 pasos) · 3 recibo (oferta de fin de mes sin inventario al día) — se probaron 8-9 slides y se volvió a 5 |
 
 ## Prueba en paralelo: voz local con VoiceStudio (desde 2026-11-19, una semana)
 
@@ -181,7 +184,7 @@ Objetivo: ver si la voz local puede reemplazar a ElevenLabs. **No cancelar Eleve
 - Voseo guatemalteco. Sin clientes, cifras ni testimonios inventados (las escenas son "de ejemplo").
 - Llamado a la acción con WhatsApp **+502 3808 9808**. Descripciones llamativas que **no repitan el guion**.
 - 5 hashtags. Si la música es CC BY, el crédito va en la descripción.
-- **Posts en carrusel de 4-5 slides** (desde 2026-11-19, pedido del equipo: los de una sola imagen «no pegan»). Portada con gancho → 2-3 de desarrollo → cierre con WhatsApp.
+- **Posts en carrusel de 4-5 slides** (desde 2026-11-19, pedido del equipo: los de una sola imagen «no pegan»; el 2026-11-22 se probaron 8-9 y fue demasiado). Portada con gancho → 2-3 de desarrollo → cierre con WhatsApp.
   En `render_post.py`: recibo y este-o-este aceptan `slides:` (cada una con `titulo`, `texto`, `puntos`, `marca: ✓|✗`, `claro`, `tira: {q, t}`) + `cierre`/`cierre_bajada`;
   la infografía con `carrusel: true` + `bajada` va un paso por slide. Ejemplos: `examples/copy/dia/2026-11-19-post-*.yaml`.
 - Posts: además, un título para TikTok (`titulo_tiktok` en el YAML, máx. 90 caracteres, llamativo y distinto a la descripción).

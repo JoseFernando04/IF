@@ -1,0 +1,41 @@
+# Post 3 · Recibo en carrusel (5 slides: ticket → 3 de desarrollo → cierre). Pilar: educativo (inventario en temporada alta).
+# Palabra buscada: «sistema de inventario». Sin cifras inventadas: el ticket es de ejemplo.
+formato: recibo
+salida: data/dias/2026-11-22/post-3
+titulo_tiktok: "El ticket de una oferta de fin de mes sin inventario al día 🧾🔥"
+whatsapp: "+502 3808 9808"
+encabezado: "COMPROBANTE"
+sub: "Oferta de fin de mes<br>sin inventario al día"
+items:
+  - {q: 1, t: "Promo publicada con emoción"}
+  - {q: 12, t: "«¿Todavía hay?»"}
+  - {q: 1, t: "Carrera a la bodega"}
+  - {q: 5, t: "«Fíjese que ya no»"}
+  - {q: 3, t: "Clientes que se fueron"}
+  - {q: 1, t: "Caja de lo que no se vende"}
+total: "TU MEJOR FIN DE SEMANA"
+nota: "Ticket de ejemplo. La carrera a la bodega sí pasa."
+pie: "GRACIAS POR SU OFERTA"
+sello: "SE PUEDE<br>EVITAR"
+etiqueta: "OFERTAS DE FIN DE MES"
+slides:
+  - tira: {q: 12, t: "«¿Todavía hay?»"}
+    titulo: "Cada pregunta <em>es una venta esperando.</em>"
+    texto: "Si para contestar hay que ir a revisar, la respuesta llega tarde. Y en temporada alta, tarde es nunca."
+  - tira: {q: 5, t: "«Fíjese que ya no»"}
+    titulo: "Lo peor no es no tener. <em>Es haberlo prometido.</em>"
+    texto: "Y mientras se acababa lo de la oferta, en la bodega había producto parado que nadie vio."
+  - claro: true
+    titulo: "Con un sistema de inventario, <em>la oferta cambia.</em>"
+    marca: "✓"
+    puntos:
+      - "Publicás la promo sabiendo cuánto hay de verdad."
+      - "Contestás «sí hay» desde el mostrador, sin correr."
+      - "Armás la oferta con lo que sobra, no con lo que falta."
+cierre: "Que la próxima oferta <em>se venda completa.</em>"
+cierre_bajada: "Contanos cómo llevás hoy el inventario y te decimos por dónde empezar antes de diciembre."
+caption: >-
+  Fin de mes, quincena y diciembre encima: la mejor época para vender… y la peor para no saber qué hay en la bodega. 🔥📦
+  Una oferta sin inventario al día termina en «fíjese que ya no» y en producto parado que nadie vio. ¿Cuál línea de este ticket ya pagaste? Contanos 👇
+  Y si querés que la próxima promo se venda completa, escribinos al WhatsApp +502 3808 9808.
+hashtags: [SistemaDeInventario, Inventario, Ofertas, PymesGuatemala, NegociosGT]

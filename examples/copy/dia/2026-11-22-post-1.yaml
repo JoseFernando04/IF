@@ -1,0 +1,50 @@
+# Post 1 · Carrusel documental (estilo B), 5 slides. Pilar: tips (presencia digital: páginas web).
+# Palabra buscada: «página web para mi negocio». Se renderiza con:
+# ifcontent.graphics.carousel_b.render_from_file(<este yaml>, data/dias/2026-11-22/post-1)
+title: 3 señales de que tu página web te está costando clientes
+pillar: tips
+salida: data/dias/2026-11-22/post-1
+titulo_tiktok: "3 señales de que tu página web espanta clientes (la 2 es la más común) 🌐"
+slides:
+  - layout: portada-foto
+    foto: pasillo-tienda.jpg
+    numero: "3"
+    linea: señales de que tu página web
+    cinta: te está costando clientes
+    archivo: pagina_web_hecha_en_2019.html
+
+  - layout: notificacion
+    tag: "01"
+    heading: Tarda más en cargar que en contestar vos
+    app: Navegador
+    titulo_alerta: Cargando… sigue cargando…
+    texto_alerta: La mayoría abre tu página desde el celular, con datos. Si no carga rápido, regresa a buscar otra.
+    aclaracion: Ejemplo ilustrativo
+
+  - layout: chat
+    tag: "02"
+    heading: No hay forma fácil de escribirte
+    body: Si el cliente tiene que copiar tu número a mano, ya perdiste la mitad del camino. Un botón de WhatsApp a la vista lo resuelve.
+    mensajes:
+      - {de: cliente, texto: "Vi su página pero no encontré cómo escribirles", hora: "8:41"}
+      - {de: cliente, texto: "Al final les busqué en Facebook 😅", hora: "8:43"}
+
+  - layout: comparacion
+    tag: "03 · En Google no aparece"
+    heading: Una página que existe no es lo mismo que una que trabaja
+    izquierda: Solo existe
+    derecha: Trabaja
+    filas:
+      - [Nadie la encuentra, Sale cuando te buscan]
+      - [Sin dirección ni mapa, Te ubican en Google Maps]
+      - [El cliente adivina, Dice qué hacés y dónde]
+
+  - layout: cta
+    heading: "¿Te viste en *alguna*?"
+    body: Contanos qué tiene tu página hoy y te decimos qué arreglar primero.
+    sello: Revisión sin compromiso
+
+caption: >-
+  Tu página web es el primer vendedor que conoce tu cliente… y trabaja aunque estés dormido. ¿Está haciendo bien su trabajo? 🌐👀
+  Guardá este carrusel y revisá la tuya con calma. Si te viste en alguna de las tres, escribinos al WhatsApp +502 3808 9808: te decimos qué arreglar primero, sin rollos.
+hashtags: [PaginaWeb, PaginaWebParaNegocios, PresenciaDigital, PymesGuatemala, NegociosGT]

@@ -473,9 +473,11 @@ piezas:
   pieza: post-2-este-o-este-catalogo
   tipo: post
   tema: ¿A o B? Cuando un cliente te pide precios por WhatsApp, ¿qué le mandás? 📲
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-22'
 - dia: '2026-11-19'
   pieza: post-3-infografia-resenas-google
   tipo: post
@@ -543,6 +545,48 @@ piezas:
   pieza: reel-C-nombra-telefono-descompuesto
   tipo: reel
   tema: Nombrá el problema - el teléfono descompuesto del negocio
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-22'
+  pieza: post-1-documental-pagina-web-senales
+  tipo: post
+  tema: 7 señales de que tu página web espanta clientes (la 4 es la más común) 🌐
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-22'
+  pieza: post-2-infografia-agente-whatsapp
+  tipo: post
+  tema: Qué hace un agente de IA en tu WhatsApp mientras vos dormís 🤖📲
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-22'
+  pieza: post-3-recibo-oferta-fin-de-mes
+  tipo: post
+  tema: El ticket de una oferta de fin de mes sin inventario al día 🧾🔥
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-22'
+  pieza: reel-A-tierlist-donde-vive-el-inventario
+  tipo: reel
+  tema: Tier list - dónde vive el inventario de tu negocio
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-22'
+  pieza: reel-B-resumen-tu-negocio-2026
+  tipo: reel
+  tema: Tu negocio en resumen 2026
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-22'
+  pieza: reel-C-decilo-lo-voy-a-pensar
+  tipo: reel
+  tema: Decilo así - cuando te dicen «lo voy a pensar»
   estado: pendiente
   redes: []
   fecha: null

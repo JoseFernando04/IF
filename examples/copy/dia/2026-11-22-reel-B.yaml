@@ -1,0 +1,56 @@
+# Reel B · «Tu negocio en resumen» (FORMATO NUEVO `resumen`, plantilla templates/video/resumen/reel.html desde 2026-11-22). Pilar: CTA / soluciones (automatizaciones por WhatsApp).
+# Tendencia: tarjetas de «resumen del año» que llegan en diciembre. Estética propia (formas, grano, paleta IF), sin marcas ni logos ajenos.
+# Sin cifras inventadas: los «datos» son situaciones que todo dueño reconoce. Muestra: data/dias/2026-11-22/reel-B/muestra.jpg
+formato: resumen
+titulo: Tu negocio en resumen 2026
+audio: assets/voice/elevenlabs/2026-11-22-reel-B.mp3
+salida: data/dias/2026-11-22/reel-B
+musica: if-firma
+musica_db: -22
+whatsapp: "+502 3808 9808"
+cierre: "Que tu 2027 *se cuente distinto.*"
+caption: >-
+  Diciembre viene con resúmenes del año para todo… menos para tu negocio. Así que te hicimos uno. 📊😅
+  Si te reíste en «ya te lo mando», no estás solo: es la frase oficial de todo negocio que atiende por WhatsApp. El 2027 puede contarse distinto: mensajes contestados al momento, cotizaciones con seguimiento y cobros que se recuerdan solos.
+  Escribinos al WhatsApp +502 3808 9808 y lo dejamos listo antes de enero. Y contanos 👇 ¿cuál sería tu frase más dicha?
+hashtags: [WhatsAppBusiness, BotDeWhatsApp, Automatizacion, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: Llegó el resumen del año de tu negocio.
+    tarjeta: portada
+    grande: "Tu negocio, *en resumen.*"
+    sfx: [[0.1, whoosh]]
+  - texto: Tu frase más dicha… «ya te lo mando».
+    etiqueta: "TU FRASE MÁS DICHA"
+    grande: "«Ya te lo *mando»*"
+    remate: "A veces sí lo mandaste."
+    sfx: [[0.0, whoosh]]
+  - texto: Tu hora favorita para contestar WhatsApp… las once de la noche. Tu cliente escribió a las seis.
+    etiqueta: "TU HORA FAVORITA PARA CONTESTAR WHATSAPP"
+    grande: "11:04 *p. m.*"
+    size: 230
+    sfx: [[0.0, whoosh]]
+    remate: "Tu cliente escribió a las 6."
+    remate_top: 1100
+  - texto: Tu canción del año… el sonido de las notificaciones.
+    etiqueta: "TU CANCIÓN DEL AÑO"
+    grande: "*Tin-tin.* Tin-tin. *Tin-tin.*"
+    remate: "En repetición desde enero."
+    sfx: [[0.0, whoosh], [0.55, pop]]
+  - texto: La cotización que más esperó respuesta… sigue esperando.
+    etiqueta: "LA COTIZACIÓN QUE MÁS ESPERÓ"
+    grande: "Sigue *esperando.*"
+    remate: "Visto a las 9:12 a. m."
+    sfx: [[0.0, whoosh]]
+  - texto: Y tu superpoder… acordarte de todo. Bueno, casi todo.
+    etiqueta: "TU SUPERPODER"
+    grande: "Acordarte *de todo.*"
+    remate: "(casi)"
+    size: 190
+    sfx: [[0.0, whoosh], [0.75, pop]]
+  - texto: Que el resumen del año que viene sea otro. Un agente que conteste, dé seguimiento y te recuerde cobrar.
+    etiqueta: "PARA EL 2027"
+    puntos: ["Contesta al momento", "Seguimiento día 2·5·10", "Te recuerda cobrar"]
+    sfx: [[0.0, whoosh]]
+  - texto: Escribinos al WhatsApp y lo dejamos listo antes de enero.
+    escena: cierre
+    sfx: [[0.3, pop]]

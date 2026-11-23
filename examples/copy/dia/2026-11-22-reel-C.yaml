@@ -1,0 +1,53 @@
+# Reel C · «Decilo así» ep. 03 (serie; último uso del formato 2026-11-17). Pilar: tips (seguimiento de cotizaciones día 2·5·10).
+formato: decilo
+titulo: Decilo así - cuando te dicen «lo voy a pensar»
+audio: assets/voice/elevenlabs/2026-11-22-reel-C.mp3
+salida: data/dias/2026-11-22/reel-C
+musica: wholesome
+musica_db: -22
+whatsapp: "+502 3808 9808"
+tema: "COTIZACIONES"
+episodio: "03"
+caption: >-
+  «Lo voy a pensar» casi nunca es un no: es un «ahorita no me acuerdo de vos». 📌🤔
+  La venta no se pierde en la cotización, se pierde en el silencio de después. Guardá estas dos frases para la próxima.
+  ¿Y si el mensaje del día dos saliera solo, con tu tono, sin que tengás que acordarte? Escribinos al WhatsApp +502 3808 9808.
+  ¿Qué frase incómoda resolvemos en el ep. 04? 👇
+hashtags: [Ventas, Cotizaciones, WhatsAppBusiness, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: Cuando un cliente te dice «lo voy a pensar».
+    grande: "«Lo voy / *a pensar*»"
+    sfx: [[0.05, pop]]
+  - texto: No le contestés «va, me avisás». Decile exactamente esto.
+    grande: "No le digás / «va, me avisás». / *Decile esto:*"
+    sfx: [[0.1, whoosh]]
+  - texto: Primero, en el momento.
+    n: 1
+    paso: "EN EL MOMENTO"
+    cuando: "Cuando te dice «lo voy a pensar»"
+    mensaje: "¡Claro! ¿Hay algo de la cotización que te genere duda? Así te la ajusto de una vez."
+    tip: "*Por qué:* la duda que no sale hoy se convierte en «no» mañana."
+    sfx: [[0.05, whoosh]]
+  - texto: ¡Claro! ¿Hay algo de la cotización que te genere duda? Así te la ajusto de una vez.
+    sigue: true
+    sfx: [[0.95, pop]]
+  - texto: Y dos días después, aunque no te haya escrito.
+    n: 2
+    paso: "DOS DÍAS DESPUÉS"
+    cuando: "Si no te volvió a escribir"
+    mensaje: "¡Hola! Te escribo por la cotización del martes. ¿Pudiste verla? Si querés, la revisamos juntos en cinco minutos."
+    tip: "*Por qué:* el cliente no se olvidó de comprar; se olvidó de vos."
+    sfx: [[0.05, whoosh]]
+  - texto: ¡Hola! Te escribo por la cotización del martes. ¿Pudiste verla? Si querés, la revisamos juntos en cinco minutos.
+    sigue: true
+    sfx: [[0.95, pop]]
+  - texto: ¿Por qué funciona? Porque el que da seguimiento, vende.
+    grande: "El que da seguimiento, / *vende.*"
+    sfx: [[0.5, thud]]
+  - texto: Y si ese mensaje del día dos saliera solo, sin que tengás que acordarte…
+    grande: "¿Y si saliera / *solo?*"
+    sfx: [[0.6, pop]]
+  - texto: Escribinos al WhatsApp y te mostramos cómo.
+    escena: cierre
+    grande: "Escribinos / *y te mostramos cómo.*"
+    sfx: [[0.3, pop]]

@@ -1,0 +1,49 @@
+# Reel A · «Tier list» (FORMATO NUEVO `tierlist`, plantilla templates/video/tierlist/reel.html desde 2026-11-22). Pilar: educativo (sistema de inventario).
+# Tendencia: formatos de ranking / clasificación (S-A-B-C-D). Muestra: data/dias/2026-11-22/reel-A/muestra.jpg
+# Voz: las letras van escritas como se pronuncian («de», «ce», «be», «ese») para que ElevenLabs no las lea en inglés.
+formato: tierlist
+pie: "¿En cuál está el tuyo? *Comentá la letra.*"
+titulo: Tier list - dónde vive el inventario de tu negocio
+audio: assets/voice/elevenlabs/2026-11-22-reel-A.mp3
+salida: data/dias/2026-11-22/reel-A
+musica: chiptune-bodega
+musica_db: -24
+whatsapp: "+502 3808 9808"
+pregunta: "¿Dónde vive el inventario *de tu negocio?*"
+filas: [S, A, B, C, D]
+caption: >-
+  Hicimos la clasificación que nadie pidió, pero todos necesitaban. 📦🏆
+  No hay negocio en la D por falta de ganas: casi siempre es porque creció más rápido que su forma de anotar. Lo bueno es que se sube de categoría sin botar lo que ya tenés.
+  Comentá la letra en la que está el tuyo 👇 Y si querés llegar a la S, escribinos al WhatsApp +502 3808 9808.
+hashtags: [SistemaDeInventario, Inventario, PymesGuatemala, DueñosDeNegocio, NegociosGT]
+lineas:
+  - texto: Clasificamos dónde vive el inventario de tu negocio. De peor a mejor.
+    sfx: [[0.1, whoosh]]
+  - texto: Categoría «de»… en la cabeza de una sola persona. Si se enferma, se enferma el negocio.
+    fila: D
+    sfx: [[0.02, whoosh], [0.16, pop]]
+    chip: "En la cabeza de una persona"
+    nota: "SI SE ENFERMA, SE ENFERMA EL NEGOCIO"
+  - texto: «Ce»… el cuaderno. Funciona, hasta que alguien arranca la hoja.
+    fila: C
+    sfx: [[0.02, whoosh], [0.16, pop]]
+    chip: "📒 El cuaderno"
+    nota: "HASTA QUE ARRANCAN LA HOJA"
+  - texto: «Be»… el Excel en una sola compu. Ordenado, pero solo lo ve una persona.
+    fila: B
+    sfx: [[0.02, whoosh], [0.16, pop]]
+    chip: "Excel en una compu"
+    nota: "ORDENADO, PERO SOLO"
+  - texto: «A»… la hoja compartida. Todos la ven, si alguien se acuerda de actualizarla.
+    fila: A
+    sfx: [[0.02, whoosh], [0.16, pop]]
+    chip: "Hoja compartida"
+    nota: "SI ALGUIEN SE ACUERDA"
+  - texto: Y en la «ese»… un sistema de inventario. Registra cada entrada y salida, y te avisa antes de que algo se acabe.
+    fila: S
+    sfx: [[0.02, whoosh], [0.13, thud]]
+    chip: "Sistema de inventario"
+    nota: "REGISTRA TODO Y TE AVISA"
+  - texto: ¿En cuál está el tuyo? Comentá la letra. Y si querés subir a la «ese», escribinos al WhatsApp.
+    escena: cierre
+    sfx: [[0.4, pop]]

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Brico"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+@font-face { font-family: "Serif"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+/* Tier list: tabla S-A-B-C-D que se llena de peor a mejor; la S siempre es la solución. */
+:root { --verde: #0a1410; --verde2: #13241c; --oro: #f0c419; --marfil: #fefcf3; --gris: #9fb3a8; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--verde); font-family: "Tight"; color: var(--marfil); }
+#fondo { position: absolute; inset: 0; }
+#eti { position: absolute; left: 64px; top: 120px; font: 700 30px "Mono"; letter-spacing: 6px; color: var(--gris); }
+#tit { position: absolute; left: 64px; right: 64px; top: 170px; font: 800 104px/1.0 "Brico"; letter-spacing: -2px; }
+#tit em { font: 400 112px/1 "Serif"; color: var(--oro); letter-spacing: 0; }
+#tabla { position: absolute; left: 50px; right: 50px; top: 540px; }
+.r { position: absolute; left: 0; right: 0; height: 184px; border-radius: 20px; overflow: hidden; background: var(--verde2); }
+.l { position: absolute; left: 0; top: 0; bottom: 0; width: 184px; display: flex; align-items: center; justify-content: center;
+     font: 800 112px "Brico"; color: var(--verde); }
+.vacio { position: absolute; left: 212px; right: 26px; top: 28px; bottom: 28px; border: 5px dashed #2f5d46; border-radius: 18px;
+         display: flex; align-items: center; justify-content: center; font: 800 68px "Brico"; color: #2f5d46; }
+.chip { position: absolute; background: var(--marfil); color: var(--verde); border-radius: 18px; padding: 24px 30px;
+        font: 700 42px/1.08 "Tight"; box-shadow: 0 12px 0 #00000055; white-space: nowrap; transform-origin: 0 50%; z-index: 5; }
+.chip small { display: block; font: 600 23px "Mono"; color: #6f6a5a; margin-top: 8px; letter-spacing: 2px; }
+.chip.oro { background: var(--oro); }
+.chip.oro small { color: var(--verde); }
+#mano { position: absolute; z-index: 6; font-size: 120px; filter: drop-shadow(0 10px 10px #0008); pointer-events: none; }
+#pie { position: absolute; left: 64px; right: 64px; z-index: 3; top: 1590px; font: 800 64px/1.08 "Brico"; }
+#pie em { font: 400 70px/1 "Serif"; color: var(--oro); }
+#wa { position: absolute; left: 64px; top: 1760px; font: 800 44px "Tight"; color: var(--verde); background: var(--oro);
+      padding: 22px 34px; border-radius: 999px; }
+#logo { position: absolute; right: 64px; top: 1745px; width: 150px; }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="eti">DE PEOR A MEJOR</div>
+<div id="tit"></div>
+<div id="tabla"></div>
+<div id="mano">👆</div>
+<div id="pie"></div>
+<div id="wa"></div>
+<img id="logo" src="__LOGO__">
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (x) => { x = cl(x); return 1 - (1 - x) ** 3; };
+const back = (x) => { x = cl(x); const c = 1.7; return 1 + (c + 1) * (x - 1) ** 3 + c * (x - 1) ** 2; };
+const em = (s) => (s || "").replace(/\*(.+?)\*/g, "<em>$1</em>");
+const COLORES = { S: "#f0c419", A: "#9fd18b", B: "#c9d9a8", C: "#e8b96a", D: "#e07a5f" };
+const FILAS = REEL.filas || ["S", "A", "B", "C", "D"], ALTO = 184, GAP = 18;
+const fondoP = fondo($("fondo"), "puntos", { back: "#0a1410", fill: "#16291f", size: 3, gap: 54 });
+$("tit").innerHTML = em(REEL.pregunta);
+$("pie").innerHTML = em(REEL.pie || "¿En cuál está el tuyo? *Comentá la letra.*");
+$("wa").textContent = "WhatsApp " + REEL.whatsapp;
+
+// Filas y chips
+const filas = {}, chips = [];
+FILAS.forEach((f, k) => {
+  const r = document.createElement("div"); r.className = "r"; r.style.top = k * (ALTO + GAP) + "px";
+  r.innerHTML = `<div class="l" style="background:${COLORES[f] || "#ccc"}">${f}</div><div class="vacio">${f === "S" ? "?" : ""}</div>`;
+  $("tabla").appendChild(r); filas[f] = { el: r, k };
+});
+const tablaTop = 540, tablaLeft = 50;
+L.forEach((l, i) => {
+  if (!l.fila) return;
+  const c = document.createElement("div"); c.className = "chip" + (l.fila === "S" ? " oro" : "");
+  c.innerHTML = `${l.chip}${l.nota ? `<small>${l.nota}</small>` : ""}`;
+  document.body.appendChild(c);
+  chips.push({ el: c, l, i, fila: l.fila });
+});
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+const VUELO = 0.6;
+
+function dibujar(t) {
+  const i = lineaEn(t), l = L[i];
+  fondoP.then((f) => f.frame(0));
+  // Entrada: título y filas una por una
+  $("eti").style.opacity = ease(t / 0.4);
+  $("tit").style.transform = `translateY(${(1 - ease(t / 0.6)) * 60}px)`; $("tit").style.opacity = ease(t / 0.5);
+  FILAS.forEach((f, k) => {
+    const a = ease((t - 0.3 - k * 0.12) / 0.45);
+    filas[f].el.style.transform = `translateX(${(1 - a) * -1100}px)`;
+  });
+  // Chips: vuelan desde abajo hasta su fila y se quedan
+  let mano = null;
+  const sChip = chips.find((c) => c.fila === "S"), tS = sChip ? sChip.l.inicio + VUELO : 1e9;
+  chips.forEach((c) => {
+    const k = filas[c.fila].k, dt = t - c.l.inicio, a = ease(dt / VUELO);
+    const finX = tablaLeft + 212, finY = tablaTop + k * (ALTO + GAP) + ALTO / 2;
+    const iniX = 220, iniY = 1660;
+    if (dt < 0) { c.el.style.opacity = 0; return; }
+    const x = iniX + (finX - iniX) * a, y = iniY + (finY - iniY) * a;
+    const rot = (1 - a) * -7, esc = 1.08 - 0.08 * back(dt / VUELO);
+    c.el.style.opacity = 1;
+    c.el.style.left = x + "px"; c.el.style.top = (y - c.el.offsetHeight / 2) + "px";
+    c.el.style.transform = `rotate(${rot}deg) scale(${esc})`;
+    // Después de la S, las demás se apagan
+    c.el.style.filter = c.fila !== "S" && t > tS ? `brightness(${1 - 0.45 * ease((t - tS) / 0.4)}) saturate(0.4)` : "none";
+    filas[c.fila].el.querySelector(".vacio").style.opacity = dt > VUELO * 0.8 ? 0 : 1;
+    if (dt < VUELO + 0.2) mano = { x: x + Math.min(c.el.offsetWidth - 60, 380), y: y + 10, o: 1 - cl((dt - VUELO) / 0.2) };
+  });
+  // Fila S: brillo
+  FILAS.forEach((f) => {
+    const r = filas[f].el, s = f === "S", b = ease((t - tS) / 0.4);
+    r.style.boxShadow = s && t > tS ? `0 0 0 ${6 * b}px #f0c419, 0 0 ${80 * b}px #f0c41988` : "none";
+    r.style.zIndex = s ? 2 : 1;
+    r.querySelector(".l").style.opacity = !s && t > tS ? 1 - 0.5 * b : 1;
+  });
+  const m = $("mano");
+  if (mano) { m.style.opacity = mano.o; m.style.left = mano.x + "px"; m.style.top = mano.y + "px"; } else m.style.opacity = 0;
+  // Preguntas y cierre
+  const cierre = l.escena === "cierre", dc = t - l.inicio;
+  $("pie").style.opacity = cierre ? ease(dc / 0.4) : 0;
+  $("pie").style.transform = `translateY(${cierre ? (1 - ease(dc / 0.5)) * 40 : 0}px)`;
+  $("wa").style.opacity = cierre ? ease((dc - 0.8) / 0.4) : 0;
+  $("wa").style.transform = `scale(${cierre ? 0.9 + 0.1 * back((dc - 0.8) / 0.5) : 1})`;
+  $("logo").style.opacity = cierre ? ease((dc - 0.8) / 0.4) : 0;
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>
