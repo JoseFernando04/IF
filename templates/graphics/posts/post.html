@@ -92,6 +92,20 @@ html, body { margin: 0; background: #333; }
 .rec .sello { position: absolute; right: 120px; bottom: 210px; transform: rotate(-12deg); border: 8px solid #d6432f; color: #d6432f; font: 800 54px/1 "Bricolage";
   padding: 16px 26px; border-radius: 14px; background: rgba(251,250,245,.85); text-align: center; z-index: 3; }
 .rec .sello small { display: block; font: 700 24px "Mono"; letter-spacing: 2px; margin-top: 6px; }
+/* ── Mito o verdad (la respuesta sale al deslizar) ── */
+.mv .arr { position: absolute; left: 0; right: 0; top: 0; height: 820px; padding: 90px 90px 0; box-sizing: border-box; color: var(--verde); }
+.mv .aba { position: absolute; left: 0; right: 0; top: 820px; bottom: 0; padding: 56px 90px 0; box-sizing: border-box; background: var(--verde); color: var(--marfil); }
+.mv .era { font: 400 50px/1.1 "SerifI"; opacity: .75; }
+.mv .sello { display: inline-block; margin-top: 46px; padding: 14px 40px 20px; border: 12px solid; border-radius: 26px; font: 800 150px/1 "Bricolage"; letter-spacing: -4px; transform: rotate(-4deg); transform-origin: 0 50%; }
+.mv .porque { font: 500 46px/1.28 "Tight"; margin-top: 60px; max-width: 880px; }
+.mv .eti { font: 700 28px "Mono"; letter-spacing: 4px; color: var(--oro); }
+.mv { background: radial-gradient(ellipse 700px 620px at 100% 10%, #f0c419aa, #f0c41900), radial-gradient(ellipse 700px 420px at 0 62%, #c9d9a8, #c9d9a800), #f4eee2; }
+.mv.oro { background: #f0c419; }
+.mv .dicho { font: 800 88px/1.0 "Bricolage"; letter-spacing: -2px; margin-top: 26px; }
+.mv .portada { font: 800 132px/0.94 "Bricolage"; letter-spacing: -5px; margin-top: 34px; }
+.mv .portada em { font: 400 1.08em/0.94 "SerifI"; letter-spacing: -2px; }
+.mv .bajada { font: 500 44px/1.28 "Tight"; margin-top: 44px; max-width: 840px; }
+.mv .juega { position: absolute; right: 90px; bottom: 74px; font: 700 34px "Tight"; padding: 14px 28px; border-radius: 50px; background: var(--oro); color: var(--verde); }
 /* ── Slides genéricas de carrusel (desarrollo y cierre) ── */
 .gen { background: var(--verde); color: var(--marfil); }
 .gen.claro { background: var(--papel); color: var(--verde); }
@@ -230,6 +244,19 @@ if (D.formato === "diccionario") {
     <div class="palabra">${e.palabra}</div><div class="fon">${e.fon}</div><div><span class="tipo">${e.tipo}</span></div>
     <div class="def">${e.def}</div><div class="ej">${e.ej}</div><div class="cura"><b>CURA</b>${e.cura}</div></div>${pg(k + 2)}`, papel(3 + k)));
   nueva("fd2", `<div class="capa"><div class="eti" style="font:700 28px Mono;letter-spacing:4px;color:var(--oro)">${D.etiqueta}</div>
+    <h1>${D.cierre}</h1><p>${D.cierre_bajada}</p><div class="cta">WhatsApp ${D.whatsapp}</div></div><img class="marca" src="${LOGO}"><div class="pag" style="color:var(--marfil)">${n} / ${n}</div>`);
+}
+if (D.formato === "mito") {
+  // Portada con el primer dicho; cada slide responde el anterior (sello) y lanza el siguiente
+  const n = D.dichos.length + 2, COL = { MITO: "#d6432f", VERDAD: "#2f6b4c", DEPENDE: "#8a6a00" };
+  const aba = (x, k) => x ? `<div class="aba"><div class="eti">${k + 1} DE ${D.dichos.length} · ¿MITO O VERDAD?</div><div class="dicho">${x.dicho}</div><div class="juega">Deslizá →</div></div>`
+    : `<div class="aba"><div class="eti">RESULTADO</div><div class="dicho">${D.resultado}</div></div>`;
+  nueva("mv oro", `<div class="arr"><div class="eti" style="color:#2f6b4c">${D.etiqueta}</div><div class="portada">${D.titulo}</div><div class="bajada">${D.bajada}</div></div>
+    ${aba(D.dichos[0], 0)}<img class="marca" src="${LOGO}">`);
+  D.dichos.forEach((x, k) => nueva("mv", `<div class="arr"><div class="era">${x.dicho}</div>
+    <div class="sello" style="color:${COL[x.es]}">${x.es}</div><div class="porque">${x.porque}</div></div>${aba(D.dichos[k + 1], k + 1)}<img class="marca" src="${LOGO}">
+    <div class="pag" style="color:#9fb3a8;right:${k + 1 < D.dichos.length ? 340 : 90}px">${k + 2} / ${n}</div>`));
+  nueva("fd2", `<div class="capa"><div class="eti" style="font:700 28px Mono;letter-spacing:4px;color:var(--oro)">IF TECHWORKS</div>
     <h1>${D.cierre}</h1><p>${D.cierre_bajada}</p><div class="cta">WhatsApp ${D.whatsapp}</div></div><img class="marca" src="${LOGO}"><div class="pag" style="color:var(--marfil)">${n} / ${n}</div>`);
 }
 if (D.formato === "recibo") {

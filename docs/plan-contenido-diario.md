@@ -80,13 +80,15 @@ VideosInstagram/                → lo que ya se publicó
 | Tu negocio en resumen | ✅ listo (`resumen`, desde 2026-11-22) | Tarjetas de «resumen del año» con barra de historias (frase más dicha, hora favorita…), estética propia IF. Temporada: diciembre. Sin cifras inventadas |
 | Rueda de reconocimiento | ✅ listo (`sospechoso`, desde 2026-11-23) | Pared de estaturas con 4 sospechosos (emoji + placa); el foco pasa por cada uno, sello INOCENTE/CULPABLE, y «caso cerrado» con la solución |
 | Receta para… | ✅ listo (`receta`, desde 2026-11-23) | Tarjeta de cocina «Receta para <un desastre>»: ingredientes y pasos escritos a mano, sello «LISTO» y vuelta a «la receta de la casa» (la solución, con chat) |
+| Elegí una puerta | ✅ listo (`puertas`, desde 2026-11-24) | Dos puertas (A o B), cuenta de 3 segundos, la A se abre y la B llena la pantalla con el giro (lo que ya tenías y no atendías). Corto, invita a comentar la letra |
+| Pronóstico del negocio | ✅ listo (`clima`, desde 2026-11-24) | Noticiero del clima dibujado en canvas: cada semana un clima (tormenta de mensajes, calor, neblina, frío) y al final el paraguas = la solución. Semanas, gotas y textos en el YAML |
 
 ### Posts
 
 | Formato | Estado | Idea |
 |---|---|---|
 | Carrusel documental | ✅ listo (12 layouts) | Señales, comparaciones, pasos |
-| Mito o verdad | por construir | Afirmación + respuesta al deslizar |
+| Mito o verdad | ✅ listo (`mito`, desde 2026-11-24) | Cada slide responde la afirmación anterior (sello MITO / VERDAD / DEPENDE) y lanza la siguiente; carrusel de 5 |
 | Checklist para guardar | ✅ listo (`checklist`) | Lista útil que invita a guardar |
 | Este o este | ✅ listo (`este-o-este`) | Dos opciones para comentar |
 | Frase de dueño | ✅ listo (`frase`) |
@@ -146,6 +148,7 @@ En la rutina diaria: de las 3 opciones de reel, **una** puede ser `cine`; las to
 | 2026-11-20 | A encontrá los 3 errores (perfil de negocio sin vida → contenido para redes, formato nuevo) · B un día en la vida (vendedor de ruta → app para vendedores de calle, formato nuevo) · C nombrá el problema ep. 02 (el teléfono descompuesto → sistema de ventas e inventario) | 1 checklist (4 cosas para tu WhatsApp antes de diciembre) · 2 frase («sí hay, déjeme ver…», carrusel de 4) · 3 diccionario vol. 5 (edición diciembre) |
 | 2026-11-22 | A tier list (dónde vive el inventario de tu negocio → sistema de inventario, formato nuevo) ✅ producido · B tu negocio en resumen 2026 (resumen del año → automatizaciones por WhatsApp, formato nuevo) ✅ producido · C decilo así ep. 03 («lo voy a pensar» → seguimiento de cotizaciones) ✅ producido | 1 carrusel documental (3 señales de que tu página web te cuesta clientes) · 2 infografía (agente de IA en WhatsApp, 3 pasos) · 3 recibo (oferta de fin de mes sin inventario al día) — se probaron 8-9 slides y se volvió a 5 |
 | 2026-11-23 | A rueda de reconocimiento (¿quién se robó las ventas del Black Friday? → sistema de inventario, formato nuevo) ✅ producido · B receta para perder un cliente en temporada alta (→ agente de IA en WhatsApp, formato nuevo) ✅ producido · C cargando… (el cliente que te buscó en Google → páginas web) ✅ producido (las 3 voces en ElevenLabs; la plantilla ahora acepta `caos`, `etiqueta`, `etiqueta_listo`, `insignia`) | 1 checklist (4 cosas antes del Black Friday) · 2 este o este (cómo publica tu negocio en redes → contenido para redes) · 3 frase («¡claro que le dejo su reseña!» → motor de reseñas) |
+| 2026-11-24 | A elegí una puerta (clientes nuevos o los que ya te pidieron precio → seguimiento de cotizaciones, formato nuevo) ✅ producido · B pronóstico de diciembre para tu negocio (→ sistema a la medida, formato nuevo) ✅ producido · C POV (es diciembre y andás cobrando → recordatorios de pago) ✅ producido (las 3 voces en ElevenLabs) | 1 carrusel documental (el catálogo que mandaste era el de marzo → catálogo inteligente) · 2 mito o verdad (bots de WhatsApp, formato nuevo) · 3 recibo (pedido de ruta en papel → vendedores de calle) |
 
 ## Prueba en paralelo: voz local con VoiceStudio (desde 2026-11-19, una semana)
 

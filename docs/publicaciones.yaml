@@ -466,9 +466,11 @@ piezas:
   pieza: post-1-recibo-conteo-fin-de-ano
   tipo: post
   tema: El ticket del conteo de inventario de fin de año que nadie quiere pagar 🧾📦
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-23'
 - dia: '2026-11-19'
   pieza: post-2-este-o-este-catalogo
   tipo: post
@@ -482,7 +484,7 @@ piezas:
   pieza: post-3-infografia-resenas-google
   tipo: post
   tema: Cómo conseguir más reseñas en Google sin rogarle a nadie ⭐
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-19'
@@ -594,9 +596,11 @@ piezas:
   pieza: post-1-checklist-antes-del-black-friday
   tipo: post
   tema: 'Antes del Black Friday: revisá estas 4 cosas en tu negocio 🏷️✅'
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-23'
 - dia: '2026-11-23'
   pieza: post-2-este-o-este-redes
   tipo: post
@@ -615,9 +619,11 @@ piezas:
   pieza: reel-A-sospechoso-ventas-black-friday
   tipo: reel
   tema: Rueda de reconocimiento - quién se robó las ventas del Black Friday
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-23'
 - dia: '2026-11-23'
   pieza: reel-B-receta-perder-un-cliente
   tipo: reel
@@ -629,6 +635,48 @@ piezas:
   pieza: reel-C-cargando-pagina-web
   tipo: reel
   tema: Cargando - el cliente que te buscó en Google
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-24'
+  pieza: post-1-documental-catalogo-marzo
+  tipo: post
+  tema: «¿Me manda el catálogo?» Y le mandaste el de marzo 🫣📄
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-24'
+  pieza: post-2-mito-bots-whatsapp
+  tipo: post
+  tema: 'Bots de WhatsApp: ¿mito o verdad? A ver si le atinás a las 3 🤖'
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-24'
+  pieza: post-3-recibo-pedido-en-papel
+  tipo: post
+  tema: El ticket de un pedido apuntado en papel 🧾✍️ (la línea 4 duele)
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-24'
+  pieza: reel-A-puertas-a-o-b-cotizaciones
+  tipo: reel
+  tema: Elegí una puerta - clientes nuevos o los que ya te pidieron precio
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-24'
+  pieza: reel-B-clima-pronostico-diciembre
+  tipo: reel
+  tema: Pronóstico de diciembre para tu negocio
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-24'
+  pieza: reel-C-pov-diciembre-cobrando
+  tipo: reel
+  tema: POV - es diciembre y en lugar de vender andás cobrando
   estado: pendiente
   redes: []
   fecha: null

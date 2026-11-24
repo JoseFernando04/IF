@@ -175,6 +175,7 @@ body.claro .ac, body.amarillo .ac { color: var(--verde-3); font-family: var(--se
 .alerta.atras { top: 470px; left: 120px; right: 120px; transform: rotate(3deg); opacity: .35; height: 260px; }
 .notif .aclaracion { position: absolute; left: 90px; top: 930px; font-family: var(--mano); font-size: 44px; color: var(--amarillo); transform: rotate(-3deg); }
 .notif .cuerpo { position: absolute; left: 80px; right: 140px; bottom: 150px; opacity: .85; }
+.archivos-l .pila.grande { transform: scale(1.36); transform-origin: 0 0; }
 </style></head>
 {% set L = s.layout %}
 <body class="{{ {'libreta':'claro libreta-l','archivos':'claro archivos-l','hoja':'claro hoja-l','cita':'amarillo cita-l','cta':'cta-l','numero':'numero','chat':'chat','portada-foto':'portada','versus':'versus','comparacion':'comp','split-foto':'split','notificacion':'notif'}[L] }}">
@@ -207,9 +208,9 @@ body.claro .ac, body.amarillo .ac { color: var(--verde-3); font-family: var(--se
   <p class="cuerpo">{{ s.body }}</p>
 
 {% elif L == "archivos" %}
-  <div class="tag tagx">Señal {{ s.tag }}</div>
+  <div class="tag tagx">{% if not s.sin_senal %}Señal {% endif %}{{ s.tag }}</div>
   <h2 class="cond">{{ s.heading | accent }}</h2>
-  <div class="pila">{% for a in s.archivos %}<div class="sticker"><span class="xls">XLS</span>{{ a }}{% if not loop.last %}<span class="raya"></span>{% endif %}</div>{% endfor %}</div>
+  <div class="pila{{ " grande" if s.grande }}">{% for a in s.archivos %}<div class="sticker"><span class="xls"{% if s.icono %} style="background:#c4402f"{% endif %}>{{ s.icono or "XLS" }}</span>{{ a }}{% if not loop.last %}<span class="raya"></span>{% endif %}</div>{% endfor %}</div>
   <div class="nota">{{ s.nota }}</div>
   <p class="cuerpo">{{ s.body }}</p>
 

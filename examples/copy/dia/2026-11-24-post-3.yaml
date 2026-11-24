@@ -1,0 +1,41 @@
+# Post 3 · Recibo en carrusel (5 slides). Pilar: educativo con humor (digitalización de vendedores de calle).
+# Ticket de ejemplo: sin montos ni cifras de clientes.
+formato: recibo
+salida: data/dias/2026-11-24/post-3
+titulo_tiktok: "El ticket de un pedido apuntado en papel 🧾✍️ (la línea 4 duele)"
+whatsapp: "+502 3808 9808"
+encabezado: "COMPROBANTE"
+sub: "Pedido de ruta<br>apuntado en papel"
+items:
+  - {q: 1, t: "Pedido en la libreta"}
+  - {q: 1, t: "Foto borrosa por WhatsApp"}
+  - {q: 3, t: "«¿Ahí dice 4 o 9?»"}
+  - {q: 2, t: "Producto que ya no había"}
+  - {q: 1, t: "Pasarlo al Excel de noche"}
+  - {q: 1, t: "Vuelta extra a la tienda"}
+total: "UN DÍA DE RUTA"
+nota: "Ticket de ejemplo. Lo del 4 o 9 sí pasa."
+pie: "GRACIAS POR SU LETRA"
+sello: "SE PUEDE<br>EVITAR"
+etiqueta: "VENDEDORES DE CALLE"
+slides:
+  - tira: {q: 3, t: "«¿Ahí dice 4 o 9?»"}
+    titulo: "No es mala letra. <em>Es doble trabajo.</em>"
+    texto: "El pedido se escribe en la tienda, se fotografía en el carro y se copia en la oficina. Cada paso es otra oportunidad de equivocarse."
+  - tira: {q: 2, t: "Producto que ya no había"}
+    titulo: "Vendió bien… <em>lo que no hay.</em>"
+    texto: "En la calle nadie ve la bodega. El vendedor promete con lo que recuerda de la mañana, y el «fíjese que no» llega al día siguiente."
+  - claro: true
+    titulo: "Con una app <em>en su celular:</em>"
+    marca: "✓"
+    puntos:
+      - "Lleva el catálogo y toma el pedido ahí mismo, aunque no haya señal."
+      - "El pedido se sincroniza con tu inventario, sin copiarlo."
+      - "Bodega empieza a prepararlo sin descifrar nada."
+cierre: "Que el pedido se escriba <em>una sola vez.</em>"
+cierre_bajada: "Contanos cómo toma pedidos tu equipo en la calle y te decimos por dónde empezar."
+caption: >-
+  Todo equipo de ventas tiene a alguien con letra de doctor. 🧾✍️
+  Pero el problema no es la letra: es que el mismo pedido se escribe tres veces antes de salir de la bodega. Y en diciembre hay más pedidos, más tiendas y menos paciencia.
+  ¿Cuál línea de este ticket pagaste esta semana? Contanos 👇 Y si querés que el pedido se escriba una sola vez, escribinos al WhatsApp +502 3808 9808.
+hashtags: [VendedoresDeRuta, TomaDePedidos, Distribuidoras, PymesGuatemala, NegociosGT]

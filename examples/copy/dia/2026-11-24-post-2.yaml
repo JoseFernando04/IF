@@ -1,0 +1,27 @@
+# Post 2 · Mito o verdad (FORMATO NUEVO `mito` de post desde 2026-11-24, carrusel de 5): la respuesta sale al deslizar.
+# Pilar: educativo (agente de IA en WhatsApp). Palabra buscada: «bot de WhatsApp». Respuestas honestas, sin prometer de más.
+formato: mito
+salida: data/dias/2026-11-24/post-2
+titulo_tiktok: "Bots de WhatsApp: ¿mito o verdad? A ver si le atinás a las 3 🤖"
+whatsapp: "+502 3808 9808"
+etiqueta: "JUGÁ ANTES DE DESLIZAR"
+titulo: "Bots de WhatsApp: <em>¿mito o verdad?</em>"
+bajada: "Tres cosas que se dicen. Respondé en voz alta y deslizá."
+dichos:
+  - dicho: "«Todos contestan como robot.»"
+    es: MITO
+    porque: "Los de «marque 1, marque 2», sí. Un agente de IA lee la pregunta completa y contesta con tu tono y la información de tus productos."
+  - dicho: "«Si no sabe algo, lo inventa.»"
+    es: DEPENDE
+    porque: "De cómo se configure. Bien hecho, responde solo con tu información y, cuando no tiene el dato, le pasa la plática a una persona."
+  - dicho: "«Va a reemplazar a mi vendedor.»"
+    es: MITO
+    porque: "Contesta lo repetido a cualquier hora. Negociar, asesorar y cerrar sigue siendo de tu equipo, que llega cuando el cliente ya está listo."
+resultado: "¿Cuántas <span style='color:var(--oro)'>le atinaste?</span>"
+cierre: "¿Qué otra cosa <em>has oído?</em>"
+cierre_bajada: "Dejala en los comentarios y la contestamos en el próximo. Y si querés ver cómo contestaría un agente en tu negocio, escribinos."
+caption: >-
+  Antes de decir «eso no es para mi negocio», jugá. 🤖👇
+  Hay bots malos, y por eso la mala fama. La diferencia casi nunca está en la tecnología, sino en con qué información se prepara y en qué momento entra una persona.
+  Comentá cuántas le atinaste (sin trampa) y qué otro mito querés que revisemos. Para probar cómo contestaría uno en tu negocio, escribinos al WhatsApp +502 3808 9808.
+hashtags: [BotDeWhatsApp, AgenteDeIA, WhatsAppBusiness, PymesGuatemala, NegociosGT]

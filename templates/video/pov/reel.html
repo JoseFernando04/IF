@@ -94,7 +94,8 @@ $("pov").innerHTML = `<span>${R.pov}</span>`;
 $("ruta").textContent = R.ruta;
 $("prods").innerHTML = R.productos.map((p) => `<div class="prod"><i></i><div>${p.n}<b>${p.p}</b></div></div>`).join("");
 $("fecha").textContent = R.actualizado;
-if (R.plantilla) $("plantnom").textContent = R.plantilla;
+if (R.pdf) $("pdf").innerHTML = `<div class="doc"><b>${R.pdf[0]}</b></div><div>${R.pdf[1]}<br><span style="color:var(--oro);font-size:24px">${R.pdf[2]}</span></div>`;
+if (R.archivo_plantilla) $("plantnom").textContent = R.archivo_plantilla;
 if (R.cel_titulo) $("celtit").textContent = R.cel_titulo;
 const ev = (k) => { for (const l of L) if (l[k] !== undefined) return l; };
 

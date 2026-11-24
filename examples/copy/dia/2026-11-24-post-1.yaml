@@ -1,0 +1,62 @@
+# Post 1 · Carrusel documental (estilo B), 5 slides. Pilar: soluciones (catálogo inteligente).
+# La portada no usa la foto de siempre: abre con los archivos. Escena de ejemplo. Se renderiza con:
+# ifcontent.graphics.carousel_b.render_from_file(<este yaml>, data/dias/2026-11-24/post-1)
+title: El catálogo que mandaste era el de marzo
+pillar: soluciones
+salida: data/dias/2026-11-24/post-1
+titulo_tiktok: "«¿Me manda el catálogo?» Y le mandaste el de marzo 🫣📄"
+slides:
+  - layout: archivos
+    tag: "Te escribe un cliente"
+    sin_senal: true
+    grande: true
+    icono: PDF
+    heading: «¿Me manda *el catálogo?*»
+    body: Y en la carpeta hay cuatro. Solo uno tiene los precios de hoy. ¿Cuál mandaste?
+    archivos:
+      - Catalogo.pdf
+      - Catalogo_MARZO.pdf
+      - Catalogo_nuevo_ahora_si.pdf
+      - Catalogo_FINAL_2.pdf
+    nota: ¿cuál es el bueno?
+
+  - layout: chat
+    tag: "01"
+    heading: El cliente pide con *el precio viejo*
+    body: Quedan dos opciones malas, perder margen o quedar mal.
+    mensajes:
+      - {de: negocio, texto: "Le mando nuestro catálogo 📄", hora: "9:10"}
+      - {de: cliente, texto: "Perfecto, quiero 6 del modelo azul al precio de ahí", hora: "9:24"}
+      - {de: negocio, texto: "Fíjese que ese precio ya cambió… 😬", hora: "9:31"}
+      - {de: cliente, texto: "Pero si me lo acaba de mandar", hora: "9:32"}
+
+  - layout: libreta
+    tag: "02"
+    heading: Se vende lo que *ya no hay*
+    body: Un PDF no se entera de lo que pasó en la bodega. Se queda como estaba el día que lo hiciste.
+    titulo_libreta: Pedidos del catálogo
+    lineas:
+      - {texto: "Modelo azul → agotado", tachado: true}
+      - {texto: "Modelo gris → descontinuado", tachado: true}
+      - {texto: "Modelo verde → ", duda: "¿sí hay?"}
+
+  - layout: comparacion
+    tag: "Cómo se arregla"
+    heading: De un PDF suelto a un *catálogo inteligente*
+    izquierda: PDF de marzo
+    derecha: Catálogo inteligente
+    filas:
+      - ["Lo rediseñás cada cambio", "Subís una plantilla y se genera"]
+      - ["Cuatro versiones sueltas", "Un enlace, siempre el mismo"]
+      - ["El mismo para todos", "Por canal o por cliente"]
+
+  - layout: cta
+    heading: "¿De qué mes es *el tuyo?*"
+    body: Contanos cómo armás hoy tu catálogo y te mostramos cómo se vería uno que se actualiza con una plantilla.
+    sello: Revisión sin compromiso
+
+caption: >-
+  Hacé la prueba: buscá en tu WhatsApp el último catálogo que mandaste y revisá tres precios. 📄🔍
+  Si los tres están bien, felicidades. Si no, ese archivo anda por ahí, reenviado, vendiendo con números de otra época.
+  Un catálogo no debería depender de quién se acuerda de actualizarlo. ¿De qué mes es el tuyo? Contanos 👇 o escribinos al WhatsApp +502 3808 9808. (Escena de ejemplo.)
+hashtags: [CatalogoDigital, CatalogoWhatsApp, VentasPorWhatsApp, PymesGuatemala, NegociosGT]

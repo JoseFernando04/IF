@@ -1,0 +1,64 @@
+# Reel C · POV del dueño (formato `pov`, último uso 2026-11-11). Pilar: soluciones (recordatorios de pago). Escena de ejemplo.
+# El gancho POV es el de mejor rendimiento de la semana (Virlo, 23-nov). En la voz NO se dice «POV» (va solo en pantalla).
+formato: pov
+titulo: POV - es diciembre y en lugar de vender andás cobrando
+audio: assets/voice/elevenlabs/2026-11-24-reel-C.mp3
+salida: data/dias/2026-11-24/reel-C
+musica: if-firma
+musica_db: -22
+whatsapp: "+502 3808 9808"
+ruta_solucion: "Recordatorios de pago"
+cel_titulo: "Recordatorios"
+archivo_plantilla: "creditos.xlsx"
+pdf: ["WSP", "Por WhatsApp", "sale solo"]
+pov: "POV: es diciembre y en lugar de vender, andás cobrando"
+ruta: "Escritorio › Cobros › Diciembre"
+actualizado: "Esta semana"
+productos:
+  - {n: "Cliente 1 · vence viernes", p: "Enviado ✓"}
+  - {n: "Cliente 2 · vence el 15", p: "Programado"}
+  - {n: "Cliente 3", p: "Ya pagó ✓"}
+  - {n: "Cliente 4 · vence el 18", p: "Programado"}
+caption: >-
+  Nadie puso un negocio porque le encantaba cobrar. 🫠💸
+  Y casi siempre, el que debe no es mala paga: se le fue la fecha. Un recordatorio amable unos días antes resuelve más que tres llamadas incómodas después.
+  ¿Quién hace los cobros en tu negocio: vos, o «cuando haya tiempo»? Contanos 👇
+  Si querés que los recordatorios salgan solos por WhatsApp, escribinos al +502 3808 9808. (Escena de ejemplo.)
+hashtags: [CobrosPorWhatsApp, RecordatoriosDePago, AutomatizacionWhatsApp, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: Es diciembre, y en lugar de vender, andás cobrando.
+    toast: {de: "Cliente", inicial: "C", texto: "Ya casi le deposito 🙏"}
+    archivos:
+      - {nombre: "cobros.xlsx", tipo: xls, frac: 0.05}
+    sfx: [[0.2, pop]]
+  - texto: Una lista de los que deben, otra de los que ya te contestaron,
+    archivos:
+      - {nombre: "los_que_deben.xlsx", tipo: xls, frac: 0.15}
+      - {nombre: "ya_contestaron.xlsx", tipo: xls, frac: 0.72}
+    sfx: [[0.15, tick], [0.72, tick]]
+  - texto: y otra de los que dijeron mañana.
+    archivos:
+      - {nombre: "dijeron_mañana.xlsx", tipo: xls, frac: 0.2}
+      - {nombre: "dijeron_mañana_2.xlsx", tipo: xls, frac: 0.75}
+    clave: "«MAÑANA»"
+    clave_frac: 0.7
+    sfx: [[0.2, tick], [0.75, tick]]
+  - texto: Le cobrás a uno que ya había pagado.
+    manda: "los_que_deben.xlsx"
+    sello: "YA PAGÓ"
+    sello_frac: 0.68
+    sfx: [[0.15, whoosh], [0.68, thud]]
+  - texto: Con recordatorios de pago por WhatsApp, el mensaje sale solo, antes del vencimiento y con los datos correctos.
+    escena: solucion
+    clave: "SALE SOLO"
+    clave_frac: 0.42
+    sfx: [[0.05, whoosh], [0.42, pop]]
+  - texto: Y vos, a vender.
+    escena: solucion
+    clave: "VOS, A VENDER"
+    clave_frac: 0.2
+    sfx: [[0.2, pop]]
+  - texto: Escribinos y te contamos cómo funciona.
+    escena: cierre
+    titulo: "Que cobrar<br><em>no te quite diciembre.</em>"
+    sfx: [[0.3, pop]]

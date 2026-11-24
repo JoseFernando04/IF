@@ -8,7 +8,7 @@ musica_db: -22
 whatsapp: "+502 3808 9808"
 ruta_solucion: "Pagos · todo el equipo"
 cel_titulo: "Pagos"
-plantilla: "pagos_de_todos.xlsx"
+archivo_plantilla: "pagos_de_todos.xlsx"
 pov: "POV: Juan, el que sabe todo, se fue de vacaciones"
 ruta: "Documentos › Administración › Pagos"
 actualizado: "Pagos al día · hoy"

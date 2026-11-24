@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Brico"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+@font-face { font-family: "Serif"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+/* Pronóstico del negocio: cada semana un clima (tormenta, calor, neblina, frio) dibujado en canvas con
+   «partículas» del negocio (mensajes que llueven, cajas que se evaporan, nombres en la neblina, números que nevan).
+   Al final, el paraguas dorado: la solución. */
+:root { --verde: #0a1410; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--verde); font-family: "Tight"; color: var(--marfil); }
+canvas { position: absolute; inset: 0; }
+#barra { position: absolute; left: 60px; right: 60px; top: 100px; display: flex; justify-content: space-between; align-items: center; z-index: 5; }
+#barra .a { font: 800 40px "Brico"; padding: 14px 26px; background: var(--oro); color: var(--verde); border-radius: 12px; }
+#barra .b { font: 700 32px "Mono"; letter-spacing: 3px; }
+#sem { position: absolute; left: 60px; top: 260px; font: 700 40px "Mono"; letter-spacing: 5px; z-index: 5; }
+#tit { position: absolute; left: 60px; right: 60px; top: 320px; font: 800 168px/0.9 "Brico"; letter-spacing: -6px; z-index: 5; }
+#tit em, #pie em { font: 400 1.1em/0.95 "Serif"; letter-spacing: -1px; }
+#nota { position: absolute; left: 60px; right: 60px; top: 1335px; font: 700 60px/1.12 "Tight"; z-index: 5; }
+/* Franja de semanas */
+#tira { position: absolute; left: 60px; right: 60px; top: 1530px; display: flex; gap: 18px; z-index: 5; }
+.d { flex: 1; height: 230px; border-radius: 26px; background: #0a1410cc; color: var(--marfil); text-align: center; box-sizing: border-box; padding-top: 24px; border: 5px solid transparent; }
+.d .n { font: 700 28px "Mono"; letter-spacing: 1px; } .d svg { width: 120px; height: 120px; margin-top: 12px; }
+.d.on { background: var(--oro); color: var(--verde); }
+/* Solución y cierre */
+#sol { position: absolute; left: 60px; right: 60px; top: 1200px; z-index: 6; }
+#sol div { display: flex; gap: 28px; align-items: center; font: 700 56px/1.1 "Tight"; background: var(--marfil); color: var(--verde); border-radius: 26px; padding: 34px 36px; margin-bottom: 24px; }
+#sol i { font-style: normal; flex: none; width: 72px; height: 72px; border-radius: 50%; background: var(--oro); display: grid; place-items: center; font: 800 42px "Brico"; }
+#pie { position: absolute; left: 60px; right: 60px; top: 1200px; font: 800 120px/0.98 "Brico"; letter-spacing: -4px; z-index: 6; } #pie em { color: var(--oro); }
+#wa { position: absolute; left: 60px; top: 1520px; font: 800 54px "Tight"; color: var(--verde); background: var(--oro); padding: 30px 46px; border-radius: 999px; z-index: 6; }
+#logo { position: absolute; left: 60px; top: 1680px; width: 160px; z-index: 6; }
+</style></head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<div id="barra"><div class="a"></div><div class="b"></div></div>
+<div id="sem"></div><div id="tit"></div><div id="nota"></div><div id="tira"></div>
+<div id="sol"></div><div id="pie"></div><div id="wa"></div><img id="logo" src="__LOGO__">
+<script type="module">
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (x) => { x = cl(x); return 1 - (1 - x) ** 3; };
+const back = (x) => { x = cl(x); const c = 1.7; return Math.max(0, 1 + (c + 1) * (x - 1) ** 3 + c * (x - 1) ** 2); };
+const em = (s) => (s || "").replace(/\*(.+?)\*/g, "<em>$1</em>");
+const rnd = (n) => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+const ctx = $("c").getContext("2d");
+// Cielos por clima: [arriba, abajo, color del texto, color de acento]
+const CIELO = {
+  intro: ["#12261c", "#2f5d46", "#fefcf3", "#f0c419"], tormenta: ["#050a08", "#1d362b", "#fefcf3", "#f0c419"],
+  calor: ["#f0c419", "#e9a21a", "#0a1410", "#8a2f12"], neblina: ["#8fa096", "#c3ccc4", "#0a1410", "#1d362b"],
+  frio: ["#dfe9e4", "#fefcf3", "#0a1410", "#2f6b4c"], paraguas: ["#0a1410", "#1d362b", "#fefcf3", "#f0c419"] };
+// Íconos pequeños de la franja
+const nube = (c) => `<path d="M28 74a22 22 0 0 1 4-43 30 30 0 0 1 56 6 19 19 0 0 1 2 37z" fill="${c}"/>`;
+const ICO = {
+  tormenta: (c) => `${nube(c)}<path d="M58 68 44 92h14l-6 22 26-32H62l8-14z" fill="#e07a5f"/>`,
+  calor: (c) => `<circle cx="60" cy="60" r="26" fill="${c}"/>${[...Array(8)].map((_, k) => `<rect x="56" y="8" width="8" height="18" rx="4" fill="${c}" transform="rotate(${k * 45} 60 60)"/>`).join("")}`,
+  neblina: (c) => [28, 50, 72, 94].map((y, k) => `<rect x="${14 + (k % 2) * 12}" y="${y - 5}" width="80" height="11" rx="5" fill="${c}"/>`).join(""),
+  frio: (c) => [0, 60, 120].map((a) => `<g transform="rotate(${a} 60 60)"><rect x="55" y="12" width="10" height="96" rx="5" fill="${c}"/><path d="M60 30l-14-12M60 30l14-12M60 90l-14 12M60 90l14 12" stroke="${c}" stroke-width="8" stroke-linecap="round"/></g>`).join("") };
+const dias = REEL.semanas.map((s) => { const d = document.createElement("div"); d.className = "d"; d.innerHTML = `<div class="n">${s.corto}</div><svg viewBox="0 0 120 120"></svg>`; $("tira").appendChild(d); return d; });
+$("barra").querySelector(".a").textContent = REEL.canal; $("barra").querySelector(".b").textContent = REEL.fecha;
+$("sol").innerHTML = REEL.solucion.map((x) => `<div><i>✓</i><span>${x}</span></div>`).join("");
+$("pie").innerHTML = em(REEL.pie); $("wa").textContent = "WhatsApp " + REEL.whatsapp;
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+const tSol = (L.find((l) => l.clima === "paraguas") || { inicio: 1e9 }).inicio, lZ = L.find((l) => l.escena === "cierre") || { inicio: 1e9 };
+const lPts = L.find((l) => l.puntos) || { inicio: 1e9, duracion: 1 };
+
+const nubeG = (x, y, s, col) => { ctx.fillStyle = col; ctx.beginPath();
+  [[0, 0, 130], [-150, 40, 95], [150, 36, 105], [-70, -60, 100], [70, -70, 115]].forEach(([a, b, r]) => { ctx.moveTo(x + a * s + r * s, y + b * s); ctx.arc(x + a * s, y + b * s, r * s, 0, 7); });
+  ctx.fill(); ctx.beginPath(); ctx.roundRect(x - 245 * s, y + 20 * s, 500 * s, 118 * s, 59 * s); ctx.fill(); };
+const burbuja = (x, y, txt, rot, a, fondo, col, tam = 40) => { ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.globalAlpha = a; ctx.font = `700 ${tam}px Tight`;
+  const w = ctx.measureText(txt).width + tam * 1.2, h = tam * 1.9; ctx.fillStyle = fondo; ctx.beginPath(); ctx.roundRect(-w / 2, -h / 2, w, h, [h / 2, h / 2, h / 2, 8]); ctx.fill();
+  ctx.fillStyle = col; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(txt, 0, 2); ctx.restore(); };
+// Lluvia de mensajes; con paraguas, rebotan hacia los lados
+function lluvia(t, n, txts, abierto) {
+  for (let k = 0; k < n; k++) { const v = 620 + rnd(k) * 380, per = 1500 / v + 0.5 + rnd(k + 9) * 0.6, u = ((t + rnd(k + 3) * per) % per) / per;
+    let x = 90 + rnd(k + Math.floor((t + rnd(k + 3) * per) / per) * 31) * 900, y = 850 + u * 850, r = (rnd(k + 5) - 0.5) * 0.25, a = y > 1250 ? cl(1 - (y - 1240) / 70) : cl(u * 8);
+    if (abierto > 0) { y = 560 + u * 900; const dx = (x - 540) / 400, techo = 930 - Math.sqrt(Math.max(0, 1 - dx * dx)) * 270; a = cl((y - 570) / 90) * cl(1 - (y - 1090) / 60);
+      if (Math.abs(dx) < 1 && y > techo - 40) { const q = y - techo + 40; x += Math.sign(dx || 1) * q * 1.7; y = techo - 40 - q * 0.1 + q * q * 0.0016; r += q * 0.004 * Math.sign(dx || 1); a = Math.min(a, cl(1 - q / 320)); } }
+    burbuja(x, y, txts[k % txts.length], r, a, k % 3 ? "#fefcf3" : "#f0c419", "#0a1410", 34 + Math.round(rnd(k + 7) * 12)); }
+}
+function clima(nom, t, d) {
+  const [a, b] = CIELO[nom]; const g = ctx.createLinearGradient(0, 0, 0, 1920); g.addColorStop(0, a); g.addColorStop(1, b); ctx.fillStyle = g; ctx.fillRect(0, 0, 1080, 1920);
+  if (nom === "intro") {
+    // Mapa del tiempo: isobaras que se mueven
+    ctx.lineWidth = 5; for (let k = 0; k < 12; k++) { ctx.strokeStyle = k % 3 ? "#fefcf322" : "#f0c41955"; ctx.beginPath();
+      for (let x = -20; x <= 1100; x += 20) { const y = 520 + k * 85 + Math.sin(x / 190 + t * 0.9 + k * 0.5) * 60 + Math.cos(x / 90 - t * 0.6 + k) * 18; x < 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); } ctx.stroke(); }
+    const e = back(d / 0.6); ctx.fillStyle = "#f0c419"; ctx.beginPath(); ctx.arc(700, 1010, 170 * e, 0, 7); ctx.fill();
+    nubeG(520 - 40 * Math.sin(t * 1.5), 1130, 1.1 * e, "#fefcf3"); }
+  if (nom === "tormenta") {
+    const f = (t * 1.1) % 1.7; if (f < 0.09 || (f > 0.16 && f < 0.21)) { ctx.fillStyle = "#f0c41944"; ctx.fillRect(0, 0, 1080, 1920); }
+    lluvia(t, 16, REEL.gotas, 0); nubeG(290 + Math.sin(t) * 20, 870, 1.0, "#2a4a3a"); nubeG(790 - Math.sin(t * 1.2) * 20, 850, 1.05, "#234033"); nubeG(540, 830, 1.0, "#3a5f4c"); }
+  if (nom === "calor") {
+    ctx.save(); ctx.translate(540, 960); ctx.rotate(t * 0.25); ctx.fillStyle = "#fefcf3"; for (let k = 0; k < 16; k++) { ctx.rotate(Math.PI / 8); ctx.beginPath(); ctx.moveTo(-26, -300); ctx.lineTo(26, -300); ctx.lineTo(0, -420 - 22 * Math.sin(t * 6 + k)); ctx.fill(); } ctx.restore();
+    ctx.fillStyle = "#fefcf3"; ctx.beginPath(); ctx.arc(540, 960, 265, 0, 7); ctx.fill();
+    // Las cajas del estante se evaporan
+    ctx.fillStyle = "#0a1410"; ctx.fillRect(250, 1225, 580, 18);
+    for (let k = 0; k < 4; k++) { const q = cl((d - 1.2 - k * 0.55) / 0.8); ctx.globalAlpha = 1 - q; const x = 275 + k * 138, y = 1105 - q * 160; ctx.fillStyle = "#b98a52"; ctx.fillRect(x + q * 14 * Math.sin(t * 9), y, 118, 120); ctx.fillStyle = "#7a5530"; ctx.fillRect(x + 50 + q * 14 * Math.sin(t * 9), y, 18, 120); } ctx.globalAlpha = 1; }
+  if (nom === "neblina") {
+    const filas = REEL.nombres; ctx.textBaseline = "middle"; filas.forEach((x, k) => { const y = 760 + k * 140, e = ease((d - k * 0.12) / 0.3); ctx.globalAlpha = e; ctx.fillStyle = "#fefcf3"; ctx.beginPath(); ctx.roundRect(110, y - 54, 860, 112, 22); ctx.fill();
+      ctx.fillStyle = "#0a1410"; ctx.font = "700 48px Tight"; ctx.textAlign = "left"; ctx.fillText(x[0], 150, y + 2); ctx.textAlign = "right"; ctx.font = "700 44px Mono"; ctx.fillText(x[1], 930, y + 2); }); ctx.globalAlpha = 1;
+    const dens = ease((d - 0.5) / 1.6); for (let k = 0; k < 9; k++) { const x = 540 + Math.sin(t * (0.5 + rnd(k) * 0.5) + k * 2) * 330, y = 720 + k * 72; const r = 330, gr = ctx.createRadialGradient(x, y, 0, x, y, r);
+      gr.addColorStop(0, `rgba(205,214,207,${0.62 * dens})`); gr.addColorStop(1, "rgba(205,214,207,0)"); ctx.save(); ctx.translate(0, y * 0.55); ctx.scale(1, 0.45); ctx.fillStyle = gr; ctx.fillRect(x - r, y - r, 2 * r, 2 * r); ctx.restore(); } }
+  if (nom === "frio") {
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    for (let k = 0; k < 46; k++) { const u = (rnd(k) + t * (0.08 + rnd(k + 2) * 0.08)) % 1, x = rnd(k + 4) * 1080 + Math.sin(t * 1.5 + k) * 40, y = 640 + u * 660; ctx.globalAlpha = cl(u * 8) * cl((1 - u) * 8) * (0.35 + rnd(k + 8) * 0.65); ctx.fillStyle = k % 4 ? "#2f6b4c" : "#0a1410"; ctx.font = `800 ${34 + rnd(k + 6) * 44}px Brico`;
+      ctx.fillText(k % 5 === 0 ? "¿?" : Math.floor(rnd(k + 11) * 90 + 3), x, y); } ctx.globalAlpha = 1;
+    // Tablita de conteo congelada
+    const e = back(d / 0.5); ctx.save(); ctx.translate(540, 985); ctx.rotate(-0.05 + Math.sin(t * 22) * 0.012); ctx.scale(e, e); ctx.fillStyle = "#b98a52"; ctx.beginPath(); ctx.roundRect(-210, -260, 420, 540, 26); ctx.fill(); ctx.fillStyle = "#fefcf3"; ctx.fillRect(-175, -205, 350, 450); ctx.fillStyle = "#0a1410"; ctx.beginPath(); ctx.roundRect(-85, -290, 170, 66, 18); ctx.fill();
+    ctx.lineWidth = 9; ctx.lineCap = "round"; for (let r = 0; r < 4; r++) { const n = Math.floor(cl((d - 0.6 - r * 0.45) / 0.45) * 5.01); ctx.strokeStyle = "#0a1410"; for (let j = 0; j < Math.min(4, n); j++) { ctx.beginPath(); ctx.moveTo(-130 + j * 34, -160 + r * 105); ctx.lineTo(-134 + j * 34, -90 + r * 105); ctx.stroke(); } if (n >= 5) { ctx.strokeStyle = "#e07a5f"; ctx.beginPath(); ctx.moveTo(-150, -100 + r * 105); ctx.lineTo(-10, -150 + r * 105); ctx.stroke(); }
+      ctx.fillStyle = "#e07a5f"; ctx.font = "800 64px Brico"; if (n >= 5) ctx.fillText(r === 3 ? "¿?" : "✗", 95, -122 + r * 105); } ctx.restore(); }
+  if (nom === "paraguas") {
+    const e = back((d - 0.15) / 0.5); lluvia(t, 16, REEL.gotas, 1); ctx.save(); ctx.translate(540, 930); ctx.scale(e, e);
+    const g2 = ctx.createRadialGradient(0, 60, 20, 0, 60, 420); g2.addColorStop(0, "#f0c41933"); g2.addColorStop(1, "#f0c41900"); ctx.fillStyle = g2; ctx.fillRect(-420, -360, 840, 840);
+    ctx.fillStyle = "#f0c419"; ctx.beginPath(); ctx.ellipse(0, 0, 400, 270, 0, Math.PI, 0); for (let k = 3; k >= 0; k--) { const x0 = -400 + (k + 1) * 200, x1 = -400 + k * 200; ctx.quadraticCurveTo((x0 + x1) / 2, -62, x1, 0); } ctx.fill();
+    ctx.strokeStyle = "#0a141055"; ctx.lineWidth = 6; [-200, 0, 200].forEach((x) => { ctx.beginPath(); ctx.moveTo(0, -270); ctx.quadraticCurveTo(x, -220, x, 0); ctx.stroke(); });
+    ctx.strokeStyle = "#fefcf3"; ctx.lineWidth = 18; ctx.lineCap = "round"; ctx.beginPath(); ctx.moveTo(0, -30); ctx.lineTo(0, 180); ctx.arc(42, 180, 42, Math.PI, 0, true); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, -272); ctx.lineTo(0, -305); ctx.stroke(); ctx.restore(); }
+}
+function dibujar(t) {
+  let i = lineaEn(t); while (i > 0 && !L[i].clima) i--; const l = L[i], nom = l.clima || "intro", d = t - l.inicio;
+  const ant = i > 0 ? L[i - 1] : null, k = ease(d / 0.4);
+  // Cambio de clima: barrido de izquierda a derecha, como el mapa del noticiero
+  if (ant && k < 1) { clima(ant.clima || "intro", t, t - ant.inicio); ctx.save(); ctx.beginPath(); ctx.rect(0, 0, 1080 * k, 1920); ctx.clip(); clima(nom, t, d); ctx.restore(); } else clima(nom, t, d);
+  const [, , col, ac] = CIELO[nom]; document.body.style.color = col;
+  const cierre = t >= lZ.inicio, pts = t >= lPts.inicio;
+  $("sem").textContent = l.semana || ""; $("sem").style.color = ac;
+  $("tit").innerHTML = em(l.titulo); $("tit").style.color = col; $("tit").querySelectorAll("em").forEach((x) => (x.style.color = ac));
+  $("tit").style.opacity = ease((d - 0.1) / 0.25); $("tit").style.transform = `translateX(${(1 - back((d - 0.08) / 0.4)) * -120}px)`;
+  $("sem").style.opacity = ease((d - 0.1) / 0.25);
+  const dn = t - (l.inicio + l.duracion * (l.nota_frac ?? 0.4));
+  $("nota").innerHTML = em(l.nota || ""); $("nota").style.opacity = cierre || pts ? 0 : ease(dn / 0.3); $("nota").style.transform = `translateY(${(1 - ease(dn / 0.35)) * 30}px)`;
+  // Franja: cada semana se destapa cuando llega
+  $("tira").style.display = nom === "paraguas" ? "none" : "flex";
+  dias.forEach((el, n) => { const s = REEL.semanas[n], li = L.find((x) => x.clima === s.clima), on = nom === s.clima, visto = t >= li.inicio;
+    el.className = "d" + (on ? " on" : ""); el.querySelector("svg").innerHTML = visto ? ICO[s.clima](on ? "#0a1410" : "#f0c419") : `<text x="60" y="88" text-anchor="middle" font-family="Brico" font-weight="800" font-size="84" fill="#fefcf355">?</text>`;
+    el.style.transform = `translateY(${(1 - back((t - 0.1 - n * 0.1) / 0.4)) * 400}px) scale(${on ? 1 + 0.07 * back(d / 0.35) : 1})`; });
+  [...$("sol").children].forEach((x, n) => { const tk = lPts.inicio + lPts.duracion * (lPts.puntos?.[n] ?? 0.2 + n * 0.25), b = back((t - tk) / 0.4); x.style.opacity = t >= tk && !cierre ? 1 : 0; x.style.transform = `translateX(${(1 - b) * 500}px)`; });
+  const dz = t - lZ.inicio;
+  $("pie").style.opacity = ease(dz / 0.3); $("pie").style.transform = `translateY(${(1 - ease(dz / 0.4)) * 40}px)`;
+  $("wa").style.transform = `scale(${back((dz - 0.5) / 0.35)})`; $("wa").style.transformOrigin = "0 50%"; $("logo").style.opacity = ease((dz - 0.8) / 0.3);
+}
+await document.fonts.ready;
+await Promise.all(["800 40px Brico", "700 40px Tight", "700 40px Mono"].map((f) => document.fonts.load(f)));
+window.__seek = async (t) => { dibujar(t); };
+window.__ready = true;
+</script>
+</body></html>

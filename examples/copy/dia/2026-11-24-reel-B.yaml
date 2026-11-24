@@ -1,0 +1,71 @@
+# Reel B · «Pronóstico del negocio» (FORMATO NUEVO `clima`, plantilla templates/video/clima/reel.html desde 2026-11-24).
+# Tendencia: cuenta regresiva de diciembre + situación con la que todos se identifican. Pilar: educativo con humor (desarrollo a medida).
+# Todo dibujado en canvas (nubes, sol, neblina, conteo congelado, paraguas). Sin cifras de clientes.
+formato: clima
+titulo: Pronóstico de diciembre para tu negocio
+audio: assets/voice/elevenlabs/2026-11-24-reel-B.mp3
+salida: data/dias/2026-11-24/reel-B
+musica: inspired
+musica_db: -23
+whatsapp: "+502 3808 9808"
+canal: "EL TIEMPO EN TU NEGOCIO"
+fecha: "DICIEMBRE"
+gotas: ["¿Precio?", "¿Hay?", "¿Info?", "¿Hacen envíos?", "¿A qué hora cierran?"]
+nombres: [["Cliente 1", "¿pagó?"], ["Cliente 2", "¿debe?"], ["Cliente 3", "¿cuánto?"], ["Cliente 4", "¿pagó?"]]
+semanas:
+  - {corto: "SEM 1", clima: tormenta}
+  - {corto: "QUINCENA", clima: calor}
+  - {corto: "SEM 3", clima: neblina}
+  - {corto: "31 DIC", clima: frio}
+solucion: ["Contesta los mensajes", "Descuenta el inventario", "Recuerda los pagos"]
+pie: "¿Qué clima hay *en el tuyo?*"
+caption: >-
+  Interrumpimos tu desplazamiento para un aviso meteorológico. 📺⛈️
+  Diciembre no se puede cambiar, pero sí se puede llegar con paraguas: los mensajes, la bodega, los cobros y el cierre son los mismos cada año, y los cuatro se pueden preparar antes.
+  Mandale este pronóstico a tu socio, y contanos 👇 ¿tormenta, calor, neblina o frío?
+  Para armar el paraguas a la medida de tu negocio, escribinos al WhatsApp +502 3808 9808.
+hashtags: [Diciembre, SoftwareAMedida, SistemaDeInventario, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: Pronóstico de diciembre para tu negocio.
+    clima: intro
+    titulo: "Pronóstico *para tu negocio*"
+    sfx: [[0.05, whoosh]]
+  - texto: Primera semana, tormenta de mensajes. Todos preguntan al mismo tiempo.
+    clima: tormenta
+    semana: "PRIMERA SEMANA"
+    titulo: "Tormenta *de mensajes*"
+    nota: "Todos preguntan al mismo tiempo."
+    nota_frac: 0.6
+    sfx: [[0.02, whoosh], [0.3, thud]]
+  - texto: Quincena, ola de calor. Se vende todo, y nadie sabe qué queda.
+    clima: calor
+    semana: "QUINCENA Y AGUINALDO"
+    titulo: "Ola *de calor*"
+    nota: "¿Y en bodega, qué queda?"
+    nota_frac: 0.73
+    sfx: [[0.02, whoosh], [0.3, pop], [0.43, pop], [0.55, pop], [0.68, pop]]
+  - texto: Tercera semana, neblina. No se ve quién pagó ni quién debe.
+    clima: neblina
+    semana: "TERCERA SEMANA"
+    titulo: "Neblina *en los cobros*"
+    nota: "No se ve quién pagó ni quién debe."
+    nota_frac: 0.5
+    sfx: [[0.02, whoosh]]
+  - texto: Y el treinta y uno, frente frío, conteo de inventario a mano.
+    clima: frio
+    semana: "31 DE DICIEMBRE"
+    titulo: "Frente *frío*"
+    nota: "Conteo de inventario a mano."
+    nota_frac: 0.63
+    sfx: [[0.02, whoosh], [0.3, marker], [0.55, marker]]
+  - texto: La buena noticia, hay paraguas.
+    clima: paraguas
+    semana: "LA BUENA NOTICIA"
+    titulo: "Hay *paraguas*"
+    sfx: [[0.02, whoosh], [0.4, pop]]
+  - texto: Un sistema a tu medida que contesta los mensajes, descuenta el inventario y recuerda los pagos.
+    puntos: [0.27, 0.52, 0.76]
+    sfx: [[0.27, pop], [0.52, pop], [0.76, pop]]
+  - texto: Contanos qué clima hay en el tuyo.
+    escena: cierre
+    sfx: [[0.1, pop]]

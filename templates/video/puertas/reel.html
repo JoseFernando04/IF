@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Brico"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+@font-face { font-family: "Serif"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+/* Elegí una puerta: dos puertas, una elección (A o B), cuenta de 3 segundos, se abren en perspectiva
+   y detrás está el giro: tarjetas con lo que hay en cada una. */
+:root { --verde: #0a1410; --verde2: #13241c; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --gris: #9fb3a8; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #efe8d6; font-family: "Tight"; color: var(--verde); }
+#pared { position: absolute; left: 0; right: 0; top: 0; height: 1510px; }
+#piso { position: absolute; left: 0; right: 0; top: 1510px; bottom: 0; background: linear-gradient(#1d362b, #0a1410); }
+#zoc { position: absolute; left: 0; right: 0; top: 1480px; height: 30px; background: #d6cfba; }
+#eti { position: absolute; left: 70px; top: 110px; font: 700 30px "Mono"; letter-spacing: 6px; color: #2f6b4c; z-index: 4; }
+#tit { position: absolute; left: 70px; right: 70px; top: 190px; font: 800 170px/0.96 "Brico"; letter-spacing: -5px; z-index: 4; }
+#tit em, #pie em { font: 400 1.1em/1 "Serif"; letter-spacing: 0; color: #2f6b4c; }
+.marco { position: absolute; top: 470px; width: 440px; height: 1040px; background: #cabf9f; border-radius: 16px 16px 0 0; z-index: 2; }
+#mA { left: 70px; } #mB { right: 70px; }
+.vano { position: absolute; left: 26px; right: 26px; top: 26px; bottom: 0; background: #06100b; overflow: hidden; perspective: 1500px; }
+.dentro { position: absolute; inset: 0; }
+.hoja { position: absolute; inset: 0; transform-origin: 0 50%; border: 6px solid #0006; box-sizing: border-box; }
+#mA .hoja { background: var(--verde3); } #mB .hoja { background: var(--oro); transform-origin: 100% 50%; }
+.hoja:before, .hoja:after { content: ""; position: absolute; left: 44px; right: 44px; border: 6px solid #00000033; border-radius: 8px; }
+.hoja:before { top: 420px; height: 190px; } .hoja:after { top: 720px; bottom: 44px; }
+.letra { position: absolute; left: 0; right: 0; top: 40px; text-align: center; font: 800 320px/1 "Brico"; }
+#mA .letra { color: var(--marfil); } #mB .letra { color: var(--verde); }
+.perilla { position: absolute; top: 644px; width: 40px; height: 40px; border-radius: 50%; background: #fefcf3; box-shadow: 0 6px 0 #0005; z-index: 2; }
+#mA .perilla { right: 26px; } #mB .perilla { left: 26px; background: var(--verde); }
+.rot { position: absolute; top: 1550px; width: 440px; text-align: center; font: 700 54px/1.08 "Tight"; color: var(--marfil); z-index: 4; }
+#rA { left: 70px; } #rB { right: 70px; } .rot em { font-style: normal; color: var(--oro); }
+#cuenta { position: absolute; left: 50%; top: 820px; width: 360px; height: 360px; margin-left: -180px; z-index: 8; border-radius: 50%; background: var(--marfil);
+  display: grid; place-items: center; font: 800 240px/1 "Brico"; box-shadow: 0 20px 60px #0007; }
+#cuenta svg { position: absolute; inset: 0; transform: rotate(-90deg); } #cuenta b { position: relative; }
+.vacio { position: absolute; left: 24px; right: 24px; top: 270px; text-align: center; font: 700 50px/1.12 "Tight"; color: var(--marfil); }
+.vacio i { display: block; font: 400 240px/1 "Serif"; color: #4f7a63; margin-bottom: 20px; }
+.vacio em { font-style: normal; color: var(--oro); }
+.luz { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 60%, #fff3b8, #f0c419 55%, #b8910a); }
+/* Detrás de la B, a pantalla completa */
+#full { position: absolute; inset: 0; z-index: 10; background: var(--oro); color: var(--verde); overflow: hidden; }
+#full .k { position: absolute; left: 70px; top: 120px; font: 700 30px "Mono"; letter-spacing: 6px; }
+#full .t { position: absolute; left: 70px; right: 70px; top: 180px; font: 800 106px/0.97 "Brico"; letter-spacing: -3px; }
+#full .t em { font: 400 1.1em/1 "Serif"; letter-spacing: 0; }
+.cot { position: absolute; left: 70px; right: 70px; height: 230px; background: var(--marfil); border-radius: 30px; box-shadow: 0 12px 0 #0a141033; }
+.cot .q { position: absolute; left: 40px; top: 40px; font: 800 52px/1 "Brico"; }
+.cot .d { position: absolute; left: 40px; top: 116px; font: 500 38px "Tight"; color: #5b5f57; }
+.cot .e { position: absolute; right: 34px; top: 76px; font: 700 32px "Mono"; padding: 18px 24px; border-radius: 999px; background: #e6dfca; color: #7b7462; }
+.cot .e.ok { background: var(--verde); color: var(--oro); }
+#dias { position: absolute; left: 70px; right: 70px; top: 1470px; height: 250px; }
+#riel { position: absolute; left: 17%; right: 17%; top: 80px; height: 12px; border-radius: 6px; background: #0a141033; }
+#riel i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--verde); border-radius: 6px; }
+.dia { position: absolute; top: 0; width: 260px; margin-left: -130px; text-align: center; }
+.dia b { display: grid; place-items: center; width: 172px; height: 172px; margin: 0 auto; border-radius: 50%; background: var(--verde); color: var(--oro); font: 800 92px "Brico"; }
+.dia span { display: block; margin-top: 16px; font: 700 34px "Mono"; letter-spacing: 2px; }
+/* Cierre */
+#cierre { position: absolute; inset: 0; z-index: 20; background: var(--verde); color: var(--marfil); }
+#cierre .ab { position: absolute; left: 70px; right: 70px; top: 330px; display: flex; gap: 40px; }
+#cierre .ab div { flex: 1; height: 480px; border-radius: 24px; display: grid; place-items: center; font: 800 300px "Brico"; }
+#pie { position: absolute; left: 70px; right: 70px; top: 960px; font: 800 150px/0.98 "Brico"; letter-spacing: -4px; } #pie em { color: var(--oro); }
+#wa { position: absolute; left: 70px; top: 1370px; font: 800 54px "Tight"; color: var(--verde); background: var(--oro); padding: 30px 46px; border-radius: 999px; }
+#logo { position: absolute; left: 70px; top: 1570px; width: 170px; }
+</style></head>
+<body>
+<div id="pared"></div><div id="zoc"></div><div id="piso"></div>
+<div id="eti"></div><div id="tit"></div>
+<div class="marco" id="mA"><div class="vano"><div class="dentro"><div class="vacio"></div></div><div class="hoja"><div class="letra">A</div><div class="perilla"></div></div></div></div>
+<div class="marco" id="mB"><div class="vano"><div class="dentro luz"></div><div class="hoja"><div class="letra">B</div><div class="perilla"></div></div></div></div>
+<div class="rot" id="rA"></div><div class="rot" id="rB"></div>
+<div id="cuenta"><svg viewBox="0 0 360 360"><circle cx="180" cy="180" r="164" fill="none" stroke="#f0c419" stroke-width="24" id="aro"/></svg><b></b></div>
+<div id="full"><div class="k"></div><div class="t"></div><div id="cots"></div><div id="dias"><div id="riel"><i></i></div></div></div>
+<div id="cierre"><div class="ab"><div style="background:#1d362b;color:#fefcf3">A</div><div style="background:#f0c419;color:#0a1410">B</div></div>
+  <div id="pie"></div><div id="wa"></div><img id="logo" src="__LOGO__"></div>
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, $ = (id) => document.getElementById(id), Q = (s) => document.querySelector(s);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (x) => { x = cl(x); return 1 - (1 - x) ** 3; };
+const io = (x) => { x = cl(x); return x < .5 ? 4 * x ** 3 : 1 - (-2 * x + 2) ** 3 / 2; };
+const back = (x) => { x = cl(x); const c = 1.7; return Math.max(0, 1 + (c + 1) * (x - 1) ** 3 + c * (x - 1) ** 2); };
+const em = (s) => (s || "").replace(/\*(.+?)\*/g, "<em>$1</em>");
+const fondoP = fondo($("pared"), "papel", { back: "#e3dcc9", paper: "#f4eee2", shadow: "#8a7d63", crumples: 0.1, folds: 0.1, wrinkles: 0.2 });
+$("eti").textContent = REEL.etiqueta; $("tit").innerHTML = em(REEL.pregunta);
+$("rA").innerHTML = em(REEL.a.rotulo); $("rB").innerHTML = em(REEL.b.rotulo);
+Q(".vacio").innerHTML = em(REEL.a.detras).replace(/^(\S+)\|/, "<i>$1</i>");
+Q("#full .k").textContent = REEL.b.etiqueta;
+$("pie").innerHTML = em(REEL.pie); $("wa").textContent = "WhatsApp " + REEL.whatsapp;
+const cots = REEL.b.tarjetas.map((c, k) => { const d = document.createElement("div"); d.className = "cot"; d.style.top = 620 + k * 270 + "px";
+  d.innerHTML = `<div class="q">${c.q}</div><div class="d">${c.d}</div><div class="e"></div>`; $("cots").appendChild(d); return d; });
+const xs = [17, 50, 83];
+const dias = REEL.b.dias.map((n, k) => { const d = document.createElement("div"); d.className = "dia"; d.style.left = xs[k] + "%";
+  d.innerHTML = `<b>${n}</b><span>DÍA ${n}</span>`; $("dias").appendChild(d); return d; });
+const esc = (n) => L.find((l) => l.escena === n) || { inicio: 1e9, duracion: 1 };
+const lA = esc("a"), lB = esc("b"), lC = esc("cuenta"), lAA = esc("abre_a"), lAB = esc("abre_b"), lD = esc("dias"), lZ = esc("cierre");
+const at = (l, f) => l.inicio + l.duracion * f;
+
+function dibujar(t) {
+  $("tit").style.transform = `translateY(${(1 - back(t / 0.45)) * 60}px)`; $("tit").style.opacity = ease(t / 0.2 + 0.4);
+  // Puertas: entran de golpe y vibran cuando se nombran
+  [["mA", lA, -1, lAA], ["mB", lB, 1, lAB]].forEach(([id, l, s, la]) => {
+    const e = back((t + 0.05) / 0.5), n = t - l.inicio, tocando = n > 0 && n < 0.5 ? Math.sin(n * 50) * 7 * (1 - n / 0.5) : 0;
+    const activa = t >= l.inicio && t < l.inicio + l.duracion + 0.2 ? 1 : 0;
+    $(id).style.transform = `translate(${(1 - e) * s * 620 + tocando}px, 0) scale(${1 + 0.03 * activa * ease(n / 0.2)})`; $(id).style.transformOrigin = "50% 100%";
+    const otra = id === "mA" ? lB : lA;
+    const op = t >= otra.inicio && t < otra.inicio + otra.duracion ? 0.55 : 1;
+    $(id).style.filter = t < lC.inicio ? `brightness(${op})` : (id === "mB" && t >= lAA.inicio && t < lAB.inicio ? "brightness(0.6)" : "brightness(1)");
+    const a = io((t - at(la, la.abre_frac ?? 0.05)) / 0.8);
+    $(id).querySelector(".hoja").style.transform = `rotateY(${s === -1 ? -a * 105 : a * 105}deg)`;
+  });
+  $("rA").style.opacity = ease((t - at(lA, 0.3)) / 0.25); $("rA").style.transform = `translateY(${(1 - back((t - at(lA, 0.3)) / 0.35)) * 40}px)`;
+  $("rB").style.opacity = ease((t - at(lB, 0.2)) / 0.25); $("rB").style.transform = `translateY(${(1 - back((t - at(lB, 0.2)) / 0.35)) * 40}px)`;
+  // Cuenta 3-2-1 repartida en la línea «tres, dos, uno»
+  const dc = t - lC.inicio, p = cl(dc / lC.duracion), cf = lC.cuenta_fracs || [0, 1 / 3, 2 / 3], kc = p >= cf[2] ? 2 : p >= cf[1] ? 1 : 0, n = 3 - kc, pf = (p - cf[kc]) * 3;
+  $("cuenta").style.display = dc >= 0 && t < lAA.inicio - 0.05 ? "grid" : "none";
+  $("cuenta").querySelector("b").textContent = n; $("cuenta").style.transform = `scale(${0.6 + 0.4 * back(dc / 0.25)})`;
+  $("cuenta").querySelector("b").style.transform = `scale(${1.35 - 0.35 * ease(pf / 0.35)})`;
+  const C = 2 * Math.PI * 164; $("aro").style.strokeDasharray = C; $("aro").style.strokeDashoffset = C * p;
+  // Se abre la B y la luz llena la pantalla
+  const df = t - at(lAB, lAB.abre_frac ?? 0.05) - 0.65, f = io(df / 0.6);
+  const full = $("full"); full.style.display = df > 0 ? "block" : "none";
+  full.style.clipPath = `inset(${(1 - f) * 496}px ${(1 - f) * 96}px ${(1 - f) * 410}px ${(1 - f) * 596}px)`;
+  const enDias = t >= lD.inicio;
+  Q("#full .t").innerHTML = em(enDias ? REEL.b.titulo_dias : REEL.b.titulo);
+  Q("#full .t").style.opacity = enDias ? ease((t - lD.inicio) / 0.3) : ease((df - 0.55) / 0.3);
+  const fr = REEL.b.dias_fracs || [0.3, 0.45, 0.6];
+  cots.forEach((c, k) => { const d0 = df - 0.45 - k * 0.28, x = back(d0 / 0.45); c.style.opacity = d0 > 0 ? 1 : 0; c.style.transform = `translateX(${(1 - x) * 700}px)`;
+    const e = c.querySelector(".e"), tk = at(lD, 0.06) + k * 0.3, ok = t >= tk; e.className = "e" + (ok ? " ok" : "");
+    e.textContent = ok ? REEL.b.tarjetas[k].ok : REEL.b.tarjetas[k].e; e.style.transform = `scale(${ok ? 1.3 - 0.3 * ease((t - tk) / 0.25) : 1})`; });
+  dias.forEach((d, k) => { const tk = at(lD, fr[k]); d.style.opacity = t >= tk ? 1 : 0; d.style.transform = `scale(${back((t - tk) / 0.35)})`; });
+  $("riel").style.opacity = enDias ? 1 : 0; Q("#riel i").style.width = cl((t - at(lD, fr[0])) / (lD.duracion * (fr[2] - fr[0]) + 0.1)) * 100 + "%";
+  // Cierre
+  const dz = t - lZ.inicio; $("cierre").style.display = dz >= 0 ? "block" : "none"; $("cierre").style.clipPath = `inset(${(1 - io(dz / 0.4)) * 100}% 0 0 0)`;
+  document.querySelectorAll("#cierre .ab div").forEach((d, k) => { d.style.transform = `translateY(${Math.sin(Math.max(0, dz - 0.4) * 5 + k * Math.PI) * 14}px) scale(${back((dz - 0.2 - k * 0.12) / 0.4)})`; });
+  $("pie").style.opacity = ease((dz - 0.35) / 0.3);
+  $("wa").style.transform = `scale(${back((dz - 0.7) / 0.35)})`; $("wa").style.transformOrigin = "0 50%"; $("logo").style.opacity = ease((dz - 0.9) / 0.3);
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>

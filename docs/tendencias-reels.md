@@ -27,6 +27,12 @@ sospechosos) desde octubre → hecho como `sospechoso`. Temporada: Black Friday 
 [mean.ceo · Instagram trends nov 2026](https://blog.mean.ceo/instagram-trends-november-2026/),
 [Virlo · semana del 16-nov](https://virlo.ai/trending-on-tiktok-this-week), [Gelato · TikTok trends](https://www.gelato.com/es/blog/tiktok-trends-right-now).
 
+**Revisión rápida 2026-11-24:** titular «A o B, elegí una» corto (~42× lo normal) → hecho como `puertas`; cuenta regresiva de diciembre y
+situación con la que todos se identifican → hecho como `clima`. Siguen arriba flechas/pantallas paso a paso (~35×) y «decí exactamente esto» (~20×).
+Ganchos con mejor tasa de la semana: POV, curiosidad/misterio y afirmación impactante. Fuentes:
+[tryvolume](https://tryvolume.app/working/business-and-marketing), [Virlo · semana del 23-nov](https://virlo.ai/trending-on-tiktok-this-week),
+[Startups.co.uk · nov 2026](https://startups.co.uk/news/social-media-trends-november-2026/).
+
 Otras señales: los carruseles ganan en guardados y compartidos; el texto en pantalla y las palabras clave importan porque
 la gente busca dentro de Instagram como en Google.
 

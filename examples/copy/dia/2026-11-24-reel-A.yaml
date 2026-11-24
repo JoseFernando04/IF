@@ -1,0 +1,59 @@
+# Reel A · «Elegí una puerta» (FORMATO NUEVO `puertas`, plantilla templates/video/puertas/reel.html desde 2026-11-24).
+# Tendencia: titular «A o B, elegí una» corto, en loop, con el detalle en la descripción (tryvolume, ~42× lo normal).
+# Pilar: soluciones (seguimiento de cotizaciones por WhatsApp). Escena de ejemplo, sin cifras de clientes.
+formato: puertas
+titulo: Elegí una puerta - clientes nuevos o los que ya te pidieron precio
+audio: assets/voice/elevenlabs/2026-11-24-reel-A.mp3
+salida: data/dias/2026-11-24/reel-A
+musica: voxel-revolution
+musica_db: -24
+whatsapp: "+502 3808 9808"
+fondo_muestra: "#1d362b"
+etiqueta: "SOLO PODÉS ABRIR UNA"
+pregunta: "¿Cuál *abrís?*"
+a:
+  rotulo: "Clientes *nuevos*"
+  detras: "?|Todavía no saben *quién sos*"
+b:
+  rotulo: "Los que ya te *pidieron precio*"
+  etiqueta: "DETRÁS DE LA PUERTA B"
+  titulo: "Ya te conocen. *Nadie les volvió a escribir.*"
+  titulo_dias: "El seguimiento *sale solo.*"
+  tarjetas:
+    - {q: "Cotización · puertas", d: "Enviada hace dos semanas", e: "Sin respuesta", ok: "Seguimiento ✓"}
+    - {q: "Cotización · uniformes", d: "«Lo veo y le aviso»", e: "Sin respuesta", ok: "Seguimiento ✓"}
+    - {q: "Cotización · repuestos", d: "Vista, sin contestar", e: "Sin respuesta", ok: "Seguimiento ✓"}
+  dias: [2, 5, 10]
+  dias_fracs: [0.59, 0.75, 0.9]
+pie: "¿A o B? *Contanos.*"
+caption: >-
+  Antes de salir a buscar clientes nuevos, revisá tu lista de cotizaciones del mes. 🚪👀
+  Ahí hay gente que ya te buscó, ya te explicó lo que necesita y ya vio tu precio. Muchas veces no dijeron que no: se les pasó, y a vos también.
+  Dar seguimiento no es insistir. Es un mensaje corto, a tiempo y con tu tono, sin que nadie en el equipo tenga que acordarse.
+  ¿Te animás a abrir la B? Escribinos al WhatsApp +502 3808 9808. (Escena de ejemplo.)
+hashtags: [Cotizaciones, AutomatizacionWhatsApp, VentasPorWhatsApp, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: Dos puertas, y solo podés abrir una.
+    sfx: [[0.05, whoosh], [0.2, thud]]
+  - texto: En la A, clientes nuevos.
+    escena: a
+    sfx: [[0.02, thud], [0.35, pop]]
+  - texto: En la B, los que ya te pidieron precio y no contestaron.
+    escena: b
+    sfx: [[0.02, thud], [0.25, pop]]
+  - texto: Tres, dos, uno.
+    escena: cuenta
+    cuenta_fracs: [0, 0.36, 0.82]
+    sfx: [[0.04, tick], [0.36, tick], [0.82, tick]]
+  - texto: Los de la A todavía no saben quién sos.
+    escena: abre_a
+    sfx: [[0.05, whoosh]]
+  - texto: Los de la B ya te conocen, solo falta volver a escribirles.
+    escena: abre_b
+    sfx: [[0.05, whoosh], [0.3, pop], [0.38, pop], [0.46, pop]]
+  - texto: Con seguimiento automático por WhatsApp, les escribís el día dos, el cinco y el diez.
+    escena: dias
+    sfx: [[0.59, pop], [0.75, pop], [0.9, pop]]
+  - texto: ¿Cuál puerta abriste? Contanos.
+    escena: cierre
+    sfx: [[0.1, whoosh], [0.6, pop]]
