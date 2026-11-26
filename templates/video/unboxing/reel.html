@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Brico"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+@font-face { font-family: "Serif"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+/* Unboxing: una caja de cartón con cinta dorada se abre y de adentro salen, una por una, las piezas
+   de un servicio (2x2). Luego una tarjeta «no viene en la caja» con lo que se tacha, y el cierre. */
+:root { --verde: #0a1410; --verde2: #13241c; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --gris: #9fb3a8; --kraft: #c89a5e; --rojo: #e0483a; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: "Tight"; color: var(--marfil);
+  background: radial-gradient(ellipse 90% 55% at 50% 72%, #2c4d3b 0%, #13241c 55%, #0a1410 100%); }
+#mesa { position: absolute; left: 0; right: 0; top: 1640px; bottom: 0; background: linear-gradient(#0a1410cc, #050b08); }
+#eti { position: absolute; left: 70px; top: 110px; font: 700 30px "Mono"; letter-spacing: 6px; color: var(--oro); }
+#rec { position: absolute; right: 70px; top: 100px; font: 700 30px "Mono"; letter-spacing: 3px; padding: 12px 22px; border: 3px solid #fefcf355; border-radius: 999px; }
+#tit { position: absolute; left: 70px; right: 70px; top: 180px; font: 800 132px/0.95 "Brico"; letter-spacing: -4px; }
+#tit em, #pie em, #nt h3 em { font: 400 1.12em/1 "Serif"; letter-spacing: 0; color: var(--oro); }
+/* Caja */
+#caja { position: absolute; left: 160px; top: 1180px; width: 760px; height: 540px; perspective: 1600px; }
+#hueco { position: absolute; left: 0; right: 0; top: 0; height: 140px; background: linear-gradient(#050b08, #1a120a); }
+#frente { position: absolute; left: 0; right: 0; top: 140px; bottom: 0; background: linear-gradient(170deg, #d7ab70, var(--kraft) 50%, #a87b44);
+  box-shadow: inset 0 -30px 60px #0003, 0 40px 80px #0008; border-radius: 4px; }
+#frente:after { content: ""; position: absolute; inset: 0; opacity: .18; background: repeating-linear-gradient(90deg, #0000 0 22px, #5b3d1a 22px 24px); }
+#cinta { position: absolute; left: 330px; width: 100px; top: 140px; bottom: 0; background: linear-gradient(90deg, #d9ab0c, var(--oro), #d9ab0c); z-index: 2; }
+#cinta span { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-90deg); white-space: nowrap; font: 800 34px "Mono"; letter-spacing: 5px; color: var(--verde); }
+#sello { position: absolute; left: 450px; top: 230px; width: 270px; padding: 16px 18px; border: 5px solid #5b3d1acc; border-radius: 12px; color: #5b3d1acc;
+  font: 700 26px/1.25 "Mono"; letter-spacing: 2px; transform: rotate(-6deg); z-index: 1; }
+#sello b { display: block; font: 800 40px/1 "Brico"; letter-spacing: -1px; margin-top: 6px; }
+.flap { position: absolute; top: 0; width: 380px; height: 140px; background: linear-gradient(#e2bb84, #cfa46a); z-index: 3; box-shadow: inset 0 -8px 0 #0002; }
+#fl { left: 0; transform-origin: 0 50%; } #fr { right: 0; transform-origin: 100% 50%; }
+.flap i { position: absolute; top: 0; bottom: 0; width: 50px; background: linear-gradient(90deg, #d9ab0c, var(--oro)); }
+#fl i { right: 0; } #fr i { left: 0; }
+#brillo { position: absolute; left: 50%; top: 60px; width: 900px; height: 900px; margin-left: -450px; margin-top: -450px; border-radius: 50%; z-index: 0;
+  background: radial-gradient(circle, #fff3b8cc 0%, #f0c41966 25%, #f0c41900 60%); pointer-events: none; }
+/* Piezas */
+.pz { position: absolute; width: 440px; height: 300px; margin-left: -220px; margin-top: -150px; background: var(--marfil); color: var(--verde);
+  border-radius: 28px; box-shadow: 0 24px 50px #0008; z-index: 6; overflow: visible; }
+.pz .vis { position: absolute; left: 26px; right: 26px; top: 34px; height: 150px; display: grid; place-items: center; }
+.pz .rot { position: absolute; left: 30px; right: 30px; bottom: 30px; font: 800 44px/1.02 "Brico"; letter-spacing: -1px; }
+.pz .n { position: absolute; right: 22px; top: 18px; font: 700 24px "Mono"; color: #2f6b4c; }
+.chis { position: absolute; width: 46px; height: 46px; background: var(--oro); clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); }
+.url { display: flex; align-items: center; gap: 10px; width: 100%; padding: 20px 20px; box-sizing: border-box; border-radius: 999px; background: #e9e3d0; font: 600 32px "Tight"; white-space: nowrap; }
+.url svg { flex: none; } .url small { font: 500 24px "Tight"; color: #7b7462; } .url b { font-weight: 800; }
+.boton { display: flex; align-items: center; gap: 18px; padding: 26px 40px; border-radius: 999px; background: var(--verde3); color: var(--oro); font: 800 46px "Tight"; }
+.tiles { display: flex; gap: 16px; } .tiles div { width: 112px; height: 140px; border-radius: 16px; background: #e9e3d0; position: relative; }
+.tiles div:before { content: ""; position: absolute; left: 18px; right: 18px; top: 16px; height: 64px; border-radius: 10px; background: #c9bf9f; }
+.tiles div b { position: absolute; left: 10px; right: 10px; bottom: 12px; text-align: center; font: 700 22px "Mono"; padding: 6px 0; border-radius: 8px; background: var(--verde3); color: var(--oro); }
+.mapa { position: relative; width: 100%; height: 150px; border-radius: 20px; overflow: hidden;
+  background: #e2ddc8 repeating-linear-gradient(35deg, #0000 0 60px, #fefcf3 60px 72px); }
+.mapa svg { position: absolute; left: 50%; top: 14px; margin-left: -36px; } .mapa b { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font: 800 38px "Tight"; color: #c79b00; letter-spacing: 4px; }
+/* No viene en la caja */
+#nt { position: absolute; left: 90px; right: 90px; top: 560px; padding: 56px 60px 64px; background: var(--marfil); color: var(--verde); border-radius: 30px; z-index: 12;
+  box-shadow: 0 30px 80px #000a; }
+#nt h3 { margin: 0 0 30px; font: 800 84px/0.95 "Brico"; letter-spacing: -2px; } #nt h3 em { color: var(--rojo); }
+#nt .k { font: 700 28px "Mono"; letter-spacing: 5px; color: var(--rojo); margin-bottom: 20px; }
+#nt .x { position: relative; font: 700 54px/1.1 "Tight"; padding: 22px 0; border-top: 3px dashed #0a141022; }
+#nt .x i { position: absolute; left: -10px; top: 50%; height: 10px; margin-top: -2px; background: var(--rojo); border-radius: 5px; }
+#velo { position: absolute; inset: 0; background: #050b08; z-index: 11; }
+/* Cierre */
+#cierre { position: absolute; inset: 0; z-index: 20; background: var(--verde); }
+#pie { position: absolute; left: 70px; right: 70px; top: 520px; font: 800 168px/0.95 "Brico"; letter-spacing: -5px; }
+#cajita { position: absolute; left: 70px; top: 300px; width: 180px; height: 150px; }
+#wa { position: absolute; left: 70px; top: 1080px; font: 800 54px "Tight"; color: var(--verde); background: var(--oro); padding: 30px 46px; border-radius: 999px; }
+#logo { position: absolute; left: 70px; top: 1580px; width: 170px; }
+</style></head>
+<body>
+<div id="mesa"></div>
+<div id="eti"></div><div id="rec"></div><div id="tit"></div>
+<div id="caja"><div id="brillo"></div><div id="hueco"></div><div class="flap" id="fl"><i></i></div><div class="flap" id="fr"><i></i></div>
+  <div id="frente"><div id="sello"></div></div><div id="cinta"><span></span></div></div>
+<div id="piezas"></div>
+<div id="velo"></div>
+<div id="nt"><div class="k"></div><h3></h3><div id="xs"></div></div>
+<div id="cierre"><svg id="cajita" viewBox="0 0 180 150"><path d="M20 50 L160 50 L160 140 L20 140 Z" fill="#c89a5e"/><path d="M20 50 L0 10 L80 10 L90 50 Z M160 50 L180 10 L100 10 L90 50 Z" fill="#e2bb84"/><rect x="78" y="50" width="24" height="90" fill="#f0c419"/></svg>
+  <div id="pie"></div><div id="wa"></div><img id="logo" src="__LOGO__"></div>
+<script type="module">
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, $ = (id) => document.getElementById(id), Q = (s) => document.querySelector(s);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (x) => { x = cl(x); return 1 - (1 - x) ** 3; };
+const io = (x) => { x = cl(x); return x < .5 ? 4 * x ** 3 : 1 - (-2 * x + 2) ** 3 / 2; };
+const back = (x) => { x = cl(x); const c = 1.7; return Math.max(0, 1 + (c + 1) * (x - 1) ** 3 + c * (x - 1) ** 2); };
+const em = (s) => (s || "").replace(/\*(.+?)\*/g, "<em>$1</em>");
+const LOCK = `<svg width="34" height="40" viewBox="0 0 34 40"><rect x="3" y="17" width="28" height="21" rx="5" fill="#1d362b"/><path d="M9 17 V11 a8 8 0 0 1 16 0 V17" fill="none" stroke="#1d362b" stroke-width="5"/></svg>`;
+const CHAT = `<svg width="52" height="52" viewBox="0 0 52 52"><path d="M26 4 C13 4 4 13 4 24 c0 5 2 9 5 12 L6 48 l13-5 c2 .6 4 1 7 1 c13 0 22-9 22-20 S39 4 26 4Z" fill="#f0c419"/></svg>`;
+const PIN = `<svg width="72" height="96" viewBox="0 0 72 96"><path d="M36 2 C17 2 4 16 4 34 c0 24 32 58 32 58 s32-34 32-58 C68 16 55 2 36 2Z" fill="#e0483a"/><circle cx="36" cy="34" r="12" fill="#fefcf3"/></svg>`;
+const VIS = {
+  dominio: (p) => `<div class="url">${LOCK}<small>https://</small><b>${p.texto || "tunegocio.com"}</b></div>`,
+  whatsapp: (p) => `<div class="boton">${CHAT}${p.texto || "Escribinos"}</div>`,
+  catalogo: (p) => `<div class="tiles">${(p.etiquetas || ["Hay ✓", "Hay ✓", "Hay ✓"]).map((e) => `<div><b>${e}</b></div>`).join("")}</div>`,
+  google: () => `<div class="mapa">${PIN}<b>★★★★★</b></div>`,
+  texto: (p) => `<div style="font:800 90px/1 Brico;color:#1d362b">${p.texto}</div>`,
+};
+$("eti").textContent = REEL.etiqueta; $("rec").textContent = REEL.serie || "UNBOXING";
+$("tit").innerHTML = em(REEL.pregunta);
+Q("#cinta span").textContent = REEL.cinta; $("sello").innerHTML = em(REEL.sello || "");
+const SLOTS = [[300, 640], [780, 640], [300, 970], [780, 970]];
+const piezas = REEL.piezas.map((p, k) => { const d = document.createElement("div"); d.className = "pz";
+  d.innerHTML = `<div class="n">${k + 1}/${REEL.piezas.length}</div><div class="vis">${VIS[p.tipo](p)}</div><div class="rot">${em(p.rotulo)}</div>`
+    + [[-20, -24], [430, 30], [400, 300]].map(([x, y]) => `<div class="chis" style="left:${x}px;top:${y}px"></div>`).join("");
+  $("piezas").appendChild(d); return d; });
+Q("#nt .k").textContent = REEL.no_trae.etiqueta; Q("#nt h3").innerHTML = em(REEL.no_trae.titulo);
+const xs = REEL.no_trae.items.map((x) => { const d = document.createElement("div"); d.className = "x"; d.innerHTML = `<span>${x}</span><i></i>`; $("xs").appendChild(d); return d; });
+$("pie").innerHTML = em(REEL.pie); $("wa").textContent = "WhatsApp " + REEL.whatsapp;
+const esc = (n) => L.find((l) => l.escena === n) || { inicio: 1e9, duracion: 1 };
+const lAb = esc("abre"), lNT = esc("notrae"), lZ = esc("cierre");
+const lItems = REEL.piezas.map((_, k) => L.find((l) => l.pieza === k + 1) || { inicio: 1e9, duracion: 1 });
+const at = (l, f) => l.inicio + l.duracion * f;
+
+function dibujar(t) {
+  // Título y caja entran
+  $("tit").style.opacity = ease(t / 0.25); $("tit").style.transform = `translateY(${(1 - back(t / 0.45)) * 60}px)`;
+  const ec = back((t + 0.05) / 0.55), sac = t < lAb.inicio ? Math.sin(t * 9) * 2.2 * (1 - cl((t - 1) / 2)) : 0;
+  $("caja").style.transform = `translateY(${(1 - ec) * 700}px) rotate(${sac}deg)`;
+  // Abrir: la cinta de arriba se corta y las solapas giran hacia afuera
+  const tc = at(lAb, lAb.corte ?? 0.15), a = io((t - tc - 0.12) / 0.7);
+  $("fl").style.transform = `rotateY(${-a * 125}deg)`; $("fr").style.transform = `rotateY(${a * 125}deg)`;
+  const br = t > tc ? ease((t - tc) / 0.6) : 0;
+  $("brillo").style.opacity = br * (0.75 + 0.25 * Math.sin(t * 3)); $("brillo").style.transform = `scale(${0.6 + 0.4 * br})`;
+  $("caja").style.scale = t > tc ? 1 + 0.02 * Math.sin(cl((t - tc) / 0.3) * Math.PI) : 1;
+  // Las piezas salen de la caja hacia su lugar
+  piezas.forEach((d, k) => {
+    const l = lItems[k], t0 = at(l, REEL.piezas[k].frac ?? 0.05), p = (t - t0) / 0.75;
+    if (p <= 0) { d.style.display = "none"; return; }
+    d.style.display = "block";
+    const [x1, y1] = SLOTS[k], x0 = 540, y0 = 1250, e = back(p), arco = Math.sin(cl(p) * Math.PI) * -220;
+    const activa = t >= l.inicio && t < l.inicio + l.duracion;
+    d.style.left = x0 + (x1 - x0) * e + "px"; d.style.top = y0 + (y1 - y0) * ease(p) + arco + "px";
+    d.style.transform = `scale(${0.25 + 0.75 * e + (activa ? 0.04 * ease((t - t0 - 0.7) / 0.3) : 0)}) rotate(${(1 - e) * (k % 2 ? 14 : -14) + (k % 2 ? 2 : -2)}deg)`;
+    d.style.zIndex = activa ? 8 : 6;
+    d.style.filter = !activa && t < lNT.inicio && lItems.some((o) => t >= o.inicio && t < o.inicio + o.duracion) ? "brightness(0.55)" : "none";
+    d.querySelectorAll(".chis").forEach((c, j) => { const q = (t - t0 - 0.55 - j * 0.08) / 0.55;
+      c.style.opacity = q > 0 && q < 1 ? Math.sin(q * Math.PI) : 0; c.style.transform = `scale(${0.3 + q}) rotate(${q * 90}deg)`; });
+  });
+  // No viene en la caja
+  const dn = t - lNT.inicio; $("nt").style.display = $("velo").style.display = dn >= 0 && t < lZ.inicio ? "block" : "none";
+  $("velo").style.opacity = 0.75 * ease(dn / 0.3);
+  $("nt").style.transform = `translateY(${(1 - back(dn / 0.5)) * 900}px) rotate(${-2 + (1 - ease(dn / 0.5)) * 8}deg)`;
+  const fx = REEL.no_trae.fracs || xs.map((_, k) => 0.3 + k * 0.2);
+  xs.forEach((x, k) => { const q = ease((t - at(lNT, fx[k])) / 0.35); x.querySelector("i").style.width = q * (x.querySelector("span").offsetWidth + 20) + "px";
+    x.style.color = q > 0.5 ? "#0a141077" : "var(--verde)"; });
+  // Cierre
+  const dz = t - lZ.inicio; $("cierre").style.display = dz >= 0 ? "block" : "none"; $("cierre").style.clipPath = `circle(${io(dz / 0.5) * 150}% at 50% 70%)`;
+  $("cajita").style.transform = `translateY(${(1 - back((dz - 0.15) / 0.45)) * 200}px) rotate(${Math.sin(dz * 4) * 4}deg)`;
+  $("pie").style.opacity = ease((dz - 0.3) / 0.3); $("pie").style.transform = `translateY(${(1 - ease((dz - 0.3) / 0.4)) * 50}px)`;
+  $("wa").style.transform = `scale(${back((dz - 0.65) / 0.35)})`; $("wa").style.transformOrigin = "0 50%"; $("logo").style.opacity = ease((dz - 0.9) / 0.3);
+}
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); };
+window.__ready = true;
+</script>
+</body></html>

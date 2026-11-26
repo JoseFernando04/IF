@@ -406,14 +406,16 @@ piezas:
   pieza: reel-B-realidad-nuestro-tablero
   tipo: reel
   tema: Dosis de realidad - nuestro propio tablero
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-25'
 - dia: '2026-11-17'
   pieza: reel-C-decilo-mas-barato
   tipo: reel
   tema: Decilo así - cuando te piden «¿me lo dejás más barato?»
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-18'
@@ -459,9 +461,11 @@ piezas:
   pieza: reel-C-versus-maquina-persona
   tipo: reel
   tema: La máquina contesta, la persona vende
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-25'
 - dia: '2026-11-19'
   pieza: post-1-recibo-conteo-fin-de-ano
   tipo: post
@@ -512,16 +516,20 @@ piezas:
   pieza: post-1-checklist-whatsapp-diciembre
   tipo: post
   tema: 4 cosas para dejar listas en tu WhatsApp antes de diciembre 🎄📲
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-25'
 - dia: '2026-11-20'
   pieza: post-2-frase-si-hay
   tipo: post
   tema: «Sí hay, déjeme ver…» 🫠 La frase que todo mostrador dijo alguna vez
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-25'
 - dia: '2026-11-20'
   pieza: post-3-diccionario-vol5-diciembre
   tipo: post
@@ -612,7 +620,7 @@ piezas:
   pieza: post-3-frase-resena-nunca-llego
   tipo: post
   tema: '«¡Claro que le dejo su reseña!» ⭐ (spoiler: nunca llegó)'
-  estado: pendiente
+  estado: descartado
   redes: []
   fecha: null
 - dia: '2026-11-23'
@@ -677,6 +685,48 @@ piezas:
   pieza: reel-C-pov-diciembre-cobrando
   tipo: reel
   tema: POV - es diciembre y en lugar de vender andás cobrando
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-25'
+  pieza: post-1-checklist-catalogo
+  tipo: post
+  tema: Antes de mandar tu catálogo por WhatsApp, revisá estas 4 cosas 📒✅
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-25'
+  pieza: post-2-este-o-este-resenas
+  tipo: post
+  tema: ¿A o B? Qué hacés después de una buena venta ⭐ (la B casi nadie la hace)
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-25'
+  pieza: post-3-diccionario-vol6-black-friday
+  tipo: post
+  tema: 'Diccionario del dueño de pyme, vol. 6: edición Black Friday 📖🏷️'
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-25'
+  pieza: reel-A-unboxing-pagina-web
+  tipo: reel
+  tema: Unboxing de una página web que sí vende
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-25'
+  pieza: reel-B-banderas-whatsapp
+  tipo: reel
+  tema: Banderas rojas y verdes en el WhatsApp de un negocio
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-25'
+  pieza: reel-C-servilleta-vendedores-de-ruta
+  tipo: reel
+  tema: ¿Cómo funciona una app para vendedores de ruta?
   estado: pendiente
   redes: []
   fecha: null

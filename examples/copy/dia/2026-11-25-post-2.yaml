@@ -1,0 +1,35 @@
+# Post 2 · Este o este (carrusel de 5: portada A/B → equipo A → equipo B → cómo pasarte → cierre).
+# Pilar: soluciones → motor de reseñas de Google. Sin cifras ni clientes.
+formato: este-o-este
+salida: data/dias/2026-11-25/post-2
+titulo_tiktok: "¿A o B? Qué hacés después de una buena venta ⭐ (la B casi nadie la hace)"
+pregunta: "DESPUÉS DE UNA BUENA VENTA…"
+opciones:
+  - {texto: "Esperás que el cliente se acuerde de dejarte una reseña.", nota: "…y la última en Google es de hace un año."}
+  - {texto: "Al día siguiente le llega el enlace para dejarla.", nota: "Un mensaje corto, con tu tono."}
+comenta: "Comentá A o B 👇"
+whatsapp: "+502 3808 9808"
+etiqueta: "TUS RESEÑAS"
+slides:
+  - titulo: "Si sos del <em>equipo A…</em>"
+    marca: "✗"
+    puntos:
+      - "El cliente contento te dice «¡qué bueno!» y sigue con su día."
+      - "Las reseñas que sí llegan son, muchas veces, de quien tuvo un problema."
+      - "Quien te busca en Google ve pocas estrellas y viejas."
+  - claro: true
+    titulo: "Si sos del <em>equipo B…</em>"
+    marca: "✓"
+    puntos:
+      - "Le escribís cuando la experiencia está fresca."
+      - "El enlace lo lleva directo a calificarte, sin buscarte."
+      - "Tu perfil se mantiene vivo sin que nadie tenga que acordarse."
+  - titulo: "Pasarte a la B <em>no es rogar reseñas.</em>"
+    texto: "Es pedirla en el momento justo y ponérsela fácil. Un motor de reseñas manda el mensaje por WhatsApp después de cada venta o servicio, y vos solo leés lo que te escriben."
+cierre: "¿Sos A o B? <em>Contanos.</em>"
+cierre_bajada: "Y si querés que las reseñas lleguen solas, escribinos y te mostramos cómo funciona."
+caption: >-
+  Tu mejor cliente no te va a dejar reseña. No porque no quiera: porque nadie se lo pidió en el momento. ⭐🫠
+  Antes de elegir dónde comer, comprar o llevar el carro, la gente revisa Google. Un perfil con reseñas recientes se elige solo.
+  ¿A o B? Contanos 👇 Para que las reseñas lleguen sin estar pidiéndolas, escribinos al WhatsApp +502 3808 9808.
+hashtags: [ReseñasDeGoogle, GoogleMaps, AutomatizacionWhatsApp, PymesGuatemala, NegociosGT]

@@ -1,0 +1,70 @@
+# Reel C · Te lo explico en una servilleta, ep. 02 (`servilleta`). Pilar: educativo.
+# Servicio: app para vendedores de calle / de ruta (pedido → bodega → inventario → mapa). Sin cifras ni clientes.
+formato: servilleta
+titulo: ¿Cómo funciona una app para vendedores de ruta?
+audio: assets/voice/elevenlabs/2026-11-25-reel-C.mp3
+salida: data/dias/2026-11-25/reel-C
+musica: if-firma
+musica_db: -24
+whatsapp: "+502 3808 9808"
+rotulo: "TE LO EXPLICO EN UNA SERVILLETA · 02"
+sub: "app para vendedores de ruta"
+portada_t: 5.5
+caption: >-
+  Segunda servilleta de la serie, y esta ya tiene manchas de café. ✍️☕
+  Si tu negocio vende por ruta, el pedido suele viajar tres veces: del cliente al cuaderno, del cuaderno al chat y del chat a la bodega. Cada vuelta es una oportunidad de que algo se pierda.
+  Guardala para enseñársela a tus vendedores. ¿Querés ver cómo se vería con tu ruta? Escribinos al WhatsApp +502 3808 9808.
+hashtags: [VendedoresDeRuta, Distribuidora, SistemaDeVentas, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: ¿Cómo funciona una app para vendedores de ruta? Te lo dibujo en una servilleta.
+    dibuja: 0.8
+    trazos:
+      - {texto: "¿Cómo funciona una app", x: 480, y: 125, tam: 70}
+      - {texto: "para vendedores de ruta?", x: 480, y: 215, tam: 84, negrita: true}
+      - {d: "M150 245 Q480 262 810 238", color: oro, ancho: 10, peso: 0.6}
+    sfx: [[0.02, paper], [0.3, marker]]
+  - texto: Este es tu vendedor, en la tienda de un cliente.
+    trazos:
+      - {d: "M70 470 L330 470 L300 400 L100 400 Z M100 470 L100 640 L300 640 L300 470 M170 640 L170 560 L230 560 L230 640", peso: 0.55}
+      - {d: "M120 400 L135 470 M160 400 L170 470 M200 400 L200 470 M240 400 L230 470 M280 400 L265 470", color: oro, ancho: 6, peso: 0.25}
+      - {texto: "tienda", x: 200, y: 700, tam: 46, color: gris}
+      - {d: "M400 500 a28 28 0 1 0 56 0 a28 28 0 1 0 -56 0 M428 528 L428 610 M428 555 L395 590 M428 555 L470 575 M428 610 L405 670 M428 610 L452 670", ancho: 8, peso: 0.45}
+      - {texto: "vendedor", x: 430, y: 720, tam: 46, color: gris}
+    sfx: [[0.05, marker], [0.5, marker]]
+  - texto: Anota el pedido en el celular, no en un papel.
+    trazos:
+      - {d: "M478 545 Q478 535 488 535 L528 535 Q538 535 538 545 L538 610 Q538 620 528 620 L488 620 Q478 620 478 610 Z", ancho: 7, peso: 0.35}
+      - {d: "M120 820 L250 820 L250 960 L120 960 Z M140 860 L230 860 M140 895 L230 895 M140 930 L200 930", ancho: 6, color: gris, peso: 0.35}
+      - {texto: "papel", x: 185, y: 800, tam: 44, color: gris}
+      - {d: "M100 800 L270 980 M270 800 L100 980", color: rojo, ancho: 12, peso: 0.3}
+    sfx: [[0.1, marker], [0.75, marker]]
+  - texto: El pedido llega solo a la bodega, y ya lo están preparando.
+    trazos:
+      - {d: "M560 560 Q630 470 690 515", color: oro, ancho: 8, peso: 0.4}
+      - {d: "M668 497 L692 517 L662 526", color: oro, ancho: 8, peso: 0.15}
+      - {d: "M690 470 L800 405 L910 470 L910 680 L690 680 Z M745 680 L745 580 L855 580 L855 680 M745 615 L855 615 M745 648 L855 648", peso: 0.45}
+      - {texto: "bodega", x: 800, y: 730, tam: 50, negrita: true}
+    sfx: [[0.05, whoosh], [0.4, marker], [0.8, pop]]
+  - texto: El inventario se descuenta en ese momento.
+    trazos:
+      - {texto: "− inventario", x: 775, y: 820, tam: 58, color: oro, negrita: true}
+      - {resalta: [630, 772, 290, 76], peso: 0.4}
+    sfx: [[0.1, marker], [0.6, pop]]
+  - texto: Y vos ves en el mapa qué tiendas ya visitó y cuánto vendió.
+    trazos:
+      - {d: "M370 800 L630 785 L645 1010 L385 1025 Z", ancho: 7, peso: 0.3}
+      - {d: "M410 980 Q465 890 520 930 Q570 960 600 840", color: gris, ancho: 6, peso: 0.25}
+      - {d: "M420 955 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0 M505 905 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0 M585 845 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0", color: oro, ancho: 9, peso: 0.3}
+      - {texto: "visitadas ✓ ✓ ✓", x: 510, y: 1085, tam: 50, color: oro, negrita: true}
+    sfx: [[0.1, marker], [0.5, pop], [0.6, pop], [0.7, pop]]
+  - texto: ¿Querés una así para tu ruta? Escribinos por WhatsApp.
+    limpiar: true
+    cierre: true
+    dibuja: 0.95
+    trazos:
+      - {texto: "¿Querés una así", x: 480, y: 360, tam: 104, negrita: true}
+      - {texto: "para tu ruta?", x: 480, y: 470, tam: 104, negrita: true}
+      - {texto: "escribinos", x: 480, y: 620, tam: 96, color: oro, negrita: true}
+      - {d: "M480 670 Q505 760 480 850 M452 822 L480 855 L510 824", ancho: 9, peso: 0.5}
+      - {texto: "por WhatsApp", x: 480, y: 960, tam: 96, negrita: true}
+    sfx: [[0.02, paper], [0.5, pop]]

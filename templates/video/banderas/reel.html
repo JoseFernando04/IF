@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Brico"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+@font-face { font-family: "Serif"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+/* Banderas rojas y verdes: una bandera que ondea en su asta se iza por cada punto (roja o verde),
+   con un titular y un chat de ejemplo debajo. Las banderas ganadas se juntan arriba. Cierre con conteo. */
+:root { --verde: #0a1410; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --rojo: #d93a2b; --ok: #2f9e5b; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; font-family: "Tight"; color: var(--verde); background: #efe8d6; }
+#fondo { position: absolute; inset: 0; transition: none; }
+#eti { position: absolute; left: 70px; top: 110px; font: 700 30px "Mono"; letter-spacing: 6px; color: #2f6b4c; z-index: 3; }
+#junta { position: absolute; right: 70px; top: 96px; display: flex; gap: 10px; z-index: 3; }
+#junta svg { width: 44px; height: 56px; }
+#intro { position: absolute; left: 70px; right: 70px; top: 190px; font: 800 150px/0.94 "Brico"; letter-spacing: -5px; z-index: 3; }
+#intro em, #pie em, #ag em { font: 400 1.1em/1 "Serif"; letter-spacing: 0; }
+#intro .r { color: var(--rojo); } #intro .v { color: var(--ok); }
+#asta { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 2; }
+#tipo { position: absolute; left: 70px; top: 960px; font: 700 32px "Mono"; letter-spacing: 6px; padding: 12px 22px; border-radius: 999px; color: var(--marfil); z-index: 3; }
+#tit { position: absolute; left: 70px; right: 70px; top: 1030px; font: 800 100px/0.96 "Brico"; letter-spacing: -3px; z-index: 3; }
+#tit em { font: 400 1.1em/1 "Serif"; letter-spacing: 0; }
+#chat { position: absolute; left: 70px; right: 70px; top: 1290px; z-index: 3; }
+.b { position: absolute; max-width: 700px; padding: 22px 30px 40px; border-radius: 28px; font: 500 46px/1.2 "Tight"; box-shadow: 0 6px 0 #0a141018; }
+.b small { position: absolute; right: 22px; bottom: 10px; font: 600 24px "Mono"; color: #7b7462; }
+.b.cli { left: 0; background: #fff; border-top-left-radius: 6px; }
+.b.neg { right: 0; background: #dff0d6; border-top-right-radius: 6px; }
+.b.audio { display: flex; align-items: center; gap: 18px; }
+.b.audio i { display: block; width: 330px; height: 46px; background: repeating-linear-gradient(90deg, #2f6b4c 0 6px, #0000 6px 12px); -webkit-mask: linear-gradient(#000, #000); clip-path: polygon(0 40%, 5% 10%, 10% 50%, 15% 0, 20% 30%, 25% 15%, 30% 60%, 35% 5%, 40% 45%, 45% 20%, 50% 0, 55% 35%, 60% 10%, 65% 55%, 70% 20%, 75% 5%, 80% 40%, 85% 15%, 90% 50%, 95% 25%, 100% 45%, 100% 100%, 0 100%); }
+.b.audio b { font: 800 40px "Mono"; color: var(--verde3); }
+.b .pagar { display: inline-block; margin-top: 14px; padding: 12px 26px; border-radius: 999px; background: var(--verde3); color: var(--oro); font: 800 36px "Tight"; }
+.nota { position: absolute; left: 0; right: 0; text-align: center; font: 700 28px "Mono"; letter-spacing: 3px; color: #7b7462; }
+.nota.mal { color: var(--rojo); }
+#dos { position: absolute; left: 70px; top: 900px; display: flex; gap: 60px; z-index: 3; } #dos svg { width: 300px; height: 380px; transform-origin: 10% 100%; }
+#ag .s { position: absolute; left: 70px; right: 70px; top: 640px; font: 600 50px/1.2 "Tight"; color: #9fb3a8; }
+/* Escena del agente */
+#ag { position: absolute; inset: 0; z-index: 9; background: var(--verde); color: var(--marfil); }
+#ag .t { position: absolute; left: 70px; right: 70px; top: 300px; font: 800 150px/0.94 "Brico"; letter-spacing: -4px; } #ag em { color: var(--oro); }
+.fila { position: absolute; left: 70px; right: 70px; height: 160px; display: flex; align-items: center; gap: 30px; border-top: 3px solid #fefcf322; font: 700 56px/1.1 "Tight"; }
+.fila svg { flex: none; width: 70px; height: 90px; } .fila b { margin-left: auto; font: 700 30px "Mono"; color: var(--oro); letter-spacing: 2px; }
+/* Cierre */
+#cierre { position: absolute; inset: 0; z-index: 20; background: #efe8d6; }
+#cierre .par { position: absolute; left: 70px; top: 260px; display: flex; gap: 30px; } #cierre .par svg { width: 150px; height: 190px; }
+#pie { position: absolute; left: 70px; right: 70px; top: 560px; font: 800 158px/0.95 "Brico"; letter-spacing: -5px; } #pie em { color: var(--rojo); }
+#wa { position: absolute; left: 70px; top: 1180px; font: 800 54px "Tight"; color: var(--oro); background: var(--verde); padding: 30px 46px; border-radius: 999px; }
+#logo { position: absolute; left: 70px; top: 1580px; width: 170px; }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="eti"></div><div id="junta"></div><div id="intro"></div>
+<svg id="asta" viewBox="0 0 1080 1920"><defs><linearGradient id="sombra" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".18"/><stop offset=".5" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient></defs>
+  <rect x="140" y="300" width="22" height="640" rx="11" fill="#3b2a1a"/><circle cx="151" cy="292" r="22" fill="#f0c419"/>
+  <path id="tela"/><path id="brillo" fill="url(#sombra)"/><text id="letra" font-family="Brico" font-weight="800" font-size="92" fill="#fefcf3" letter-spacing="-2"></text></svg>
+<div id="tipo"></div><div id="tit"></div><div id="chat"></div>
+<div id="dos"></div>
+<div id="ag"><div class="t"></div><div class="s"></div><div id="filas"></div></div>
+<div id="cierre"><div class="par"></div><div id="pie"></div><div id="wa"></div><img id="logo" src="__LOGO_OSCURO__"></div>
+<script type="module">
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, $ = (id) => document.getElementById(id), Q = (s) => document.querySelector(s);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (x) => { x = cl(x); return 1 - (1 - x) ** 3; };
+const io = (x) => { x = cl(x); return x < .5 ? 4 * x ** 3 : 1 - (-2 * x + 2) ** 3 / 2; };
+const back = (x) => { x = cl(x); const c = 1.7; return Math.max(0, 1 + (c + 1) * (x - 1) ** 3 + c * (x - 1) ** 2); };
+const em = (s) => (s || "").replace(/\*(.+?)\*/g, "<em>$1</em>");
+const COL = { roja: "#d93a2b", verde: "#2f9e5b" };
+const mini = (c) => `<svg viewBox="0 0 44 56"><rect x="2" y="0" width="5" height="56" rx="2" fill="#3b2a1a"/><path d="M7 4 Q22 0 40 6 L40 30 Q24 24 7 30 Z" fill="${COL[c]}"/></svg>`;
+const items = L.filter((l) => l.bandera);
+$("eti").textContent = REEL.etiqueta;
+$("intro").innerHTML = em(REEL.intro).replace(/\[r\](.+?)\[\/r\]/, '<span class="r">$1</span>').replace(/\[v\](.+?)\[\/v\]/, '<span class="v">$1</span>');
+$("junta").innerHTML = items.map((l) => mini(l.bandera)).join("");
+const lAg = L.find((l) => l.escena === "agente") || { inicio: 1e9, duracion: 1 }, lZ = L.find((l) => l.escena === "cierre") || { inicio: 1e9, duracion: 1 };
+Q("#ag .t").innerHTML = em(REEL.agente.titulo);
+const verdes = items.filter((l) => l.bandera === "verde");
+$("filas").innerHTML = verdes.map((l, k) => `<div class="fila" style="top:${880 + k * 165}px">${mini("verde")}<span>${(l.corto || "")}</span><b>${REEL.agente.chip || "SOLO ✓"}</b></div>`).join("");
+Q("#cierre .par").innerHTML = mini("roja") + mini("verde");
+$("dos").innerHTML = mini("roja") + mini("verde");
+Q("#ag .s").textContent = REEL.agente.sub || "";
+$("pie").innerHTML = em(REEL.pie); $("wa").textContent = "WhatsApp " + REEL.whatsapp;
+const filas = [...document.querySelectorAll(".fila")], juntas = [...document.querySelectorAll("#junta svg")];
+
+function tela(t, alto) {
+  // Bandera de 600x360 que ondea desde el asta; "alto" = cuánto está izada (0 abajo, 1 arriba)
+  const x0 = 162, W = 600, H = 360, y0 = 320 + (1 - alto) * 560, A = 26, k = 2 * Math.PI / 380, w = 5.5;
+  const ola = (x) => Math.sin(k * x - w * t) * A * (x / W);
+  let top = [], bot = [];
+  for (let i = 0; i <= 30; i++) { const x = (W * i) / 30; top.push(`${x0 + x},${y0 + ola(x)}`); bot.unshift(`${x0 + x},${y0 + H + ola(x)}`); }
+  return { d: `M${top.join(" L")} L${bot.join(" L")} Z`, y0, ola };
+}
+function dibujar(t) {
+  const li = items.filter((l) => t >= l.inicio).pop();
+  const enIntro = !li;
+  $("intro").style.opacity = enIntro ? ease(t / 0.25) : 1 - ease((t - items[0].inicio) / 0.2);
+  $("intro").style.transform = `translateY(${(1 - back(t / 0.45)) * 70}px)`;
+  // Bandera: en la intro alterna roja/verde; en cada punto baja y se iza de nuevo
+  let color, alto, letra;
+  if (enIntro) { color = Math.floor(t / 0.7) % 2 ? COL.verde : COL.roja; alto = ease((t - 0.2) / 0.6); letra = ""; }
+  else { const d = t - li.inicio; color = COL[li.bandera]; alto = ease((d - 0.05) / 0.55); letra = li.bandera === "roja" ? "ROJA" : "VERDE"; }
+  $("asta").style.opacity = enIntro ? 0 : 1;
+  $("dos").style.display = enIntro ? "flex" : "none";
+  [...document.querySelectorAll("#dos svg")].forEach((s, k) => { s.style.transform = `rotate(${(k ? 8 : -8) + Math.sin(t * 4 + k * 2) * 5}deg) scale(${back((t - 0.3 - k * 0.2) / 0.45)})`; });
+  const f = tela(t, alto); $("tela").setAttribute("d", f.d); $("tela").setAttribute("fill", color); $("brillo").setAttribute("d", f.d);
+  $("letra").textContent = letra; $("letra").setAttribute("x", 200); $("letra").setAttribute("y", f.y0 + 215 + f.ola(200) * 0.6);
+  $("fondo").style.background = enIntro ? "#efe8d6" : li.bandera === "roja" ? "#f4e2dc" : "#e1efdc";
+  // Titular, tipo y chat
+  ["tipo", "tit", "chat"].forEach((id) => $(id).style.display = enIntro ? "none" : "block");
+  if (!enIntro) {
+    const d = t - li.inicio;
+    $("tipo").textContent = li.bandera === "roja" ? "🚩 BANDERA ROJA" : "BANDERA VERDE ✓"; $("tipo").style.background = COL[li.bandera];
+    $("tipo").style.transform = `scale(${back((d - 0.1) / 0.3)})`; $("tipo").style.transformOrigin = "0 50%";
+    if ($("tit").dataset.k !== li.titulo) {
+      $("tit").dataset.k = li.titulo; $("tit").innerHTML = em(li.titulo);
+      $("chat").innerHTML = (li.chat || []).map((c, j) => {
+        const y = j * 190;
+        if (c.de === "nota") return `<div class="nota${c.mal ? " mal" : ""}" style="top:${y + 40}px">${c.texto}</div>`;
+        const cls = c.de === "cliente" ? "cli" : "neg";
+        const body = c.de === "audio" ? `<b>▶</b><i></i><b>${c.texto}</b>` : c.de === "enlace" ? `${c.texto}<br><span class="pagar">${c.boton || "Pagar"} →</span>` : c.texto;
+        return `<div class="b ${cls}${c.de === "audio" ? " audio" : ""}" style="top:${y}px">${body}<small>${c.hora || ""}</small></div>`;
+      }).join("");
+    }
+    $("tit").style.opacity = ease((d - 0.15) / 0.3); $("tit").style.transform = `translateY(${(1 - ease((d - 0.15) / 0.4)) * 40}px)`;
+    const fr = li.chat_fracs || (li.chat || []).map((_, j) => 0.25 + j * 0.25);
+    [...$("chat").children].forEach((b, j) => { const q = (t - (li.inicio + li.duracion * fr[j])) / 0.3; b.style.opacity = q > 0 ? 1 : 0;
+      b.style.transform = `scale(${0.7 + 0.3 * back(q)})`; b.style.transformOrigin = b.classList.contains("neg") ? "100% 0" : "0 0"; });
+  }
+  // Banderas juntadas arriba a la derecha
+  juntas.forEach((j, k) => { const q = (t - items[k].inicio - 0.6) / 0.3; j.style.opacity = q > 0 ? 1 : 0.15; j.style.transform = `scale(${q > 0 ? 1 + 0.4 * (1 - ease(q)) : 1})`; });
+  // Agente: las verdes salen solas
+  const da = t - lAg.inicio; $("ag").style.display = da >= 0 && t < lZ.inicio ? "block" : "none"; $("ag").style.clipPath = `inset(0 0 ${(1 - io(da / 0.45)) * 100}% 0)`;
+  Q("#ag .t").style.opacity = ease((da - 0.2) / 0.3); Q("#ag .s").style.opacity = ease((da - 0.4) / 0.3);
+  const fa = REEL.agente.fracs || [0.35, 0.5, 0.65];
+  filas.forEach((r, k) => { const q = (t - at(lAg, fa[k])) / 0.4; r.style.opacity = q > 0 ? 1 : 0; r.style.transform = `translateX(${(1 - back(q)) * -200}px)`; });
+  // Cierre
+  const dz = t - lZ.inicio; $("cierre").style.display = dz >= 0 ? "block" : "none"; $("cierre").style.clipPath = `inset(0 0 ${(1 - io(dz / 0.4)) * 100}% 0)`;
+  [...document.querySelectorAll("#cierre .par svg")].forEach((s, k) => { s.style.transform = `rotate(${Math.sin(dz * 4 + k * 2) * 6}deg) scale(${back((dz - 0.1 - k * 0.15) / 0.4)})`; s.style.transformOrigin = "10% 100%"; });
+  $("pie").style.opacity = ease((dz - 0.3) / 0.3);
+  $("wa").style.transform = `scale(${back((dz - 0.65) / 0.35)})`; $("wa").style.transformOrigin = "0 50%"; $("logo").style.opacity = ease((dz - 0.9) / 0.3);
+}
+const at = (l, f) => l.inicio + l.duracion * f;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); };
+window.__ready = true;
+</script>
+</body></html>

@@ -1,0 +1,23 @@
+# Post 1 · Checklist para guardar (carrusel de 5). Pilar: tips → catálogo inteligente.
+# Ángulo: el catálogo que mandás por WhatsApp en temporada alta. Sin cifras.
+formato: checklist
+salida: data/dias/2026-11-25/post-1
+titulo_tiktok: "Antes de mandar tu catálogo por WhatsApp, revisá estas 4 cosas 📒✅"
+whatsapp: "+502 3808 9808"
+etiqueta: "TU CATÁLOGO"
+titulo: "4 cosas que tu catálogo <em>tiene que tener.</em>"
+bajada: "Es lo primero que pide un cliente que ya quiere comprar. Que no sea lo que lo detiene."
+guardar: "Guardalo y revisá el tuyo hoy"
+items:
+  - {p: "¿Dice si hay o no hay?", r: "Un producto bonito que ya se acabó es un mensaje más y un cliente que se va.", corto: "Existencias reales"}
+  - {p: "¿El precio es el de hoy?", r: "Si hay que aclarar «ese precio ya cambió», la venta empieza con una disculpa.", corto: "Precio al día"}
+  - {p: "¿Se puede pedir desde ahí?", r: "Un botón para escribirte con el producto ya elegido ahorra cinco mensajes de ida y vuelta.", corto: "Pedido en un toque"}
+  - {p: "¿Se abre bien en el celular?", r: "Un PDF de veinte páginas no se lee en una pantalla pequeña. Un enlace, sí.", corto: "Hecho para celular"}
+resumen: "Con las cuatro, tu catálogo vende solo mientras vos atendés."
+cierre: "¿Cuántas cumple <em>el tuyo</em>?"
+cierre_bajada: "Contanos en los comentarios. Si le faltan, escribinos: hacemos catálogos inteligentes conectados a tu inventario."
+caption: >-
+  «¿Me manda el catálogo?» es la frase más bonita que te pueden escribir… si lo que mandás está listo. 📒✨
+  Pasá tu catálogo por esta lista antes de diciembre: un catálogo que dice qué hay y cuánto cuesta hoy contesta la mitad de las preguntas antes de que te las hagan.
+  ¿Cuántas cumple el tuyo? 👇 Si querés uno conectado a tu inventario, escribinos al WhatsApp +502 3808 9808.
+hashtags: [CatalogoDigital, VentasPorWhatsApp, TipsDeNegocio, PymesGuatemala, NegociosGT]

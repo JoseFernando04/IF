@@ -33,6 +33,11 @@ Ganchos con mejor tasa de la semana: POV, curiosidad/misterio y afirmación impa
 [tryvolume](https://tryvolume.app/working/business-and-marketing), [Virlo · semana del 23-nov](https://virlo.ai/trending-on-tiktok-this-week),
 [Startups.co.uk · nov 2026](https://startups.co.uk/news/social-media-trends-november-2026/).
 
+**Revisión rápida 2026-11-25:** sin reportes nuevos de la semana; las guías de noviembre siguen premiando formatos repetibles,
+reels buscables y carruseles para guardar, y el «enviar por DM» como señal fuerte. Hechos hoy: **unboxing** («lo que viene en la caja»,
+satisfactorio y corto) → `unboxing`; **banderas rojas / verdes** (invita a comentar la cuenta) → `banderas`. Fuente:
+[mean.ceo · Instagram trends nov 2026](https://blog.mean.ceo/instagram-trends-november-2026/).
+
 Otras señales: los carruseles ganan en guardados y compartidos; el texto en pantalla y las palabras clave importan porque
 la gente busca dentro de Instagram como en Google.
 

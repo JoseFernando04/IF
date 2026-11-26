@@ -1,0 +1,85 @@
+# Reel B · «Banderas rojas y verdes» (FORMATO NUEVO `banderas`, plantilla templates/video/banderas/reel.html desde 2026-11-25).
+# Tendencia: red flags / green flags (comentarios con la cuenta de cada uno). Pilar: educativo → agente de IA en WhatsApp.
+# Palabra buscada: «WhatsApp Business» (uno de los días permitidos; con ideas y errores comunes, sin «tocá aquí»).
+# Chats de ejemplo, sin nombres ni cifras.
+formato: banderas
+titulo: Banderas rojas y verdes en el WhatsApp de un negocio
+audio: assets/voice/elevenlabs/2026-11-25-reel-B.mp3
+salida: data/dias/2026-11-25/reel-B
+musica: wholesome
+musica_db: -24
+whatsapp: "+502 3808 9808"
+etiqueta: "EL WHATSAPP DE TU NEGOCIO"
+intro: "Banderas [r]*rojas*[/r] y [v]*verdes*[/v] en el WhatsApp de un negocio"
+agente:
+  titulo: "Las verdes *salen solas.*"
+  sub: "Un agente de IA en tu WhatsApp las hace por vos, de día y de noche."
+  chip: "AGENTE ✓"
+  fracs: [0.45, 0.58, 0.71]
+pie: "¿Cuántas rojas *tiene el tuyo?*"
+caption: >-
+  Revisá tu WhatsApp con honestidad y contá las banderas. 🚩✅ (Sin trampa: el audio de tres minutos también cuenta.)
+  La mayoría de rojas no son culpa de nadie: pasan porque el que contesta también atiende el mostrador, cobra y arma pedidos. Las verdes no piden más esfuerzo, piden que alguien conteste aunque vos no podás.
+  Contanos en los comentarios cuántas rojas encontraste 👇 Y si querés que las verdes salgan solas, escribinos al WhatsApp +502 3808 9808.
+hashtags: [WhatsAppBusiness, BotDeWhatsApp, AtencionAlCliente, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: Banderas rojas y verdes en el WhatsApp de un negocio.
+    sfx: [[0.05, whoosh], [0.4, thud]]
+  - texto: Roja, contestar al día siguiente un «¿todavía hay?».
+    bandera: roja
+    titulo: "Contestar *al día siguiente*"
+    corto: "Contestar a tiempo"
+    chat:
+      - {de: cliente, texto: "¿Todavía hay?", hora: "21:40"}
+      - {de: negocio, texto: "Buenos días, sí hay 🙏", hora: "9:15 · al otro día"}
+    chat_fracs: [0.3, 0.6]
+    sfx: [[0.05, whoosh], [0.3, pop], [0.6, pop]]
+  - texto: Roja, mandar un audio de tres minutos para dar un precio.
+    bandera: roja
+    titulo: "Un audio de *tres minutos*"
+    chat:
+      - {de: cliente, texto: "¿Precio del juego de sala?", hora: "10:02"}
+      - {de: audio, texto: "3:12", hora: "10:20"}
+    chat_fracs: [0.3, 0.6]
+    sfx: [[0.05, whoosh], [0.3, pop], [0.6, pop]]
+  - texto: Roja, dejar en visto a quien ya te pidió cotización.
+    bandera: roja
+    titulo: "Dejar *en visto*"
+    chat:
+      - {de: cliente, texto: "Gracias por la cotización, lo platico y le aviso.", hora: "15:30"}
+      - {de: nota, texto: "VISTO ✓✓ · HACE DOS SEMANAS", mal: true}
+    chat_fracs: [0.3, 0.62]
+    sfx: [[0.05, whoosh], [0.3, pop], [0.62, tick]]
+  - texto: Verde, contestar en minutos, aunque sean las once de la noche.
+    bandera: verde
+    titulo: "Contestar *en minutos*"
+    corto: "Contesta de noche"
+    chat:
+      - {de: cliente, texto: "¿Hacen envíos?", hora: "23:04"}
+      - {de: negocio, texto: "¡Sí! Llega mañana. ¿A qué dirección?", hora: "23:04"}
+    chat_fracs: [0.3, 0.55]
+    sfx: [[0.05, whoosh], [0.3, pop], [0.55, pop]]
+  - texto: Verde, mandar el precio con el enlace para pagar.
+    bandera: verde
+    titulo: "Precio *y enlace de pago*"
+    corto: "Manda el enlace de pago"
+    chat:
+      - {de: cliente, texto: "¿Cuánto sería todo?", hora: "12:10"}
+      - {de: enlace, texto: "Aquí está el total de su pedido 👇", boton: "Pagar", hora: "12:10"}
+    chat_fracs: [0.3, 0.6]
+    sfx: [[0.05, whoosh], [0.3, pop], [0.6, pop]]
+  - texto: Verde, volver a escribir si no contestaron la cotización.
+    bandera: verde
+    titulo: "Dar *seguimiento*"
+    corto: "Da seguimiento"
+    chat:
+      - {de: nota, texto: "DÍA 2"}
+      - {de: negocio, texto: "Hola, ¿pudo revisar la cotización? Si tiene dudas, aquí estamos.", hora: "9:00"}
+    chat_fracs: [0.25, 0.45]
+    sfx: [[0.05, whoosh], [0.25, tick], [0.45, pop]]
+  - texto: Las verdes no dependen de alguien pegado al celular, las hace un agente de inteligencia artificial.
+    escena: agente
+    sfx: [[0.02, whoosh], [0.45, pop], [0.58, pop], [0.71, pop]]
+  - texto: ¿Cuántas rojas tiene el tuyo? Contanos.
+    escena: cierre
+    sfx: [[0.1, whoosh], [0.6, pop]]

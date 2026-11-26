@@ -1,0 +1,61 @@
+# Reel A · «Unboxing» (FORMATO NUEVO `unboxing`, plantilla templates/video/unboxing/reel.html desde 2026-11-25).
+# Tendencia: unboxing / «lo que viene en la caja» (estética ASMR, corto, satisfactorio). Pilar: soluciones → páginas web.
+# Palabra buscada: «página web para mi negocio» (ángulo gratis vs. profesional). Escena de ejemplo, sin cifras.
+formato: unboxing
+titulo: Unboxing de una página web que sí vende
+audio: assets/voice/elevenlabs/2026-11-25-reel-A.mp3
+salida: data/dias/2026-11-25/reel-A
+musica: digital-lemonade
+musica_db: -24
+whatsapp: "+502 3808 9808"
+etiqueta: "LO QUE VIENE EN LA CAJA"
+serie: "UNBOXING · 01"
+pregunta: "Una página web *que sí vende*"
+cinta: "PÁGINA WEB"
+sello: "FRÁGIL<b>Hecha a la medida</b>"
+piezas:
+  - {tipo: dominio, rotulo: "Un dominio con *tu nombre*", texto: "tunegocio.com"}
+  - {tipo: whatsapp, rotulo: "WhatsApp *a la vista*", texto: "Escribinos"}
+  - {tipo: catalogo, rotulo: "Catálogo *al día*", etiquetas: ["Hay ✓", "Hay ✓", "Pocas"]}
+  - {tipo: google, rotulo: "Tu ficha en *Google*"}
+no_trae:
+  etiqueta: "NO VIENE EN LA CAJA"
+  titulo: "Lo que una página gratis *sí trae:*"
+  items: ["Anuncios de otros", "Un nombre prestado", "Un diseño igual a mil"]
+  fracs: [0.42, 0.62, 0.8]
+pie: "¿Abrimos *la tuya?*"
+caption: >-
+  Pedimos una página web… y esto fue lo que vino en la caja. 📦✨
+  Una página gratis sirve para empezar, pero no es tuya: lleva el nombre de otro, anuncios que no elegiste y el mismo diseño que mil negocios más.
+  La que vende cabe en cuatro piezas: tu nombre, un botón para escribirte, lo que hay hoy y tu lugar en el mapa.
+  ¿Cuál le falta a la tuya? Escribinos al WhatsApp +502 3808 9808 y armamos la caja de tu negocio.
+hashtags: [PaginaWeb, PaginaWebParaMiNegocio, DiseñoWeb, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: Unboxing de una página web que sí vende.
+    sfx: [[0.05, whoosh], [0.45, thud]]
+  - texto: Abrimos la caja.
+    escena: abre
+    corte: 0.15
+    sfx: [[0.1, paper], [0.35, whoosh]]
+  - texto: Primero, un dominio con el nombre de tu negocio.
+    pieza: 1
+    frac: 0.1
+    sfx: [[0.1, whoosh], [0.55, pop]]
+  - texto: Un botón de WhatsApp que se ve sin buscarlo.
+    pieza: 2
+    frac: 0.1
+    sfx: [[0.1, whoosh], [0.55, pop]]
+  - texto: Tu catálogo, con lo que hay hoy.
+    pieza: 3
+    frac: 0.1
+    sfx: [[0.1, whoosh], [0.55, pop]]
+  - texto: Y tu ficha de Google, para que te encuentren en el mapa.
+    pieza: 4
+    frac: 0.1
+    sfx: [[0.1, whoosh], [0.5, pop]]
+  - texto: Lo que no viene en la caja, anuncios de otros, un nombre prestado y un diseño igual a mil.
+    escena: notrae
+    sfx: [[0.02, thud], [0.42, marker], [0.62, marker], [0.8, marker]]
+  - texto: ¿Abrimos la tuya? Escribinos por WhatsApp.
+    escena: cierre
+    sfx: [[0.1, whoosh], [0.6, pop]]

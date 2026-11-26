@@ -2,7 +2,7 @@
 
 Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml`. No editar a mano.
 
-**34 publicadas · 37 pendientes · 15 descartadas**
+**38 publicadas · 37 pendientes · 17 descartadas**
 
 | Día | Pieza | Tema | Estado | Redes | Subido |
 |---|---|---|---|---|---|
@@ -54,22 +54,22 @@ Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml
 | 2026-11-17 | post-2-infografia-pedido-entrega | Del WhatsApp a la puerta del cliente sin que se pierda ni un pedido 🚚 | ⏳ pendiente |  |  |
 | 2026-11-17 | post-3-recibo-empleado-nuevo | Lo que de verdad cuesta la primera semana de un empleado nuevo 🧾😅 | ⏳ pendiente |  |  |
 | 2026-11-17 | reel-A-nombra-archivo-final | Nombrá el problema - el síndrome del archivo final | ✅ publicado | Instagram, TikTok | 2026-11-19 |
-| 2026-11-17 | reel-B-realidad-nuestro-tablero | Dosis de realidad - nuestro propio tablero | ⏳ pendiente |  |  |
-| 2026-11-17 | reel-C-decilo-mas-barato | Decilo así - cuando te piden «¿me lo dejás más barato?» | ⏳ pendiente |  |  |
+| 2026-11-17 | reel-B-realidad-nuestro-tablero | Dosis de realidad - nuestro propio tablero | ✅ publicado | Instagram, TikTok | 2026-11-25 |
+| 2026-11-17 | reel-C-decilo-mas-barato | Decilo así - cuando te piden «¿me lo dejás más barato?» | ✖️ descartado |  |  |
 | 2026-11-18 | post-1-checklist-pagina-web | 5 cosas que tu página web tiene que tener antes de que pagués por ella 🌐 | ✅ publicado | Instagram, TikTok | 2026-11-19 |
 | 2026-11-18 | post-2-frase-nadie-volvio | La venta no se perdió por el precio 💬 Se perdió por esto | ⏳ pendiente |  |  |
 | 2026-11-18 | post-3-diccionario-vol4-whatsapp | Diccionario del dueño de pyme, vol. 4: edición WhatsApp 📖💬 | ✅ publicado | Instagram, TikTok | 2026-11-19 |
 | 2026-11-18 | reel-A-chat-cotizacion-enfriada | La cotización que se enfrió | ⏳ pendiente |  |  |
 | 2026-11-18 | reel-B-lista-antes-de-escribirte | Lo que tu cliente revisa antes de escribirte | ⏳ pendiente |  |  |
-| 2026-11-18 | reel-C-versus-maquina-persona | La máquina contesta, la persona vende | ⏳ pendiente |  |  |
+| 2026-11-18 | reel-C-versus-maquina-persona | La máquina contesta, la persona vende | ✅ publicado | Instagram, TikTok | 2026-11-25 |
 | 2026-11-19 | post-1-recibo-conteo-fin-de-ano | El ticket del conteo de inventario de fin de año que nadie quiere pagar 🧾📦 | ✅ publicado | Instagram, TikTok | 2026-11-23 |
 | 2026-11-19 | post-2-este-o-este-catalogo | ¿A o B? Cuando un cliente te pide precios por WhatsApp, ¿qué le mandás? 📲 | ✅ publicado | Instagram, TikTok | 2026-11-22 |
 | 2026-11-19 | post-3-infografia-resenas-google | Cómo conseguir más reseñas en Google sin rogarle a nadie ⭐ | ✖️ descartado |  |  |
 | 2026-11-19 | reel-A-servilleta-sistema-inventario | ¿Cómo funciona un sistema de inventario? | ⏳ pendiente |  |  |
 | 2026-11-19 | reel-B-objeto-pagina-web-gratis | Confesiones de una página web gratis | ⏳ pendiente |  |  |
 | 2026-11-19 | reel-C-mito-cobrar-whatsapp | Dos mitos de cobrar por WhatsApp | ⏳ pendiente |  |  |
-| 2026-11-20 | post-1-checklist-whatsapp-diciembre | 4 cosas para dejar listas en tu WhatsApp antes de diciembre 🎄📲 | ⏳ pendiente |  |  |
-| 2026-11-20 | post-2-frase-si-hay | «Sí hay, déjeme ver…» 🫠 La frase que todo mostrador dijo alguna vez | ⏳ pendiente |  |  |
+| 2026-11-20 | post-1-checklist-whatsapp-diciembre | 4 cosas para dejar listas en tu WhatsApp antes de diciembre 🎄📲 | ✅ publicado | Instagram, TikTok | 2026-11-25 |
+| 2026-11-20 | post-2-frase-si-hay | «Sí hay, déjeme ver…» 🫠 La frase que todo mostrador dijo alguna vez | ✅ publicado | Instagram, TikTok | 2026-11-25 |
 | 2026-11-20 | post-3-diccionario-vol5-diciembre | Diccionario del dueño de pyme, vol. 5: edición diciembre 📖🎄 | ⏳ pendiente |  |  |
 | 2026-11-20 | reel-A-errores-perfil-sin-vida | Encontrá los 3 errores - el perfil que pierde clientes | ⏳ pendiente |  |  |
 | 2026-11-20 | reel-B-undia-vendedor-de-ruta | Un día en la vida de un vendedor de ruta | ⏳ pendiente |  |  |
@@ -82,7 +82,7 @@ Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml
 | 2026-11-22 | reel-C-decilo-lo-voy-a-pensar | Decilo así - cuando te dicen «lo voy a pensar» | ⏳ pendiente |  |  |
 | 2026-11-23 | post-1-checklist-antes-del-black-friday | Antes del Black Friday: revisá estas 4 cosas en tu negocio 🏷️✅ | ✅ publicado | Instagram, TikTok | 2026-11-23 |
 | 2026-11-23 | post-2-este-o-este-redes | ¿A o B? Así publica tu negocio en redes 📱 (no hay respuesta incorrecta… casi) | ⏳ pendiente |  |  |
-| 2026-11-23 | post-3-frase-resena-nunca-llego | «¡Claro que le dejo su reseña!» ⭐ (spoiler: nunca llegó) | ⏳ pendiente |  |  |
+| 2026-11-23 | post-3-frase-resena-nunca-llego | «¡Claro que le dejo su reseña!» ⭐ (spoiler: nunca llegó) | ✖️ descartado |  |  |
 | 2026-11-23 | reel-A-sospechoso-ventas-black-friday | Rueda de reconocimiento - quién se robó las ventas del Black Friday | ✅ publicado | Instagram, TikTok | 2026-11-23 |
 | 2026-11-23 | reel-B-receta-perder-un-cliente | Receta para perder un cliente en temporada alta | ⏳ pendiente |  |  |
 | 2026-11-23 | reel-C-cargando-pagina-web | Cargando - el cliente que te buscó en Google | ⏳ pendiente |  |  |
@@ -92,3 +92,9 @@ Se genera sola con `tools/publicaciones.py` a partir de `docs/publicaciones.yaml
 | 2026-11-24 | reel-A-puertas-a-o-b-cotizaciones | Elegí una puerta - clientes nuevos o los que ya te pidieron precio | ⏳ pendiente |  |  |
 | 2026-11-24 | reel-B-clima-pronostico-diciembre | Pronóstico de diciembre para tu negocio | ⏳ pendiente |  |  |
 | 2026-11-24 | reel-C-pov-diciembre-cobrando | POV - es diciembre y en lugar de vender andás cobrando | ⏳ pendiente |  |  |
+| 2026-11-25 | post-1-checklist-catalogo | Antes de mandar tu catálogo por WhatsApp, revisá estas 4 cosas 📒✅ | ⏳ pendiente |  |  |
+| 2026-11-25 | post-2-este-o-este-resenas | ¿A o B? Qué hacés después de una buena venta ⭐ (la B casi nadie la hace) | ⏳ pendiente |  |  |
+| 2026-11-25 | post-3-diccionario-vol6-black-friday | Diccionario del dueño de pyme, vol. 6: edición Black Friday 📖🏷️ | ⏳ pendiente |  |  |
+| 2026-11-25 | reel-A-unboxing-pagina-web | Unboxing de una página web que sí vende | ⏳ pendiente |  |  |
+| 2026-11-25 | reel-B-banderas-whatsapp | Banderas rojas y verdes en el WhatsApp de un negocio | ⏳ pendiente |  |  |
+| 2026-11-25 | reel-C-servilleta-vendedores-de-ruta | ¿Cómo funciona una app para vendedores de ruta? | ⏳ pendiente |  |  |

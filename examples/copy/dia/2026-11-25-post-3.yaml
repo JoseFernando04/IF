@@ -1,0 +1,34 @@
+# Post 3 · Diccionario del dueño de pyme, vol. 6: edición Black Friday (carrusel de 5). Pilar: tips (con humor).
+formato: diccionario
+salida: data/dias/2026-11-25/post-3
+titulo_tiktok: "Diccionario del dueño de pyme, vol. 6: edición Black Friday 📖🏷️"
+whatsapp: "+502 3808 9808"
+etiqueta: "DICCIONARIO DEL DUEÑO DE PYME · VOL. 6"
+titulo: "Edición <em>Black Friday.</em>"
+bajada: "Las palabras que se oyen en un negocio el último viernes de noviembre. Deslizá →"
+entradas:
+  - palabra: "¿Todavía aplica?"
+    fon: "/to·da·ví·a a·pli·ca/"
+    tipo: "PREG. DEL SÁBADO"
+    def: "Pregunta que llega el día después de la oferta, sobre la oferta, con captura de pantalla incluida."
+    ej: "«Es que lo vi hasta hoy.»"
+    cura: "Un agente en WhatsApp que contesta con las condiciones de la promo, a cualquier hora."
+  - palabra: "Creo que quedan"
+    fon: "/cre·o que que·dan/"
+    tipo: "LOC. DE RIESGO"
+    def: "Frase que se dice en el mostrador justo antes de ir a la bodega y volver con las manos vacías."
+    ej: "«Deme un ratito, voy a ver.»"
+    cura: "Un sistema de inventario que te dice cuántos hay antes de prometer."
+  - palabra: "Lo apartamos"
+    fon: "/lo a·par·ta·mos/"
+    tipo: "V. COMPROMETEDOR"
+    def: "Promesa hecha por mensaje, anotada en ningún lado y vendida a otra persona dos horas después."
+    ej: "«¡Pero si me dijeron que me lo guardaban!»"
+    cura: "Pedidos y apartados en un solo lugar, que restan del inventario."
+cierre: "¿Cuál ya <em>escuchaste</em>?"
+cierre_bajada: "Contanos en los comentarios. Las tres tienen cura: escribinos antes del viernes."
+caption: >-
+  Edición especial: el diccionario se fue de compras. 📖🛍️
+  Deslizá y etiquetá a quien ya dijo «creo que quedan» esta semana.
+  Si querés llegar al viernes con el inventario al día y el WhatsApp contestando solo, escribinos al +502 3808 9808.
+hashtags: [BlackFriday, HumorEmprendedor, PymesGuatemala, DueñosDeNegocio, Chapines]
