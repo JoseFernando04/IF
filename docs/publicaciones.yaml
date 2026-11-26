@@ -431,9 +431,11 @@ piezas:
   pieza: post-2-frase-nadie-volvio
   tipo: post
   tema: La venta no se perdió por el precio 💬 Se perdió por esto
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-26'
 - dia: '2026-11-18'
   pieza: post-3-diccionario-vol4-whatsapp
   tipo: post
@@ -548,9 +550,11 @@ piezas:
   pieza: reel-B-undia-vendedor-de-ruta
   tipo: reel
   tema: Un día en la vida de un vendedor de ruta
-  estado: pendiente
-  redes: []
-  fecha: null
+  estado: publicado
+  redes:
+  - ig
+  - tt
+  fecha: '2026-11-26'
 - dia: '2026-11-20'
   pieza: reel-C-nombra-telefono-descompuesto
   tipo: reel
@@ -727,6 +731,48 @@ piezas:
   pieza: reel-C-servilleta-vendedores-de-ruta
   tipo: reel
   tema: ¿Cómo funciona una app para vendedores de ruta?
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-26'
+  pieza: post-1-documental-caja-o-medida
+  tipo: post
+  tema: ¿Sistema de caja o a la medida? Respondé estas 3 antes de pagar 🧩
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-26'
+  pieza: post-2-frase-busquenos-en-facebook
+  tipo: post
+  tema: «¿Tienen página web?» «Búsquenos en Facebook» 🙃 (y ahí se perdió el cliente)
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-26'
+  pieza: post-3-mito-sistema-inventario
+  tipo: post
+  tema: 'Sistema de inventario: ¿mito o verdad? La 3 casi nadie la admite 📦'
+  estado: pendiente
+  redes: []
+  fecha: null
+- dia: '2026-11-26'
+  pieza: reel-A-carrito-black-friday
+  tipo: reel
+  tema: Tu carrito del Black Friday (versión dueño de negocio)
+  estado: descartado
+  redes: []
+  fecha: null
+- dia: '2026-11-26'
+  pieza: reel-B-notas-lista-del-lunes
+  tipo: reel
+  tema: La lista de pendientes del lunes después del Black Friday
+  estado: descartado
+  redes: []
+  fecha: null
+- dia: '2026-11-26'
+  pieza: reel-C-respondiendo-likes
+  tipo: reel
+  tema: Respondiendo - ¿vale la pena publicar si nadie le da like?
   estado: pendiente
   redes: []
   fecha: null

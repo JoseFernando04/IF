@@ -1,0 +1,64 @@
+# Reel C · «Respondiendo a…» ep. 02 (formato `respuesta`, último uso 2026-11-16). Pilar: educativo → contenido para redes (orgánico).
+# Pregunta frecuente de verdad, mostrada sin usuario inventado. Sin cifras de alcance ni promesas de seguidores.
+# Nunca pauta ni campañas pagadas: solo contenido orgánico.
+formato: respuesta
+titulo: Respondiendo - ¿vale la pena publicar si nadie le da like?
+audio: assets/voice/elevenlabs/2026-11-26-reel-C.mp3
+salida: data/dias/2026-11-26/reel-C
+musica: wholesome
+musica_db: -23
+whatsapp: "+502 3808 9808"
+de: "Pregunta frecuente · nos la hacen seguido"
+pregunta: "¿Vale la pena publicar si nadie le da like? 🤔"
+depende: "Sí vale"
+depende_s: "…pero *no por los likes.*"
+tachado: "❤️ 0"
+factores:
+  - ["Te revisan antes de escribirte", "Un perfil con publicaciones recientes dice «este negocio sigue abierto»."]
+  - ["Ven sin darle like", "Mucha gente mira, no reacciona y se acuerda de vos cuando lo necesita."]
+  - ["Contesta antes de que pregunten", "Horarios, precios, envíos: cada publicación ahorra un mensaje."]
+sello: "NO ES POR LOS LIKES"
+bajo: "Es para que te encuentren / *y confíen.*"
+fases:
+  - ["CADA SEMANA", "Ideas con estrategia"]
+  - ["CON TU MARCA", "Reels y carruseles"]
+  - ["SIN PAUTA", "Alcance orgánico"]
+caption: >-
+  Los likes son lo que se ve. Lo que no se ve es la persona que revisó tu perfil a las diez de la noche y al día siguiente te escribió. 👀📱
+  Publicar no es para la foto bonita: es para que quien te busca vea un negocio vivo, sepa qué vendés y llegue con menos dudas.
+  ¿Te pasa que publicás y sentís que nadie lo ve? Contanos 👇 Y si no tenés tiempo de hacerlo, escribinos al WhatsApp +502 3808 9808.
+hashtags: [ContenidoParaRedes, MarketingOrganico, RedesSociales, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: Nos preguntan seguido si vale la pena publicar, si nadie le da like.
+    escena: pregunta
+    sfx: [[0.05, pop]]
+  - texto: La respuesta honesta es que sí, pero no por los likes.
+    escena: depende
+    sfx: [[0.3, thud]]
+  - texto: "Uno: antes de escribirte, el cliente revisa si tu perfil sigue vivo."
+    escena: factor
+    n: 1
+    clave: "RAZÓN 1 / 3"
+    sfx: [[0.05, whoosh]]
+  - texto: "Dos: mucha gente mira sin dar like, y se acuerda de vos cuando lo necesita."
+    escena: factor
+    n: 2
+    clave: "RAZÓN 2 / 3"
+    sfx: [[0.05, whoosh]]
+  - texto: "Tres: cada publicación contesta una pregunta antes de que te la hagan."
+    escena: factor
+    n: 3
+    clave: "RAZÓN 3 / 3"
+    sfx: [[0.05, whoosh]]
+  - texto: Por eso no se trata de likes, se trata de que te encuentren y confíen.
+    escena: precio
+    sfx: [[0.3, marker], [0.45, thud]]
+  - texto: Y si no tenés tiempo, nosotros hacemos tus reels y carruseles cada semana.
+    escena: fases
+    clave: "CONTENIDO PARA REDES"
+    sfx: [[0.1, tick], [0.3, tick], [0.5, pop]]
+  - texto: Escribinos y vemos qué publicar en el tuyo.
+    escena: cierre
+    frase: "¿Qué publicamos / *en el tuyo?*"
+    sub: "CONTENIDO ORGÁNICO PARA REDES"
+    sfx: [[0.2, pop]]

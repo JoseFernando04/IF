@@ -1,0 +1,61 @@
+# Reel A · «Tu carrito del Black Friday» (FORMATO NUEVO `carrito`, plantilla templates/video/carrito/reel.html desde 2026-11-26).
+# Tendencia: temporada de Black Friday (27-nov) + «agregá al carrito» / lo que pediste vs. lo que hay; corto, con humor y una
+# invitación a comentar. Pilar: soluciones (gestión de inventario inteligente). Palabra buscada: «sistema de inventario».
+# Sin precios ni cifras: la «tienda» es de mentira y lo único disponible es el servicio.
+formato: carrito
+titulo: Tu carrito del Black Friday (versión dueño de negocio)
+audio: assets/voice/elevenlabs/2026-11-26-reel-A.mp3
+salida: data/dias/2026-11-26/reel-A
+musica: digital-lemonade
+musica_db: -24
+whatsapp: "+502 3808 9808"
+tienda: "Tienda del dueño"
+cinta: "BLACK FRIDAY"
+intro: "Black Friday *para dueños* de negocio"
+intro_sub: "Agregá al carrito lo que de verdad te hace falta."
+resumen:
+  etiqueta: "TU CARRITO"
+  titulo: "Lo que *sí había*"
+  total_eti: "TOTAL"
+  total: "Un negocio que sabe *qué tiene.*"
+  boton: "Pedilo por WhatsApp →"
+pie: "¿Qué agregaste *vos?* Contanos."
+caption: >-
+  El único carrito del Black Friday que no te deja la tarjeta temblando. 🛒😅
+  Más horas, el empleado que se sabe todo y la bodega contada en una noche siguen agotados en todas las tiendas. Lo que sí se consigue es dejar de depender de la memoria: estantes que avisan qué entra, qué sale y qué se está acabando.
+  ¿Qué le agregarías al carrito? Contanos 👇 Y si querés que tu bodega te avise sola, escribinos al WhatsApp +502 3808 9808.
+hashtags: [SistemaDeInventario, BlackFriday, ControlDeInventario, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: Black Friday para dueños de negocio. Agregá al carrito.
+    sfx: [[0.05, whoosh], [0.35, thud]]
+  - texto: Más horas al día. Agotado.
+    producto: {emoji: "⏰", nombre: "Más horas *al día*", corto: "Más horas al día", nota: "Para atender, cobrar, contar y todavía cenar en tu casa."}
+    estado: agotado
+    toque: 0.35
+    sello_frac: 0.62
+    sfx: [[0.05, whoosh], [0.35, tick], [0.62, thud]]
+  - texto: Un empleado que se sepa todo de memoria. Agotado.
+    producto: {emoji: "🧠", nombre: "Empleado que se sabe *todo de memoria*", corto: "Empleado que se sabe todo", nota: "Y que nunca se enferma ni se va de vacaciones."}
+    estado: agotado
+    toque: 0.45
+    sello_frac: 0.7
+    sfx: [[0.05, whoosh], [0.45, tick], [0.7, thud]]
+  - texto: Contar toda la bodega en una sola noche. Agotado.
+    producto: {emoji: "📦", nombre: "Contar la bodega *en una noche*", corto: "Bodega contada en una noche", nota: "Sin errores, sin café y sin el cuaderno de siempre."}
+    estado: agotado
+    toque: 0.45
+    sello_frac: 0.7
+    sfx: [[0.05, whoosh], [0.45, tick], [0.7, thud]]
+  - texto: Saber qué entra, qué sale y qué falta, sin contar nada. Disponible.
+    producto: {emoji: "📲", nombre: "Saber qué entra, qué sale y *qué falta*", corto: "Saber qué falta sin contar", nota: "Estantes con sensores que avisan al celular cuando algo se está acabando."}
+    estado: disponible
+    toque: 0.55
+    sello_frac: 0.8
+    vuelo: 0.9
+    sfx: [[0.05, whoosh], [0.55, pop], [0.8, cierre]]
+  - texto: Eso es un sistema de inventario que se actualiza solo, mientras vos vendés.
+    escena: resumen
+    sfx: [[0.05, whoosh], [0.3, tick], [0.4, tick], [0.5, tick], [0.6, pop], [0.8, pop]]
+  - texto: ¿Qué agregaste vos? Contanos.
+    escena: cierre
+    sfx: [[0.1, whoosh], [0.6, pop]]

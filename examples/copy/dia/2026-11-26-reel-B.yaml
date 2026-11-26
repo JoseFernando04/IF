@@ -1,0 +1,49 @@
+# Reel B · «La lista del lunes» (FORMATO NUEVO `notas`, plantilla templates/video/notas/reel.html desde 2026-11-26).
+# Tendencia: estética de la app de notas del celular (texto que se escribe en vivo, cercano y sin producción) + giro final.
+# Pilar: soluciones (automatizaciones por WhatsApp: recordatorios de pago, seguimiento 2·5·10, reseñas, agente de IA).
+# Escena de ejemplo; app de notas genérica, sin marca.
+formato: notas
+titulo: La lista de pendientes del lunes después del Black Friday
+audio: assets/voice/elevenlabs/2026-11-26-reel-B.mp3
+salida: data/dias/2026-11-26/reel-B
+musica: inspired
+musica_db: -24
+whatsapp: "+502 3808 9808"
+fondo_muestra: "#fefcf3"
+fecha: "Domingo, 23:48"
+pie: "¿Cuántas tenés *en tu lista?*"
+caption: >-
+  El lunes después del Black Friday no se vende: se persigue. 📝 Pagos, cotizaciones, reseñas y mensajes que llegaron mientras dormías.
+  Nada de eso es difícil. Lo difícil es acordarse de todo a la vez, justo cuando el negocio está más lleno.
+  Revisá tu lista y contanos cuántas se podrían ir solas 👇 Si querés tacharlas sin moverte, escribinos al WhatsApp +502 3808 9808. (Escena de ejemplo.)
+hashtags: [AutomatizacionWhatsApp, BlackFriday, RecordatoriosDePago, PymesGuatemala, NegociosGT]
+lineas:
+  - texto: Mi lista de pendientes para el lunes después del Black Friday.
+    nota_titulo: "Pendientes del lunes 📝"
+    sfx: [[0.05, pop]]
+  - texto: Cobrarles a los que me dijeron «ya te deposito».
+    item: "Cobrarles a los del «ya te deposito»"
+    auto: "RECORDATORIO DE PAGO ✓"
+    sfx: [[0.05, tick]]
+  - texto: Escribirles a los que pidieron precio y no contestaron.
+    item: "Escribirles a los que pidieron precio y no contestaron"
+    auto: "SEGUIMIENTO DÍA 2 · 5 · 10 ✓"
+    sfx: [[0.05, tick]]
+  - texto: Pedirles reseña a los que compraron contentos.
+    item: "Pedir reseña a los que compraron contentos"
+    auto: "ENLACE A GOOGLE ✓"
+    sfx: [[0.05, tick]]
+  - texto: Contestar los mensajes que llegaron de madrugada.
+    item: "Contestar los mensajes de la madrugada"
+    auto: "AGENTE DE IA ✓"
+    sfx: [[0.05, tick]]
+  - texto: Y el lunes no tuve que hacer ninguna.
+    escena: giro
+    giro: "…no hice ninguna."
+    sfx: [[0.05, marker], [0.4, thud]]
+  - texto: Los recordatorios, el seguimiento, las reseñas y las respuestas salieron solos por WhatsApp.
+    escena: solas
+    sfx: [[0.06, pop], [0.26, pop], [0.46, pop], [0.66, pop]]
+  - texto: ¿Cuántas tenés en tu lista? Contanos.
+    escena: cierre
+    sfx: [[0.1, whoosh], [0.6, pop]]

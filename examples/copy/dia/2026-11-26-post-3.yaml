@@ -1,0 +1,27 @@
+# Post 3 · Mito o verdad (carrusel de 5). Pilar: educativo (gestión de inventario inteligente). Palabra buscada: «sistema de inventario».
+# Respuestas honestas, sin prometer de más (la 3 es VERDAD a propósito).
+formato: mito
+salida: data/dias/2026-11-26/post-3
+titulo_tiktok: "Sistema de inventario: ¿mito o verdad? La 3 casi nadie la admite 📦"
+whatsapp: "+502 3808 9808"
+etiqueta: "JUGÁ ANTES DE DESLIZAR"
+titulo: "Sistema de inventario: <em>¿mito o verdad?</em>"
+bajada: "Tres cosas que se dicen en bodega. Respondé en voz alta y deslizá."
+dichos:
+  - dicho: "«Necesito una computadora en la bodega.»"
+    es: MITO
+    porque: "Qué entra, qué sale y qué se está acabando se revisa desde el celular, estés en la bodega o en la calle."
+  - dicho: "«Mi negocio es muy pequeño para eso.»"
+    es: DEPENDE
+    porque: "Si nunca se te acaba nada y todo lo sabés de memoria, quizá no. Si alguna vez vendiste lo que ya no había, ya lo necesitás."
+  - dicho: "«Al principio cuesta acostumbrarse.»"
+    es: VERDAD
+    porque: "Las primeras semanas el equipo cambia costumbres. Por eso se empieza por lo más urgente y con acompañamiento, no todo de un solo."
+resultado: "¿Cuántas <span style='color:var(--oro)'>le atinaste?</span>"
+cierre: "¿Qué otra cosa <em>has oído?</em>"
+cierre_bajada: "Dejala en los comentarios y la revisamos. Y si querés ver cómo se vería tu bodega con un sistema de inventario, escribinos."
+caption: >-
+  El inventario tiene más mitos que cualquier otra parte del negocio. 📦🤔
+  Lo que casi nadie dice es la 3: cambiar de cuaderno a sistema pide unas semanas de costumbre. La buena noticia es que no hay que hacerlo todo de un solo.
+  Comentá cuántas le atinaste (sin trampa) 👇 Y si querés saber qué te falta sin contar a mano, escribinos al WhatsApp +502 3808 9808.
+hashtags: [SistemaDeInventario, ControlDeInventario, InventarioInteligente, PymesGuatemala, NegociosGT]

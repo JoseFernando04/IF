@@ -1,0 +1,41 @@
+# Post 1 · Carrusel documental (estilo B), 5 slides. Pilar: educativo (desarrollo a medida). Palabra buscada: «sistema de inventario».
+# Honesto: a veces uno de caja basta. Sin cifras. Se renderiza con:
+# ifcontent.graphics.carousel_b.render_from_file(<este yaml>, data/dias/2026-11-26/post-1)
+title: ¿Sistema de caja o a la medida? 3 preguntas para decidir
+pillar: educativo
+salida: data/dias/2026-11-26/post-1
+titulo_tiktok: "¿Sistema de caja o a la medida? Respondé estas 3 antes de pagar 🧩"
+slides:
+  - layout: versus
+    arriba: Sistema de caja
+    abajo: A la medida
+    bajada: No hay uno mejor. Hay uno que le queda a tu negocio. Tres preguntas para saber cuál.
+
+  - layout: numero
+    tag: "01"
+    etiqueta: Pregunta
+    heading: ¿Trabajás *como todos?*
+    body: Si vendés y llevás inventario como cualquier tienda, uno de caja puede bastar. Si tenés rutas, precios por cliente o pasos propios, vas a pelearte con él.
+
+  - layout: numero
+    tag: "02"
+    etiqueta: Pregunta
+    heading: ¿Con qué *se conecta?*
+    body: Facturación, WhatsApp, el Excel de siempre. Cuando el sistema tiene que conectarse con lo que ya usás, eso pesa más que la lista de funciones.
+
+  - layout: numero
+    tag: "03"
+    etiqueta: Pregunta
+    heading: ¿Quién se adapta *a quién?*
+    body: Si tu equipo tiene que cambiar cómo trabaja solo para que el sistema funcione, no lo estás usando vos. Te está usando él.
+
+  - layout: cta
+    heading: "¿Cuál le queda *al tuyo?*"
+    body: Contanos cómo trabajás y te decimos con honestidad si te conviene uno de caja o uno a la medida.
+    sello: Diagnóstico sin compromiso
+
+caption: >-
+  Antes de pagar por un sistema, respondé estas tres con calma (y con tu equipo al lado). 🧩
+  A veces la respuesta honesta es «comprá uno de caja y listo». Otras veces el negocio tiene una forma de trabajar que ningún sistema genérico entiende, y ahí conviene uno hecho a la medida.
+  ¿Cuál fue tu respuesta a la 3? Contanos 👇 o escribinos al WhatsApp +502 3808 9808 y lo vemos juntos.
+hashtags: [SistemaDeInventario, SoftwareAMedida, Digitalizacion, PymesGuatemala, NegociosGT]

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Brico"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+@font-face { font-family: "Serif"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+/* Carrito: tienda en línea de cosas que un dueño quisiera comprar. Casi todo está AGOTADO; lo único disponible es la solución.
+   Al final, el carrito (resumen de compra) con lo agotado tachado y la solución en dorado. */
+:root { --verde: #0a1410; --verde2: #13241c; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --gris: #9fb3a8; --rojo: #e0563b; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--verde); font-family: "Tight"; color: var(--marfil); }
+#fondo { position: absolute; inset: 0; }
+#barra { position: absolute; left: 0; right: 0; top: 0; height: 150px; background: var(--oro); color: var(--verde);
+         display: flex; align-items: center; justify-content: space-between; padding: 0 64px; box-sizing: border-box; z-index: 4; }
+#barra b { font: 800 46px "Brico"; letter-spacing: -1px; }
+#barra span { font: 700 26px "Mono"; letter-spacing: 4px; }
+#cinta { position: absolute; left: 0; right: 0; top: 150px; height: 64px; background: var(--verde); overflow: hidden; z-index: 4;
+         border-bottom: 3px solid var(--oro); }
+#cinta div { position: absolute; top: 14px; white-space: nowrap; font: 700 30px "Mono"; letter-spacing: 6px; color: var(--oro); }
+#tit { position: absolute; left: 64px; right: 64px; top: 300px; font: 800 112px/1.0 "Brico"; letter-spacing: -3px; }
+#tit em { font: 400 122px/1 "Serif"; color: var(--oro); letter-spacing: 0; }
+#tit small { display: block; margin-top: 30px; font: 600 40px/1.25 "Tight"; color: var(--gris); letter-spacing: 0; }
+.card { position: absolute; left: 110px; width: 860px; top: 340px; height: 1080px; background: var(--marfil); color: var(--verde);
+        border-radius: 40px; box-shadow: 0 30px 0 #00000066; overflow: hidden; }
+.card .foto { position: absolute; left: 40px; right: 40px; top: 40px; height: 520px; border-radius: 28px; background: #efe9d6;
+              display: flex; align-items: center; justify-content: center; font-size: 300px; }
+.card .oferta { position: absolute; left: 70px; top: 70px; background: var(--verde); color: var(--oro); font: 700 28px "Mono";
+                letter-spacing: 4px; padding: 12px 22px; border-radius: 12px; }
+.card .nom { position: absolute; left: 56px; right: 56px; top: 600px; font: 800 66px/1.05 "Brico"; letter-spacing: -1.5px; }
+.card .nota { position: absolute; left: 56px; right: 56px; top: 790px; font: 500 34px/1.3 "Tight"; color: #5b5a4c; }
+.card .btn { position: absolute; left: 56px; right: 56px; bottom: 56px; height: 120px; border-radius: 999px; background: var(--verde);
+             color: var(--marfil); display: flex; align-items: center; justify-content: center; font: 800 44px "Tight"; gap: 18px; }
+.card .sello { position: absolute; left: 50%; top: 200px; transform-origin: 50% 50%; padding: 22px 44px; border: 12px solid var(--rojo);
+               color: var(--rojo); font: 800 118px "Brico"; letter-spacing: 2px; border-radius: 22px; background: #fefcf3dd; white-space: nowrap; }
+.card .sello.ok { border-color: #2c8a52; color: #2c8a52; }
+#mano { position: absolute; z-index: 9; font-size: 130px; filter: drop-shadow(0 10px 10px #0008); }
+#cart { position: absolute; right: 64px; top: 1500px; width: 170px; height: 170px; border-radius: 50%; background: var(--verde3);
+        border: 4px solid var(--oro); display: flex; align-items: center; justify-content: center; font-size: 92px; z-index: 6; }
+#cart b { position: absolute; right: -6px; top: -6px; min-width: 66px; height: 66px; border-radius: 33px; background: var(--oro);
+          color: var(--verde); font: 800 40px "Tight"; display: flex; align-items: center; justify-content: center; }
+#vuela { position: absolute; z-index: 7; font-size: 150px; }
+/* Resumen de compra */
+#resumen { position: absolute; left: 80px; right: 80px; top: 300px; background: var(--marfil); color: var(--verde); border-radius: 40px;
+           padding: 56px 56px 48px; box-shadow: 0 30px 0 #00000066; z-index: 5; }
+#resumen h3 { margin: 0 0 8px; font: 700 28px "Mono"; letter-spacing: 6px; color: #6f6a5a; }
+#resumen h2 { margin: 0 0 30px; font: 800 74px/1 "Brico"; letter-spacing: -2px; }
+.it { display: flex; align-items: center; gap: 26px; padding: 24px 0; border-top: 3px dashed #d8d0b8; font: 700 40px/1.15 "Tight"; }
+.it .e { font-size: 64px; width: 80px; text-align: center; }
+.it .t { flex: 1; position: relative; }
+.it .x { position: absolute; left: -6px; right: -6px; top: 50%; height: 7px; background: var(--rojo); transform-origin: 0 50%; border-radius: 4px; }
+.it .s { font: 700 24px "Mono"; letter-spacing: 2px; color: var(--rojo); }
+.it.ok { background: #f0c41933; margin: 0 -24px; padding: 26px 24px; border-radius: 18px; border-top: none; }
+.it.ok .s { color: #2c8a52; }
+#total { margin-top: 26px; padding-top: 28px; border-top: 6px solid var(--verde); }
+#total small { font: 700 26px "Mono"; letter-spacing: 5px; color: #6f6a5a; }
+#total div { font: 800 58px/1.05 "Brico"; letter-spacing: -1px; margin-top: 10px; }
+#total em { font: 400 64px/1 "Serif"; color: #b8900b; }
+#pagar { margin-top: 34px; height: 116px; border-radius: 999px; background: var(--oro); display: flex; align-items: center;
+         justify-content: center; font: 800 42px "Tight"; color: var(--verde); }
+#pie { position: absolute; left: 64px; right: 64px; z-index: 3; top: 1530px; font: 800 70px/1.05 "Brico"; letter-spacing: -1px; }
+#pie em { font: 400 76px/1 "Serif"; color: var(--oro); }
+#wa { position: absolute; left: 64px; top: 1745px; font: 800 44px "Tight"; color: var(--verde); background: var(--oro);
+      padding: 22px 34px; border-radius: 999px; z-index: 3; }
+#logo { position: absolute; right: 64px; top: 1735px; width: 150px; z-index: 3; }
+</style></head>
+<body>
+<div id="fondo"></div>
+<div id="barra"><b></b><span>🔍 &nbsp;BUSCAR</span></div>
+<div id="cinta"><div></div></div>
+<div id="tit"></div>
+<div id="cards"></div>
+<div id="resumen"></div>
+<div id="cart">🛒<b>0</b></div>
+<div id="vuela"></div>
+<div id="mano">👆</div>
+<div id="pie"></div>
+<div id="wa"></div>
+<img id="logo" src="__LOGO__">
+<script type="module">
+import { fondo } from "__SHARED__/fondos.js";
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (x) => { x = cl(x); return 1 - (1 - x) ** 3; };
+const eio = (x) => { x = cl(x); return x < 0.5 ? 4 * x ** 3 : 1 - (-2 * x + 2) ** 3 / 2; };
+const back = (x) => { x = cl(x); const c = 1.7; return 1 + (c + 1) * (x - 1) ** 3 + c * (x - 1) ** 2; };
+const em = (s) => (s || "").replace(/\*(.+?)\*/g, "<em>$1</em>");
+const fondoP = fondo($("fondo"), "puntos", { back: "#0a1410", fill: "#16291f", size: 3, gap: 54 });
+
+$("barra").querySelector("b").textContent = REEL.tienda || "Tienda del dueño";
+$("cinta").firstChild.textContent = ((REEL.cinta || "BLACK FRIDAY") + "  ·  ").repeat(12);
+$("tit").innerHTML = em(REEL.intro) + (REEL.intro_sub ? `<small>${REEL.intro_sub}</small>` : "");
+$("pie").innerHTML = em(REEL.pie || "¿Qué agregaste vos? *Contanos.*");
+$("wa").textContent = "WhatsApp " + REEL.whatsapp;
+
+// Tarjetas de producto (una por línea con `producto`)
+const prods = [];
+L.forEach((l, i) => {
+  if (!l.producto) return;
+  const p = l.producto, ok = l.estado === "disponible";
+  const c = document.createElement("div"); c.className = "card";
+  c.innerHTML = `<div class="foto">${p.emoji}</div><div class="oferta">${p.oferta || (REEL.cinta || "BLACK FRIDAY")}</div>
+    <div class="nom">${em(p.nombre)}</div><div class="nota">${p.nota || ""}</div>
+    <div class="btn">🛒 Agregar al carrito</div>
+    <div class="sello${ok ? " ok" : ""}">${ok ? (l.sello || "DISPONIBLE ✓") : (l.sello || "AGOTADO")}</div>`;
+  $("cards").appendChild(c);
+  prods.push({ el: c, l, i, ok, p });
+});
+
+// Resumen de compra
+const R = REEL.resumen || {};
+$("resumen").innerHTML = `<h3>${R.etiqueta || "TU CARRITO"}</h3><h2>${em(R.titulo || "Resumen del pedido")}</h2>` +
+  prods.map((x) => `<div class="it${x.ok ? " ok" : ""}"><div class="e">${x.p.emoji}</div>
+    <div class="t">${x.p.corto || x.p.nombre.replace(/\*/g, "")}${x.ok ? "" : '<div class="x"></div>'}</div>
+    <div class="s">${x.ok ? "EN TU CARRITO" : "AGOTADO"}</div></div>`).join("") +
+  `<div id="total"><small>${R.total_eti || "TOTAL"}</small><div>${em(R.total || "")}</div></div><div id="pagar">${R.boton || "Pedir por WhatsApp"}</div>`;
+const items = [...$("resumen").querySelectorAll(".it")];
+
+const lineaEn = (t) => { let k = 0; L.forEach((l, i) => { if (t >= l.inicio - 0.05) k = i; }); return k; };
+const fin = (l) => l.inicio + l.duracion;
+const cuentaEn = (t) => prods.filter((x) => x.ok && t >= x.l.inicio + x.l.duracion * (x.l.vuelo ?? 0.72) + 0.45).length;
+
+function dibujar(t) {
+  const i = lineaEn(t), l = L[i], dt = t - l.inicio;
+  fondoP.then((f) => f.frame(0));
+  $("cinta").firstChild.style.left = (-((t * 90) % 600)) + "px";
+  const iCheck = L.findIndex((x) => x.escena === "resumen"), tCheck = iCheck >= 0 ? L[iCheck].inicio : 1e9;
+  const iCierre = L.findIndex((x) => x.escena === "cierre"), tCierre = iCierre >= 0 ? L[iCierre].inicio : 1e9;
+  // Intro (línea 0): título grande que sube y se va cuando entra el primer producto
+  const t1 = prods.length ? prods[0].l.inicio : 1e9;
+  $("tit").style.opacity = ease(t / 0.4) * (1 - ease((t - t1) / 0.3));
+  $("tit").style.transform = `translateY(${(1 - ease(t / 0.6)) * 70 - ease((t - t1) / 0.3) * 80}px)`;
+  $("barra").style.transform = `translateY(${(1 - ease(t / 0.4)) * -150}px)`;
+  $("cinta").style.transform = $("barra").style.transform;
+  // Productos
+  let mano = null;
+  prods.forEach((x) => {
+    const a = x.l.inicio, d = x.l.duracion, e = t - a;
+    const fToque = x.l.toque ?? 0.42, fSello = x.l.sello_frac ?? 0.6, fVuelo = x.l.vuelo ?? 0.72;
+    const sig = prods.find((y) => y.l.inicio > a), tSale = sig ? sig.l.inicio : Math.min(tCheck, tCierre);
+    if (e < -0.05 || t > tSale + 0.5) { x.el.style.opacity = 0; return; }
+    x.el.style.opacity = 1;
+    const ent = back(e / 0.45), sal = eio((t - tSale) / 0.45);
+    let tx = (1 - ent) * 1100, ty = 0, rot = (1 - ent) * 8, sc = 1;
+    if (x.ok) { // la disponible se encoge y vuela al carrito
+      const v = eio((e - d * fVuelo) / 0.5);
+      tx += v * 560; ty += v * 1250; sc = 1 - 0.85 * v; rot += v * 12;
+      x.el.style.opacity = 1 - cl((e - d * fVuelo - 0.35) / 0.15);
+    } else { tx -= sal * 1200; rot -= sal * 10; }
+    x.el.style.transform = `translate(${tx}px, ${ty}px) rotate(${rot}deg) scale(${sc})`;
+    // Botón presionado
+    const pr = e - d * fToque, btn = x.el.querySelector(".btn");
+    btn.style.transform = `scale(${pr > 0 && pr < 0.18 ? 0.94 : 1})`;
+    btn.style.background = pr > 0 ? (x.ok ? "#2c8a52" : "#8a8574") : "var(--verde)";
+    btn.textContent = pr > 0 ? (x.ok ? "✓ Agregado" : "Sin existencias") : "🛒 Agregar al carrito";
+    if (e > d * fToque - 0.5 && e < d * fToque + 0.35) {
+      const m = ease((e - (d * fToque - 0.5)) / 0.45);
+      mano = { x: 110 + 520 + (1 - m) * 260, y: 340 + 1080 - 110 + (1 - m) * 260 + (pr > 0 && pr < 0.15 ? 14 : 0), o: 1 - cl((e - d * fToque - 0.2) / 0.15) };
+    }
+    // Sello
+    const s = x.el.querySelector(".sello"), se = (e - d * fSello) / 0.3;
+    s.style.opacity = se > 0 ? 1 : 0;
+    s.style.transform = `translate(-50%, 0) rotate(${x.ok ? -6 : -12}deg) scale(${se > 0 ? 2.2 - 1.2 * ease(se) : 2})`;
+    x.el.querySelector(".foto").style.filter = !x.ok && se > 0 ? `grayscale(${ease(se)})` : "none";
+  });
+  const m = $("mano");
+  if (mano) { m.style.opacity = mano.o; m.style.left = mano.x + "px"; m.style.top = mano.y + "px"; } else m.style.opacity = 0;
+  // Carrito
+  const n = cuentaEn(t), cartIn = ease((t - t1) / 0.4) * (1 - ease((t - tCheck) / 0.3));
+  $("cart").querySelector("b").textContent = n;
+  const bump = prods.filter((x) => x.ok).map((x) => t - (x.l.inicio + x.l.duracion * (x.l.vuelo ?? 0.72) + 0.45)).find((q) => q >= 0 && q < 0.3);
+  $("cart").style.opacity = cartIn;
+  $("cart").style.transform = `scale(${bump !== undefined ? 1 + 0.25 * Math.sin(bump / 0.3 * Math.PI) : 1})`;
+  // Resumen
+  const rv = ease((t - tCheck) / 0.5);
+  $("resumen").style.opacity = t >= tCheck ? 1 : 0;
+  $("resumen").style.transform = `translateY(${(1 - back((t - tCheck) / 0.6)) * 1500 - ease((t - tCierre) / 0.5) * 120}px) scale(${1 - 0.12 * ease((t - tCierre) / 0.5)})`;
+  const dCheck = L[iCheck] ? L[iCheck].duracion : 3;
+  items.forEach((it, k) => {
+    const a = tCheck + 0.45 + k * 0.28;
+    it.style.opacity = ease((t - a) / 0.3);
+    it.style.transform = `translateX(${(1 - ease((t - a) / 0.35)) * 60}px)`;
+    const x = it.querySelector(".x"); if (x) x.style.transform = `scaleX(${ease((t - a - 0.25) / 0.3)})`;
+  });
+  const aTot = tCheck + 0.45 + items.length * 0.28 + 0.2;
+  $("total").style.opacity = ease((t - aTot) / 0.35);
+  $("pagar").style.opacity = ease((t - aTot - dCheck * 0.25) / 0.35);
+  $("pagar").style.transform = `scale(${0.9 + 0.1 * back((t - aTot - dCheck * 0.25) / 0.5)})`;
+  // Cierre
+  const ci = t >= tCierre, dc = t - tCierre;
+  $("resumen").style.filter = ci ? `brightness(${1 - 0.55 * ease(dc / 0.5)})` : "none";
+  $("pie").style.opacity = ci ? ease(dc / 0.4) : 0;
+  $("pie").style.transform = `translateY(${ci ? (1 - ease(dc / 0.5)) * 40 : 0}px)`;
+  $("wa").style.opacity = ci ? ease((dc - 0.7) / 0.4) : 0;
+  $("logo").style.opacity = ci ? ease((dc - 0.7) / 0.4) : 0;
+  $("wa").style.transform = `scale(${ci ? 0.9 + 0.1 * back((dc - 0.7) / 0.5) : 1})`;
+}
+await fondoP;
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); await fondoP; };
+window.__ready = true;
+</script>
+</body></html>

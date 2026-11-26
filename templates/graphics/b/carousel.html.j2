@@ -203,7 +203,7 @@ body.claro .ac, body.amarillo .ac { color: var(--verde-3); font-family: var(--se
 
 {% elif L == "numero" %}
   <div class="num">{{ s.tag }}</div>
-  <div class="tag tagx">Señal {{ s.tag }}</div>
+  <div class="tag tagx">{{ s.etiqueta or "Señal" }} {{ s.tag }}</div>
   <h2 class="cond">{{ s.heading | accent }}</h2>
   <p class="cuerpo">{{ s.body }}</p>
 

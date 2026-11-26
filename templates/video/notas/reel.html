@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: "Brico"; src: url("__FONTS__/BricolageGrotesque.ttf"); font-weight: 200 800; }
+@font-face { font-family: "Tight"; src: url("__FONTS__/InterTight.ttf"); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url("__FONTS__/JetBrainsMono.ttf"); }
+@font-face { font-family: "Serif"; src: url("__FONTS__/InstrumentSerif-Italic.ttf"); }
+@font-face { font-family: "Mano"; src: url("__FONTS__/Caveat.ttf"); font-weight: 400 700; }
+/* Notas: la app de notas del celular (genérica, sin marca). El dueño escribe su lista de pendientes letra por letra;
+   giro: «no hice ninguna», y cada pendiente se tacha solo con una etiqueta dorada de lo que lo hizo. */
+:root { --verde: #0a1410; --verde3: #1d362b; --oro: #f0c419; --marfil: #fefcf3; --tinta: #1a1a17; --gris: #8d8a7c; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--marfil); font-family: "Tight"; color: var(--tinta); }
+#hoja { position: absolute; inset: 0; background: var(--marfil);
+        background-image: repeating-linear-gradient(transparent 0 129px, #e9e3cf 129px 131px); background-position: 0 40px; }
+#top { position: absolute; left: 0; right: 0; top: 0; height: 190px; display: flex; align-items: flex-end; justify-content: space-between;
+       padding: 0 56px 26px; box-sizing: border-box; font: 600 42px "Tight"; color: #b8900b; background: var(--marfil); z-index: 2; }
+#top i { font-style: normal; font-size: 40px; letter-spacing: 8px; }
+#fecha { position: absolute; left: 0; right: 0; top: 214px; text-align: center; font: 500 30px "Tight"; color: var(--gris); }
+#titulo { position: absolute; left: 72px; right: 72px; top: 280px; font: 800 78px/1.08 "Brico"; letter-spacing: -1.5px; min-height: 90px; }
+#lista { position: absolute; left: 72px; right: 60px; top: 540px; }
+.it { position: relative; display: flex; gap: 30px; align-items: flex-start; margin-bottom: 46px; }
+.ck { flex: none; width: 62px; height: 62px; border-radius: 50%; border: 5px solid #c9c3ad; box-sizing: border-box; margin-top: 4px;
+      display: flex; align-items: center; justify-content: center; font: 800 38px "Tight"; color: var(--verde); }
+.tx { position: relative; font: 500 52px/1.22 "Tight"; }
+.tx .raya { position: absolute; left: -4px; height: 6px; background: var(--tinta); border-radius: 3px; transform-origin: 0 50%; }
+.chip { display: inline-block; margin-top: 14px; background: var(--verde); color: var(--oro); font: 700 28px "Mono"; letter-spacing: 2px;
+        padding: 10px 20px; border-radius: 12px; transform-origin: 0 50%; }
+.cur { display: inline-block; width: 5px; height: 1em; background: #b8900b; vertical-align: -0.12em; margin-left: 3px; }
+#giro { position: absolute; left: 90px; right: 90px; top: 1360px; font: 700 124px/1 "Mano"; color: #c0392b; transform-origin: 30% 50%; z-index: 3; }
+#teclado { position: absolute; left: 0; right: 0; bottom: 0; height: 330px; background: #e4e0d2; z-index: 2;
+           display: grid; grid-template-columns: repeat(10, 1fr); gap: 14px; padding: 30px 18px 60px; box-sizing: border-box; }
+#teclado div { background: #fefcf3; border-radius: 12px; box-shadow: 0 4px 0 #b9b4a2; font: 500 34px "Tight"; display: flex;
+               align-items: center; justify-content: center; color: #555; }
+#panel { position: absolute; left: 0; right: 0; bottom: 0; height: 560px; background: var(--verde); color: var(--marfil); z-index: 5;
+         border-radius: 48px 48px 0 0; }
+#pie { position: absolute; left: 64px; right: 64px; top: 70px; font: 800 76px/1.05 "Brico"; letter-spacing: -1px; }
+#pie em { font: 400 84px/1 "Serif"; color: var(--oro); }
+#wa { position: absolute; left: 64px; top: 340px; font: 800 44px "Tight"; color: var(--verde); background: var(--oro);
+      padding: 22px 34px; border-radius: 999px; }
+#logo { position: absolute; right: 64px; top: 325px; width: 150px; }
+</style></head>
+<body>
+<div id="hoja"></div>
+<div id="top"><span>‹ Notas</span><i>⋯</i></div>
+<div id="fecha"></div>
+<div id="titulo"></div>
+<div id="lista"></div>
+<div id="giro"></div>
+<div id="teclado"></div>
+<div id="panel"><div id="pie"></div><div id="wa"></div><img id="logo" src="__LOGO__"></div>
+<script type="module">
+const REEL = __DATOS__;
+window.__ready = false;
+const L = REEL.lineas, $ = (id) => document.getElementById(id);
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (x) => { x = cl(x); return 1 - (1 - x) ** 3; };
+const back = (x) => { x = cl(x); const c = 1.7; return 1 + (c + 1) * (x - 1) ** 3 + c * (x - 1) ** 2; };
+const em = (s) => (s || "").replace(/\*(.+?)\*/g, "<em>$1</em>");
+$("fecha").textContent = REEL.fecha || "";
+$("pie").innerHTML = em(REEL.pie || "¿Cuántas tenés *en tu lista?*");
+$("wa").textContent = "WhatsApp " + REEL.whatsapp;
+"QWERTYUIOPASDFGHJKLÑZXCVBNM,.".split("").forEach((k) => { const d = document.createElement("div"); d.textContent = k; $("teclado").appendChild(d); });
+
+const lTit = L.find((l) => l.nota_titulo) || L[0];
+const items = [];
+L.forEach((l) => {
+  if (!l.item) return;
+  const d = document.createElement("div"); d.className = "it";
+  d.innerHTML = `<div class="ck"></div><div><div class="tx"><span class="s"></span></div><div class="chip">${l.auto || ""}</div></div>`;
+  $("lista").appendChild(d);
+  items.push({ el: d, l });
+});
+const iGiro = L.findIndex((l) => l.escena === "giro"), iSolas = L.findIndex((l) => l.escena === "solas");
+const iCierre = L.findIndex((l) => l.escena === "cierre");
+const T = (k) => (k >= 0 ? L[k].inicio : 1e9);
+const escribir = (txt, p) => { const n = Math.round(txt.length * cl(p)); return txt.slice(0, n); };
+
+function rayas(tx, p) {
+  // una raya por renglón del texto (se mide una sola vez)
+  if (!tx.__r) {
+    const r = document.createRange(); r.selectNodeContents(tx.querySelector(".s"));
+    const base = tx.getBoundingClientRect();
+    tx.__r = [...r.getClientRects()].map((q) => ({ x: q.left - base.left, y: q.top - base.top + q.height * 0.55, w: q.width }));
+    tx.__r.forEach((q) => { const e = document.createElement("div"); e.className = "raya";
+      Object.assign(e.style, { left: q.x - 4 + "px", top: q.y + "px", width: q.w + 8 + "px" }); tx.appendChild(e); });
+  }
+  const rs = [...tx.querySelectorAll(".raya")];
+  rs.forEach((e, k) => { e.style.transform = `scaleX(${ease(p * rs.length - k)})`; });
+}
+
+function dibujar(t) {
+  // Título de la nota
+  const tt = lTit.nota_titulo || "";
+  const pt = (t - lTit.inicio) / (lTit.duracion * 0.8);
+  const escribiendoTit = pt > 0 && pt < 1.05;
+  $("titulo").innerHTML = escribir(tt, pt) + (escribiendoTit || (t < T(L.indexOf(items[0]?.l)) && Math.floor(t * 2) % 2 === 0) ? '<span class="cur"></span>' : "");
+  // Pendientes que se escriben
+  const tSolas = T(iSolas);
+  let tecla = false;
+  items.forEach((x, k) => {
+    const l = x.l, txt = l.item, p = (t - l.inicio) / (l.duracion * (l.escribe ?? 0.78));
+    x.el.style.opacity = t >= l.inicio - 0.05 ? 1 : 0;
+    const s = x.el.querySelector(".s");
+    if (!x.full) { s.textContent = txt; x.full = true; }
+    const done = t >= l.inicio + l.duracion * (l.escribe ?? 0.78);
+    const visible = escribir(txt, p);
+    const tx = x.el.querySelector(".tx");
+    // Texto escrito + resto transparente (así la altura no salta)
+    s.innerHTML = `${visible}${!done && p > 0 ? '<span class="cur"></span>' : ""}<span style="opacity:0">${txt.slice(visible.length)}</span>`;
+    if (p > 0 && !done) tecla = true;
+    // Se tachan solos, uno tras otro, en la línea «solas»
+    const a = tSolas + (L[iSolas] ? L[iSolas].duracion : 4) * (0.06 + k * 0.2);
+    const q = (t - a) / 0.45;
+    const ck = x.el.querySelector(".ck");
+    ck.style.background = q > 0 ? "var(--oro)" : "transparent";
+    ck.style.borderColor = q > 0 ? "var(--oro)" : "#c9c3ad";
+    ck.textContent = q > 0 ? "✓" : "";
+    ck.style.transform = `scale(${q > 0 ? 0.7 + 0.3 * back(q) : 1})`;
+    if (t >= a) rayas(tx, cl(q)); else tx.querySelectorAll(".raya").forEach((e) => (e.style.transform = "scaleX(0)"));
+    tx.style.color = q > 0 ? `rgba(26,26,23,${1 - 0.5 * ease(q)})` : "var(--tinta)";
+    const c = x.el.querySelector(".chip");
+    c.style.opacity = q > 0.4 ? 1 : 0;
+    c.style.transform = `scale(${q > 0.4 ? back((q - 0.4) / 0.6) : 0})`;
+  });
+  // Teclado: sube mientras se escribe, baja en el giro
+  const tg = T(iGiro);
+  const kb = ease((t - 0.1) / 0.4) * (1 - ease((t - tg) / 0.35));
+  $("teclado").style.transform = `translateY(${(1 - kb) * 340}px)`;
+  [...$("teclado").children].forEach((d, k) => { d.style.background = tecla && (k * 7 + Math.floor(t * 14)) % 29 === 0 ? "#f0c419" : "#fefcf3"; });
+  // Giro: frase a mano en rojo
+  const g = L[iGiro], dg = t - tg;
+  $("giro").textContent = g ? (g.giro || g.texto) : "";
+  $("giro").style.opacity = dg > 0 ? 1 : 0;
+  $("giro").style.transform = `rotate(-4deg) scale(${dg > 0 ? 1.6 - 0.6 * back(dg / 0.4) : 1})`;
+  // Cierre
+  const dc = t - T(iCierre), ci = dc >= 0;
+  $("panel").style.transform = `translateY(${(1 - (ci ? ease(dc / 0.5) : 0)) * 600}px)`;
+  $("wa").style.opacity = ci ? ease((dc - 0.6) / 0.4) : 0;
+  $("logo").style.opacity = $("wa").style.opacity;
+  $("giro").style.top = ($("lista").offsetTop + $("lista").offsetHeight + 10) + "px";
+}
+await document.fonts.ready;
+window.__seek = async (t) => { dibujar(t); };
+window.__ready = true;
+</script>
+</body></html>
